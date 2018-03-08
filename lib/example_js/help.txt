@@ -1,0 +1,13 @@
+
+/js spawn('ZOMBIE').fwd().times(10)
+
+/js var ents = require('entities');
+/js ents. <tab-key>
+
+/js var blks = require('blocks');
+/js blks. <tab-key>
+
+
+events 함수 확인. lib 폴더하단
+events.playerMove
+
