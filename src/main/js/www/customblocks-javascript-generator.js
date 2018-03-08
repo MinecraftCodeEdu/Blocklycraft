@@ -134,7 +134,8 @@ Blockly.JavaScript['onmobkilled'] = function(block) {
   var statements_command = Blockly.JavaScript.statementToCode(block, 'command');
   // TODO: Assemble JavaScript into code variable.
   var code = "events.entityDeath( function( event ) {\n"
-			+ "		if( event.getEntity().getType() == '"+value_mob+"' ) {\n" ;
+			+ "		if( event.getEntity().getType() == '"+value_mob+"' ) {\n"
+			+ "	var player = event.getEntity().getKiller()\n";
 	code = code + statements_command;
 	code = code + "}});";
   return code;
