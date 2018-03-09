@@ -1,15 +1,5 @@
-
 java plugin 수정
--사용자별 폴더 추가 및 권한부여
- classroom.js 확인
-
--사용자 접속시 폴더 자동추가 
-Player onlinePlayer : player.getServer().getOnlinePlayers()
-player.getAddress()
-getplayer().getName()
-
--덮여쓰기 방지를 위해 ip+clientscript.js 대신 ip+command_name.js 로 수정
-command( "name", function()) 확인
+- 파일생성시 username_clientscript.js 로 수정
 
 js 수정
 -한글화 (완료) 2/27
@@ -26,6 +16,19 @@ javascript 열람가능
 -catelog --> block 으로 customize
 <block></block>개별화
 -php 대신 stage/agent?level=1 고안
+
+
+
+미정
+
+-사용자 접속시 폴더 자동추가 
+Player onlinePlayer : player.getServer().getOnlinePlayers()
+player.getAddress()
+getplayer().getName()
+
+-덮여쓰기 방지를 위해 ip+clientscript.js 대신 ip+command_name.js 로 수정
+command( "name", function()) 확인
+
 
 
 
