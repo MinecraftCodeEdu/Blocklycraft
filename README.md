@@ -2,20 +2,20 @@ java plugin 수정
 - 파일생성시 username_clientscript.js 로 수정
 
 js 수정
--한글화 (완료) 2/27
--줌인해제 (완료) 2/27
--블록저장및 불러오기 (완료) 3/7
--세션 삭제
+- 한글화 (완료) 2/27
+- 줌인해제 (완료) 2/27
+- 블록저장및 불러오기 (완료) 3/7
+- 세션 삭제
 
 js개발
--gist.github.com scriptcraft 관련 자료
--side bar 추가
-javascript 열람가능
+- gist.github.com scriptcraft 관련 자료
+- side bar 추가
+- javascript 열람가능
 
 학생용 stage 개발
--catelog --> block 으로 customize
-<block></block>개별화
--php 대신 stage/agent?level=1 고안
+- catelog --> block 으로 customize
+- <block></block>개별화
+- php 대신 stage/agent?level=1 고안
 
 
 
