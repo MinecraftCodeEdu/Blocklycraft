@@ -387,3 +387,34 @@ Blockly.Blocks['absolute_coordinate'] = {
  this.setHelpUrl("");
   }
 };
+
+/***
+	Coalab (2018.03.13) 
+***/
+Blockly.Blocks['player_chat'] = {
+  init: function() {
+    this.appendValueInput("chat")
+        .setCheck(null)
+        .appendField("채팅창에 말하기 :");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(210);
+ this.setTooltip("게임 채팅에 메시지를 기록합니다.");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['player_chatcommand'] = {
+  init: function() {
+    this.appendValueInput("chatcommand")
+        .setCheck(null)
+        .appendField("다음 채팅명령어를 실행 :");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(210);
+ this.setTooltip("사용자의 코드로 채팅 명령을 실행합니다.");
+ this.setHelpUrl("");
+  }
+};

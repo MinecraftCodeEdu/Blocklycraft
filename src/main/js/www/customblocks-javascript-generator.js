@@ -183,3 +183,20 @@ Blockly.JavaScript['absolute_coordinate'] = function(block) {
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
+
+/***
+	Coalab (2018.03.13) 
+***/
+Blockly.JavaScript['player_chat'] = function(block) {
+  var chat = Blockly.JavaScript.valueToCode(block, 'chat', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "player.chat("+chat+");\n";
+  return code;
+};
+
+Blockly.JavaScript['player_chatcommand'] = function(block) {
+  var chatcommand = Blockly.JavaScript.valueToCode(block, 'chatcommand', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "player.chat('/jsp '+"+chatcommand+");\n";
+  return code;
+};
