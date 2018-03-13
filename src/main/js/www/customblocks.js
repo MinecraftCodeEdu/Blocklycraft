@@ -315,3 +315,75 @@ Blockly.Blocks['onmobkilled'] = {
  this.setHelpUrl("");
   }
 };
+
+/***
+	Coalab (2018.03.12) 
+***/
+Blockly.Blocks['teleport'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("입력한 좌표로 텔레포트 : ")
+        .appendField(new Blockly.FieldTextInput("teleport"), "command")
+        .appendField("x y z");
+    this.setInputsInline(false);
+    this.setColour(210);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['teleport_coordinate'] = {
+  init: function() {
+    this.appendValueInput("NAME")
+        .setCheck("coordinate")
+        .appendField("해당 좌표로 텔레포트");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(210);
+ this.setTooltip("현재 플레이어를 다른 위치로 텔레포트합니다.");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['relative_coordinate'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("상대 좌표");
+    this.appendValueInput("x")
+        .setCheck("Number")
+        .appendField("~");
+    this.appendValueInput("y")
+        .setCheck("Number")
+        .appendField("~");
+    this.appendValueInput("z")
+        .setCheck("Number")
+        .appendField("~");
+    this.setInputsInline(true);
+    this.setOutput(true, "coordinate");
+    this.setColour(150);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['absolute_coordinate'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("월드 좌표");
+    this.appendValueInput("x")
+        .setCheck("Number")
+        .appendField("X");
+    this.appendValueInput("y")
+        .setCheck("Number")
+        .appendField("Y");
+    this.appendValueInput("z")
+        .setCheck("Number")
+        .appendField("Z");
+    this.setInputsInline(true);
+    this.setOutput(true, "coordinate");
+    this.setColour(150);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};

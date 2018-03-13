@@ -141,3 +141,45 @@ Blockly.JavaScript['onmobkilled'] = function(block) {
   return code;
 };
 // using smartgit
+
+/***
+	Coalab (2018.03.12) 
+***/
+Blockly.JavaScript['teleport'] = function(block) {
+  var text_command = block.getFieldValue('command');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "command('"+text_command+"', function(parameters, player) {\n"
+			+"	var bkLocation = Packages.org.bukkit.Location;\n"
+			+"	player.teleport(new bkLocation(player.world, parameters[0], parameters[1], parameters[2]));\n"
+			+"});";
+  return code;
+};
+
+Blockly.JavaScript['teleport_coordinate'] = function(block) {
+  var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "	var bkLocation = Packages.org.bukkit.Location;\n"
+			+"	player.teleport("+value_name+");\n";
+  return code;
+};
+// x, y, z
+
+Blockly.JavaScript['relative_coordinate'] = function(block) {
+  var value_x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_z = Blockly.JavaScript.valueToCode(block, 'z', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "new bkLocation(player.world, player.getLocation().x+Number("+value_x+"), player.getLocation().y+Number("+value_y+"), player.getLocation().z+Number("+value_z+") )";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['absolute_coordinate'] = function(block) {
+  var value_x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_z = Blockly.JavaScript.valueToCode(block, 'z', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "new bkLocation(player.world, "+value_x+", "+value_y+", "+value_z+")";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
