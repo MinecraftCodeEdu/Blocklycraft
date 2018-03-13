@@ -112,11 +112,49 @@
             <block type="weapons_armor"></block>
         </category>
 		<category id="catCoala">
-            <block type="onchat"></block>
-            <block type="spawn_animal"></block>
-            <block type="animalmob"></block>
-            <block type="onmobkilled"></block>
-        </category>
+			<block type="onchat"></block>
+			<block type="teleport"></block>
+			<block type="onmobkilled">
+			  <value name="Mob">
+				<block type="animalmob"></block>
+			  </value>
+			</block>
+			<block type="spawn_animal">
+			  <value name="animal">
+				<block type="animalmob"></block>
+			  </value>
+			</block>
+			<block type="teleport_coordinate">
+			  <value name="NAME">
+				<block type="relative_coordinate">
+				  <value name="x">
+					<block type="math_number"></block>
+				  </value>
+				  <value name="y">
+					<block type="math_number"></block>
+				  </value>
+				  <value name="z">
+					<block type="math_number"></block>
+				  </value>
+				</block>
+			  </value>
+			</block>
+			<block type="teleport_coordinate">
+			  <value name="NAME">
+				<block type="absolute_coordinate">
+				  <value name="x">
+					<block type="math_number"></block>
+				  </value>
+				  <value name="y">
+					<block type="math_number"></block>
+				  </value>
+				  <value name="z">
+					<block type="math_number"></block>
+				  </value>
+				</block>
+			  </value>
+			</block>
+		</category>
         <sep></sep>
         <category id="catLogic">
             <block type="controls_if"></block>
