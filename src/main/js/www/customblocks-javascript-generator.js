@@ -51,6 +51,15 @@ Blockly.JavaScript['circle'] = function (block) {
     return code;
 };
 
+Blockly.JavaScript['prism'] = function (block) {
+    var value_width = Blockly.JavaScript.valueToCode(block, 'width', Blockly.JavaScript.ORDER_ATOMIC);
+    var value_lenght = Blockly.JavaScript.valueToCode(block, 'lenght', Blockly.JavaScript.ORDER_ATOMIC);
+    var dropdown_stair = block.getFieldValue('stair');
+    var dropdown_fill = block.getFieldValue('fill');
+    var code = "theDrone.prism" + dropdown_fill + "(" + dropdown_stair + "," + value_width + "," + value_lenght + ");\n";
+    return code;
+};
+
 Blockly.JavaScript['delete'] = function (block) {
     var value_width = Blockly.JavaScript.valueToCode(block, 'width', Blockly.JavaScript.ORDER_ATOMIC);
     var value_height = Blockly.JavaScript.valueToCode(block, 'height', Blockly.JavaScript.ORDER_ATOMIC);
