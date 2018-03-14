@@ -28,7 +28,10 @@ public class ScriptCraftPlugin extends JavaPlugin implements Listener
 
     @Override public void onEnable()
     {
-        Thread currentThread = Thread.currentThread();
+
+		Bukkit.getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
+
+		Thread currentThread = Thread.currentThread();
         ClassLoader previousClassLoader = currentThread.getContextClassLoader();
         currentThread.setContextClassLoader(getClassLoader());
         try {
