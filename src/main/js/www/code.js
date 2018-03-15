@@ -281,9 +281,9 @@ Code.loadBlocks = function (defaultXml) {
         var xml = Blockly.Xml.textToDom(defaultXml);
         Blockly.Xml.domToWorkspace(xml, Code.workspace);
     } else if ('BlocklyStorage' in window) {
-        // Restore saved blocks in a separate thread so that subsequent
-        // initialization is not affected from a failed load.
-        window.setTimeout(BlocklyStorage.restoreBlocks, 0);
+         //Restore saved blocks in a separate thread so that subsequent
+         //initialization is not affected from a failed load.
+        //window.setTimeout(BlocklyStorage.restoreBlocks, 0);
     }
 };
 
