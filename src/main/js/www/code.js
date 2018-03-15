@@ -1,4 +1,4 @@
-/**
+re/**
  * Blockly Demos: Code
  *
  * Copyright 2012 Google Inc.
@@ -283,7 +283,7 @@ Code.loadBlocks = function (defaultXml) {
     } else if ('BlocklyStorage' in window) {
          //Restore saved blocks in a separate thread so that subsequent
          //initialization is not affected from a failed load.
-        //window.setTimeout(BlocklyStorage.restoreBlocks, 0);
+        window.setTimeout(BlocklyStorage.restoreBlocks, 0);
     }
 };
 
@@ -563,7 +563,7 @@ Code.init = function () {
 
        // Restore saved blocks in a separate thread so that subsequent
     // initialization is not affected from a failed load.
-    window.setTimeout(Code.restore_blocks, 0);
+//    window.setTimeout(Code.restore_blocks, 0);
     // Hook a save function onto unload.
     Blockly.bindEvent_(window, 'unload', null, Code.backup_blocks);
 
