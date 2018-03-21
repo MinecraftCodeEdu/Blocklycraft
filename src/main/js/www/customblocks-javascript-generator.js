@@ -225,3 +225,19 @@ Blockly.JavaScript['moveforward'] = function(block) {
   "player.teleport(new bkLocation(world, loc.getX()+x*distance,loc.getY(), loc.getZ()+z*distance, loc.getYaw(), loc.getPitch()));";
   return code;
 };
+
+Blockly.JavaScript['directforward'] = function(block) {
+  var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "command( "+value_command+", function ( parameters, player ) {\n\
+  var bkLocation = org.bukkit.Location;\n\
+  var world = player.getWorld();\n\
+  var loc = player.getLocation();\n\
+  var distance = parameters[0];\n\
+  var yaw  = ((loc.getYaw() + 90)  * Math.PI) / 180;\n\
+  var x = Math.cos(yaw);\n\
+  var z = Math.sin(yaw);\n\
+  player.teleport(new bkLocation(world, loc.getX()+x*distance,loc.getY(), loc.getZ()+z*distance, loc.getYaw(), loc.getPitch()));\n\
+});";
+  return code;
+};

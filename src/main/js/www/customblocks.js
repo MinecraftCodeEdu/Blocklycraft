@@ -447,3 +447,17 @@ Blockly.Blocks['moveforward'] = {
  this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['directforward'] = {
+  init: function() {
+    this.appendValueInput("command")
+        .setCheck(null)
+        .appendField("앞으로 이동 : ");
+    this.appendDummyInput()
+        .appendField("d");
+    this.setInputsInline(true);
+    this.setColour(210);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
