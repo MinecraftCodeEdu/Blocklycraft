@@ -112,12 +112,12 @@ Contains the generator for the javascript used in scriptcraft
 ***/
 
 Blockly.JavaScript['onchat'] = function(block) {
-	var text_command = block.getFieldValue('command');
+	var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
 	var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
 	// TODO: Assemble JavaScript into code variable.
-	var code = "command( '" + text_command + "', function ( parameters, player ) {";
+	var code = "command( " + value_command + ", function ( parameters, player ) {\n";
 	code = code + statements_statements;
-	code = code + "});";
+	code = code + "\n});";
   return code;
 };
 
@@ -126,7 +126,7 @@ Blockly.JavaScript['spawn_animal'] = function(block) {
 	// TODO: Assemble JavaScript into code variable.
 	var code = "var theDrone = new Drone(player);\ntheDrone.up();\ntheDrone.chkpt('start');\n";
 	code = code + "var timeoutStop = new Date().getTime()+500;\n"; // set maximum run time for a script
-	code = code + "if (__plugin.bukkit) {\n        theDrone.getLocation().world.spawnEntity(theDrone.getLocation(), org.bukkit.entity.EntityType." + value_animal + ");\n    }\n    if (__plugin.canary) {\n        var Canary = Packages.net.canarymod.Canary,\n            entityInstance = Canary.factory().entityFactory.newEntity('" + value_animal + "', theDrone.getLocation());\n        entityInstance.spawn();\n    }";
+	code = code + "if (__plugin.bukkit) {\n    theDrone.getLocation().world.spawnEntity(theDrone.getLocation(), org.bukkit.entity.EntityType." + value_animal + ");\n}\nif (__plugin.canary) {\n    var Canary = Packages.net.canarymod.Canary,\n    entityInstance = Canary.factory().entityFactory.newEntity('" + value_animal + "', theDrone.getLocation());\n    entityInstance.spawn();\n}";
   return code;
 };
 
@@ -143,10 +143,10 @@ Blockly.JavaScript['onmobkilled'] = function(block) {
   var statements_command = Blockly.JavaScript.statementToCode(block, 'command');
   // TODO: Assemble JavaScript into code variable.
   var code = "events.entityDeath( function( event ) {\n"
-			+ "		if( event.getEntity().getType() == '"+value_mob+"' ) {\n"
-			+ "	var player = event.getEntity().getKiller()\n";
+			+ "  if( event.getEntity().getType() == '"+value_mob+"' ) {\n"
+			+ "  var player = event.getEntity().getKiller()\n";
 	code = code + statements_command;
-	code = code + "}});";
+	code = code + "\n}});";
   return code;
 };
 // using smartgit
@@ -154,21 +154,35 @@ Blockly.JavaScript['onmobkilled'] = function(block) {
 /***
 	Coalab (2018.03.12) 
 ***/
-Blockly.JavaScript['teleport'] = function(block) {
+/* Blockly.JavaScript['teleport'] = function(block) {
   var text_command = block.getFieldValue('command');
   // TODO: Assemble JavaScript into code variable.
   var code = "command('"+text_command+"', function(parameters, player) {\n"
-			+"	var bkLocation = Packages.org.bukkit.Location;\n"
-			+"	player.teleport(new bkLocation(player.world, parameters[0], parameters[1], parameters[2]));\n"
+			+"  var bkLocation = Packages.org.bukkit.Location;\n"
+			+"  player.teleport(new bkLocation(player.world, parameters[0], parameters[1], parameters[2]));\n"
 			+"});";
+  return code;
+}; */
+
+Blockly.JavaScript['teleport_command'] = function(block) {
+  var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "command("+value_command+", function(parameters, player) {\n\
+  var bkLocation = Packages.org.bukkit.Location;\n\
+  if(isNaN(Number(parameters[0])) || isNaN(Number(parameters[1])) || isNaN(Number(parameters[2]))){\n\
+    player.sendMessage('please input number.');\n\
+    return false;\n\
+  }\n\
+  player.teleport(new bkLocation(player.world, parameters[0], parameters[1], parameters[2]));\n\
+});";
   return code;
 };
 
 Blockly.JavaScript['teleport_coordinate'] = function(block) {
   var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = "	var bkLocation = Packages.org.bukkit.Location;\n"
-			+"	player.teleport("+value_name+");\n";
+  var code = "var bkLocation = Packages.org.bukkit.Location;\n"
+			+"player.teleport("+value_name+");";
   return code;
 };
 // x, y, z
@@ -191,4 +205,73 @@ Blockly.JavaScript['absolute_coordinate'] = function(block) {
   var code = "new bkLocation(player.world, "+value_x+", "+value_y+", "+value_z+")";
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+/***
+	Coalab (2018.03.13) 
+***/
+Blockly.JavaScript['player_chat'] = function(block) {
+  var chat = Blockly.JavaScript.valueToCode(block, 'chat', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "player.chat("+chat+");";
+  return code;
+};
+
+Blockly.JavaScript['player_chatcommand'] = function(block) {
+  var chatcommand = Blockly.JavaScript.valueToCode(block, 'chatcommand', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "player.chat('/jsp '+"+chatcommand+");";
+  return code;
+};
+
+Blockly.JavaScript['moveforward'] = function(block) {
+  var value_distance = Blockly.JavaScript.valueToCode(block, 'distance', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = 
+  "var bkLocation = org.bukkit.Location;\n"+
+  "var world = player.getWorld();\n"+
+  "var loc = player.getLocation();\n"+
+  "var distance = "+value_distance+";\n"+
+  "var yaw  = ((loc.getYaw() + 90)  * Math.PI) / 180;\n"+
+  "var x = Math.cos(yaw);\n"+
+  "var z = Math.sin(yaw);\n"+
+  "player.teleport(new bkLocation(world, loc.getX()+x*distance,loc.getY(), loc.getZ()+z*distance, loc.getYaw(), loc.getPitch()));";
+  return code;
+};
+
+Blockly.JavaScript['directforward'] = function(block) {
+  var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "command( "+value_command+", function ( parameters, player ) {\n\
+  var bkLocation = org.bukkit.Location;\n\
+  var world = player.getWorld();\n\
+  var loc = player.getLocation();\n\
+  if(isNaN(Number(parameters[0]))){\n\
+    player.sendMessage('please input number.');\n\
+    return false;\n\
+  }\n\
+  var distance = parameters[0];\n\
+  var yaw  = ((loc.getYaw() + 90)  * Math.PI) / 180;\n\
+  var x = Math.cos(yaw);\n\
+  var z = Math.sin(yaw);\n\
+  player.teleport(new bkLocation(world, loc.getX()+x*distance,loc.getY(), loc.getZ()+z*distance, loc.getYaw(), loc.getPitch()));\n\
+});";
+  return code;
+};
+
+Blockly.JavaScript['facing'] = function(block) {
+  var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+    var code = "command( "+value_command+", function ( parameters, player ) {\n\
+  var bkLocation = org.bukkit.Location;\n\
+  var world = player.getWorld();\n\
+  var loc = player.getLocation();\n\
+  if(isNaN(Number(parameters[0]))){\n\
+    player.sendMessage('please input number.');\n\
+    return false;\n\
+  }\n\
+  var angle = parameters[0];\n\
+  player.teleport(new bkLocation(world, loc.getX(), loc.getY(), loc.getZ(), angle, loc.getPitch()));\n\
+});";
+  return code;
 };

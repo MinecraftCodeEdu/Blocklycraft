@@ -27,7 +27,7 @@ var items_weapons_armor = getObjNames(Blockly.Msg.ITEMS_NAMES, ['bow', 'arrow', 
 //Spawn passive and pameable animals http://minecraft.gamepedia.com/Mob
 var animals = getObjNames(Blockly.Msg.ANIMALS_NAMES, ['BAT', 'CHICKEN', 'COW', 'PIG', 'RABBIT', 'WOLF', 'SHEEP', 'HORSE', 'OCELOT']);
 
-
+Blockly.BlockSvg.START_HAT = true;
 
 // extract objects translation names from their ids/names
 function getObjNames(list, ids) {
@@ -291,11 +291,12 @@ Contains the description of the Minecraft blocks for Blockly
 
 Blockly.Blocks['onchat'] = {
   init: function() {
-    this.appendDummyInput()
-        .appendField("다음 채팅명령어를 입력하면:")
-        .appendField(new Blockly.FieldTextInput("run"), "command");
+    this.appendValueInput("command")
+        .setCheck(null)
+        .appendField("다음 채팅명령어를 입력하면:");
     this.appendStatementInput("statements")
         .setCheck(null);
+    this.setInputsInline(true);
     this.setColour(210);
  this.setTooltip("게임 채팅에 특정 메시지를 입력하면 코드를 실행합니다.");
  this.setHelpUrl("");
@@ -347,13 +348,27 @@ Blockly.Blocks['onmobkilled'] = {
 /***
 	Coalab (2018.03.12) 
 ***/
-Blockly.Blocks['teleport'] = {
+/* Blockly.Blocks['teleport'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("입력한 좌표로 텔레포트 : ")
         .appendField(new Blockly.FieldTextInput("teleport"), "command")
         .appendField("x y z");
     this.setInputsInline(false);
+    this.setColour(210);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+}; */
+
+Blockly.Blocks['teleport_command'] = {
+  init: function() {
+    this.appendValueInput("command")
+        .setCheck(null)
+        .appendField("입력한 좌표로 텔레포트 : ");
+    this.appendDummyInput()
+        .appendField("x y z");
+    this.setInputsInline(true);
     this.setColour(210);
  this.setTooltip("");
  this.setHelpUrl("");
@@ -412,6 +427,78 @@ Blockly.Blocks['absolute_coordinate'] = {
     this.setOutput(true, "coordinate");
     this.setColour(150);
  this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+/***
+	Coalab (2018.03.13) 
+***/
+Blockly.Blocks['player_chat'] = {
+  init: function() {
+    this.appendValueInput("chat")
+        .setCheck(null)
+        .appendField("채팅창에 말하기 :");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(210);
+ this.setTooltip("게임 채팅에 메시지를 기록합니다.");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['player_chatcommand'] = {
+  init: function() {
+    this.appendValueInput("chatcommand")
+        .setCheck(null)
+        .appendField("다음 채팅명령어를 실행 :");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(210);
+ this.setTooltip("사용자의 코드로 채팅 명령을 실행합니다.");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['moveforward'] = {
+  init: function() {
+    this.appendValueInput("distance")
+        .setCheck("Number")
+        .appendField("숫자만큼 앞으로 이동");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(210);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['directforward'] = {
+  init: function() {
+    this.appendValueInput("command")
+        .setCheck(null)
+        .appendField("앞으로 이동 : ");
+    this.appendDummyInput()
+        .appendField("d");
+    this.setInputsInline(true);
+    this.setColour(210);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['facing'] = {
+  init: function() {
+    this.appendValueInput("command")
+        .setCheck(null)
+        .appendField("방향 바라보기 명령 : ");
+    this.appendDummyInput()
+        .appendField("각도");
+    this.setColour(230);
+ this.setTooltip("설정한 명령어와 바라 볼 각도를 입력하세요. 예) /jsp 명령어 각도");
  this.setHelpUrl("");
   }
 };

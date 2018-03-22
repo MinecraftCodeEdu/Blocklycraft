@@ -113,8 +113,14 @@
             <block type="weapons_armor"></block>
         </category>
 		<category id="catCoala">
-			<block type="onchat"></block>
-			<block type="teleport"></block>
+			<block type="onchat">
+				<value name="command">
+					<block type="text">
+						<field name="TEXT">run</field>
+					</block>
+				</value>
+			</block>
+<!-- 			<block type="teleport"></block> -->
 			<block type="onmobkilled">
 			  <value name="Mob">
 				<block type="animalmob"></block>
@@ -154,6 +160,48 @@
 				  </value>
 				</block>
 			  </value>
+			</block>
+			<block type="player_chat">
+				<value name="chat">
+				  <block type="text">
+					<field name="TEXT">Hi!</field>
+				  </block>
+				</value>
+			</block>
+			<block type="player_chatcommand">
+				<value name="chatcommand">
+				  <block type="text">
+					<field name="TEXT">jump</field>
+				  </block>
+				</value>
+			</block>
+			<block type="teleport_command">
+				<value name="command">
+					<block type="text">
+						<field name="TEXT">teleport</field>
+					</block>
+				</value>
+			</block>
+			<block type="moveforward">
+				<value name="distance">
+					<block type="math_number">
+						<field name="NUM">5</field>
+					</block>
+				</value>
+			</block>
+			<block type="directforward">
+				<value name="command">
+					<block type="text">
+						<field name="TEXT">forward</field>
+					</block>
+				</value>
+			</block>
+			<block type="facing">
+				<value name="command">
+					<block type="text">
+						<field name="TEXT">direction</field>
+					</block>
+				</value>
 			</block>
 		</category>
         <sep></sep>
