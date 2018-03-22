@@ -24,7 +24,7 @@ var items_weapons_armor = getObjNames(Blockly.Msg.ITEMS_NAMES, ['bow', 'arrow', 
 //Spawn passive and pameable animals http://minecraft.gamepedia.com/Mob
 var animals = getObjNames(Blockly.Msg.ANIMALS_NAMES, ['BAT', 'CHICKEN', 'COW', 'PIG', 'RABBIT', 'WOLF', 'SHEEP', 'HORSE', 'OCELOT']);
 
-
+Blockly.BlockSvg.START_HAT = true;
 
 // extract objects translation names from their ids/names
 function getObjNames(list, ids) {

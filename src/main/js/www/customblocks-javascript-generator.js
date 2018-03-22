@@ -158,10 +158,14 @@ Blockly.JavaScript['onmobkilled'] = function(block) {
 Blockly.JavaScript['teleport_command'] = function(block) {
   var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = "command("+value_command+", function(parameters, player) {\n"
-			+"  var bkLocation = Packages.org.bukkit.Location;\n"
-			+"  player.teleport(new bkLocation(player.world, parameters[0], parameters[1], parameters[2]));\n"
-			+"});";
+  var code = "command("+value_command+", function(parameters, player) {\n\
+  var bkLocation = Packages.org.bukkit.Location;\n\
+  if(isNaN(Number(parameters[0])) || isNaN(Number(parameters[1])) || isNaN(Number(parameters[2]))){\n\
+    player.sendMessage('please input number.');\n\
+    return false;\n\
+  }\n\
+  player.teleport(new bkLocation(player.world, parameters[0], parameters[1], parameters[2]));\n\
+});";
   return code;
 };
 
@@ -233,6 +237,10 @@ Blockly.JavaScript['directforward'] = function(block) {
   var bkLocation = org.bukkit.Location;\n\
   var world = player.getWorld();\n\
   var loc = player.getLocation();\n\
+  if(isNaN(Number(parameters[0]))){\n\
+    player.sendMessage('please input number.');\n\
+    return false;\n\
+  }\n\
   var distance = parameters[0];\n\
   var yaw  = ((loc.getYaw() + 90)  * Math.PI) / 180;\n\
   var x = Math.cos(yaw);\n\
