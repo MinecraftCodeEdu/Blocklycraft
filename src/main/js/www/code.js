@@ -1,4 +1,4 @@
-re/**
+/**
  * Blockly Demos: Code
  *
  * Copyright 2012 Google Inc.
