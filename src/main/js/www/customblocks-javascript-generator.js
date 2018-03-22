@@ -249,3 +249,20 @@ Blockly.JavaScript['directforward'] = function(block) {
 });";
   return code;
 };
+
+Blockly.JavaScript['facing'] = function(block) {
+  var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+    var code = "command( "+value_command+", function ( parameters, player ) {\n\
+  var bkLocation = org.bukkit.Location;\n\
+  var world = player.getWorld();\n\
+  var loc = player.getLocation();\n\
+  if(isNaN(Number(parameters[0]))){\n\
+    player.sendMessage('please input number.');\n\
+    return false;\n\
+  }\n\
+  var angle = parameters[0];\n\
+  player.teleport(new bkLocation(world, loc.getX(), loc.getY(), loc.getZ(), angle, loc.getPitch()));\n\
+});";
+  return code;
+};

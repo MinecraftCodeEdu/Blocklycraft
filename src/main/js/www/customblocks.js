@@ -461,3 +461,16 @@ Blockly.Blocks['directforward'] = {
  this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['facing'] = {
+  init: function() {
+    this.appendValueInput("command")
+        .setCheck(null)
+        .appendField("방향 바라보기 명령 : ");
+    this.appendDummyInput()
+        .appendField("각도");
+    this.setColour(230);
+ this.setTooltip("설정한 명령어와 바라 볼 각도를 입력하세요. 예) /jsp 명령어 각도");
+ this.setHelpUrl("");
+  }
+};
