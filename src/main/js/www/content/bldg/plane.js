@@ -94,6 +94,39 @@ Plane.isRtl = function() {
   return Plane.LANGUAGE_RTL.indexOf(Plane.LANG) != -1;
 };
 
+
+/**
+ * Load blocks from local file.
+ */
+Plane.loadxml = function() {
+  var files = event.target.files;
+  // Only allow uploading one file.
+  if (files.length != 1) {
+    return;
+  }
+  // FileReader
+  var reader = new FileReader();
+  reader.onloadend = function(event) {
+    var target = event.target;
+    // 2 == FileReader.DONE
+    if (target.readyState == 2) {
+      try {
+        var xml = Blockly.Xml.textToDom(target.result);
+      } catch (e) {
+        alert('Error parsing XML:\n' + e);
+        return;
+      }
+      Code.workspace.clear();
+      Blockly.Xml.domToWorkspace(Code.workspace, xml);
+    }
+    // Reset value of input after loading because Chrome will not fire
+    // a 'change' event if the same file is loaded again.
+    document.getElementById('loadxml').value = '';
+  };
+  reader.readAsText(files[0]);
+};
+
+
 /**
  * Load blocks saved in session/local storage.
  * @param {string} defaultXml Text representation of default blocks.
@@ -118,6 +151,8 @@ Plane.loadBlocks = function(defaultXml) {
   }
   Plane.workspace.clearUndo();
 };
+
+
 
 /**
  * Save the blocks and reload with a different language.
@@ -192,8 +227,50 @@ Plane.LANG = Plane.getLang();
 Plane.MAX_LEVEL = 4;
 Plane.LEVEL = Plane.getNumberParamFromUrl('level', 1, Plane.MAX_LEVEL);
 
-Plane.rows1st = 0;
-Plane.rows2nd = 0;
+Plane.selected = 'javascript'
+
+/**
+ * Switch the visible pane when a tab is clicked.
+ * @param {string} clickedName Name of tab clicked.
+ */
+Plane.tabClick = function (clickedName) {
+
+    // Select the active tab.
+    Plane.selected = clickedName;
+    //document.getElementById('tab_' + clickedName).className = 'tabon';
+    document.getElementById('tab_' + clickedName).onclick = function() {
+      document.getElementById('content_' + clickedName).style.visibility = 'visible';
+      Plane.renderContent();
+    }
+
+};
+
+
+/**
+ * Populate the currently selected pane with content generated from the blocks.
+ */
+Plane.renderContent = function() {
+  var code;
+  var content = document.getElementById('content_' + Plane.selected);
+
+  if (content.id == 'content_xml') {
+        var xmlTextarea = document.getElementById('content_xml');
+        var xmlDom = Blockly.Xml.workspaceToDom(Plane.workspace);
+        var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
+        xmlTextarea.value = xmlText;
+        xmlTextarea.focus();
+    } else if (content.id == 'content_javascript') {
+        code = Blockly.JavaScript.workspaceToCode(Plane.workspace);
+        content.textContent = code;
+        if (typeof prettyPrintOne == 'function') {
+            code = content.innerHTML;
+            code = prettyPrintOne(code, 'js');
+            content.innerHTML = code;
+        }
+    }
+
+};
+
 
 /**
  * Initialize Blockly and the SVG plane.
@@ -208,19 +285,31 @@ Plane.init = function() {
         'width=725, initial-scale=.35, user-scalable=no');
   }
 
-  Plane.workspace = Blockly.inject('blockly',
-      {media: '../../google-blockly/media/',
+  Plane.workspace = Blockly.inject('blockly', {
+       media: '../../google-blockly/media/',
        rtl: Plane.isRtl(),
-       toolbox: document.getElementById('toolbox')});
+       toolbox: document.getElementById('toolbox'),
+       zoom: { 
+	   controls: true,
+	   wheel: false
+       },
+       scrollbars: true,
+       trashcan: true,
+       maxBlocks: Infinity,
+       sounds: true,
+       collapse: true,
+  });
+
 
 
   var defaultXml =
       '<xml>' +
-      '  <block type="drone" deletable="false" x="70" y="70">' +
+      '  <block type="teleport" deletable="false" x="70" y="70">' +
       '  </block>' +
       '</xml>';
   Plane.loadBlocks(defaultXml);
 
+  Plane.tabClick(Plane.selected);
 
   Plane.bindClick('deployButton', function () {
         var jscode = Blockly.JavaScript.workspaceToCode(Plane.workspace);

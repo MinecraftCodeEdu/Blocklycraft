@@ -1,13 +1,12 @@
 //Naturally generated and created material blocks http://minecraft.gamepedia.com/Block
-var materials = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 2, 3, 4, 7, 8, 10, 12, 13, 14, 15, 16, 17, 18, 20, 21, 24, 27, 31, 32, 37, 38, 39, 40, 41, 44, 46, 49, 51, 55, 56, 65, 66, 73, 78, 79, 80, 81, 82, 83, 85, 86, 93, 99, 100, 103, 106, 110, 111, 129, 152, 159, 161, 162, 172, 174, 175]);
+var materials = getObjNames('Plane_objnames', [0, 1, 2, 3, 4, 7, 8, 10, 12, 13, 14, 15, 16, 17, 18, 20, 21, 24, 27, 31, 32, 37, 38, 39, 40, 41, 44, 46, 49, 51, 55, 56, 65, 66, 73, 78, 79, 80, 81, 82, 83, 85, 86, 93, 99, 100, 103, 106, 110, 111, 129, 152, 159, 161, 162, 172, 174, 175]);
 
-var stairs = getObjNames(Blockly.Msg.OBJNAMES, [53, 108, 109, 128, 134, 135, 136]);
 
 // extract objects translation names from their ids/names
-function getObjNames(list, ids) {
+function getObjNames(prefix, ids) {
     var shortList = [];
     var id = '';
-    if (list === undefined) {
+    if (prefix === undefined) {
         //TODO - switch to english translation file in case of a non-existent translation
         for (i = 0; i < ids.length; i++) {
             id = '';
@@ -19,28 +18,27 @@ function getObjNames(list, ids) {
             shortList[i] = [ids[i], id];
         }
     } else {
-        for (i = 0; i < ids.length; i++) {
-            id = '';
-            if (typeof (ids[i]) == "number") {
-                id = "'" + ids[i] + "'";
-            } else {
-                id = ids[i];
-            }
-            shortList[i] = [list[ids[i]], id];
-        }
+	    for (i = 0; i < ids.length; i++) {
+		    id = ids[i];
+		    if (typeof id === 'string')
+			    id = "'" + id + "'";
+		    //shortList[i] = [prefix[ids[i]], id];
+		    shortList[i] = [Plane.getMsg(prefix + '[' + id + ']'), id];
+	    }
     }
     return shortList;
 }
+
 
 Blockly.Blocks['drone'] = {
     init: function () {
         this.appendStatementInput("statements")
             .setCheck("")
-            .appendField(Blockly.Msg.DRONE)
+            .appendField(Plane.getMsg('Plane_drone'))
             .appendField(new Blockly.FieldTextInput(""), "param");
         this.setInputsInline(true);
         this.setColour(0);
-        this.setTooltip(Blockly.Msg.TOOLTIP_DRONE);
+        this.setTooltip(Plane.getMsg('Plane_tooltip_drone'));
         this.setHelpUrl('https://github.com/walterhiggins/ScriptCraft/blob/master/docs/API-Reference.md#drone-plugin');
     }
 };
@@ -58,25 +56,25 @@ Blockly.JavaScript['drone'] = function (block) {
 Blockly.Blocks['drone_move'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.MOUVEMENT)
+            .appendField(Plane.getMsg('Plane_movement'))
             .appendField(
             new Blockly.FieldDropdown([
-                [Blockly.Msg.MOUVEMENT_UP, "up()"],
-                [Blockly.Msg.MOUVEMENT_DOWN, "down()"],
-                [Blockly.Msg.MOUVEMENT_FWD, "fwd()"],
-                [Blockly.Msg.MOUVEMENT_BACK, "back()"],
-                [Blockly.Msg.MOUVEMENT_RIGHT, "right()"],
-                [Blockly.Msg.MOUVEMENT_LEFT, "left()"],
-                [Blockly.Msg.MOUVEMENT_TURN_RIGHT, "turn()"],
-                [Blockly.Msg.MOUVEMENT_TURN_LEFT, "turn(2)"],
-                [Blockly.Msg.MOUVEMENT_BACKTOSTART, "move('start')"],
-                [Blockly.Msg.MOUVEMENT_SAVESTART, "chkpt('start')"]
+                [Plane.getMsg('Plane_movement_up'), "up()"],
+                [Plane.getMsg('Plane_movement_down'), "down()"],
+                [Plane.getMsg('Plane_movement_fwd'), "fwd()"],
+                [Plane.getMsg('Plane_movement_back'), "back()"],
+                [Plane.getMsg('Plane_movement_right'), "right()"],
+                [Plane.getMsg('Plane_movement_left'), "left()"],
+                [Plane.getMsg('Plane_movement_turn_right'), "turn()"],
+                [Plane.getMsg('Plane_movement_turn_left'), "turn(2)"],
+                [Plane.getMsg('Plane_movement_backtostart'), "move('start')"],
+                [Plane.getMsg('Plane_movement_savestart'), "chkpt('start')"]
             ]), "direction");
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setColour(0);
-        this.setTooltip(Blockly.Msg.TOOLTIP_DRONEMOVE);
+        this.setTooltip(Plane.getMsg('Plane_tooltip_dronemove'));
         this.setHelpUrl('https://github.com/walterhiggins/ScriptCraft/blob/master/docs/API-Reference.md#drone-movement');
     }
 };
@@ -90,24 +88,24 @@ Blockly.JavaScript['drone_move'] = function (block) {
 Blockly.Blocks['rectangle'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.RECTANGLE);
+            .appendField(Plane.getMsg('Plane_rectangle'));
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown([
-                [Blockly.Msg.EMPTY, "0"],
-                [Blockly.Msg.FULL, " "]
+                [Plane.getMsg('Plane_empty'), "0"],
+                [Plane.getMsg('Plane_full'), " "]
             ]), "fill");
         this.appendValueInput("width").setCheck("Number")
-            .appendField(Blockly.Msg.WIDTH);
+            .appendField(Plane.getMsg('Plane_width'));
         this.appendValueInput("lenght").setCheck("Number")
-            .appendField(Blockly.Msg.LENGTH);
+            .appendField(Plane.getMsg('Plane_length'));
         this.appendDummyInput()
-            .appendField(Blockly.Msg.MATERIAL)
+            .appendField(Plane.getMsg('Plane_material'))
             .appendField(new Blockly.FieldDropdown(materials), "material");
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setColour(0);
-        this.setTooltip(Blockly.Msg.TOOLTIP_RECTANGLE);
+        this.setTooltip(Plane.getMsg('Plane_tooltip_rectangle'));
         this.setHelpUrl('https://github.com/walterhiggins/ScriptCraft/blob/master/docs/API-Reference.md#dronebox-method');
     }
 };
@@ -121,37 +119,3 @@ Blockly.JavaScript['rectangle'] = function (block) {
     return code;
 };
 
-
-Blockly.Blocks['prism'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.PRISM);
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldDropdown([
-                [Blockly.Msg.EMPTY, "0"],
-                [Blockly.Msg.FULL, " "]
-            ]), "fill");
-        this.appendValueInput("width").setCheck("Number")
-            .appendField(Blockly.Msg.WIDTH);
-        this.appendValueInput("lenght").setCheck("Number")
-            .appendField(Blockly.Msg.LENGTH);
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.PRISM)
-            .appendField(new Blockly.FieldDropdown(stairs), "stair");
-        this.setInputsInline(true);
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setColour(0);
-        this.setTooltip(Blockly.Msg.TOOLTIP_RECTANGLE);
-        this.setHelpUrl('https://github.com/walterhiggins/ScriptCraft/blob/master/docs/API-Reference.md#dronebox-method');
-    }
-};
-
-Blockly.JavaScript['prism'] = function (block) {
-    var value_width = Blockly.JavaScript.valueToCode(block, 'width', Blockly.JavaScript.ORDER_ATOMIC);
-    var value_lenght = Blockly.JavaScript.valueToCode(block, 'lenght', Blockly.JavaScript.ORDER_ATOMIC);
-    var dropdown_stair = block.getFieldValue('stair');
-    var dropdown_fill = block.getFieldValue('fill');
-    var code = "theDrone.prism" + dropdown_fill + "(" + dropdown_stair + "," + value_width + "," + value_lenght + ");\n";
-    return code;
-};
