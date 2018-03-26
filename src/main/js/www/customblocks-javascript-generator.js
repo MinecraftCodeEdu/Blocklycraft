@@ -51,6 +51,15 @@ Blockly.JavaScript['circle'] = function (block) {
     return code;
 };
 
+Blockly.JavaScript['prism'] = function (block) {
+    var value_width = Blockly.JavaScript.valueToCode(block, 'width', Blockly.JavaScript.ORDER_ATOMIC);
+    var value_lenght = Blockly.JavaScript.valueToCode(block, 'lenght', Blockly.JavaScript.ORDER_ATOMIC);
+    var dropdown_stair = block.getFieldValue('stair');
+    var dropdown_fill = block.getFieldValue('fill');
+    var code = "theDrone.prism" + dropdown_fill + "(" + dropdown_stair + "," + value_width + "," + value_lenght + ");\n";
+    return code;
+};
+
 Blockly.JavaScript['delete'] = function (block) {
     var value_width = Blockly.JavaScript.valueToCode(block, 'width', Blockly.JavaScript.ORDER_ATOMIC);
     var value_height = Blockly.JavaScript.valueToCode(block, 'height', Blockly.JavaScript.ORDER_ATOMIC);
@@ -108,16 +117,17 @@ Blockly.JavaScript['onchat'] = function(block) {
 	// TODO: Assemble JavaScript into code variable.
 	var code = "command( " + value_command + ", function ( parameters, player ) {\n";
 	code = code + statements_statements;
-	code = code + "\n});";
+	code = code + "});";
   return code;
 };
 
 Blockly.JavaScript['spawn_animal'] = function(block) {
 	var value_animal = Blockly.JavaScript.valueToCode(block, 'animal', Blockly.JavaScript.ORDER_ATOMIC);
 	// TODO: Assemble JavaScript into code variable.
-	var code = "var theDrone = new Drone(player);\ntheDrone.up();\ntheDrone.chkpt('start');\n";
-	code = code + "var timeoutStop = new Date().getTime()+500;\n"; // set maximum run time for a script
-	code = code + "if (__plugin.bukkit) {\n    theDrone.getLocation().world.spawnEntity(theDrone.getLocation(), org.bukkit.entity.EntityType." + value_animal + ");\n}\nif (__plugin.canary) {\n    var Canary = Packages.net.canarymod.Canary,\n    entityInstance = Canary.factory().entityFactory.newEntity('" + value_animal + "', theDrone.getLocation());\n    entityInstance.spawn();\n}";
+	var code = "var theDrone = new Drone(player);\n\
+theDrone.up();\n\
+theDrone.chkpt('start');\n\
+theDrone.getLocation().world.spawnEntity(theDrone.getLocation(), org.bukkit.entity.EntityType." + value_animal + ");\n";
   return code;
 };
 
@@ -137,23 +147,13 @@ Blockly.JavaScript['onmobkilled'] = function(block) {
 			+ "  if( event.getEntity().getType() == '"+value_mob+"' ) {\n"
 			+ "  var player = event.getEntity().getKiller()\n";
 	code = code + statements_command;
-	code = code + "\n}});";
+	code = code + "}});";
   return code;
 };
-// using smartgit
 
 /***
 	Coalab (2018.03.12) 
 ***/
-/* Blockly.JavaScript['teleport'] = function(block) {
-  var text_command = block.getFieldValue('command');
-  // TODO: Assemble JavaScript into code variable.
-  var code = "command('"+text_command+"', function(parameters, player) {\n"
-			+"  var bkLocation = Packages.org.bukkit.Location;\n"
-			+"  player.teleport(new bkLocation(player.world, parameters[0], parameters[1], parameters[2]));\n"
-			+"});";
-  return code;
-}; */
 
 Blockly.JavaScript['teleport_command'] = function(block) {
   var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
@@ -165,7 +165,7 @@ Blockly.JavaScript['teleport_command'] = function(block) {
     return false;\n\
   }\n\
   player.teleport(new bkLocation(player.world, parameters[0], parameters[1], parameters[2]));\n\
-});";
+});\n";
   return code;
 };
 
@@ -173,7 +173,7 @@ Blockly.JavaScript['teleport_coordinate'] = function(block) {
   var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
   var code = "var bkLocation = Packages.org.bukkit.Location;\n"
-			+"player.teleport("+value_name+");";
+			+"player.teleport("+value_name+");\n";
   return code;
 };
 // x, y, z
@@ -185,7 +185,7 @@ Blockly.JavaScript['relative_coordinate'] = function(block) {
   // TODO: Assemble JavaScript into code variable.
   var code = "new bkLocation(player.world, player.getLocation().x+Number("+value_x+"), player.getLocation().y+Number("+value_y+"), player.getLocation().z+Number("+value_z+") )";
   // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.JavaScript.ORDER_NONE];
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 Blockly.JavaScript['absolute_coordinate'] = function(block) {
@@ -195,7 +195,7 @@ Blockly.JavaScript['absolute_coordinate'] = function(block) {
   // TODO: Assemble JavaScript into code variable.
   var code = "new bkLocation(player.world, "+value_x+", "+value_y+", "+value_z+")";
   // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.JavaScript.ORDER_NONE];
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 /***
@@ -204,14 +204,14 @@ Blockly.JavaScript['absolute_coordinate'] = function(block) {
 Blockly.JavaScript['player_chat'] = function(block) {
   var chat = Blockly.JavaScript.valueToCode(block, 'chat', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = "player.chat("+chat+");";
+  var code = "player.chat("+chat+");\n";
   return code;
 };
 
 Blockly.JavaScript['player_chatcommand'] = function(block) {
   var chatcommand = Blockly.JavaScript.valueToCode(block, 'chatcommand', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = "player.chat('/jsp '+"+chatcommand+");";
+  var code = "player.chat('/jsp '+"+chatcommand+");\n";
   return code;
 };
 
@@ -226,7 +226,7 @@ Blockly.JavaScript['moveforward'] = function(block) {
   "var yaw  = ((loc.getYaw() + 90)  * Math.PI) / 180;\n"+
   "var x = Math.cos(yaw);\n"+
   "var z = Math.sin(yaw);\n"+
-  "player.teleport(new bkLocation(world, loc.getX()+x*distance,loc.getY(), loc.getZ()+z*distance, loc.getYaw(), loc.getPitch()));";
+  "player.teleport(new bkLocation(world, loc.getX()+x*distance,loc.getY(), loc.getZ()+z*distance, loc.getYaw(), loc.getPitch()));\n";
   return code;
 };
 
@@ -246,7 +246,7 @@ Blockly.JavaScript['directforward'] = function(block) {
   var x = Math.cos(yaw);\n\
   var z = Math.sin(yaw);\n\
   player.teleport(new bkLocation(world, loc.getX()+x*distance,loc.getY(), loc.getZ()+z*distance, loc.getYaw(), loc.getPitch()));\n\
-});";
+});\n";
   return code;
 };
 
@@ -263,6 +263,84 @@ Blockly.JavaScript['facing'] = function(block) {
   }\n\
   var angle = parameters[0];\n\
   player.teleport(new bkLocation(world, loc.getX(), loc.getY(), loc.getZ(), angle, loc.getPitch()));\n\
-});";
+});\n";
+  return code;
+};
+
+Blockly.JavaScript['pause'] = function(block) {
+  var dropdown_second = block.getFieldValue('second');
+  var ms = dropdown_second * 1000;
+  // TODO: Assemble JavaScript into code variable.
+  var code = "var unixtime_ms = new Date().getTime();\n\
+while(new Date().getTime() < unixtime_ms + "+ms+") {}\n";
+  return code;
+};
+
+/***
+	Coalab (2018.03.27) 
+***/
+
+Blockly.JavaScript['name_coordinate'] = function(block) {
+  var value_name = Blockly.JavaScript.valueToCode(block, 'name', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_coordinate = Blockly.JavaScript.valueToCode(block, 'coordinate', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "player.teleport("+value_coordinate+");";
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['save_teleport'] = function(block) {
+  var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
+  var statements_statement = Blockly.JavaScript.statementToCode(block, 'statement');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "\
+command("+value_command+", function ( parameters, player ) {\n\
+  var bkLocation = Packages.org.bukkit.Location;\n\
+  var bkPrompt = org.bukkit.conversations.Prompt,\n\
+  bkConversationFactory = org.bukkit.conversations.ConversationFactory;\n\
+\n\
+  var prompt = new bkPrompt( ) {\n\
+\n\
+    getPromptText: function( ctx ) {\n\
+      return 'Enter the number of the location to be moved. (1-5) : ';\n\
+    },\n\
+\n\
+    acceptInput: function( ctx, s ) {\n\
+      s = s.replace( /^[^0-9]+/, '' );\n\
+      s = parseInt( s );\n\
+      player.sendMessage('You chose number'+s);\n\
+      switch( s ) {\n"
+	  +statements_statement+"\
+        default:\n\
+        ctx.forWhom.sendRawMessage( 'No number.' );\n\
+        return null;\n\
+        break;\n\
+      }\n\
+\n\
+      return prompt;\n\
+    },\n\
+\n\
+    blocksForInput: function( ctx ) { \n\
+	  return true; \n\
+    }\n\
+  };\n\
+\n\
+  new bkConversationFactory( __plugin )\n\
+    .withModality( true )\n\
+    .withFirstPrompt( prompt )\n\
+    .buildConversation( player )\n\
+    .begin( );\n\
+});\n\
+";
+  return code;
+};
+
+Blockly.JavaScript['savelocation'] = function(block) {
+  var dropdown_number = block.getFieldValue('number');
+  var value_location = Blockly.JavaScript.valueToCode(block, 'location', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code ="\
+      case "+dropdown_number+":\n\
+      "+value_location+"\n\
+	return null;\n";
   return code;
 };

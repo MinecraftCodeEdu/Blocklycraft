@@ -100,7 +100,8 @@
             <block type="materials"></block>
             <block type="animals"></block>
             <block type="rectangle"></block>
-            <block type="circle"></block>
+			<block type="prism"></block>
+			<block type="circle"></block>
             <block type="delete"></block>
             <block type="drone_move"></block>
         </category>
@@ -200,6 +201,80 @@
 					<block type="text">
 						<field name="TEXT">direction</field>
 					</block>
+				</value>
+			</block>
+			<block type="pause">
+				<field name="second">1</field>
+			</block>
+			<block type="save_teleport">
+				<value name="command">
+				  <block type="text">
+					<field name="TEXT">move</field>
+				  </block>
+				</value>
+				<statement name="statement">
+				  <block type="savelocation">
+					<field name="number">1</field>
+					<value name="location">
+					  <block type="name_coordinate">
+						<value name="name">
+						  <block type="text">
+							<field name="TEXT">myhome</field>
+						  </block>
+						</value>
+						<value name="coordinate">
+						  <block type="absolute_coordinate">
+							<value name="x">
+							  <block type="math_number">
+								<field name="NUM">0</field>
+							  </block>
+							</value>
+							<value name="y">
+							  <block type="math_number">
+								<field name="NUM">0</field>
+							  </block>
+							</value>
+							<value name="z">
+							  <block type="math_number">
+								<field name="NUM">0</field>
+							  </block>
+							</value>
+						  </block>
+						</value>
+					  </block>
+					</value>
+				  </block>
+				</statement>
+			</block>
+			<block type="savelocation">
+				<field name="number">1</field>
+				<value name="location">
+				  <block type="name_coordinate">
+					<value name="name">
+					  <block type="text">
+						<field name="TEXT">myhome</field>
+					  </block>
+					</value>
+					<value name="coordinate">
+					  <block type="absolute_coordinate">
+						<value name="x">
+						  <block type="math_number">
+							<field name="NUM">0</field>
+						  </block>
+						</value>
+						<value name="y">
+						  <block type="math_number">
+							<field name="NUM">0</field>
+						  </block>
+						</value>
+						<value name="z">
+						  <block type="math_number">
+							<field name="NUM">0</field>
+						  </block>
+						</value>
+					  </block>
+					</value>
+				  </block>
 				</value>
 			</block>
 		</category>
