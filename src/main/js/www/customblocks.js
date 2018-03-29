@@ -335,10 +335,10 @@ Blockly.Blocks['teleport_command'] = {
   }
 };
 
-Blockly.Blocks['teleport_coordinate'] = {
+Blockly.Blocks['teleport_location'] = {
   init: function() {
     this.appendValueInput("NAME")
-        .setCheck("coordinate")
+        .setCheck("location")
         .appendField("해당 좌표로 텔레포트");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
@@ -349,7 +349,7 @@ Blockly.Blocks['teleport_coordinate'] = {
   }
 };
 
-Blockly.Blocks['relative_coordinate'] = {
+Blockly.Blocks['relative_location'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("상대 좌표");
@@ -363,14 +363,14 @@ Blockly.Blocks['relative_coordinate'] = {
         .setCheck("Number")
         .appendField("~");
     this.setInputsInline(true);
-    this.setOutput(true, "coordinate");
+    this.setOutput(true, "location");
     this.setColour(150);
  this.setTooltip("");
  this.setHelpUrl("");
   }
 };
 
-Blockly.Blocks['absolute_coordinate'] = {
+Blockly.Blocks['absolute_location'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("월드 좌표");
@@ -384,7 +384,7 @@ Blockly.Blocks['absolute_coordinate'] = {
         .setCheck("Number")
         .appendField("Z");
     this.setInputsInline(true);
-    this.setOutput(true, "coordinate");
+    this.setOutput(true, "location");
     this.setColour(150);
  this.setTooltip("");
  this.setHelpUrl("");
@@ -398,7 +398,7 @@ Blockly.Blocks['absolute_coordinate'] = {
 Blockly.Blocks['player_chat'] = {
   init: function() {
     this.appendValueInput("chat")
-        .setCheck(null)
+        .setCheck(["Number", "String", "Boolean", "Array"])
         .appendField("채팅창에 말하기 :");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
@@ -482,12 +482,12 @@ Blockly.Blocks['pause'] = {
 	Coalab (2018.03.27) 
 ***/
 
-Blockly.Blocks['name_coordinate'] = {
+Blockly.Blocks['name_location'] = {
   init: function() {
     this.appendValueInput("name")
         .setCheck(null)
         .appendField("위치 이름");
-    this.appendValueInput("coordinate")
+    this.appendValueInput("location")
         .setCheck(null)
         .appendField("좌표");
     this.setInputsInline(true);
@@ -526,6 +526,54 @@ Blockly.Blocks['savelocation'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+/***
+	Coalab (2018.03.29) 
+***/
+
+Blockly.Blocks['player_x'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("플레이어 X 좌표");
+    this.setOutput(true, "Number");
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['player_y'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("플레이어 Y 좌표");
+    this.setOutput(true, "Number");
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['player_z'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("플레이어 Z 좌표");
+    this.setOutput(true, "Number");
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['player_location'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("플레이어 절대좌표");
+    this.setOutput(true, "location");
+    this.setColour(150);
  this.setTooltip("");
  this.setHelpUrl("");
   }

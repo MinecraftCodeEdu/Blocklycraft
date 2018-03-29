@@ -169,7 +169,7 @@ Blockly.JavaScript['teleport_command'] = function(block) {
   return code;
 };
 
-Blockly.JavaScript['teleport_coordinate'] = function(block) {
+Blockly.JavaScript['teleport_location'] = function(block) {
   var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
   var code = "var bkLocation = Packages.org.bukkit.Location;\n"
@@ -178,7 +178,7 @@ Blockly.JavaScript['teleport_coordinate'] = function(block) {
 };
 // x, y, z
 
-Blockly.JavaScript['relative_coordinate'] = function(block) {
+Blockly.JavaScript['relative_location'] = function(block) {
   var value_x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
   var value_y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_ATOMIC);
   var value_z = Blockly.JavaScript.valueToCode(block, 'z', Blockly.JavaScript.ORDER_ATOMIC);
@@ -188,7 +188,7 @@ Blockly.JavaScript['relative_coordinate'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['absolute_coordinate'] = function(block) {
+Blockly.JavaScript['absolute_location'] = function(block) {
   var value_x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
   var value_y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_ATOMIC);
   var value_z = Blockly.JavaScript.valueToCode(block, 'z', Blockly.JavaScript.ORDER_ATOMIC);
@@ -280,11 +280,11 @@ while(new Date().getTime() < unixtime_ms + "+ms+") {}\n";
 	Coalab (2018.03.27) 
 ***/
 
-Blockly.JavaScript['name_coordinate'] = function(block) {
+Blockly.JavaScript['name_location'] = function(block) {
   var value_name = Blockly.JavaScript.valueToCode(block, 'name', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_coordinate = Blockly.JavaScript.valueToCode(block, 'coordinate', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_location = Blockly.JavaScript.valueToCode(block, 'location', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = "player.teleport("+value_coordinate+");";
+  var code = "player.teleport("+value_location+");";
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
@@ -343,4 +343,36 @@ Blockly.JavaScript['savelocation'] = function(block) {
       "+value_location+"\n\
 	return null;\n";
   return code;
+};
+
+/***
+	Coalab (2018.03.29) 
+***/
+
+Blockly.JavaScript['player_x'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = "player.getLocation().getBlockX()";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['player_y'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = "player.getLocation().getBlockY()";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['player_z'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = "player.getLocation().getBlockZ()";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['player_location'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = "player.getLocation()";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
