@@ -127,7 +127,6 @@ Blockly.JavaScript['spawn_animal'] = function(block) {
 	var code = "var theDrone = new Drone(player);\n\
 theDrone.up();\n\
 theDrone.chkpt('start');\n\
-	code = code + "var timeoutStop = new Date().getTime()+500;\n"; // set maximum run time for a script
 theDrone.getLocation().world.spawnEntity(theDrone.getLocation(), org.bukkit.entity.EntityType." + value_animal + ");\n";
   return code;
 };
