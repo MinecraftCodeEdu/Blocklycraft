@@ -133,9 +133,9 @@
 				<block type="animalmob"></block>
 			  </value>
 			</block>
-			<block type="teleport_coordinate">
+			<block type="teleport_location">
 			  <value name="NAME">
-				<block type="relative_coordinate">
+				<block type="relative_location">
 				  <value name="x">
 					<block type="math_number"></block>
 				  </value>
@@ -148,9 +148,9 @@
 				</block>
 			  </value>
 			</block>
-			<block type="teleport_coordinate">
+			<block type="teleport_location">
 			  <value name="NAME">
-				<block type="absolute_coordinate">
+				<block type="absolute_location">
 				  <value name="x">
 					<block type="math_number"></block>
 				  </value>
@@ -205,6 +205,84 @@
 					</block>
 				</value>
 			</block>
+			<block type="pause">
+				<field name="second">1</field>
+			</block>
+			<block type="save_teleport">
+				<value name="command">
+				  <block type="text">
+					<field name="TEXT">move</field>
+				  </block>
+				</value>
+				<statement name="statement">
+				  <block type="savelocation">
+					<field name="number">1</field>
+					<value name="location">
+					  <block type="name_location">
+						<value name="name">
+						  <block type="text">
+							<field name="TEXT">myhome</field>
+						  </block>
+						</value>
+						<value name="location">
+						  <block type="absolute_location">
+							<value name="x">
+							  <block type="math_number">
+								<field name="NUM">0</field>
+							  </block>
+							</value>
+							<value name="y">
+							  <block type="math_number">
+								<field name="NUM">0</field>
+							  </block>
+							</value>
+							<value name="z">
+							  <block type="math_number">
+								<field name="NUM">0</field>
+							  </block>
+							</value>
+						  </block>
+						</value>
+					  </block>
+					</value>
+				  </block>
+				</statement>
+			</block>
+			<block type="savelocation">
+				<field name="number">1</field>
+				<value name="location">
+				  <block type="name_location">
+					<value name="name">
+					  <block type="text">
+						<field name="TEXT">myhome</field>
+					  </block>
+					</value>
+					<value name="location">
+					  <block type="absolute_location">
+						<value name="x">
+						  <block type="math_number">
+							<field name="NUM">0</field>
+						  </block>
+						</value>
+						<value name="y">
+						  <block type="math_number">
+							<field name="NUM">0</field>
+						  </block>
+						</value>
+						<value name="z">
+						  <block type="math_number">
+							<field name="NUM">0</field>
+						  </block>
+						</value>
+					  </block>
+					</value>
+				  </block>
+				</value>
+			</block>
+			<block type="player_x"></block>
+			<block type="player_y"></block>
+			<block type="player_z"></block>
+			<block type="player_location"></block>
 		</category>
         <sep></sep>
         <category id="catLogic">
