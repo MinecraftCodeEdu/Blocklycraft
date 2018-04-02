@@ -348,18 +348,6 @@ Blockly.Blocks['onmobkilled'] = {
 /***
 	Coalab (2018.03.12) 
 ***/
-/* Blockly.Blocks['teleport'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("입력한 좌표로 텔레포트 : ")
-        .appendField(new Blockly.FieldTextInput("teleport"), "command")
-        .appendField("x y z");
-    this.setInputsInline(false);
-    this.setColour(210);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
-}; */
 
 Blockly.Blocks['teleport_command'] = {
   init: function() {

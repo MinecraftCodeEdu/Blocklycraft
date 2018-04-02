@@ -51,15 +51,6 @@ Blockly.JavaScript['circle'] = function (block) {
     return code;
 };
 
-Blockly.JavaScript['prism'] = function (block) {
-    var value_width = Blockly.JavaScript.valueToCode(block, 'width', Blockly.JavaScript.ORDER_ATOMIC);
-    var value_lenght = Blockly.JavaScript.valueToCode(block, 'lenght', Blockly.JavaScript.ORDER_ATOMIC);
-    var dropdown_stair = block.getFieldValue('stair');
-    var dropdown_fill = block.getFieldValue('fill');
-    var code = "theDrone.prism" + dropdown_fill + "(" + dropdown_stair + "," + value_width + "," + value_lenght + ");\n";
-    return code;
-};
-
 Blockly.JavaScript['delete'] = function (block) {
     var value_width = Blockly.JavaScript.valueToCode(block, 'width', Blockly.JavaScript.ORDER_ATOMIC);
     var value_height = Blockly.JavaScript.valueToCode(block, 'height', Blockly.JavaScript.ORDER_ATOMIC);
@@ -127,7 +118,6 @@ Blockly.JavaScript['spawn_animal'] = function(block) {
 	var code = "var theDrone = new Drone(player);\n\
 theDrone.up();\n\
 theDrone.chkpt('start');\n\
-	code = code + "var timeoutStop = new Date().getTime()+500;\n"; // set maximum run time for a script
 theDrone.getLocation().world.spawnEntity(theDrone.getLocation(), org.bukkit.entity.EntityType." + value_animal + ");\n";
   return code;
 };
@@ -151,20 +141,10 @@ Blockly.JavaScript['onmobkilled'] = function(block) {
 	code = code + "}});";
   return code;
 };
-// using smartgit
 
 /***
 	Coalab (2018.03.12) 
 ***/
-/* Blockly.JavaScript['teleport'] = function(block) {
-  var text_command = block.getFieldValue('command');
-  // TODO: Assemble JavaScript into code variable.
-  var code = "command('"+text_command+"', function(parameters, player) {\n"
-			+"  var bkLocation = Packages.org.bukkit.Location;\n"
-			+"  player.teleport(new bkLocation(player.world, parameters[0], parameters[1], parameters[2]));\n"
-			+"});";
-  return code;
-}; */
 
 Blockly.JavaScript['teleport_command'] = function(block) {
   var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
