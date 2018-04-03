@@ -367,3 +367,38 @@ Blockly.JavaScript['player_location'] = function(block) {
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
+
+/***
+	Coalab (2018.04.03) 
+***/
+
+Blockly.JavaScript['notice_standing_block'] = function(block) {
+  var value_player = Blockly.JavaScript.valueToCode(block, 'player', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "\
+var bkBk = org.bukkit.Bukkit;\n\
+var bkBF = org.bukkit.block.BlockFace;\n\
+var targetPlayer = bkBk.getPlayer("+value_player+");\n\
+if(targetPlayer == null){\n\
+	player.chat('There are no players named '+"+value_player+");\n\
+} else {\n\
+	var blockType = targetPlayer.getLocation().getBlock().getRelative(bkBF.DOWN).getType();\n\
+	player.chat('The '+targetPlayer.getName()+' is on the '+blockType+'.');\n\
+}\n\
+";
+  return code;
+};
+
+Blockly.JavaScript['transform_block'] = function(block) {
+  var dropdown_material = block.getFieldValue('material');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "\
+var x = player.getLocation().getBlockX();\n\
+var y = player.getLocation().getBlockY();\n\
+var z = player.getLocation().getBlockZ();\n\
+var blockId = player.getWorld().getBlockAt(x, y-1, z).getTypeId();\n\
+player.getWorld().getBlockAt(x, y-1, z).setTypeId("+dropdown_material+");\n\
+setTimeout(function() { player.getWorld().getBlockAt(x, y-1, z).setTypeId(blockId) }, 5000);\n\
+";
+  return code;
+};
