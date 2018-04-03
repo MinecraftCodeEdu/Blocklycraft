@@ -10,7 +10,7 @@ planepage.messages = function(opt_data, opt_ignored, opt_ijData) {
 
 
 planepage.start = function(opt_data, opt_ignored, opt_ijData) {
-  var output = planepage.messages(null, null, opt_ijData) + '<script type="text/javascript" src="../../menubar.js"><\/script><script type="text/javascript" src="../../BlobBuilder.min.js"><\/script><script type="text/javascript" src="../../FileSaver.min.js"><\/script><div id="main">  <!-- main id start --><div class="navbar"><div class="dropdown"><button class="dropbtn">파일<i class="fa fa-caret-down"></i></button><div class="dropdown-content"><a href="#">새로만들기</a><a href="javascript:void(0)" id="fakeload">열기</a><a href="#">저장</a></div></div><div class="dropdown"><button class="dropbtn">편집<i class="fa fa-caret-down"></i></button><div class="dropdown-content"><a href="#"><img src="photo/undo.jpg" height="20" width="20">이전으로</a><a href="#"><img src="photo/redo.png" height="20" width="20">다음으로</a></div></div><a href="javascript:void(0);" onclick="openNav()">도움말</a><a href="http://www.coalab.co.kr">코알랩이란?</a><div class="right"><a href="javascript:void(0);" onclick="openNav()">&#9776; 열기</a></div></div><div id="mySidenav" class="sidenav"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><a href="#">튜토리얼</a><a href="#">특별한 방법</a><a href="#">블록</a></div><table width="100%"><tr><td><h1><span id="title">마인크래프트 건축 수업</span> &nbsp; ';
+  var output = planepage.messages(null, null, opt_ijData) + '<script type="text/javascript" src="../../menubar.js"><\/script><script type="text/javascript" src="../../BlobBuilder.min.js"><\/script><script type="text/javascript" src="../../FileSaver.min.js"><\/script><div id="main">  <!-- main id start --><div class="navbar"><div class="dropdown"><button class="dropbtn">파일<i class="fa fa-caret-down"></i></button><div class="dropdown-content"><a href="#">새로만들기</a><a href="javascript:void(0)" id="fakeload">열기</a><a href="#">저장</a></div></div><div class="dropdown"><button class="dropbtn">편집<i class="fa fa-caret-down"></i></button><div class="dropdown-content"><a href="#"><img src="photo/undo.jpg" height="20" width="20">이전으로</a><a href="#"><img src="photo/redo.png" height="20" width="20">다음으로</a></div></div><a href="javascript:void(0);" onclick="openNav()">도움말</a><a href="http://www.coalab.co.kr">코알랩이란?</a><div class="right"><a href="javascript:void(0);" onclick="openNav()">&#9776; 열기</a></div></div><div id="mySidenav" class="sidenav"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><a href="#">튜토리얼</a><a href="#">특별한 방법</a><a href="#">블록</a></div><table width="100%"><tr><td><h1><span id="title">마인크래프트 텔레포트 수업</span> &nbsp; ';
   var iLimit253 = opt_ijData.maxLevel + 1;
   for (var i253 = 1; i253 < iLimit253; i253++) {
     output += ' ' + ((i253 == opt_ijData.level) ? '<span class="tab" id="selected">' + soy.$$escapeHtml(i253) + '</span>' : (i253 < opt_ijData.level) ? '<a class="tab previous" href="?lang=' + soy.$$escapeHtml(opt_ijData.lang) + '&level=' + soy.$$escapeHtml(i253) + '">' + soy.$$escapeHtml(i253) + '</a>' : '<a class="tab" href="?lang=' + soy.$$escapeHtml(opt_ijData.lang) + '&level=' + soy.$$escapeHtml(i253) + '">' + soy.$$escapeHtml(i253) + '</a>');
@@ -18,19 +18,62 @@ planepage.start = function(opt_data, opt_ignored, opt_ijData) {
   output += '</h1></td><td class="farSide"><span ' + ((opt_ijData.lang == 'ko') ? 'id="languageBorder"' : '') + ' style="padding: 10px"><select id="languageMenu"></select></span></td></tr></table><link rel="stylesheet" href="../../google-blockly/demos/code/style.css"><p>';
   switch (opt_ijData.level) {
     case 1:
+      output += '현재좌표 구하기</br>블록을 이용하여 현재좌표를 구할수 있다.';
       break;
     case 2:
+      output += '위치이동</br>절대좌표와 상대좌표 개념을 이해하고 커맨드창에서 직접 원하는 위치로 이동해본다.';
       break;
     case 3:
+      output += '앞으로이동</br>코드를 이용하여 앞으로 가기 및 지연시간을 주어 앞으로 가기등의 응용학습을 해본다.';
       break;
     case 4:
+      output += '방향제어</br>앞외에 옆이나 뒤로가기등 방향을 제어 컨트롤할수있다. 응용학습: 지그재그게임';
+      break;
+    case 5:
+      output += '랜덤이용</br>응용학습: random으로 통과게임, random여행';
+      break;
+    case 6:
+      output += '입력으로 원하는 위치 이동</br>input 개념알기';
+      break;
+    case 7:
+      output += '텔레포트 제한</br>조건문 사용법';
+      break;
+    case 8:
+      break;
+    case 9:
+      break;
+    case 10:
       break;
   }
-  output += '</p><p> 위의 그림처럼 만들어 보시오. <button id="deployButton" class="notext primary" title="..."><img src=\'../../google-blockly/media/1x1.gif\' class="run icon21"></button><button id="trashButton" class="notext" title="..."><img src=\'../../google-blockly/media/1x1.gif\' class="trash icon21"></button></p><script src="../../google-blockly/blockly_compressed.js"><\/script><script src="../../google-blockly/blocks_compressed.js"><\/script><script src="../../google-blockly/javascript_compressed.js"><\/script><script src="../../google-blockly/msg/js/' + soy.$$escapeHtml(opt_ijData.lang) + '.js"><\/script><script src="blocks.js"><\/script>' + planepage.toolbox(null, null, opt_ijData) + '</br></br><div id="blockly"><button id="tab_javascript">자바스크립트</button></div><div id="content_javascript" class="content"></div></div> <!--main class finished -->';
+  output += '</p><p><button id="deployButton" class="notext primary" title="..."><img src=\'../../google-blockly/media/1x1.gif\' class="run icon21"></button><button id="trashButton" class="notext" title="..."><img src=\'../../google-blockly/media/1x1.gif\' class="trash icon21"></button></p><script src="../../google-blockly/blockly_compressed.js"><\/script><script src="../../google-blockly/blocks_compressed.js"><\/script><script src="../../google-blockly/javascript_compressed.js"><\/script><script src="../../google-blockly/msg/js/' + soy.$$escapeHtml(opt_ijData.lang) + '.js"><\/script><script src="blocks.js"><\/script>' + planepage.toolbox(null, null, opt_ijData) + '</br></br><div id="blockly"><button id="tab_javascript">자바스크립트</button></div><div id="content_javascript" class="content"></div></div> <!--main class finished -->';
   return output;
 };
 
 
 planepage.toolbox = function(opt_data, opt_ignored, opt_ijData) {
-  return '<xml id="toolbox" style="display: none"><block type="math_number"></block><block type="teleport"></block><block type="teleport_coordinate"></block>' + ((opt_ijData.level > 1) ? '<block type="relative_coordinate"></block>' + ((opt_ijData.level > 2) ? '<block type="absolute_coordinate"></block>' : '') : '') + '</xml>';
+  var output = '<xml id="toolbox" style="display: none">';
+  switch (opt_ijData.level) {
+    case 1:
+      output += '<block type="player_location"></block><block type="player_x"></block><block type="player_y"></block><block type="player_z"></block>';
+      break;
+    case 2:
+      output += '<block type="math_number"></block><block type="teleport_location"><value name="NAME"><block type="relative_location"><value name="x"><block type="math_number"></block></value><value name="y"><block type="math_number"></block></value><value name="z"><block type="math_number"></block></value></block></value></block><block type="teleport_location"><value name="NAME"><block type="absolute_location"><value name="x"><block type="math_number"></block></value><value name="y"><block type="math_number"></block></value><value name="z"><block type="math_number"></block></value></block></value></block><block type="teleport_command"><value name="command"><block type="text"><field name="TEXT">teleport</field></block></value></block>';
+      break;
+    case 3:
+      output += '<block type="moveforward"><value name="distance"><block type="math_number"><field name="NUM">5</field></block></value></block><block type="directforward"><value name="command"><block type="text"><field name="TEXT">forward</field></block></value></block><block type="pause"><field name="second">1</field></block><block type="facing"><value name="command"><block type="text"><field name="TEXT">direction</field></block></value></block>';
+      break;
+    case 4:
+      break;
+    case 5:
+      output += '<block type="math_random_int"><value name="FROM"><block type="math_number"><field name="NUM">1</field></block></value><value name="TO"><block type="math_number"><field name="NUM">100</field></block></value></block><block type="math_random_float"></block>';
+      break;
+    case 6:
+      output += '<block type="save_teleport"><value name="command"><block type="text"><field name="TEXT">move</field></block></value><statement name="statement"><block type="savelocation"><field name="number">1</field><value name="location"><block type="name_location"><value name="name"><block type="text"><field name="TEXT">myhome</field></block></value><value name="location"><block type="absolute_location"><value name="x"><block type="math_number"><field name="NUM">0</field></block></value><value name="y"><block type="math_number"><field name="NUM">0</field></block></value><value name="z"><block type="math_number"><field name="NUM">0</field></block></value></block></value></block></value></block></statement></block><block type="savelocation"><field name="number">1</field><value name="location"><block type="name_location"><value name="name"><block type="text"><field name="TEXT">myhome</field></block></value><value name="location"><block type="absolute_location"><value name="x"><block type="math_number"><field name="NUM">0</field></block></value><value name="y"><block type="math_number"><field name="NUM">0</field></block></value><value name="z"><block type="math_number"><field name="NUM">0</field></block></value></block></value></block></value></block>';
+      break;
+    case 7:
+      output += '<block type="controls_if"></block>';
+      break;
+  }
+  output += '</xml>';
+  return output;
 };

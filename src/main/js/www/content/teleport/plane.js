@@ -224,7 +224,7 @@ Plane.getMsg = function(key) {
  */
 Plane.LANG = Plane.getLang();
 
-Plane.MAX_LEVEL = 4;
+Plane.MAX_LEVEL = 10;
 Plane.LEVEL = Plane.getNumberParamFromUrl('level', 1, Plane.MAX_LEVEL);
 
 Plane.selected = 'javascript'
