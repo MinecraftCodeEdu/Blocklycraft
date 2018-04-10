@@ -101,8 +101,21 @@
             <block type="drone"></block>
             <block type="materials"></block>
             <block type="animals"></block>
-            <block type="rectangle"></block>
-			<block type="circle"></block>
+
+	    <block type="rectangle">
+                <value name="width">
+                   <block type="math_number">
+	               <field name="NUM">0</field>
+                   </block>
+                </value>
+                <value name="length">
+                   <block type="math_number">
+		       <field name="NUM">0</field>
+    	           </block>
+	        </value>
+	    </block>
+
+	    <block type="circle"></block>
             <block type="delete"></block>
             <block type="drone_move"></block>
         </category>
