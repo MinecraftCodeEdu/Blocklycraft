@@ -606,3 +606,36 @@ Blockly.Blocks['player_location'] = {
  this.setHelpUrl("");
   }
 };
+
+/***
+	Coalab (2018.04.03) 
+***/
+
+Blockly.Blocks['notice_standing_block'] = {
+  init: function() {
+    this.appendValueInput("player")
+        .setCheck(null);
+    this.appendDummyInput()
+        .appendField("(이)가 서있는 블록 정보 알리기");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(210);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['transform_block'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("내 발 밑을 5초 간")
+        .appendField(new Blockly.FieldDropdown([["돌","1"], ["잔디","2"], ["흙","3"], ["조약돌","4"]]), "material")
+        .appendField("(으)로 만들기");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
