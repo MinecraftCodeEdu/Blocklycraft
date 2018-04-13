@@ -23,7 +23,7 @@ window.RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnecti
     };
 
 
-var webip = document.getElementById("hello").textContent;
+var webip = document.getElementById("clientIP").textContent;
 
 /*
 Blockly.JavaScript['drone'] = function (block) {
