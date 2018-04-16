@@ -256,6 +256,37 @@ Code.loadxml = function() {
   reader.readAsText(files[0]);
 };
 
+/*
+** 블록추가로 불러오기.
+*/
+Code.loadextraxml = function() {
+  var files = event.target.files;
+  // Only allow uploading one file.
+  if (files.length != 1) {
+    return;
+  }
+  // FileReader
+  var reader = new FileReader();
+  reader.onloadend = function(event) {
+    var target = event.target;
+    // 2 == FileReader.DONE
+    if (target.readyState == 2) {
+      try {
+        var xml = Blockly.Xml.textToDom(target.result);
+      } catch (e) {
+        alert('Error parsing XML:\n' + e);
+        return;
+      }
+      Blockly.Xml.domToWorkspace(Code.workspace, xml);
+    }
+    // Reset value of input after loading because Chrome will not fire
+    // a 'change' event if the same file is loaded again.
+    document.getElementById('loadextraxml').value = '';
+  };
+  reader.readAsText(files[0]);
+};
+
+
 /**
  * Load blocks saved on App Engine Storage or in session/local storage.
  * @param {string} defaultXml Text representation of default blocks.
@@ -281,8 +312,8 @@ Code.loadBlocks = function (defaultXml) {
         var xml = Blockly.Xml.textToDom(defaultXml);
         Blockly.Xml.domToWorkspace(xml, Code.workspace);
     } else if ('BlocklyStorage' in window) {
-        // Restore saved blocks in a separate thread so that subsequent
-        // initialization is not affected from a failed load.
+         //Restore saved blocks in a separate thread so that subsequent
+         //initialization is not affected from a failed load.
         window.setTimeout(BlocklyStorage.restoreBlocks, 0);
     }
 };
@@ -563,7 +594,7 @@ Code.init = function () {
 
        // Restore saved blocks in a separate thread so that subsequent
     // initialization is not affected from a failed load.
-    window.setTimeout(Code.restore_blocks, 0);
+//    window.setTimeout(Code.restore_blocks, 0);
     // Hook a save function onto unload.
     Blockly.bindEvent_(window, 'unload', null, Code.backup_blocks);
 
@@ -577,6 +608,11 @@ Code.init = function () {
       loadInput.click();
     };
 
+    var loadInput1 = document.getElementById('loadextraxml');
+    loadInput.addEventListener('change', Code.loadextraxml, false);
+    document.getElementById('fakeload1').onclick = function() {
+      loadInput1.click();
+    };
 
 
     Code.bindClick('menu_example_house',

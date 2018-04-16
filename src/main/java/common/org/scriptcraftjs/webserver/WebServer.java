@@ -27,7 +27,7 @@ public class WebServer {
 	
 	// Following are just defaults, can be changed, see below
 	private String host = null; // bind to all interfaces
-	private int port = 7070;
+	private int port = 7072;
 	private String hostIP;
 
 	private final File wwwroot;

@@ -6,6 +6,26 @@ Contains the generator for the javascript used in scriptcraft
 
 ***/
 
+/*
+** javascript get IP Address from RTC
+*/
+window.RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;   //compatibility for firefox and chrome
+    var pc = new RTCPeerConnection({iceServers:[]}), noop = function(){};
+    pc.createDataChannel("");    //create a bogus data channel
+    pc.createOffer(pc.setLocalDescription.bind(pc), noop);    // create offer and set local description
+    pc.onicecandidate = function(ice){  //listen for candidate events
+    if(!ice || !ice.candidate || !ice.candidate.candidate)  return;
+    var myIP = /([1-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(ice.candidate.candidate)[1];
+    //console.log(JSON.stringify(myIP));
+ 
+    document.getElementById("clientIP").innerHTML = myIP.toString().replace(/[:.]/gi,'');
+    pc.onicecandidate = noop;
+    };
+
+
+var webip = document.getElementById("clientIP").textContent;
+
+/*
 Blockly.JavaScript['drone'] = function (block) {
     var fname = block.getFieldValue('param');
     var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
@@ -15,6 +35,22 @@ Blockly.JavaScript['drone'] = function (block) {
     code = code + "});";
     return code;
 };
+*/
+
+Blockly.JavaScript['drone'] = function (block) {
+    var fname = block.getFieldValue('param');
+    var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
+
+    var code = "command( '" + fname + "', function ( parameters, player ) {\n";
+    code = code + " if ( " + webip + "  == player.getAddress().getAddress().getHostAddress().replace(/[:.]/gi,'') ) {  \n";
+    code = code + "var theDrone = new Drone(player);\ntheDrone.up();\ntheDrone.chkpt('start');\nvar timeoutStop = new Date().getTime()+500;\n"; // set maximum run time for a script
+    code = code + statements_statements;
+    code = code + "} else{ print('function is not defined')  }\n";
+    code = code + "});\n";
+
+    return code;
+};
+
 
 Blockly.JavaScript['drone_move'] = function (block) {
     var dropdown_direction = block.getFieldValue('direction');
@@ -59,6 +95,7 @@ Blockly.JavaScript['delete'] = function (block) {
     return code;
 };
 
+/*
 Blockly.JavaScript['inventory'] = function (block) {
     var fname = block.getFieldValue('param');
     var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
@@ -68,6 +105,20 @@ Blockly.JavaScript['inventory'] = function (block) {
     code = code + "});";
     return code;
 };
+*/
+
+Blockly.JavaScript['inventory'] = function (block) {
+	var fname = block.getFieldValue('param');
+	var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
+	var code = "var inventory = require('inventory');\nvar items = require('items');\ncommand( '" + fname + "', function ( parameters, player ) {\n";
+	code = code + " if ( " + webip + "  == player.getAddress().getAddress().getHostAddress().replace(/[:.]/gi,'') ) {  \n";
+	code = code + "var theInventory = new inventory(player);\nvar timeoutStop = new Date().getTime()+500;\n"; // set maximum run time for a script
+	code = code + statements_statements;
+	code = code + "} else{ print('function is not defined')  }\n";
+	code = code + "});\n";
+	return code;
+};
+
 
 Blockly.JavaScript['weapons_armor'] = function (block) {
     var dropdown_item = block.getFieldValue('item');
