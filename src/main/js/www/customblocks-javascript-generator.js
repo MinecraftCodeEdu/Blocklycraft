@@ -433,7 +433,9 @@ var targetPlayer = bkBk.getPlayer("+value_player+");\n\
 if(targetPlayer == null){\n\
 	player.chat('There are no players named '+"+value_player+");\n\
 } else {\n\
-	var blockType = targetPlayer.getLocation().getBlock().getRelative(bkBF.DOWN).getType();\n\
+	var x = targetPlayer.getLocation().getBlockX();\n\
+	var z = targetPlayer.getLocation().getBlockZ();\n\
+	var blockType = targetPlayer.getWorld().getBlockAt(x, 0, z).getType();\n\
 	player.chat('The '+targetPlayer.getName()+' is on the '+blockType+'.');\n\
 }\n\
 ";
@@ -452,4 +454,52 @@ player.getWorld().getBlockAt(x, y-1, z).setTypeId("+dropdown_material+");\n\
 setTimeout(function() { player.getWorld().getBlockAt(x, y-1, z).setTypeId(blockId) }, 5000);\n\
 ";
   return code;
+};
+
+Blockly.JavaScript['target_teleport'] = function(block) {
+  var value_player = Blockly.JavaScript.valueToCode(block, 'player', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_location = Blockly.JavaScript.valueToCode(block, 'location', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "\
+var bkBk = org.bukkit.Bukkit;\n\
+var bkLocation = Packages.org.bukkit.Location;\n\
+var targetPlayer = bkBk.getPlayer("+value_player+");\n\
+if(targetPlayer == null){\n\
+	//player.chat('There are no players named '+"+value_player+");\n\
+} else {\n\
+	targetPlayer.teleport("+value_location+");\n\
+}\n\
+";
+  return code;
+};
+
+Blockly.JavaScript['onentitydamage'] = function(block) {
+  var value_player = Blockly.JavaScript.valueToCode(block, 'player', Blockly.JavaScript.ORDER_ATOMIC);
+  var statements_command = Blockly.JavaScript.statementToCode(block, 'command');
+  // TODO: Assemble JavaScript into code variable.
+    var code = "events.entityDamageByEntity( function( event ) {\n\
+  if( event.getEntity().getName().equalsIgnoreCase("+value_player+")){\n\
+  var player = event.getEntity();\n"
++statements_command+
+  "  }\n\
+});";
+  return code;
+};
+
+Blockly.JavaScript['random_teleport'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = "\
+var bkLocation = Packages.org.bukkit.Location;\n\
+var x = parseInt(Math.random() * ( 149 - (-149) ) + -149);\n\
+var z = parseInt(Math.random() * ( 149 - (-149) ) + -149);\n\
+setTimeout(function() { player.teleport(new bkLocation(player.world, x, 1, z)); }, 60000);\n\
+player.sendMessage('The position is moved after 60 seconds.');\n\
+";
+  return code;
+};
+
+Blockly.JavaScript['materials_limited'] = function (block) {
+    var dropdown_material = block.getFieldValue('material');
+    var code = "theDrone." + 'box(' + dropdown_material + ');\n';
+    return code;
 };

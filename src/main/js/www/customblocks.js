@@ -616,7 +616,7 @@ Blockly.Blocks['notice_standing_block'] = {
     this.appendValueInput("player")
         .setCheck(null);
     this.appendDummyInput()
-        .appendField("(이)가 서있는 블록 정보 알리기");
+        .appendField("(이)가 있는 지역 정보 알리기");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -638,4 +638,66 @@ Blockly.Blocks['transform_block'] = {
  this.setTooltip("");
  this.setHelpUrl("");
   }
+};
+
+Blockly.Blocks['target_teleport'] = {
+  init: function() {
+    this.appendValueInput("player")
+        .setCheck(null);
+    this.appendDummyInput()
+        .appendField("을(를)");
+    this.appendValueInput("location")
+        .setCheck("location");
+    this.appendDummyInput()
+        .appendField("로 텔레포트");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(210);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['onentitydamage'] = {
+  init: function() {
+    this.appendValueInput("player")
+        .setCheck(null);
+    this.appendDummyInput()
+        .appendField("를 치면 실행");
+    this.appendStatementInput("command")
+        .setCheck(null);
+    this.setInputsInline(true);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['random_teleport'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("60초 뒤 랜덤한 위치로 텔레포트");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+/***
+	Coalab (2018.04.12) 
+***/
+Blockly.Blocks['materials_limited'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MATERIALS)
+            .appendField(new Blockly.FieldDropdown([["돌","'1'"], ["흙","'3'"], ["참나무","'5'"], ["유리","'20'"], ["하얀색 양털","'35'"], ["금","'41'"], ["벽돌","'45'"], ["얼음","'79'"], ["하얀색 색유리","'95'"]]), "material");
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setColour(0);
+        this.setTooltip(Blockly.Msg.TOOLTIP_MATERIALS);
+        this.setHelpUrl("");
+    }
 };
