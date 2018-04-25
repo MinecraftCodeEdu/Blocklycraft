@@ -23,7 +23,6 @@ window.RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnecti
     };
 
 
-var webip = document.getElementById("clientIP").textContent;
 
 /*
 Blockly.JavaScript['drone'] = function (block) {
@@ -40,6 +39,7 @@ Blockly.JavaScript['drone'] = function (block) {
 Blockly.JavaScript['drone'] = function (block) {
     var fname = block.getFieldValue('param');
     var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
+    var webip = document.getElementById("clientIP").textContent;
 
     var code = "command( '" + fname + "', function ( parameters, player ) {\n";
     code = code + " if ( " + webip + "  == player.getAddress().getAddress().getHostAddress().replace(/[:.]/gi,'') ) {  \n";
@@ -110,6 +110,8 @@ Blockly.JavaScript['inventory'] = function (block) {
 Blockly.JavaScript['inventory'] = function (block) {
 	var fname = block.getFieldValue('param');
 	var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
+	var webip = document.getElementById("clientIP").textContent;
+	
 	var code = "var inventory = require('inventory');\nvar items = require('items');\ncommand( '" + fname + "', function ( parameters, player ) {\n";
 	code = code + " if ( " + webip + "  == player.getAddress().getAddress().getHostAddress().replace(/[:.]/gi,'') ) {  \n";
 	code = code + "var theInventory = new inventory(player);\nvar timeoutStop = new Date().getTime()+500;\n"; // set maximum run time for a script
