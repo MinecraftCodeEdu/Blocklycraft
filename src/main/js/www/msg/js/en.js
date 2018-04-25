@@ -281,12 +281,14 @@ Blockly.Msg.OBJNAMES[158] = "dropper";
 Blockly.Msg.OBJNAMES[159] = "stained clay white";
 Blockly.Msg.OBJNAMES[161] = "acacia leaves";
 Blockly.Msg.OBJNAMES[162] = "acacia wood";
+Blockly.Msg.OBJNAMES[165] = "slime block";
 Blockly.Msg.OBJNAMES[170] = "hay";
 Blockly.Msg.OBJNAMES[171] = "carpet white";
 Blockly.Msg.OBJNAMES[172] = "hardened clay";
 Blockly.Msg.OBJNAMES[173] = "coal block";
 Blockly.Msg.OBJNAMES[174] = "packed ice";
 Blockly.Msg.OBJNAMES[175] = "double plant";
+Blockly.Msg.OBJNAMES[213] = "magma block";
 
 Blockly.Msg.OBJNAMES[53] = "oak wood stairs";
 Blockly.Msg.OBJNAMES[108] = "brick stairs";

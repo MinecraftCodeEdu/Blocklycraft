@@ -281,12 +281,14 @@ Blockly.Msg.OBJNAMES[158] = "dropper";
 Blockly.Msg.OBJNAMES[159] = "stained clay white";
 Blockly.Msg.OBJNAMES[161] = "acacia leaves";
 Blockly.Msg.OBJNAMES[162] = "acacia wood";
+Blockly.Msg.OBJNAMES[165] = "슬라임블록";
 Blockly.Msg.OBJNAMES[170] = "건초";
 Blockly.Msg.OBJNAMES[171] = "carpet white";
 Blockly.Msg.OBJNAMES[172] = "hardened clay";
 Blockly.Msg.OBJNAMES[173] = "coal block";
 Blockly.Msg.OBJNAMES[174] = "packed ice";
 Blockly.Msg.OBJNAMES[175] = "double plant";
+Blockly.Msg.OBJNAMES[213] = "마그마블록";
 
 Blockly.Msg.OBJNAMES[53] = "참나무 계단";
 Blockly.Msg.OBJNAMES[108] = "벽돌계단";

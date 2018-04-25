@@ -7,5 +7,6 @@
 	<classpathentry kind="lib" path="lib/bukkit-1.7.10-R0.1-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="lib/canarymod.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/home/jun/eclipse-workspace/Blocklycraft/lib/spigot-1.11.2.jar" sourcepath="/home/jun/eclipse-workspace/Spigot-API"/>
 	<classpathentry kind="output" path="target"/>
 </classpath>

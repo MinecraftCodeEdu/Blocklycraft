@@ -414,11 +414,11 @@ Walter Higgins
    * [Examples](#examples)
  * [Fireworks Module](#fireworks-module)
    * [Examples](#examples-1)
+ * [Inventory Module](#inventory-module)
+   * [Usage](#usage-2)
  * [Classroom Plugin](#classroom-plugin)
    * [jsp classroom command](#jsp-classroom-command)
    * [classroom.allowScripting() function](#classroomallowscripting-function)
- * [Inventory Module](#inventory-module)
-   * [Usage](#usage-2)
  * [Asynchronous Input Module](#asynchronous-input-module)
  * [Lightning module](#lightning-module)
    * [Usage](#usage-3)
@@ -502,7 +502,9 @@ Walter Higgins
    * [Rules](#rules)
    * [Gameplay Mechanics](#gameplay-mechanics)
  * [Blockly-Minecraft blocks](#blockly-minecraft-blocks)
+ * [Blockly-Minecraft blocks](#blockly-minecraft-blocks-1)
  * [Blockly -> ScriptCraft Javascript Code generator](#blockly---scriptcraft-javascript-code-generator)
+ * [Blockly -> ScriptCraft Javascript Code generator](#blockly---scriptcraft-javascript-code-generator-1)
  * [Items module (SpigotMC version)](#items-module-spigotmc-version)
    * [Usage](#usage-13)
  * [Items module (CanaryMod version)](#items-module-canarymod-version)
@@ -4817,6 +4819,42 @@ location. For example...
 
 ![firework example](img/firework.png)
 
+## Inventory Module
+This module provides functions to add items to, remove items from and check the 
+contents of a player or NPC's inventory. 
+
+### Usage
+The inventory module is best used in conjunction with the items module. See below for examples of usage.
+
+```javascript
+var inventory = require('inventory');
+var items = require('items');
+var utils = require('utils');
+
+// gives every player a cookie and a baked potatoe
+utils.players(function(player){
+  inventory(player)
+    .add( items.cookie(1) )
+    .add( items.bakedPotato(1) )
+});
+
+// give a player 6 cookies then take away 4 of them
+
+inventory(player)
+  .add( items.cookie(6) )
+  .remove ( items.cookie(4) )
+
+// check if a player has any cookies
+
+var hasCookies = inventory(player).contains( items.cookie(1) );
+
+```
+The inventory module exposes a single function which when passed a player or NPC will return an object with 3 methods:
+
+* add : Adds items to the inventory (Expects parameters of type `net.canarymod.api.inventory.Item` - I strongly recommend using the `items` module for constructing items)
+* remove : removes items from the inventory (Expects parameters of type `net.canarymod.api.inventory.Item` - I strongly recommend using the `items` module for constructing items)
+* contains : checks to see if there is the specified type and amount of item in the inventory (Expects parameters of type `net.canarymod.api.inventory.Item` - I strongly recommend using the `items` module for constructing items)
+
 ## Classroom Plugin
 
 The `classroom` object contains a couple of utility functions for use
@@ -4913,42 +4951,6 @@ To disallow scripting (and prevent players who join the server from using the co
 
 Only ops users can run the classroom.allowScripting() function - this is so that students 
 don't try to bar themselves and each other from scripting.
-
-## Inventory Module
-This module provides functions to add items to, remove items from and check the 
-contents of a player or NPC's inventory. 
-
-### Usage
-The inventory module is best used in conjunction with the items module. See below for examples of usage.
-
-```javascript
-var inventory = require('inventory');
-var items = require('items');
-var utils = require('utils');
-
-// gives every player a cookie and a baked potatoe
-utils.players(function(player){
-  inventory(player)
-    .add( items.cookie(1) )
-    .add( items.bakedPotato(1) )
-});
-
-// give a player 6 cookies then take away 4 of them
-
-inventory(player)
-  .add( items.cookie(6) )
-  .remove ( items.cookie(4) )
-
-// check if a player has any cookies
-
-var hasCookies = inventory(player).contains( items.cookie(1) );
-
-```
-The inventory module exposes a single function which when passed a player or NPC will return an object with 3 methods:
-
-* add : Adds items to the inventory (Expects parameters of type `net.canarymod.api.inventory.Item` - I strongly recommend using the `items` module for constructing items)
-* remove : removes items from the inventory (Expects parameters of type `net.canarymod.api.inventory.Item` - I strongly recommend using the `items` module for constructing items)
-* contains : checks to see if there is the specified type and amount of item in the inventory (Expects parameters of type `net.canarymod.api.inventory.Item` - I strongly recommend using the `items` module for constructing items)
 
 ## Asynchronous Input Module
 
@@ -6353,8 +6355,18 @@ Lauro Canonica: Original author (Devoxx4kids Lugano 2015.04)
 
 Contains the description of the Minecraft blocks for Blockly
 
+## Blockly-Minecraft blocks
+Coalab (2018.03.06)
+
+Contains the description of the Minecraft blocks for Blockly
+
 ## Blockly -> ScriptCraft Javascript Code generator
 Lauro Canonica: Original author (Devoxx4kids Lugano 2015.04)
+
+Contains the generator for the javascript used in scriptcraft
+
+## Blockly -> ScriptCraft Javascript Code generator
+Coalab (2018.03.06)
 
 Contains the generator for the javascript used in scriptcraft
 
