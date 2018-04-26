@@ -703,3 +703,41 @@ Blockly.Blocks['materials_limited'] = {
         this.setHelpUrl("");
     }
 };
+/***
+	Coalab (2018.04.26) 
+***/
+Blockly.Blocks['plant'] = {
+  init: function() {
+    this.appendValueInput("location")
+        .setCheck("location");
+    this.appendDummyInput()
+        .appendField("위에");
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldDropdown([["밀","CROPS"], ["당근","CARROT"], ["감자","POTATO"], ["수박","MELON_STEM"], ["호박","PUMPKIN_STEM"]]), "plant")
+        .appendField("심기");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(15);
+ this.setTooltip("농지 위에 식물을 심습니다.");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['place_block'] = {
+  init: function() {
+    this.appendValueInput("location")
+        .setCheck("location");
+    this.appendDummyInput()
+        .appendField("에");
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldDropdown([["잔디","2"], ["물","8"], ["농지","60"], ["참나무 울타리","188"], ["참나무 울타리 문","183"]]), "block")
+        .appendField("놓기");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(15);
+ this.setTooltip("블록을 원하는 좌표에 놓습니다.");
+ this.setHelpUrl("");
+  }
+};
