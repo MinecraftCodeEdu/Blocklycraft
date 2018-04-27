@@ -499,9 +499,40 @@ player.sendMessage('The position is moved after 60 seconds.');\n\
 ";
   return code;
 };
-
+/***
+	Coalab (2018.04.12) 
+***/
 Blockly.JavaScript['materials_limited'] = function (block) {
     var dropdown_material = block.getFieldValue('material');
     var code = "theDrone." + 'box(' + dropdown_material + ');\n';
     return code;
+};
+/***
+	Coalab (2018.04.26) 
+***/
+Blockly.JavaScript['place_block'] = function(block) {
+  var value_location = Blockly.JavaScript.valueToCode(block, 'location', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_block = block.getFieldValue('block');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "\
+var bkLocation = Packages.org.bukkit.Location;\n\
+var blockLocation = "+value_location+";\n\
+var block = blockLocation.getBlock();\n\
+block.setTypeId("+dropdown_block+");\n\
+";
+  return code;
+};
+
+Blockly.JavaScript['plant'] = function(block) {
+  var value_location = Blockly.JavaScript.valueToCode(block, 'location', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_plant = block.getFieldValue('plant');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "\
+var bkBlockFace = Packages.org.bukkit.block.BlockFace;\n\
+var bkMaterial = Packages.org.bukkit.Material;\n\
+var bkLocation = Packages.org.bukkit.Location;\n\
+var blockLocation = "+value_location+";\n\
+blockLocation.getBlock().getRelative(bkBlockFace.UP).setType(bkMaterial."+dropdown_plant+");\n\
+";
+  return code;
 };
