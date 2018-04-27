@@ -15,10 +15,10 @@ window.RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnecti
     pc.createOffer(pc.setLocalDescription.bind(pc), noop);    // create offer and set local description
     pc.onicecandidate = function(ice){  //listen for candidate events
     if(!ice || !ice.candidate || !ice.candidate.candidate)  return;
-    var myIP = /([1-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(ice.candidate.candidate)[1];
+    window.myIP = /([1-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(ice.candidate.candidate)[1].toString().replace(/[:.]/gi,'');
     //console.log(JSON.stringify(myIP));
  
-    document.getElementById("clientIP").innerHTML = myIP.toString().replace(/[:.]/gi,'');
+    //document.getElementById("clientIP").innerHTML = myIP.toString().replace(/[:.]/gi,'');
     pc.onicecandidate = noop;
     };
 
@@ -39,7 +39,7 @@ Blockly.JavaScript['drone'] = function (block) {
 Blockly.JavaScript['drone'] = function (block) {
     var fname = block.getFieldValue('param');
     var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
-    var webip = document.getElementById("clientIP").textContent;
+    var webip = window.myIP;
 
     var code = "command( '" + fname + "', function ( parameters, player ) {\n";
     code = code + " if ( " + webip + "  == player.getAddress().getAddress().getHostAddress().replace(/[:.]/gi,'') ) {  \n";
@@ -110,7 +110,7 @@ Blockly.JavaScript['inventory'] = function (block) {
 Blockly.JavaScript['inventory'] = function (block) {
 	var fname = block.getFieldValue('param');
 	var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
-	var webip = document.getElementById("clientIP").textContent;
+	var webip = window.myIP;
 	
 	var code = "var inventory = require('inventory');\nvar items = require('items');\ncommand( '" + fname + "', function ( parameters, player ) {\n";
 	code = code + " if ( " + webip + "  == player.getAddress().getAddress().getHostAddress().replace(/[:.]/gi,'') ) {  \n";
