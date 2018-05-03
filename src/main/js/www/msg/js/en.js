@@ -95,10 +95,11 @@ Blockly.Msg.ITEMS_NAMES.flintAndSteel = "Flint and Steel";
 Blockly.Msg.ITEMS_NAMES.fishingRod = "Fishing Rod";
 Blockly.Msg.ITEMS_NAMES.bed = "Bed";
 Blockly.Msg.ITEMS_NAMES.torch = "Torch";
+Blockly.Msg.ITEMS_NAMES.wood = "wood";
 
 //food
-Blockly.Msg.ITEMS_NAMES.carrot = "Carrot";
-Blockly.Msg.ITEMS_NAMES.potato = "Potatoe";
+Blockly.Msg.ITEMS_NAMES.carrotItem = "Carrot";
+Blockly.Msg.ITEMS_NAMES.potatoItem = "Potatoe";
 Blockly.Msg.ITEMS_NAMES.cocoa = "Cocoa Beans";
 Blockly.Msg.ITEMS_NAMES.apple = "Apple";
 Blockly.Msg.ITEMS_NAMES.melon = "Melon";
@@ -107,12 +108,14 @@ Blockly.Msg.ITEMS_NAMES.milkBucket = "Milk bucket";
 Blockly.Msg.ITEMS_NAMES.egg = "Egg";
 Blockly.Msg.ITEMS_NAMES.wheat = "Wheat";
 Blockly.Msg.ITEMS_NAMES.pumpkin = "Pumpkin";
+Blockly.Msg.ITEMS_NAMES.sugarCane = "SugarCane";
 
 //transportation
 Blockly.Msg.ITEMS_NAMES.rails = "Rail";
 Blockly.Msg.ITEMS_NAMES.minecart = "Minecart";
 Blockly.Msg.ITEMS_NAMES.poweredRail = "Rail (Powered)";
 Blockly.Msg.ITEMS_NAMES.redstoneTorchOn = "Redstone Torch (active)";
+Blockly.Msg.ITEMS_NAMES.ladder = "ladder";
 
 //weapons & armor
 Blockly.Msg.ITEMS_NAMES.bow = "Bow";

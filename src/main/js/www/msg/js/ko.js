@@ -95,6 +95,7 @@ Blockly.Msg.ITEMS_NAMES.flintAndSteel = "부싯돌";
 Blockly.Msg.ITEMS_NAMES.fishingRod = "낚싯대";
 Blockly.Msg.ITEMS_NAMES.bed = "침대";
 Blockly.Msg.ITEMS_NAMES.torch = "횃불";
+Blockly.Msg.ITEMS_NAMES.wood = "우드";
 
 //food
 Blockly.Msg.ITEMS_NAMES.carrot = "당근";
@@ -107,12 +108,14 @@ Blockly.Msg.ITEMS_NAMES.milkBucket = "우유 버킷";
 Blockly.Msg.ITEMS_NAMES.egg = "달걀";
 Blockly.Msg.ITEMS_NAMES.wheat = "밀";
 Blockly.Msg.ITEMS_NAMES.pumpkin = "호박";
+Blockly.Msg.ITEMS_NAMES.sugarCane = "사탕수수";
 
 //transportation
 Blockly.Msg.ITEMS_NAMES.rails = "레일";
 Blockly.Msg.ITEMS_NAMES.minecart = "광차";
 Blockly.Msg.ITEMS_NAMES.poweredRail = "레일 (Powered)";
 Blockly.Msg.ITEMS_NAMES.redstoneTorchOn = "레드스톤 횃불 (active)";
+Blockly.Msg.ITEMS_NAMES.ladder = "사다리";
 
 //weapons & armor
 Blockly.Msg.ITEMS_NAMES.bow = "활";
