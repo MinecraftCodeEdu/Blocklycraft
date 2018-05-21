@@ -1,7 +1,7 @@
 command( 'test199', function ( parameters, player ) {
 	  var theDrone = new Drone(player);
 	  theDrone.chkpt('start');
-	  var timeoutStop = new Data().getTime()+500;
+	  var timeoutStop = new Date().getTime()+500;
 
 	  for (var l=0; l<=15; l++){
 		      theDrone.box('46');
