@@ -566,12 +566,14 @@ Code.init = function () {
 
     var toolbox = document.getElementById('toolbox');
     Code.workspace = Blockly.inject('content_blocks', {
-        grid: {
+/*
+	grid: {
             spacing: 25,
             length: 3,
             colour: '#ccc',
             snap: true
         },
+*/
         media: 'google-blockly/media/',
         rtl: rtl,
         toolbox: toolbox,
