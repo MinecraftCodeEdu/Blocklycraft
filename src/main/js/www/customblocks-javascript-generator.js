@@ -76,9 +76,16 @@ var code = "theDrone.box(" + JSON.stringify(dropdown_material).replace(/"/g,"").
 
 Blockly.JavaScript['animals'] = function (block) {
     var dropdown_animal = block.getFieldValue('animal');
-    var code = "if (__plugin.bukkit) {\n        theDrone.getLocation().world.spawnEntity(theDrone.getLocation(), org.bukkit.entity.EntityType." + dropdown_animal + ");\n    }\n    if (__plugin.canary) {\n        var Canary = Packages.net.canarymod.Canary,\n            entityInstance = Canary.factory().entityFactory.newEntity('" + dropdown_animal + "', theDrone.getLocation());\n        entityInstance.spawn();\n    }";
+    var code = "if (__plugin.bukkit) {\n        theDrone.getLocation().world.spawnEntity(theDrone.getLocation(), org.bukkit.entity.EntityType." + dropdown_animal + ");\n    }\n    if (__plugin.canary) {\n ar Canary = Packages.net.canarymod.Canary,\n            entityInstance = Canary.factory().entityFactory.newEntity('" + dropdown_animal + "', theDrone.getLocation());\n        entityInstance.spawn();\n    }";
     return code;
 };
+
+Blockly.JavaScript['trees'] = function (block) {
+    var dropdown_tree = block.getFieldValue('tree');
+    var code = "theDrone.getLocation().world.generateTree(theDrone.getLocation(), org.bukkit.TreeType."+dropdown_tree+");";
+    return code;
+};
+
 
 Blockly.JavaScript['rectangle'] = function (block) {
     var value_width = Blockly.JavaScript.valueToCode(block, 'width', Blockly.JavaScript.ORDER_ATOMIC);

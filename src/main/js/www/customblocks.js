@@ -33,6 +33,8 @@ var animals = getObjNames(Blockly.Msg.ANIMALS_NAMES, ['BAT', 'CHICKEN', 'COW', '
 
 Blockly.BlockSvg.START_HAT = true;
 
+var trees = getObjNames(Blockly.Msg.PLANTS_NAMES, ['TREE', 'BIG_TREE']);
+
 // extract objects translation names from their ids/names
 function getObjNames(list, ids) {
     var shortList = [];
@@ -141,34 +143,29 @@ Blockly.Blocks['drone_move'] = {
     }
 };
 
-Blockly.JavaScript['drone_move_count'] = function (block) {
-    var dropdown_direction = block.getFieldValue('direction');
-    var value_count = Blockly.JavaScript.valueToCode(block, 'COUNT', Blockly.JavaScript.ORDER_ATOMIC);
-    var code = "theDrone." + dropdown_direction + "(" + value_count + ");\n";
-    return code;
-};
-
-Blockly.JavaScript['materials'] = function (block) {
-    var dropdown_material = block.getFieldValue('material');
-//    JSON.stringify(dropdown_material).replace('1','10');
-//    var code = "theDrone." + 'box(' + JSON.stringify(dropdown_material) + ');\n';
-var code = "theDrone.box(" + JSON.stringify(dropdown_material).replace(/"/g,"").replace(".",":")+ ");\n";
-//    var lever = '69';
-//    var code = "if("+dropdown_material+"=='"+lever+"'){theDrone.box('69:6');}else{theDrone.box("+dropdown_material+");}";
-
-    return code;
-};
-
-Blockly.JavaScript['animals'] = function (block) {
-    var dropdown_animal = block.getFieldValue('animal');
-    var code = "if (__plugin.bukkit) {\n        theDrone.getLocation().world.spawnEntity(theDrone.getLocation(), org.bukkit.entity.EntityType." + dropdown_animal + ");\n    }\n    if (__plugin.canary) {\n ar Canary = Packages.net.canarymod.Canary,\n            entityInstance = Canary.factory().entityFactory.newEntity('" + dropdown_animal + "', theDrone.getLocation());\n        entityInstance.spawn();\n    }";
-    return code;
-};
-
-Blockly.JavaScript['trees'] = function (block) {
-    var dropdown_tree = block.getFieldValue('tree');
-    var code = "theDrone.getLocation().world.generateTree(theDrone.getLocation(), org.bukkit.TreeType."+dropdown_tree+");";
-    return code;
+Blockly.Blocks['drone_move_count'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MOUVEMENT)
+            .appendField(
+            new Blockly.FieldDropdown([
+                [Blockly.Msg.MOUVEMENT_UP, "up"],
+                [Blockly.Msg.MOUVEMENT_DOWN, "down"],
+                [Blockly.Msg.MOUVEMENT_FWD, "fwd"],
+                [Blockly.Msg.MOUVEMENT_BACK, "back"],
+                [Blockly.Msg.MOUVEMENT_RIGHT, "right"],
+                [Blockly.Msg.MOUVEMENT_LEFT, "left"]
+            ]), "direction");
+        this.appendValueInput("COUNT")
+          .setCheck(null)
+          .appendField("칸수");
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setColour(0);
+        this.setTooltip(Blockly.Msg.TOOLTIP_DRONEMOVE);
+        this.setHelpUrl('https://github.com/walterhiggins/ScriptCraft/blob/master/docs/API-Reference.md#drone-movement');
+    }
 };
 
 
