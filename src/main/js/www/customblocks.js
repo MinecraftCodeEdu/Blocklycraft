@@ -236,6 +236,7 @@ Blockly.Blocks['prism'] = {
  this.setTooltip("");
  this.setHelpUrl("");
   }
+};
 
 Blockly.Blocks['delete'] = {
     init: function () {
