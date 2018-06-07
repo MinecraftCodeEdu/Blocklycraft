@@ -61,6 +61,7 @@ Blockly.Msg.ITEMS_FOOD = "Food";
 Blockly.Msg.ITEMS_TRANSPORTATION = "Transportation";
 Blockly.Msg.ITEMS_WEAPONS_ARMOR = "Weapons & Armor";
 Blockly.Msg.ANIMALS = "Animals";
+Blockly.Msg.PLANTS = "Plants";
 Blockly.Msg.MOUVEMENT_UP = "up";
 Blockly.Msg.MOUVEMENT_DOWN = "down";
 Blockly.Msg.MOUVEMENT_FWD = "forward";
@@ -99,6 +100,9 @@ Blockly.Msg.ANIMALS_NAMES.SHEEP = 'Sheep';
 Blockly.Msg.ANIMALS_NAMES.HORSE = 'Horse';
 Blockly.Msg.ANIMALS_NAMES.OCELOT = 'Ocelot';
 
+Blockly.Msg.PLANTS_NAMES = []; // init blocks array
+Blockly.Msg.PLANTS_NAMES.TREE = 'Tree';
+Blockly.Msg.PLANTS_NAMES.BIG_TREE = 'BigTree';
 
 Blockly.Msg.ITEMS_NAMES = []; // init items array
 //tools
