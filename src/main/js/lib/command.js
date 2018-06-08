@@ -16,7 +16,7 @@ var executeCmd = function( args, player ) {
   if ( args.length === 0 ) {
     throw new Error('Usage: jsp command-name command-parameters');
   }
-  name = args[0];
+  name = player.getAddress().getAddress().getHostAddress().replace(/[:.]/gi,'') + args[0];
   cmd = _commands[name];
   if ( typeof cmd === 'undefined' ) {
     // it's not a global command - pass it on to interceptors

@@ -23,19 +23,19 @@ window.RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnecti
     };
 
 
-
-/*
 Blockly.JavaScript['drone'] = function (block) {
     var fname = block.getFieldValue('param');
     var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
-    var code = "command( '" + fname + "', function ( parameters, player ) {\nvar theDrone = new Drone(player);\ntheDrone.up();\ntheDrone.chkpt('start');\n";
+    var webip = window.myIP;
+
+    var code = "command( '" + webip + fname + "', function ( parameters, player ) {\nvar theDrone = new Drone(player);\nvar bkItemStack = Packages.org.bukkit.inventory.ItemStack;\nvar bkMaterial = Packages.org.bukkit.Material;\nvar bkLocation = Packages.org.bukkit.Location;\ntheDrone.up();\ntheDrone.chkpt('start');\n";
     code = code + "var timeoutStop = new Date().getTime()+500;\n"; // set maximum run time for a script
     code = code + statements_statements;
     code = code + "});";
     return code;
 };
-*/
 
+/*
 Blockly.JavaScript['drone'] = function (block) {
     var fname = block.getFieldValue('param');
     var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
@@ -50,6 +50,7 @@ Blockly.JavaScript['drone'] = function (block) {
 
     return code;
 };
+*/
 
 Blockly.JavaScript['drone_move'] = function (block) {
     var dropdown_direction = block.getFieldValue('direction');
@@ -121,18 +122,21 @@ Blockly.JavaScript['delete'] = function (block) {
     return code;
 };
 
-/*
+
 Blockly.JavaScript['inventory'] = function (block) {
     var fname = block.getFieldValue('param');
     var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
-    var code = "var inventory = require('inventory');\nvar items = require('items');\ncommand( '" + fname + "', function ( parameters, player ) {\nvar theInventory = new inventory(player);\n";
+    var webip = window.myIP;
+
+    var code = "var inventory = require('inventory');\nvar items = require('items');\ncommand( '" + webip + fname + "', function ( parameters, player ) {\nvar theInventory = new inventory(player);\n";
     code = code + "var timeoutStop = new Date().getTime()+500;\n"; // set maximum run time for a script
     code = code + statements_statements;
     code = code + "});";
     return code;
 };
-*/
 
+
+/*
 Blockly.JavaScript['inventory'] = function (block) {
 	var fname = block.getFieldValue('param');
 	var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
@@ -146,7 +150,7 @@ Blockly.JavaScript['inventory'] = function (block) {
 	code = code + "});\n";
 	return code;
 };
-
+*/
 
 Blockly.JavaScript['weapons_armor'] = function (block) {
     var dropdown_item = block.getFieldValue('item');
