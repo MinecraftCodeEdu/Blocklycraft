@@ -92,7 +92,8 @@ Blockly.JavaScript['rectangle'] = function (block) {
     var value_length = Blockly.JavaScript.valueToCode(block, 'length', Blockly.JavaScript.ORDER_ATOMIC);
     var dropdown_material = block.getFieldValue('material');
     var dropdown_fill = block.getFieldValue('fill');
-    var code = "theDrone.box" + dropdown_fill + "(" + dropdown_material + "," + value_width + ",1," + value_length + ");\n";
+    var code = "theDrone.box" + dropdown_fill + "(" + JSON.stringify(dropdown_material).replace(/"/g,"").replace(".",":") + "," + value_width + ",1," + value_length + ");\n";
+
     return code;
 };
 
@@ -100,7 +101,7 @@ Blockly.JavaScript['circle'] = function (block) {
     var value_radius = Blockly.JavaScript.valueToCode(block, 'radius', Blockly.JavaScript.ORDER_ATOMIC);
     var dropdown_material = block.getFieldValue('material');
     var dropdown_fill = block.getFieldValue('fill');
-    var code = "theDrone.cylinder" + dropdown_fill + "(" + dropdown_material + "," + value_radius + ",1);\n";
+    var code = "theDrone.cylinder" + dropdown_fill + "(" + JSON.stringify(dropdown_material).replace(/"/g,"").replace(".",":") + "," + value_radius + ",1);\n";
     return code;
 };
 
