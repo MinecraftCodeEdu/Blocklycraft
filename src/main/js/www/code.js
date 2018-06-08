@@ -619,13 +619,8 @@ Code.init = function () {
 
     Code.bindClick('menu_example_house',
         function () {
-          Code.loadServerXmlFile('example_xml/house.xml');
+          Code.loadServerXmlFile('example/hello.xml');
 	});
-
-    Code.bindClick('menu_example_building',
-        function () {
-          Code.loadServerXmlFile('example_xml/building.xml');
-        });
 
 
     Code.bindClick('trashButton',
