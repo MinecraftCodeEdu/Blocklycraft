@@ -43,14 +43,13 @@ Blockly.JavaScript['drone'] = function (block) {
 
     var code = "command( '" + fname + "', function ( parameters, player ) {\n";
     code = code + " if ( " + webip + "  == player.getAddress().getAddress().getHostAddress().replace(/[:.]/gi,'') ) {  \n";
-    code = code + "var theDrone = new Drone(player);\ntheDrone.up();\ntheDrone.chkpt('start');\nvar timeoutStop = new Date().getTime()+500;\n"; // set maximum run time for a script
+    code = code + "var theDrone = new Drone(player);\nvar bkItemStack = Packages.org.bukkit.inventory.ItemStack;\nvar bkMaterial = Packages.org.bukkit.Material;\nvar bkLocation = Packages.org.bukkit.Location;\ntheDrone.up();\ntheDrone.chkpt('start');\nvar timeoutStop = new Date().getTime()+500;\n"; // set maximum run time for a script
     code = code + statements_statements;
     code = code + "} else{ print('function is not defined')  }\n";
     code = code + "});\n";
 
     return code;
 };
-
 
 Blockly.JavaScript['drone_move'] = function (block) {
     var dropdown_direction = block.getFieldValue('direction');
@@ -89,10 +88,10 @@ Blockly.JavaScript['trees'] = function (block) {
 
 Blockly.JavaScript['rectangle'] = function (block) {
     var value_width = Blockly.JavaScript.valueToCode(block, 'width', Blockly.JavaScript.ORDER_ATOMIC);
-    var value_lenght = Blockly.JavaScript.valueToCode(block, 'lenght', Blockly.JavaScript.ORDER_ATOMIC);
+    var value_length = Blockly.JavaScript.valueToCode(block, 'length', Blockly.JavaScript.ORDER_ATOMIC);
     var dropdown_material = block.getFieldValue('material');
     var dropdown_fill = block.getFieldValue('fill');
-    var code = "theDrone.box" + dropdown_fill + "(" + dropdown_material + "," + value_width + ",1," + value_lenght + ");\n";
+    var code = "theDrone.box" + dropdown_fill + "(" + dropdown_material + "," + value_width + ",1," + value_length + ");\n";
     return code;
 };
 
@@ -117,8 +116,8 @@ Blockly.JavaScript['prism'] = function(block) {
 Blockly.JavaScript['delete'] = function (block) {
     var value_width = Blockly.JavaScript.valueToCode(block, 'width', Blockly.JavaScript.ORDER_ATOMIC);
     var value_height = Blockly.JavaScript.valueToCode(block, 'height', Blockly.JavaScript.ORDER_ATOMIC);
-    var value_lenght = Blockly.JavaScript.valueToCode(block, 'lenght', Blockly.JavaScript.ORDER_ATOMIC);
-    var code = "theDrone.box(0," + value_width + "," + value_height + "," + value_lenght + ");\n";
+    var value_length = Blockly.JavaScript.valueToCode(block, 'length', Blockly.JavaScript.ORDER_ATOMIC);
+    var code = "theDrone.box(0," + value_width + "," + value_height + "," + value_length + ");\n";
     return code;
 };
 
@@ -623,9 +622,9 @@ Blockly.JavaScript['block_direction'] = function(block) {
   var dropdown_item = block.getFieldValue('ITEM');
   var dropdown_direction = block.getFieldValue('DIRECTION');
   var value_width = Blockly.JavaScript.valueToCode(block, 'width', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_lenght = Blockly.JavaScript.valueToCode(block, 'lenght', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_length = Blockly.JavaScript.valueToCode(block, 'length', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = "theDrone.box('" + dropdown_item + ":" + dropdown_direction + "'," + value_width + ",1," + value_lenght + ");\n";
+  var code = "theDrone.box('" + dropdown_item + ":" + dropdown_direction + "'," + value_width + ",1," + value_length + ");\n";
 
   return code;
 };
@@ -679,6 +678,21 @@ Blockly.JavaScript['redstone_comparator'] = function(block) {
     var code = "theDrone.box('149:" + dropdown_direction + "');\n";
   }
 
+  return code;
+};
+
+Blockly.JavaScript['delay_time'] = function(block) {
+  var value_second = Blockly.JavaScript.valueToCode(block, 'SECOND', Blockly.JavaScript.ORDER_ATOMIC);
+  var statements_delay = Blockly.JavaScript.statementToCode(block, 'DELAY');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "setTimeout(function(){"+statements_delay+"},"+value_second+");\n";
+  return code;
+};
+
+Blockly.JavaScript['redstone_repeater'] = function(block) {
+  var dropdown_direction = block.getFieldValue('DIRECTION');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "theDrone.box('93:" + dropdown_direction + "');\n";
   return code;
 };
 

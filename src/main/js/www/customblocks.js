@@ -180,7 +180,7 @@ Blockly.Blocks['rectangle'] = {
             ]), "fill");
         this.appendValueInput("width").setCheck("Number")
             .appendField(Blockly.Msg.WIDTH);
-        this.appendValueInput("lenght").setCheck("Number")
+        this.appendValueInput("length").setCheck("Number")
             .appendField(Blockly.Msg.LENGTH);
         this.appendDummyInput()
             .appendField(Blockly.Msg.MATERIAL)
@@ -246,7 +246,7 @@ Blockly.Blocks['delete'] = {
             .appendField(Blockly.Msg.WIDTH);
         this.appendValueInput("height").setCheck("Number")
             .appendField(Blockly.Msg.HEIGHT);
-        this.appendValueInput("lenght").setCheck("Number")
+        this.appendValueInput("length").setCheck("Number")
             .appendField(Blockly.Msg.LENGTH);
         this.setInputsInline(true);
         this.setPreviousStatement(true);
@@ -844,7 +844,7 @@ Blockly.Blocks['block_direction'] = {
         .appendField(new Blockly.FieldDropdown([["피스톤","33"], ["관측기","218"]]), "ITEM");
     this.appendValueInput("width").setCheck("Number")
             .appendField(Blockly.Msg.WIDTH);
-    this.appendValueInput("lenght").setCheck("Number")
+    this.appendValueInput("length").setCheck("Number")
             .appendField(Blockly.Msg.LENGTH);
     this.appendDummyInput()
         .appendField("방향")
@@ -940,32 +940,37 @@ Blockly.Blocks['redstone_comparator'] = {
   }
 };
 
-Blockly.Blocks['en'] = {
+Blockly.Blocks['delay_time'] = {
   init: function() {
-    this.appendDummyInput()
-        .appendField("<html>");
-    this.appendStatementInput("s_html")
+    this.appendValueInput("SECOND")
         .setCheck(null);
     this.appendDummyInput()
-        .appendField("</html>");
+        .appendField("초 일시정지 후");
+    this.appendStatementInput("DELAY")
+        .setCheck(null)
+        .appendField("실행");
+    this.setInputsInline(true);
     this.setPreviousStatement(true, null);
-    this.setColour(330);
-    this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
- this.setMutator(new Blockly.Mutator(['text']));
-  },
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
 
-decompose: function(workspace) {
-  var containerBlock = workspace.newBlock('html');
-    containerBlock.initSvg();
-  return containerBlock;
-},
-
-
-compose: function(containerBlock) {
-  //...
-  this.appendDummyInput()
-        .appendField("hello");
-}
+Blockly.Blocks['redstone_repeater'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("레드스톤중계기");
+    this.appendDummyInput()
+        .appendField("방향")
+        .appendField(new Blockly.FieldDropdown([["북쪽","12"], ["남쪽","13"], ["동쪽","14"], ["서쪽","15"]]), "DIRECTION");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
 };
 
