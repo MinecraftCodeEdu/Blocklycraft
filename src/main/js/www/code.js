@@ -617,7 +617,7 @@ Code.init = function () {
     };
 
 
-    Code.bindClick('menu_example_house',
+    Code.bindClick('menu_example_hello',
         function () {
           Code.loadServerXmlFile('example/hello.xml');
 	});
