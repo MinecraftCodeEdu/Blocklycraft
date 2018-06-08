@@ -27,8 +27,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Materialize, Prettify, and Ardublockly CSS -->
-    <link rel="stylesheet" href="ardublockly.css" media="screen,projection">
-
+<!--    <link rel="stylesheet" href="ardublockly.css" media="screen,projection">
+-->
 </head>
 
 <body>
@@ -36,13 +36,11 @@
         <tr>
             <td>
                 <span id="title">...</span>
-
-	       	    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">예제</button>
+	       	<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">예제</button>
                 <ul id ="demo" class="collapse">
-    			  <li id="menu_example_house"><a href="#">house</a></li>
-    			  <li id="menu_example_building"><a href="#">building</a></li>
-  			    </ul>
-		    </td>
+    	           <li id="menu_example_hello"><a href="#">hello</a></li>
+  	        </ul>
+	    </td>
             <td class="farSide">
                 <select id="languageMenu"></select>
             </td>
@@ -101,6 +99,7 @@
             <block type="drone"></block>
             <block type="materials"></block>
             <block type="animals"></block>
+	    <block type="trees"></block>
 
 	    <block type="rectangle">
                 <value name="width">
@@ -108,7 +107,7 @@
 	               <field name="NUM">0</field>
                    </block>
                 </value>
-                <value name="lenght">
+                <value name="length">
                    <block type="math_number">
 		       <field name="NUM">0</field>
     	           </block>
@@ -116,8 +115,25 @@
 	    </block>
 
 	    <block type="circle"></block>
+	    <block type="prism">
+              <value name="width">
+                 <block type="math_number">
+                     <field name="NUM">0</field>
+                 </block>
+              </value>
+              <value name="length">
+                 <block type="math_number">
+                     <field name="NUM">0</field>
+                 </block>
+               </value>
+            </block>
             <block type="delete"></block>
             <block type="drone_move"></block>
+	    <block type="drone_move_count">
+              <value name="COUNT">
+                <block type="math_number"></block>
+              </value>
+            </block>
         </category>
         <category id="catInventory">
             <block type="inventory"></block>
@@ -126,7 +142,9 @@
             <block type="transportation"></block>
             <block type="weapons_armor"></block>
         </category>
+
 	    <sep></sep>
+	
 	    <category id="catTeleport">
 		<block type="onchat">
 			<value name="command">
@@ -384,16 +402,94 @@
 			</value>
 		</block>
 	    </category>
-	    <category id="catBuilding">
+	<category id="catBuilding">
     	</category>
-	    <category id="catFarming">
-    	</category>
+	<category id="catFarming">
+	  <block type="drone"></block>
+          <block type="rectangle">
+            <value name="width">
+               <block type="math_number">
+                   <field name="NUM">0</field>
+               </block>
+            </value>
+            <value name="length">
+               <block type="math_number">
+                   <field name="NUM">0</field>
+               </block>
+            </value>
+          </block>
+          <block type="block_direction">
+            <value name="width">
+               <block type="math_number">
+                   <field name="NUM">0</field>
+               </block>
+            </value>
+            <value name="length">
+               <block type="math_number">
+                   <field name="NUM">0</field>
+               </block>
+            </value>
+          </block>
+          <block type="dispenser_direction">
+            <value name="ITEM_COUNT">
+              <block type="math_number">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="BLOCK_LOCATION">
+              <block type="relative_location">
+                <value name="x">
+                   <block type="math_number"></block>
+                </value>
+                <value name="y">
+                   <block type="math_number"></block>
+                </value>
+                <value name="z">
+                  <block type="math_number"></block>
+                </value>
+              </block>
+            </value>
+          </block>
+          <block type="dispenser_drone">
+            <value name="number">
+                  <block type="math_number"></block>
+                </value>
+          </block>
+	  <block type="material_position">
+            <value name="POSITION">
+               <block type="relative_location"></block>
+            </value>
+          </block>
+          <block type="drone_move"></block>
+          <block type="drone_move_count">
+            <value name="COUNT">
+              <block type="math_number"></block>
+            </value>
+          </block>
+	</category>
     	<category id="catRail">
       	</category>
     	<category id="catRiding">
-    	</category>
-    	<category id="catVillage">
-    	</category>
+	  <block type="spawn_animal">
+            <value name="animal">
+               <block type="animalmob"></block>
+            </value>
+          </block>
+          <block type="two_dimension"></block>
+          <block type="drone_variable"></block>
+        </category>
+        <category id="catVillage">
+          <block type="redstone_comparator"></block>
+	  <block type="delay_time">
+           <value name="SECOND">
+             <block type="math_number">
+               <field name="NUM">0</field>
+             </block>
+           </value>
+          </block>
+          <block type="redstone_repeater"></block>
+
+	</category>
     	<category id="catTrampoline">
     	</category>
       	<category id="catRecipe">
@@ -408,14 +504,12 @@
     	</category>
     	<category id="catRace">
     	</category>
-	    <category id="catCastle">
-	    </category>
-	    <category id="catTag">
-	    </category>
-	<sep></sep>
-	
-	
-        <category id="catLogic">
+	<category id="catCastle">
+	</category>
+	<category id="catTag">
+	</category>
+        <sep></sep>
+	<category id="catLogic">
             <block type="controls_if"></block>
             <block type="logic_compare"></block>
             <block type="logic_operation"></block>
@@ -584,7 +678,10 @@
                 </value>
             </block>
         </category>
-        <category id="catVariables" custom="VARIABLE">
+	<category id="catFunctions" custom="PROCEDURE">
+	</category>
+
+	<category id="catVariables" custom="VARIABLE">
             <category id="catColour">
         </category>
 

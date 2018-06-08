@@ -566,12 +566,14 @@ Code.init = function () {
 
     var toolbox = document.getElementById('toolbox');
     Code.workspace = Blockly.inject('content_blocks', {
-        grid: {
+/*
+	grid: {
             spacing: 25,
             length: 3,
             colour: '#ccc',
             snap: true
         },
+*/
         media: 'google-blockly/media/',
         rtl: rtl,
         toolbox: toolbox,
@@ -615,15 +617,10 @@ Code.init = function () {
     };
 
 
-    Code.bindClick('menu_example_house',
+    Code.bindClick('menu_example_hello',
         function () {
-          Code.loadServerXmlFile('example_xml/house.xml');
+          Code.loadServerXmlFile('example/hello.xml');
 	});
-
-    Code.bindClick('menu_example_building',
-        function () {
-          Code.loadServerXmlFile('example_xml/building.xml');
-        });
 
 
     Code.bindClick('trashButton',
@@ -732,7 +729,7 @@ Code.initLanguage = function () {
     document.getElementById('deployButton').title = MSG.deployTooltip;
     document.getElementById('trashButton').title = MSG.trashTooltip;
 
-    var categories = ['catLogic', 'catLoops', 'catMath', 'catText', 'catLists',
+    var categories = ['catLogic', 'catLoops', 'catMath', 'catText', 'catLists', 'catFunctions',
         'catColour', 'catVariables', 'catDrone', 'catInventory', 'catTeleport', 'catBuilding', 'catFarming', 'catRail', 'catRiding', 'catVillage', 'catTrampoline', 'catRecipe', 'catRanching', 'catWar', 'catJukebox', 'catDisaster', 'catRace', 'catCastle', 'catTag'
     ];
 

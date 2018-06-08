@@ -14,6 +14,7 @@ var MSG = {
     catLists: "리스트",
     catColour: "색깔",
     catVariables: "변수",
+    catFunctions: "함수",
     catDrone: "드론",
     catInventory: "인벤토리",
 
@@ -61,6 +62,7 @@ Blockly.Msg.ITEMS_FOOD = "식량";
 Blockly.Msg.ITEMS_TRANSPORTATION = "교통수단";
 Blockly.Msg.ITEMS_WEAPONS_ARMOR = "무기 & 갑옷";
 Blockly.Msg.ANIMALS = "동물";
+Blockly.Msg.PLANTS = "식물";
 Blockly.Msg.MOUVEMENT_UP = "위로";
 Blockly.Msg.MOUVEMENT_DOWN = "아래로";
 Blockly.Msg.MOUVEMENT_FWD = "앞으로";
@@ -99,6 +101,9 @@ Blockly.Msg.ANIMALS_NAMES.SHEEP = '양';
 Blockly.Msg.ANIMALS_NAMES.HORSE = '말';
 Blockly.Msg.ANIMALS_NAMES.OCELOT = '오셀롯(고양이)';
 
+Blockly.Msg.PLANTS_NAMES = []; // init blocks array
+Blockly.Msg.PLANTS_NAMES.TREE = '나무';
+Blockly.Msg.PLANTS_NAMES.BIG_TREE = '큰나무';
 
 Blockly.Msg.ITEMS_NAMES = []; // init items array
 //tools
@@ -132,6 +137,7 @@ Blockly.Msg.ITEMS_NAMES.minecart = "광차";
 Blockly.Msg.ITEMS_NAMES.poweredRail = "레일 (Powered)";
 Blockly.Msg.ITEMS_NAMES.redstoneTorchOn = "레드스톤 횃불 (active)";
 Blockly.Msg.ITEMS_NAMES.ladder = "사다리";
+Blockly.Msg.ITEMS_NAMES.boat = "보트";
 
 //weapons & armor
 Blockly.Msg.ITEMS_NAMES.bow = "활";
@@ -176,12 +182,17 @@ Blockly.Msg.OBJNAMES[26] = "침대";
 Blockly.Msg.OBJNAMES[27] = "powered rail";
 Blockly.Msg.OBJNAMES[28] = "detector rail";
 Blockly.Msg.OBJNAMES[29] = "sticky piston";
-Blockly.Msg.OBJNAMES[30] = "cobweb";
+Blockly.Msg.OBJNAMES[30] = "거미줄";
 Blockly.Msg.OBJNAMES[31] = "grass tall";
 Blockly.Msg.OBJNAMES[32] = "dead bush";
-Blockly.Msg.OBJNAMES[33] = "piston";
+Blockly.Msg.OBJNAMES[33] = "피스톤";
 Blockly.Msg.OBJNAMES[34] = "piston extn";
-Blockly.Msg.OBJNAMES[35] = "wool white";
+Blockly.Msg.OBJNAMES[35] = "흰색양모";
+Blockly.Msg.OBJNAMES[35.1] = "주황양모";
+Blockly.Msg.OBJNAMES[35.2] = "보라색양모";
+Blockly.Msg.OBJNAMES[35.3] = "파란색양모";
+Blockly.Msg.OBJNAMES[35.4] = "노란색양모";
+Blockly.Msg.OBJNAMES[35.5] = "초록색양모";
 Blockly.Msg.OBJNAMES[37] = "노란꽃";
 Blockly.Msg.OBJNAMES[38] = "장미";
 Blockly.Msg.OBJNAMES[38] = "빨간꽃";
@@ -201,7 +212,7 @@ Blockly.Msg.OBJNAMES[51] = "불";
 Blockly.Msg.OBJNAMES[52] = "monster spawner";
 Blockly.Msg.OBJNAMES[53] = "stairs oak";
 Blockly.Msg.OBJNAMES[54] = "chest";
-Blockly.Msg.OBJNAMES[55] = "redstone wire";
+Blockly.Msg.OBJNAMES[55] = "레드스톤 회로";
 Blockly.Msg.OBJNAMES[56] = "다이아몬드 광석";
 Blockly.Msg.OBJNAMES[57] = "다이아몬드";
 Blockly.Msg.OBJNAMES[58] = "crafting table";
@@ -215,8 +226,8 @@ Blockly.Msg.OBJNAMES[65] = "ladder";
 Blockly.Msg.OBJNAMES[66] = "레일";
 Blockly.Msg.OBJNAMES[67] = "stairs cobblestone";
 Blockly.Msg.OBJNAMES[68] = "표지판";
-Blockly.Msg.OBJNAMES[69] = "레버";
-Blockly.Msg.OBJNAMES[70] = "pressure plate stone";
+Blockly.Msg.OBJNAMES[69.6] = "레버";
+Blockly.Msg.OBJNAMES[70] = "돌 압력기";
 Blockly.Msg.OBJNAMES[71] = "door iron";
 Blockly.Msg.OBJNAMES[72] = "pressure plate wood";
 Blockly.Msg.OBJNAMES[73] = "redstone ore";
@@ -235,7 +246,7 @@ Blockly.Msg.OBJNAMES[85] = "울타리";
 Blockly.Msg.OBJNAMES[86] = "호박";
 Blockly.Msg.OBJNAMES[87] = "netherrack";
 Blockly.Msg.OBJNAMES[88] = "soulsand";
-Blockly.Msg.OBJNAMES[89] = "glowstone";
+Blockly.Msg.OBJNAMES[89] = "발광석";
 Blockly.Msg.OBJNAMES[90] = "netherportal";
 Blockly.Msg.OBJNAMES[91] = "jackolantern";
 Blockly.Msg.OBJNAMES[92] = "케이크";
@@ -287,7 +298,7 @@ Blockly.Msg.OBJNAMES[145] = "anvil";
 Blockly.Msg.OBJNAMES[146] = "chest trapped";
 Blockly.Msg.OBJNAMES[147] = "pressure plate weighted light";
 Blockly.Msg.OBJNAMES[148] = "pressure plate weighted heavy";
-Blockly.Msg.OBJNAMES[149] = "redstone comparator";
+Blockly.Msg.OBJNAMES[149] = "레드스톤 비교기";
 Blockly.Msg.OBJNAMES[150] = "redstone comparator active";
 Blockly.Msg.OBJNAMES[151] = "daylight sensor";
 Blockly.Msg.OBJNAMES[152] = "레드스톤";
@@ -307,6 +318,7 @@ Blockly.Msg.OBJNAMES[173] = "coal block";
 Blockly.Msg.OBJNAMES[174] = "packed ice";
 Blockly.Msg.OBJNAMES[175] = "double plant";
 Blockly.Msg.OBJNAMES[213] = "마그마블록";
+Blockly.Msg.OBJNAMES[218] = "관측기";
 
 Blockly.Msg.OBJNAMES[53] = "참나무 계단";
 Blockly.Msg.OBJNAMES[108] = "벽돌계단";
