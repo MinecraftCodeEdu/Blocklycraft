@@ -230,7 +230,7 @@ Blockly.Blocks['prism'] = {
         .setCheck(null)
         .appendField("길이");
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["돌","1"], ["계단","53"], ["물블록","9"]]), "MATERIAL");
+        .appendField(new Blockly.FieldDropdown([["돌","1"], ["나무계단","53"], ["물블록","9"]]), "MATERIAL");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -923,7 +923,7 @@ Blockly.Blocks['drone_variable'] = {
  * 마을짓기, 폭격
  */
 
-Blockly.Blocks['redstone_comparator'] = {
+Blockly.Blocks['redstone_comparator'] = { /*레드스톤 비교기 블록 방향, 불켜짐 조정가능*/
   init: function() {
     this.appendDummyInput()
         .appendField("레드스톤비교기");
@@ -942,7 +942,7 @@ Blockly.Blocks['redstone_comparator'] = {
   }
 };
 
-Blockly.Blocks['delay_time'] = {
+Blockly.Blocks['delay_time'] = { /*시간 지연 블록*/
   init: function() {
     this.appendValueInput("SECOND")
         .setCheck(null);
@@ -960,7 +960,7 @@ Blockly.Blocks['delay_time'] = {
   }
 };
 
-Blockly.Blocks['redstone_repeater'] = {
+Blockly.Blocks['redstone_repeater'] = { /*레드스톤 중계기 블록. 간격, 방향 조정가능*/
   init: function() {
     this.appendDummyInput()
         .appendField("레드스톤중계기");
@@ -971,6 +971,49 @@ Blockly.Blocks['redstone_repeater'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['four_direction'] = {   /*재료의 방향이 동서남북일때 ex)계단*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("재료")
+        .appendField(new Blockly.FieldDropdown([["나무계단","53"], ["돌계단","67"]]), "ITEM");
+    this.appendValueInput("width")
+        .setCheck(null)
+        .appendField("가로");
+    this.appendValueInput("length")
+        .setCheck(null)
+        .appendField("세로");
+    this.appendDummyInput()
+        .appendField("방향")
+        .appendField(new Blockly.FieldDropdown([["동쪽","0"], ["서쪽","1"], ["남쪽","2"], ["북쪽","3"]]), "DIRECTION");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['button_attached'] = {  /*버튼 블록(다른 블록과 합칠때)*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("버튼")
+        .appendField(new Blockly.FieldDropdown([["돌버튼","STONE_BUTTON"], ["나무버튼","WOODEN_BUTTON"]]), "BUTTON_MATERIAL");
+    this.appendDummyInput()
+        .appendField("부착될 블록")
+        .appendField(new Blockly.FieldDropdown([["돌","1"], ["목재","5"]]), "BLOCK_MATERIAL");
+    this.appendDummyInput()
+        .appendField("방향")
+        .appendField(new Blockly.FieldDropdown([["동쪽","EAST"], ["서쪽","WEST"], ["남쪽","SOUTH"], ["북쪽","NORTH"]]), "DIRECTION");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
  this.setTooltip("");
  this.setHelpUrl("");
   }

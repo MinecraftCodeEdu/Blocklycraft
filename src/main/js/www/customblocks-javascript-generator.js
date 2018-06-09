@@ -690,7 +690,7 @@ Blockly.JavaScript['delay_time'] = function(block) {
   var value_second = Blockly.JavaScript.valueToCode(block, 'SECOND', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_delay = Blockly.JavaScript.statementToCode(block, 'DELAY');
   // TODO: Assemble JavaScript into code variable.
-  var code = "setTimeout(function(){"+statements_delay+"},"+value_second+");\n";
+  var code = "setTimeout(function(){"+statements_delay+"},"+ Number(value_second*1000) +");\n";
   return code;
 };
 
@@ -698,6 +698,46 @@ Blockly.JavaScript['redstone_repeater'] = function(block) {
   var dropdown_direction = block.getFieldValue('DIRECTION');
   // TODO: Assemble JavaScript into code variable.
   var code = "theDrone.box('93:" + dropdown_direction + "');\n";
+  return code;
+};
+
+Blockly.JavaScript['four_direction'] = function(block) {
+  var dropdown_item = block.getFieldValue('ITEM');
+  var value_width = Blockly.JavaScript.valueToCode(block, 'width', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_length = Blockly.JavaScript.valueToCode(block, 'length', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_direction = block.getFieldValue('DIRECTION');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "theDrone.box('" + dropdown_item + ":" + dropdown_direction + "'," + value_width + ",1," + value_length + ");\n";
+  return code;
+};
+
+Blockly.JavaScript['button_attached'] = function(block) {
+  var dropdown_button_material = block.getFieldValue('BUTTON_MATERIAL');
+  var dropdown_block_material = block.getFieldValue('BLOCK_MATERIAL');
+  var dropdown_direction = block.getFieldValue('DIRECTION');
+
+  // Case Button direction setData
+  var button_setdata = "";
+  switch (dropdown_direction){
+    case "WEST" :
+    button_setdata = 1;
+    break;
+    case "EAST" :
+    button_setdata = 2;      {
+    break;
+    case "NORTH" :
+    button_setdata = 3;
+    break;
+    case "SOUTH" :
+    button_setdata = 4;
+    break;
+  }
+  // TODO: Assemble JavaScript into code variable.
+  var code = "\n\
+var blockButton = theDrone.box('"+ dropdown_block_material +"').back(2);\n\
+var blockLocation = new bkLocation(player.world, blockButton.x, blockButton.y, blockButton.z );\n\
+bl}ckLocation.getBlock().getRelative(bkBlockFace."+ dropdown_direction +").setType(bkMaterial."+ dropdown_button_material +");\n\
+blockLocation.getBlock().getRelative(bkBlockFace."+ dropdown_direction +").setData("+ button_setdata +");\n";
   return code;
 };
 

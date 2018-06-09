@@ -630,7 +630,7 @@ Code.init = function () {
         });
 
     Code.bindClick('deployButton', function () {
-        var jscode = Blockly.JavaScript.workspaceToCode(Code.workspace);
+        var jscode = "var global = this;\n" + Blockly.JavaScript.workspaceToCode(Code.workspace);
         var titleRegexp = /command. '(.+)',/;
         var fname = titleRegexp.exec(jscode); //extract the name of the command
         if (fname === null) {
