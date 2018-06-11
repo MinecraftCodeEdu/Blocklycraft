@@ -595,6 +595,7 @@ Blockly.JavaScript['dispenser_direction'] = function(block) {
   var dropdown_item = block.getFieldValue('ITEM');
   var value_name = Blockly.JavaScript.valueToCode(block, 'ITEM_COUNT', Blockly.JavaScript.ORDER_ATOMIC);
   var dropdown_direction = block.getFieldValue('DIRECTION');
+  var dropdown_item = dropdown_item.split(':');
   var value_block_location = Blockly.JavaScript.valueToCode(block, 'BLOCK_LOCATION', Blockly.JavaScript.ORDER_ATOMIC);
   var code = "\
 player.getWorld().getBlockAt("+value_block_location+").setType(bkMaterial.DISPENSER);\n\
@@ -603,7 +604,7 @@ player.getWorld().getBlockAt("+value_block_location+").setData("+dropdown_direct
 var block = "+value_block_location+".getBlock();\n\
 var dispenser = block.getState();\n\
 var dispenserInv = dispenser.getInventory();\n\
-dispenserInv.addItem(new bkItemStack('"+dropdown_item+"', "+value_name+"));\n\
+containerInv.addItem(new bkItemStack('"+dropdown_item[0]+"', "+value_number+", "+dropdown_item[1]+"));\n\
 ";
   return code;
 };
@@ -614,6 +615,7 @@ Blockly.JavaScript['dispenser_drone'] = function(block) {
   var value_number = Blockly.JavaScript.valueToCode(block, 'number', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
   var dispenser_num = '23';
+  var dropdown_material = dropdown_material.split(':');
 
   var code = "\
 var droneData = theDrone.box('" + dispenser_num + ":" + dropdown_direction + "');\n\
@@ -622,7 +624,7 @@ block.setType(bkMaterial.DISPENSER);\n\
 var container = block.getState();\n\
 var containerInv = container.getInventory();\n\
 \n\
-containerInv.addItem(new bkItemStack('"+dropdown_material+"', "+value_number+"));\n\
+containerInv.addItem(new bkItemStack('"+dropdown_material[0]+"', "+value_number+", "+dropdown_material[1]+"));\n\
 ";
 
   return code;
