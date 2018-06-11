@@ -685,7 +685,7 @@ Blockly.JavaScript['redstone_comparator'] = function(block) {
   var checkbox_4 = block.getFieldValue('4') == 'TRUE';
   // TODO: Assemble JavaScript into code variable.
   if(checkbox_4) {
-    var code = "theDrone.box('149:" + Number(dropdown_direction+4) + "');\n";
+    var code = "theDrone.box('149:" + (Number(dropdown_direction) + 4) + "');\n";
   } else {
     var code = "theDrone.box('149:" + dropdown_direction + "');\n";
   }
