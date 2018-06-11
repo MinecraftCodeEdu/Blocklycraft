@@ -1019,3 +1019,34 @@ Blockly.Blocks['button_attached'] = {  /*버튼 블록(다른 블록과 합칠�
   }
 };
 
+Blockly.Blocks['door_drone'] = {  /*문 64:0 동쪽 64:1 남쪽 64:2 서쪽 64:3 북쪽 손잡이 왼
+쪽*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("문")
+        .appendField(new Blockly.FieldDropdown([["나무문","64"], ["철문","71"]]), "material");
+    this.appendDummyInput()
+        .appendField("방향")
+        .appendField(new Blockly.FieldDropdown([["동쪽","0"], ["남쪽","1"], ["서쪽","2"], ["북쪽","3"]]), "direction");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['flower_choice'] = {  /*꽃종류 변수*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("꽃")
+        .appendField(new Blockly.FieldDropdown([["민들레","'37'"], ["양귀비","'38'"], ["파란색난초","'38:1'"], ["보라색꽃","'38:2'"], ["파란색꽃","'38:3'"], ["빨간튤립","'38:4'"], ["주황튤립","'38:5'"], ["하얀튤립","'38:6'"], ["연보라튤립","'38:7'"], ["국화","'38:8'"]]), "FLOWERS");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+

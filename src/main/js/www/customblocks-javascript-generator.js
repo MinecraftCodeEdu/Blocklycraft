@@ -743,3 +743,19 @@ blockLocation.getBlock().getRelative(bkBlockFace."+ dropdown_direction +").setDa
   return code;
 };
 
+Blockly.JavaScript['door_drone'] = function(block) {
+  var dropdown_material = block.getFieldValue('material');
+  var dropdown_direction = block.getFieldValue('direction');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.theDrone.box('" + dropdown_material + ":" + dropdown_direction + "').up().box('64:9');\n";
+  return code;
+};
+
+Blockly.JavaScript['flower_choice'] = function(block) {
+  var dropdown_flowers = block.getFieldValue('FLOWERS');
+  // TODO: Assemble JavaScript into code variable.
+  var code = ""+dropdown_flowers+"";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
