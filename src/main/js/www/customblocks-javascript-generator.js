@@ -28,7 +28,7 @@ Blockly.JavaScript['drone'] = function (block) {
     var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
     var webip = window.myIP;
 
-    var code = "command( '" + webip + fname + "', function ( parameters, player ) {\nvar theDrone = new Drone(player);\nvar bkItemStack = Packages.org.bukkit.inventory.ItemStack;\nvar bkMaterial = Packages.org.bukkit.Material;\nvar bkLocation = Packages.org.bukkit.Location;\ntheDrone.up();\ntheDrone.chkpt('start');\n";
+    var code = "command( '" + webip + fname + "', function ( parameters, player ) {\nvar theDrone = new Drone(player);\nvar bkBlockFace = Packages.org.bukkit.block.BlockFace;\nvar bkItemStack = Packages.org.bukkit.inventory.ItemStack;\nvar bkMaterial = Packages.org.bukkit.Material;\nvar bkLocation = Packages.org.bukkit.Location;\ntheDrone.up();\ntheDrone.chkpt('start');\n";
     code = code + "var timeoutStop = new Date().getTime()+500;\n"; // set maximum run time for a script
     code = code + statements_statements;
     code = code + "});";
@@ -690,7 +690,9 @@ Blockly.JavaScript['delay_time'] = function(block) {
   var value_second = Blockly.JavaScript.valueToCode(block, 'SECOND', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_delay = Blockly.JavaScript.statementToCode(block, 'DELAY');
   // TODO: Assemble JavaScript into code variable.
-  var code = "setTimeout(function(){"+statements_delay+"},"+ Number(value_second*1000) +");\n";
+  var code = "\
+setTimeout(function(){"+statements_delay+"},"+Number(value_second*1000)+"+delay_add);\n\
+delay_add += "+ Number(value_second*1000) +";\n";
   return code;
 };
 
@@ -718,12 +720,12 @@ Blockly.JavaScript['button_attached'] = function(block) {
 
   // Case Button direction setData
   var button_setdata = "";
-  switch (dropdown_direction){
+  switch (dropdown_direction) {
     case "WEST" :
     button_setdata = 1;
     break;
     case "EAST" :
-    button_setdata = 2;      {
+    button_setdata = 2;      
     break;
     case "NORTH" :
     button_setdata = 3;
@@ -736,7 +738,7 @@ Blockly.JavaScript['button_attached'] = function(block) {
   var code = "\n\
 var blockButton = theDrone.box('"+ dropdown_block_material +"').back(2);\n\
 var blockLocation = new bkLocation(player.world, blockButton.x, blockButton.y, blockButton.z );\n\
-bl}ckLocation.getBlock().getRelative(bkBlockFace."+ dropdown_direction +").setType(bkMaterial."+ dropdown_button_material +");\n\
+blockLocation.getBlock().getRelative(bkBlockFace."+ dropdown_direction +").setType(bkMaterial."+ dropdown_button_material +");\n\
 blockLocation.getBlock().getRelative(bkBlockFace."+ dropdown_direction +").setData("+ button_setdata +");\n";
   return code;
 };

@@ -173,184 +173,189 @@ Walter Higgins
    * [events.serverShutdown()](#eventsservershutdown)
  * [Events Helper Module (SpigotMC version)](#events-helper-module-spigotmc-version)
    * [Usage](#usage-1)
-   * [events.blockFade()](#eventsblockfade)
-   * [events.blockFromTo()](#eventsblockfromto)
-   * [events.notePlay()](#eventsnoteplay)
-   * [events.blockPlace()](#eventsblockplace-1)
-   * [events.blockGrow()](#eventsblockgrow-1)
-   * [events.entityBlockForm()](#eventsentityblockform)
-   * [events.blockPistonExtend()](#eventsblockpistonextend)
-   * [events.blockPistonRetract()](#eventsblockpistonretract)
-   * [events.blockSpread()](#eventsblockspread)
-   * [events.blockBurn()](#eventsblockburn)
-   * [events.blockDamage()](#eventsblockdamage)
-   * [events.leavesDecay()](#eventsleavesdecay)
-   * [events.blockDispense()](#eventsblockdispense)
-   * [events.blockForm()](#eventsblockform)
-   * [events.blockMultiPlace()](#eventsblockmultiplace)
-   * [events.blockIgnite()](#eventsblockignite)
-   * [events.blockPhysics()](#eventsblockphysics-1)
-   * [events.blockRedstone()](#eventsblockredstone)
-   * [events.cauldronLevelChange()](#eventscauldronlevelchange)
-   * [events.blockCanBuild()](#eventsblockcanbuild)
-   * [events.signChange()](#eventssignchange-1)
-   * [events.blockExp()](#eventsblockexp)
-   * [events.blockExplode()](#eventsblockexplode)
-   * [events.blockBreak()](#eventsblockbreak)
-   * [events.prepareAnvil()](#eventsprepareanvil)
-   * [events.brew()](#eventsbrew)
-   * [events.inventoryClose()](#eventsinventoryclose)
-   * [events.inventoryDrag()](#eventsinventorydrag)
-   * [events.inventoryCreative()](#eventsinventorycreative)
-   * [events.prepareItemCraft()](#eventsprepareitemcraft)
-   * [events.craftItem()](#eventscraftitem)
-   * [events.inventoryClick()](#eventsinventoryclick)
-   * [events.brewingStandFuel()](#eventsbrewingstandfuel)
-   * [events.inventoryPickupItem()](#eventsinventorypickupitem)
-   * [events.furnaceExtract()](#eventsfurnaceextract)
-   * [events.inventory()](#eventsinventory-1)
-   * [events.furnaceBurn()](#eventsfurnaceburn)
-   * [events.furnaceSmelt()](#eventsfurnacesmelt)
-   * [events.inventoryOpen()](#eventsinventoryopen)
-   * [events.inventoryMoveItem()](#eventsinventorymoveitem)
-   * [events.hangingPlace()](#eventshangingplace)
-   * [events.hangingBreak()](#eventshangingbreak)
-   * [events.hangingBreakByEntity()](#eventshangingbreakbyentity)
-   * [events.entityToggleGlide()](#eventsentitytoggleglide)
-   * [events.itemSpawn()](#eventsitemspawn)
-   * [events.spawnerSpawn()](#eventsspawnerspawn)
-   * [events.foodLevelChange()](#eventsfoodlevelchange)
-   * [events.lingeringPotionSplash()](#eventslingeringpotionsplash)
-   * [events.entityShootBow()](#eventsentityshootbow)
-   * [events.entityTargetLivingEntity()](#eventsentitytargetlivingentity)
-   * [events.entityCombust()](#eventsentitycombust)
-   * [events.entityBreed()](#eventsentitybreed)
-   * [events.expBottle()](#eventsexpbottle)
-   * [events.slimeSplit()](#eventsslimesplit-1)
-   * [events.entityDeath()](#eventsentitydeath-1)
-   * [events.entityAirChange()](#eventsentityairchange)
-   * [events.projectileLaunch()](#eventsprojectilelaunch)
-   * [events.entityPortal()](#eventsentityportal)
-   * [events.horseJump()](#eventshorsejump)
-   * [events.fireworkExplode()](#eventsfireworkexplode-1)
-   * [events.entityExplode()](#eventsentityexplode)
-   * [events.itemMerge()](#eventsitemmerge)
-   * [events.entitySpawn()](#eventsentityspawn-1)
-   * [events.projectileHit()](#eventsprojectilehit-1)
-   * [events.creatureSpawn()](#eventscreaturespawn)
-   * [events.entityPortalExit()](#eventsentityportalexit)
-   * [events.entityTame()](#eventsentitytame-1)
-   * [events.entityPortalEnter()](#eventsentityportalenter)
-   * [events.playerLeashEntity()](#eventsplayerleashentity)
-   * [events.entityDamage()](#eventsentitydamage)
-   * [events.pigZap()](#eventspigzap)
-   * [events.entityCombustByEntity()](#eventsentitycombustbyentity)
-   * [events.entityChangeBlock()](#eventsentitychangeblock)
-   * [events.areaEffectCloudApply()](#eventsareaeffectcloudapply)
-   * [events.creeperPower()](#eventscreeperpower)
-   * [events.sheepDyeWool()](#eventssheepdyewool)
-   * [events.playerDeath()](#eventsplayerdeath-1)
-   * [events.villagerReplenishTrade()](#eventsvillagerreplenishtrade)
-   * [events.entityCombustByBlock()](#eventsentitycombustbyblock)
-   * [events.entityResurrect()](#eventsentityresurrect)
-   * [events.villagerAcquireTrade()](#eventsvillageracquiretrade)
-   * [events.enderDragonChangePhase()](#eventsenderdragonchangephase)
-   * [events.entityCreatePortal()](#eventsentitycreateportal)
-   * [events.sheepRegrowWool()](#eventssheepregrowwool)
-   * [events.entityRegainHealth()](#eventsentityregainhealth)
-   * [events.entityInteract()](#eventsentityinteract)
-   * [events.potionSplash()](#eventspotionsplash)
-   * [events.entityTarget()](#eventsentitytarget)
-   * [events.entityBreakDoor()](#eventsentitybreakdoor)
-   * [events.entityUnleash()](#eventsentityunleash)
-   * [events.entityDamageByBlock()](#eventsentitydamagebyblock)
-   * [events.entityTeleport()](#eventsentityteleport)
-   * [events.itemDespawn()](#eventsitemdespawn)
-   * [events.explosionPrime()](#eventsexplosionprime)
-   * [events.entityDamageByEntity()](#eventsentitydamagebyentity)
-   * [events.portalCreate()](#eventsportalcreate-1)
-   * [events.worldSave()](#eventsworldsave)
-   * [events.worldLoad()](#eventsworldload)
-   * [events.chunkLoad()](#eventschunkload)
-   * [events.chunkPopulate()](#eventschunkpopulate)
-   * [events.chunkUnload()](#eventschunkunload-1)
-   * [events.structureGrow()](#eventsstructuregrow)
-   * [events.worldInit()](#eventsworldinit)
-   * [events.spawnChange()](#eventsspawnchange)
-   * [events.worldUnload()](#eventsworldunload)
-   * [events.playerShearEntity()](#eventsplayershearentity)
-   * [events.playerVelocity()](#eventsplayervelocity)
-   * [events.playerBucketFill()](#eventsplayerbucketfill)
-   * [events.playerFish()](#eventsplayerfish)
-   * [events.playerGameModeChange()](#eventsplayergamemodechange)
-   * [events.playerCommandPreprocess()](#eventsplayercommandpreprocess)
-   * [events.playerInteract()](#eventsplayerinteract)
-   * [events.playerInteractAtEntity()](#eventsplayerinteractatentity)
-   * [events.playerPortal()](#eventsplayerportal)
-   * [events.playerPreLogin()](#eventsplayerprelogin)
-   * [events.playerMove()](#eventsplayermove-1)
-   * [events.playerQuit()](#eventsplayerquit)
-   * [events.playerToggleSneak()](#eventsplayertogglesneak)
-   * [events.playerPickupArrow()](#eventsplayerpickuparrow)
-   * [events.playerBedLeave()](#eventsplayerbedleave)
-   * [events.playerChangedMainHand()](#eventsplayerchangedmainhand)
-   * [events.playerEditBook()](#eventsplayereditbook)
-   * [events.playerAnimation()](#eventsplayeranimation)
-   * [events.playerResourcePackStatus()](#eventsplayerresourcepackstatus)
-   * [events.playerItemDamage()](#eventsplayeritemdamage)
-   * [events.playerBucketEmpty()](#eventsplayerbucketempty)
-   * [events.playerExpChange()](#eventsplayerexpchange)
-   * [events.asyncPlayerChat()](#eventsasyncplayerchat)
-   * [events.playerItemBreak()](#eventsplayeritembreak)
-   * [events.playerUnleashEntity()](#eventsplayerunleashentity)
-   * [events.playerRespawn()](#eventsplayerrespawn)
-   * [events.playerDropItem()](#eventsplayerdropitem)
-   * [events.playerItemHeld()](#eventsplayeritemheld)
-   * [events.playerTeleport()](#eventsplayerteleport)
-   * [events.playerInteractEntity()](#eventsplayerinteractentity)
-   * [events.playerEggThrow()](#eventsplayereggthrow)
-   * [events.playerChat()](#eventsplayerchat)
-   * [events.playerRegisterChannel()](#eventsplayerregisterchannel)
-   * [events.playerSwapHandItems()](#eventsplayerswaphanditems)
-   * [events.playerChangedWorld()](#eventsplayerchangedworld)
-   * [events.playerLevelChange()](#eventsplayerlevelchange)
-   * [events.playerPickupItem()](#eventsplayerpickupitem)
-   * [events.asyncPlayerPreLogin()](#eventsasyncplayerprelogin)
-   * [events.playerUnregisterChannel()](#eventsplayerunregisterchannel)
-   * [events.playerStatisticIncrement()](#eventsplayerstatisticincrement)
-   * [events.playerBedEnter()](#eventsplayerbedenter)
-   * [events.playerKick()](#eventsplayerkick)
-   * [events.playerToggleSprint()](#eventsplayertogglesprint)
-   * [events.playerAchievementAwarded()](#eventsplayerachievementawarded)
-   * [events.playerJoin()](#eventsplayerjoin)
-   * [events.playerToggleFlight()](#eventsplayertoggleflight)
-   * [events.playerArmorStandManipulate()](#eventsplayerarmorstandmanipulate)
-   * [events.playerLogin()](#eventsplayerlogin)
-   * [events.playerItemConsume()](#eventsplayeritemconsume)
-   * [events.playerChatTabComplete()](#eventsplayerchattabcomplete)
-   * [events.weatherChange()](#eventsweatherchange-1)
-   * [events.thunderChange()](#eventsthunderchange)
-   * [events.lightningStrike()](#eventslightningstrike-1)
-   * [events.vehicleMove()](#eventsvehiclemove-1)
-   * [events.vehicleDamage()](#eventsvehicledamage-1)
+   * [events.vehicleCreate()](#eventsvehiclecreate)
+   * [events.vehicleExit()](#eventsvehicleexit-1)
+   * [events.vehicleEntityCollision()](#eventsvehicleentitycollision)
    * [events.vehicleDestroy()](#eventsvehicledestroy-1)
    * [events.vehicleUpdate()](#eventsvehicleupdate)
-   * [events.vehicleCreate()](#eventsvehiclecreate)
-   * [events.vehicleEntityCollision()](#eventsvehicleentitycollision)
-   * [events.vehicleBlockCollision()](#eventsvehicleblockcollision)
    * [events.vehicleEnter()](#eventsvehicleenter-1)
-   * [events.vehicleExit()](#eventsvehicleexit-1)
+   * [events.vehicleBlockCollision()](#eventsvehicleblockcollision)
+   * [events.vehicleMove()](#eventsvehiclemove-1)
+   * [events.vehicleDamage()](#eventsvehicledamage-1)
+   * [events.thunderChange()](#eventsthunderchange)
+   * [events.lightningStrike()](#eventslightningstrike-1)
+   * [events.weatherChange()](#eventsweatherchange-1)
    * [events.prepareItemEnchant()](#eventsprepareitemenchant)
    * [events.enchantItem()](#eventsenchantitem)
-   * [events.pluginDisable()](#eventsplugindisable-1)
-   * [events.serverListPing()](#eventsserverlistping-1)
+   * [events.serviceUnregister()](#eventsserviceunregister)
+   * [events.mapInitialize()](#eventsmapinitialize)
+   * [events.tabComplete()](#eventstabcomplete)
+   * [events.pluginEnable()](#eventspluginenable-1)
+   * [events.broadcastMessage()](#eventsbroadcastmessage)
    * [events.serviceRegister()](#eventsserviceregister)
    * [events.serverCommand()](#eventsservercommand)
+   * [events.pluginDisable()](#eventsplugindisable-1)
    * [events.remoteServerCommand()](#eventsremoteservercommand)
-   * [events.pluginEnable()](#eventspluginenable-1)
-   * [events.serviceUnregister()](#eventsserviceunregister)
-   * [events.tabComplete()](#eventstabcomplete)
-   * [events.mapInitialize()](#eventsmapinitialize)
+   * [events.serverListPing()](#eventsserverlistping-1)
+   * [events.blockSpread()](#eventsblockspread)
+   * [events.blockRedstone()](#eventsblockredstone)
+   * [events.cauldronLevelChange()](#eventscauldronlevelchange)
+   * [events.blockExplode()](#eventsblockexplode)
+   * [events.leavesDecay()](#eventsleavesdecay)
+   * [events.blockFade()](#eventsblockfade)
+   * [events.entityBlockForm()](#eventsentityblockform)
+   * [events.blockGrow()](#eventsblockgrow-1)
+   * [events.blockIgnite()](#eventsblockignite)
+   * [events.blockForm()](#eventsblockform)
+   * [events.blockPistonRetract()](#eventsblockpistonretract)
+   * [events.blockPlace()](#eventsblockplace-1)
+   * [events.blockPistonExtend()](#eventsblockpistonextend)
+   * [events.blockExp()](#eventsblockexp)
+   * [events.blockCanBuild()](#eventsblockcanbuild)
+   * [events.blockFromTo()](#eventsblockfromto)
+   * [events.blockBurn()](#eventsblockburn)
+   * [events.signChange()](#eventssignchange-1)
+   * [events.blockBreak()](#eventsblockbreak)
+   * [events.notePlay()](#eventsnoteplay)
+   * [events.blockPhysics()](#eventsblockphysics-1)
+   * [events.blockDamage()](#eventsblockdamage)
+   * [events.blockDispense()](#eventsblockdispense)
+   * [events.blockMultiPlace()](#eventsblockmultiplace)
+   * [events.playerQuit()](#eventsplayerquit)
+   * [events.playerItemHeld()](#eventsplayeritemheld)
+   * [events.playerEggThrow()](#eventsplayereggthrow)
+   * [events.playerRegisterChannel()](#eventsplayerregisterchannel)
+   * [events.playerToggleSneak()](#eventsplayertogglesneak)
+   * [events.playerJoin()](#eventsplayerjoin)
+   * [events.playerAdvancementDone()](#eventsplayeradvancementdone)
+   * [events.playerToggleSprint()](#eventsplayertogglesprint)
+   * [events.playerVelocity()](#eventsplayervelocity)
+   * [events.playerUnregisterChannel()](#eventsplayerunregisterchannel)
+   * [events.playerItemConsume()](#eventsplayeritemconsume)
+   * [events.playerPreLogin()](#eventsplayerprelogin)
+   * [events.playerPickupArrow()](#eventsplayerpickuparrow)
+   * [events.playerBedLeave()](#eventsplayerbedleave)
+   * [events.playerInteractEntity()](#eventsplayerinteractentity)
+   * [events.playerMove()](#eventsplayermove-1)
+   * [events.playerAnimation()](#eventsplayeranimation)
+   * [events.playerChat()](#eventsplayerchat)
+   * [events.playerInteractAtEntity()](#eventsplayerinteractatentity)
+   * [events.playerToggleFlight()](#eventsplayertoggleflight)
+   * [events.playerEditBook()](#eventsplayereditbook)
+   * [events.playerInteract()](#eventsplayerinteract)
+   * [events.playerStatisticIncrement()](#eventsplayerstatisticincrement)
+   * [events.playerPickupItem()](#eventsplayerpickupitem)
+   * [events.playerSwapHandItems()](#eventsplayerswaphanditems)
+   * [events.playerBucketEmpty()](#eventsplayerbucketempty)
+   * [events.playerItemBreak()](#eventsplayeritembreak)
+   * [events.playerPortal()](#eventsplayerportal)
+   * [events.playerCommandPreprocess()](#eventsplayercommandpreprocess)
+   * [events.playerChangedWorld()](#eventsplayerchangedworld)
+   * [events.asyncPlayerChat()](#eventsasyncplayerchat)
+   * [events.playerChangedMainHand()](#eventsplayerchangedmainhand)
+   * [events.playerLevelChange()](#eventsplayerlevelchange)
+   * [events.playerArmorStandManipulate()](#eventsplayerarmorstandmanipulate)
+   * [events.playerExpChange()](#eventsplayerexpchange)
+   * [events.playerLogin()](#eventsplayerlogin)
+   * [events.playerItemMend()](#eventsplayeritemmend)
+   * [events.playerAchievementAwarded()](#eventsplayerachievementawarded)
+   * [events.playerRespawn()](#eventsplayerrespawn)
+   * [events.asyncPlayerPreLogin()](#eventsasyncplayerprelogin)
+   * [events.playerItemDamage()](#eventsplayeritemdamage)
+   * [events.playerBedEnter()](#eventsplayerbedenter)
+   * [events.playerChatTabComplete()](#eventsplayerchattabcomplete)
+   * [events.playerTeleport()](#eventsplayerteleport)
+   * [events.playerBucketFill()](#eventsplayerbucketfill)
+   * [events.playerResourcePackStatus()](#eventsplayerresourcepackstatus)
+   * [events.playerFish()](#eventsplayerfish)
+   * [events.playerKick()](#eventsplayerkick)
+   * [events.playerDropItem()](#eventsplayerdropitem)
+   * [events.playerGameModeChange()](#eventsplayergamemodechange)
+   * [events.playerShearEntity()](#eventsplayershearentity)
+   * [events.playerUnleashEntity()](#eventsplayerunleashentity)
+   * [events.playerLocaleChange()](#eventsplayerlocalechange)
+   * [events.creatureSpawn()](#eventscreaturespawn)
+   * [events.entityResurrect()](#eventsentityresurrect)
+   * [events.villagerAcquireTrade()](#eventsvillageracquiretrade)
+   * [events.entityTame()](#eventsentitytame-1)
+   * [events.lingeringPotionSplash()](#eventslingeringpotionsplash)
+   * [events.potionSplash()](#eventspotionsplash)
+   * [events.entityExplode()](#eventsentityexplode)
+   * [events.entityBreakDoor()](#eventsentitybreakdoor)
+   * [events.entityPortal()](#eventsentityportal)
+   * [events.creeperPower()](#eventscreeperpower)
+   * [events.areaEffectCloudApply()](#eventsareaeffectcloudapply)
+   * [events.itemDespawn()](#eventsitemdespawn)
+   * [events.villagerReplenishTrade()](#eventsvillagerreplenishtrade)
+   * [events.entityTarget()](#eventsentitytarget)
+   * [events.entitySpawn()](#eventsentityspawn-1)
+   * [events.entityPickupItem()](#eventsentitypickupitem)
+   * [events.entityDamageByBlock()](#eventsentitydamagebyblock)
+   * [events.entityChangeBlock()](#eventsentitychangeblock)
+   * [events.entityDamage()](#eventsentitydamage)
+   * [events.playerDeath()](#eventsplayerdeath-1)
+   * [events.entityTargetLivingEntity()](#eventsentitytargetlivingentity)
+   * [events.entityToggleGlide()](#eventsentitytoggleglide)
+   * [events.entityDamageByEntity()](#eventsentitydamagebyentity)
+   * [events.explosionPrime()](#eventsexplosionprime)
+   * [events.playerLeashEntity()](#eventsplayerleashentity)
+   * [events.pigZap()](#eventspigzap)
+   * [events.enderDragonChangePhase()](#eventsenderdragonchangephase)
+   * [events.entityTeleport()](#eventsentityteleport)
+   * [events.entityCombustByEntity()](#eventsentitycombustbyentity)
+   * [events.projectileLaunch()](#eventsprojectilelaunch)
+   * [events.entityCombustByBlock()](#eventsentitycombustbyblock)
+   * [events.entityCombust()](#eventsentitycombust)
+   * [events.entityAirChange()](#eventsentityairchange)
+   * [events.entityBreed()](#eventsentitybreed)
+   * [events.entityPortalExit()](#eventsentityportalexit)
+   * [events.entityUnleash()](#eventsentityunleash)
+   * [events.entityInteract()](#eventsentityinteract)
+   * [events.fireworkExplode()](#eventsfireworkexplode-1)
+   * [events.entityCreatePortal()](#eventsentitycreateportal)
+   * [events.entityDeath()](#eventsentitydeath-1)
+   * [events.spawnerSpawn()](#eventsspawnerspawn)
+   * [events.entityShootBow()](#eventsentityshootbow)
+   * [events.foodLevelChange()](#eventsfoodlevelchange)
+   * [events.slimeSplit()](#eventsslimesplit-1)
+   * [events.entityRegainHealth()](#eventsentityregainhealth)
+   * [events.sheepDyeWool()](#eventssheepdyewool)
+   * [events.expBottle()](#eventsexpbottle)
+   * [events.horseJump()](#eventshorsejump)
+   * [events.sheepRegrowWool()](#eventssheepregrowwool)
+   * [events.projectileHit()](#eventsprojectilehit-1)
+   * [events.entityPortalEnter()](#eventsentityportalenter)
+   * [events.itemSpawn()](#eventsitemspawn)
+   * [events.itemMerge()](#eventsitemmerge)
+   * [events.hangingBreakByEntity()](#eventshangingbreakbyentity)
+   * [events.hangingBreak()](#eventshangingbreak)
+   * [events.hangingPlace()](#eventshangingplace)
+   * [events.brew()](#eventsbrew)
+   * [events.inventory()](#eventsinventory-1)
+   * [events.brewingStandFuel()](#eventsbrewingstandfuel)
+   * [events.inventoryDrag()](#eventsinventorydrag)
+   * [events.inventoryMoveItem()](#eventsinventorymoveitem)
+   * [events.craftItem()](#eventscraftitem)
+   * [events.inventoryClose()](#eventsinventoryclose)
+   * [events.prepareItemCraft()](#eventsprepareitemcraft)
+   * [events.inventoryOpen()](#eventsinventoryopen)
+   * [events.furnaceSmelt()](#eventsfurnacesmelt)
+   * [events.prepareAnvil()](#eventsprepareanvil)
+   * [events.furnaceExtract()](#eventsfurnaceextract)
+   * [events.furnaceBurn()](#eventsfurnaceburn)
+   * [events.inventoryPickupItem()](#eventsinventorypickupitem)
+   * [events.inventoryCreative()](#eventsinventorycreative)
+   * [events.inventoryClick()](#eventsinventoryclick)
+   * [events.chunkUnload()](#eventschunkunload-1)
+   * [events.worldSave()](#eventsworldsave)
+   * [events.spawnChange()](#eventsspawnchange)
+   * [events.structureGrow()](#eventsstructuregrow)
+   * [events.chunkLoad()](#eventschunkload)
+   * [events.worldInit()](#eventsworldinit)
+   * [events.portalCreate()](#eventsportalcreate-1)
+   * [events.worldLoad()](#eventsworldload)
+   * [events.chunkPopulate()](#eventschunkpopulate)
+   * [events.worldUnload()](#eventsworldunload)
  * [console global variable](#console-global-variable)
    * [Example](#example)
    * [Using string substitutions](#using-string-substitutions)
@@ -2067,1283 +2072,27 @@ to choose from any of the approx. 160 different event types to listen to.
 
 The crucial difference is that the events module now has functions for each of the built-in events. The functions are accessible via TAB-completion so will help beginning programmers to explore the events at the server console window.
 
-### events.blockFade()
+### events.vehicleCreate()
 
 #### Parameters 
 
- * callback - A function which is called whenever the [block.BlockFadeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockFadeEvent.html) is fired
+ * callback - A function which is called whenever the [vehicle.VehicleCreateEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/vehicle/VehicleCreateEvent.html) is fired
 
  * priority - optional - see events.on() for more information.
 
-### events.blockFromTo()
+### events.vehicleExit()
 
 #### Parameters 
 
- * callback - A function which is called whenever the [block.BlockFromToEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockFromToEvent.html) is fired
+ * callback - A function which is called whenever the [vehicle.VehicleExitEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/vehicle/VehicleExitEvent.html) is fired
 
  * priority - optional - see events.on() for more information.
 
-### events.notePlay()
+### events.vehicleEntityCollision()
 
 #### Parameters 
 
- * callback - A function which is called whenever the [block.NotePlayEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/NotePlayEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.blockPlace()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [block.BlockPlaceEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockPlaceEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.blockGrow()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [block.BlockGrowEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockGrowEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityBlockForm()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [block.EntityBlockFormEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/EntityBlockFormEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.blockPistonExtend()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [block.BlockPistonExtendEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockPistonExtendEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.blockPistonRetract()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [block.BlockPistonRetractEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockPistonRetractEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.blockSpread()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [block.BlockSpreadEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockSpreadEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.blockBurn()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [block.BlockBurnEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockBurnEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.blockDamage()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [block.BlockDamageEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockDamageEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.leavesDecay()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [block.LeavesDecayEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/LeavesDecayEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.blockDispense()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [block.BlockDispenseEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockDispenseEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.blockForm()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [block.BlockFormEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockFormEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.blockMultiPlace()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [block.BlockMultiPlaceEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockMultiPlaceEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.blockIgnite()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [block.BlockIgniteEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockIgniteEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.blockPhysics()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [block.BlockPhysicsEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockPhysicsEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.blockRedstone()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [block.BlockRedstoneEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockRedstoneEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.cauldronLevelChange()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [block.CauldronLevelChangeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/CauldronLevelChangeEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.blockCanBuild()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [block.BlockCanBuildEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockCanBuildEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.signChange()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [block.SignChangeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/SignChangeEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.blockExp()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [block.BlockExpEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockExpEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.blockExplode()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [block.BlockExplodeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockExplodeEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.blockBreak()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [block.BlockBreakEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockBreakEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.prepareAnvil()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [inventory.PrepareAnvilEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/PrepareAnvilEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.brew()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [inventory.BrewEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/BrewEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.inventoryClose()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [inventory.InventoryCloseEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/InventoryCloseEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.inventoryDrag()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [inventory.InventoryDragEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/InventoryDragEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.inventoryCreative()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [inventory.InventoryCreativeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/InventoryCreativeEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.prepareItemCraft()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [inventory.PrepareItemCraftEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/PrepareItemCraftEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.craftItem()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [inventory.CraftItemEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/CraftItemEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.inventoryClick()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [inventory.InventoryClickEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/InventoryClickEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.brewingStandFuel()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [inventory.BrewingStandFuelEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/BrewingStandFuelEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.inventoryPickupItem()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [inventory.InventoryPickupItemEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/InventoryPickupItemEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.furnaceExtract()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [inventory.FurnaceExtractEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/FurnaceExtractEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.inventory()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [inventory.InventoryEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/InventoryEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.furnaceBurn()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [inventory.FurnaceBurnEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/FurnaceBurnEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.furnaceSmelt()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [inventory.FurnaceSmeltEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/FurnaceSmeltEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.inventoryOpen()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [inventory.InventoryOpenEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/InventoryOpenEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.inventoryMoveItem()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [inventory.InventoryMoveItemEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/InventoryMoveItemEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.hangingPlace()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [hanging.HangingPlaceEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/hanging/HangingPlaceEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.hangingBreak()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [hanging.HangingBreakEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/hanging/HangingBreakEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.hangingBreakByEntity()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [hanging.HangingBreakByEntityEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/hanging/HangingBreakByEntityEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityToggleGlide()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityToggleGlideEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityToggleGlideEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.itemSpawn()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.ItemSpawnEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/ItemSpawnEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.spawnerSpawn()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.SpawnerSpawnEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/SpawnerSpawnEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.foodLevelChange()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.FoodLevelChangeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/FoodLevelChangeEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.lingeringPotionSplash()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.LingeringPotionSplashEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/LingeringPotionSplashEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityShootBow()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityShootBowEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityShootBowEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityTargetLivingEntity()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityTargetLivingEntityEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityTargetLivingEntityEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityCombust()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityCombustEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityCombustEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityBreed()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityBreedEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityBreedEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.expBottle()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.ExpBottleEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/ExpBottleEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.slimeSplit()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.SlimeSplitEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/SlimeSplitEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityDeath()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityDeathEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityDeathEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityAirChange()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityAirChangeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityAirChangeEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.projectileLaunch()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.ProjectileLaunchEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/ProjectileLaunchEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityPortal()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityPortalEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityPortalEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.horseJump()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.HorseJumpEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/HorseJumpEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.fireworkExplode()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.FireworkExplodeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/FireworkExplodeEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityExplode()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityExplodeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityExplodeEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.itemMerge()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.ItemMergeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/ItemMergeEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entitySpawn()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntitySpawnEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntitySpawnEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.projectileHit()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.ProjectileHitEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/ProjectileHitEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.creatureSpawn()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.CreatureSpawnEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/CreatureSpawnEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityPortalExit()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityPortalExitEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityPortalExitEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityTame()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityTameEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityTameEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityPortalEnter()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityPortalEnterEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityPortalEnterEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerLeashEntity()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.PlayerLeashEntityEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/PlayerLeashEntityEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityDamage()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityDamageEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityDamageEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.pigZap()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.PigZapEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/PigZapEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityCombustByEntity()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityCombustByEntityEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityCombustByEntityEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityChangeBlock()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityChangeBlockEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityChangeBlockEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.areaEffectCloudApply()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.AreaEffectCloudApplyEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/AreaEffectCloudApplyEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.creeperPower()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.CreeperPowerEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/CreeperPowerEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.sheepDyeWool()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.SheepDyeWoolEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/SheepDyeWoolEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerDeath()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.PlayerDeathEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/PlayerDeathEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.villagerReplenishTrade()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.VillagerReplenishTradeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/VillagerReplenishTradeEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityCombustByBlock()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityCombustByBlockEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityCombustByBlockEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityResurrect()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityResurrectEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityResurrectEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.villagerAcquireTrade()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.VillagerAcquireTradeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/VillagerAcquireTradeEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.enderDragonChangePhase()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EnderDragonChangePhaseEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EnderDragonChangePhaseEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityCreatePortal()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityCreatePortalEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityCreatePortalEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.sheepRegrowWool()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.SheepRegrowWoolEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/SheepRegrowWoolEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityRegainHealth()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityRegainHealthEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityRegainHealthEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityInteract()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityInteractEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityInteractEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.potionSplash()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.PotionSplashEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/PotionSplashEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityTarget()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityTargetEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityTargetEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityBreakDoor()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityBreakDoorEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityBreakDoorEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityUnleash()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityUnleashEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityUnleashEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityDamageByBlock()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityDamageByBlockEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityDamageByBlockEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityTeleport()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityTeleportEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityTeleportEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.itemDespawn()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.ItemDespawnEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/ItemDespawnEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.explosionPrime()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.ExplosionPrimeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/ExplosionPrimeEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.entityDamageByEntity()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [entity.EntityDamageByEntityEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityDamageByEntityEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.portalCreate()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [world.PortalCreateEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/world/PortalCreateEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.worldSave()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [world.WorldSaveEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/world/WorldSaveEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.worldLoad()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [world.WorldLoadEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/world/WorldLoadEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.chunkLoad()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [world.ChunkLoadEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/world/ChunkLoadEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.chunkPopulate()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [world.ChunkPopulateEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/world/ChunkPopulateEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.chunkUnload()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [world.ChunkUnloadEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/world/ChunkUnloadEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.structureGrow()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [world.StructureGrowEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/world/StructureGrowEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.worldInit()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [world.WorldInitEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/world/WorldInitEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.spawnChange()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [world.SpawnChangeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/world/SpawnChangeEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.worldUnload()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [world.WorldUnloadEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/world/WorldUnloadEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerShearEntity()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerShearEntityEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerShearEntityEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerVelocity()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerVelocityEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerVelocityEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerBucketFill()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerBucketFillEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerBucketFillEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerFish()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerFishEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerFishEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerGameModeChange()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerGameModeChangeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerGameModeChangeEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerCommandPreprocess()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerCommandPreprocessEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerCommandPreprocessEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerInteract()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerInteractEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerInteractEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerInteractAtEntity()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerInteractAtEntityEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerInteractAtEntityEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerPortal()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerPortalEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerPortalEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerPreLogin()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerPreLoginEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerPreLoginEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerMove()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerMoveEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerMoveEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerQuit()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerQuitEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerQuitEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerToggleSneak()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerToggleSneakEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerToggleSneakEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerPickupArrow()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerPickupArrowEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerPickupArrowEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerBedLeave()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerBedLeaveEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerBedLeaveEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerChangedMainHand()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerChangedMainHandEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerChangedMainHandEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerEditBook()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerEditBookEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerEditBookEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerAnimation()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerAnimationEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerAnimationEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerResourcePackStatus()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerResourcePackStatusEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerResourcePackStatusEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerItemDamage()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerItemDamageEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerItemDamageEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerBucketEmpty()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerBucketEmptyEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerBucketEmptyEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerExpChange()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerExpChangeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerExpChangeEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.asyncPlayerChat()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.AsyncPlayerChatEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/AsyncPlayerChatEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerItemBreak()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerItemBreakEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerItemBreakEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerUnleashEntity()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerUnleashEntityEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerUnleashEntityEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerRespawn()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerRespawnEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerRespawnEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerDropItem()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerDropItemEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerDropItemEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerItemHeld()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerItemHeldEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerItemHeldEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerTeleport()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerTeleportEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerTeleportEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerInteractEntity()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerInteractEntityEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerInteractEntityEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerEggThrow()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerEggThrowEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerEggThrowEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerChat()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerChatEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerChatEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerRegisterChannel()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerRegisterChannelEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerRegisterChannelEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerSwapHandItems()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerSwapHandItemsEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerSwapHandItemsEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerChangedWorld()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerChangedWorldEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerChangedWorldEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerLevelChange()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerLevelChangeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerLevelChangeEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerPickupItem()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerPickupItemEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerPickupItemEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.asyncPlayerPreLogin()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.AsyncPlayerPreLoginEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/AsyncPlayerPreLoginEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerUnregisterChannel()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerUnregisterChannelEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerUnregisterChannelEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerStatisticIncrement()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerStatisticIncrementEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerStatisticIncrementEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerBedEnter()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerBedEnterEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerBedEnterEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerKick()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerKickEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerKickEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerToggleSprint()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerToggleSprintEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerToggleSprintEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerAchievementAwarded()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerAchievementAwardedEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerAchievementAwardedEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerJoin()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerJoinEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerJoinEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerToggleFlight()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerToggleFlightEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerToggleFlightEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerArmorStandManipulate()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerArmorStandManipulateEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerArmorStandManipulateEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerLogin()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerLoginEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerLoginEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerItemConsume()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerItemConsumeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerItemConsumeEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.playerChatTabComplete()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [player.PlayerChatTabCompleteEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerChatTabCompleteEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.weatherChange()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [weather.WeatherChangeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/weather/WeatherChangeEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.thunderChange()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [weather.ThunderChangeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/weather/ThunderChangeEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.lightningStrike()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [weather.LightningStrikeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/weather/LightningStrikeEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.vehicleMove()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [vehicle.VehicleMoveEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/vehicle/VehicleMoveEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.vehicleDamage()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [vehicle.VehicleDamageEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/vehicle/VehicleDamageEvent.html) is fired
+ * callback - A function which is called whenever the [vehicle.VehicleEntityCollisionEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/vehicle/VehicleEntityCollisionEvent.html) is fired
 
  * priority - optional - see events.on() for more information.
 
@@ -3363,19 +2112,11 @@ The crucial difference is that the events module now has functions for each of t
 
  * priority - optional - see events.on() for more information.
 
-### events.vehicleCreate()
+### events.vehicleEnter()
 
 #### Parameters 
 
- * callback - A function which is called whenever the [vehicle.VehicleCreateEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/vehicle/VehicleCreateEvent.html) is fired
-
- * priority - optional - see events.on() for more information.
-
-### events.vehicleEntityCollision()
-
-#### Parameters 
-
- * callback - A function which is called whenever the [vehicle.VehicleEntityCollisionEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/vehicle/VehicleEntityCollisionEvent.html) is fired
+ * callback - A function which is called whenever the [vehicle.VehicleEnterEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/vehicle/VehicleEnterEvent.html) is fired
 
  * priority - optional - see events.on() for more information.
 
@@ -3387,19 +2128,43 @@ The crucial difference is that the events module now has functions for each of t
 
  * priority - optional - see events.on() for more information.
 
-### events.vehicleEnter()
+### events.vehicleMove()
 
 #### Parameters 
 
- * callback - A function which is called whenever the [vehicle.VehicleEnterEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/vehicle/VehicleEnterEvent.html) is fired
+ * callback - A function which is called whenever the [vehicle.VehicleMoveEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/vehicle/VehicleMoveEvent.html) is fired
 
  * priority - optional - see events.on() for more information.
 
-### events.vehicleExit()
+### events.vehicleDamage()
 
 #### Parameters 
 
- * callback - A function which is called whenever the [vehicle.VehicleExitEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/vehicle/VehicleExitEvent.html) is fired
+ * callback - A function which is called whenever the [vehicle.VehicleDamageEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/vehicle/VehicleDamageEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.thunderChange()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [weather.ThunderChangeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/weather/ThunderChangeEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.lightningStrike()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [weather.LightningStrikeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/weather/LightningStrikeEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.weatherChange()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [weather.WeatherChangeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/weather/WeatherChangeEvent.html) is fired
 
  * priority - optional - see events.on() for more information.
 
@@ -3419,19 +2184,43 @@ The crucial difference is that the events module now has functions for each of t
 
  * priority - optional - see events.on() for more information.
 
-### events.pluginDisable()
+### events.serviceUnregister()
 
 #### Parameters 
 
- * callback - A function which is called whenever the [server.PluginDisableEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/server/PluginDisableEvent.html) is fired
+ * callback - A function which is called whenever the [server.ServiceUnregisterEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/server/ServiceUnregisterEvent.html) is fired
 
  * priority - optional - see events.on() for more information.
 
-### events.serverListPing()
+### events.mapInitialize()
 
 #### Parameters 
 
- * callback - A function which is called whenever the [server.ServerListPingEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/server/ServerListPingEvent.html) is fired
+ * callback - A function which is called whenever the [server.MapInitializeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/server/MapInitializeEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.tabComplete()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [server.TabCompleteEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/server/TabCompleteEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.pluginEnable()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [server.PluginEnableEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/server/PluginEnableEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.broadcastMessage()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [server.BroadcastMessageEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/server/BroadcastMessageEvent.html) is fired
 
  * priority - optional - see events.on() for more information.
 
@@ -3451,6 +2240,14 @@ The crucial difference is that the events module now has functions for each of t
 
  * priority - optional - see events.on() for more information.
 
+### events.pluginDisable()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [server.PluginDisableEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/server/PluginDisableEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
 ### events.remoteServerCommand()
 
 #### Parameters 
@@ -3459,35 +2256,1283 @@ The crucial difference is that the events module now has functions for each of t
 
  * priority - optional - see events.on() for more information.
 
-### events.pluginEnable()
+### events.serverListPing()
 
 #### Parameters 
 
- * callback - A function which is called whenever the [server.PluginEnableEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/server/PluginEnableEvent.html) is fired
+ * callback - A function which is called whenever the [server.ServerListPingEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/server/ServerListPingEvent.html) is fired
 
  * priority - optional - see events.on() for more information.
 
-### events.serviceUnregister()
+### events.blockSpread()
 
 #### Parameters 
 
- * callback - A function which is called whenever the [server.ServiceUnregisterEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/server/ServiceUnregisterEvent.html) is fired
+ * callback - A function which is called whenever the [block.BlockSpreadEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockSpreadEvent.html) is fired
 
  * priority - optional - see events.on() for more information.
 
-### events.tabComplete()
+### events.blockRedstone()
 
 #### Parameters 
 
- * callback - A function which is called whenever the [server.TabCompleteEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/server/TabCompleteEvent.html) is fired
+ * callback - A function which is called whenever the [block.BlockRedstoneEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockRedstoneEvent.html) is fired
 
  * priority - optional - see events.on() for more information.
 
-### events.mapInitialize()
+### events.cauldronLevelChange()
 
 #### Parameters 
 
- * callback - A function which is called whenever the [server.MapInitializeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/server/MapInitializeEvent.html) is fired
+ * callback - A function which is called whenever the [block.CauldronLevelChangeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/CauldronLevelChangeEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.blockExplode()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [block.BlockExplodeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockExplodeEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.leavesDecay()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [block.LeavesDecayEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/LeavesDecayEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.blockFade()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [block.BlockFadeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockFadeEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityBlockForm()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [block.EntityBlockFormEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/EntityBlockFormEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.blockGrow()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [block.BlockGrowEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockGrowEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.blockIgnite()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [block.BlockIgniteEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockIgniteEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.blockForm()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [block.BlockFormEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockFormEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.blockPistonRetract()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [block.BlockPistonRetractEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockPistonRetractEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.blockPlace()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [block.BlockPlaceEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockPlaceEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.blockPistonExtend()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [block.BlockPistonExtendEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockPistonExtendEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.blockExp()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [block.BlockExpEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockExpEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.blockCanBuild()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [block.BlockCanBuildEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockCanBuildEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.blockFromTo()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [block.BlockFromToEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockFromToEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.blockBurn()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [block.BlockBurnEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockBurnEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.signChange()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [block.SignChangeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/SignChangeEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.blockBreak()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [block.BlockBreakEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockBreakEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.notePlay()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [block.NotePlayEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/NotePlayEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.blockPhysics()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [block.BlockPhysicsEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockPhysicsEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.blockDamage()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [block.BlockDamageEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockDamageEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.blockDispense()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [block.BlockDispenseEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockDispenseEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.blockMultiPlace()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [block.BlockMultiPlaceEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/block/BlockMultiPlaceEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerQuit()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerQuitEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerQuitEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerItemHeld()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerItemHeldEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerItemHeldEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerEggThrow()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerEggThrowEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerEggThrowEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerRegisterChannel()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerRegisterChannelEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerRegisterChannelEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerToggleSneak()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerToggleSneakEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerToggleSneakEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerJoin()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerJoinEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerJoinEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerAdvancementDone()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerAdvancementDoneEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerAdvancementDoneEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerToggleSprint()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerToggleSprintEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerToggleSprintEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerVelocity()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerVelocityEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerVelocityEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerUnregisterChannel()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerUnregisterChannelEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerUnregisterChannelEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerItemConsume()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerItemConsumeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerItemConsumeEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerPreLogin()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerPreLoginEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerPreLoginEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerPickupArrow()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerPickupArrowEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerPickupArrowEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerBedLeave()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerBedLeaveEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerBedLeaveEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerInteractEntity()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerInteractEntityEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerInteractEntityEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerMove()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerMoveEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerMoveEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerAnimation()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerAnimationEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerAnimationEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerChat()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerChatEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerChatEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerInteractAtEntity()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerInteractAtEntityEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerInteractAtEntityEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerToggleFlight()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerToggleFlightEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerToggleFlightEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerEditBook()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerEditBookEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerEditBookEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerInteract()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerInteractEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerInteractEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerStatisticIncrement()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerStatisticIncrementEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerStatisticIncrementEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerPickupItem()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerPickupItemEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerPickupItemEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerSwapHandItems()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerSwapHandItemsEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerSwapHandItemsEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerBucketEmpty()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerBucketEmptyEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerBucketEmptyEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerItemBreak()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerItemBreakEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerItemBreakEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerPortal()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerPortalEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerPortalEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerCommandPreprocess()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerCommandPreprocessEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerCommandPreprocessEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerChangedWorld()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerChangedWorldEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerChangedWorldEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.asyncPlayerChat()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.AsyncPlayerChatEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/AsyncPlayerChatEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerChangedMainHand()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerChangedMainHandEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerChangedMainHandEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerLevelChange()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerLevelChangeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerLevelChangeEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerArmorStandManipulate()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerArmorStandManipulateEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerArmorStandManipulateEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerExpChange()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerExpChangeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerExpChangeEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerLogin()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerLoginEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerLoginEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerItemMend()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerItemMendEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerItemMendEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerAchievementAwarded()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerAchievementAwardedEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerAchievementAwardedEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerRespawn()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerRespawnEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerRespawnEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.asyncPlayerPreLogin()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.AsyncPlayerPreLoginEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/AsyncPlayerPreLoginEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerItemDamage()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerItemDamageEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerItemDamageEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerBedEnter()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerBedEnterEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerBedEnterEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerChatTabComplete()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerChatTabCompleteEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerChatTabCompleteEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerTeleport()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerTeleportEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerTeleportEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerBucketFill()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerBucketFillEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerBucketFillEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerResourcePackStatus()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerResourcePackStatusEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerResourcePackStatusEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerFish()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerFishEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerFishEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerKick()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerKickEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerKickEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerDropItem()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerDropItemEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerDropItemEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerGameModeChange()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerGameModeChangeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerGameModeChangeEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerShearEntity()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerShearEntityEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerShearEntityEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerUnleashEntity()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerUnleashEntityEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerUnleashEntityEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerLocaleChange()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [player.PlayerLocaleChangeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/player/PlayerLocaleChangeEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.creatureSpawn()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.CreatureSpawnEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/CreatureSpawnEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityResurrect()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityResurrectEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityResurrectEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.villagerAcquireTrade()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.VillagerAcquireTradeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/VillagerAcquireTradeEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityTame()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityTameEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityTameEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.lingeringPotionSplash()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.LingeringPotionSplashEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/LingeringPotionSplashEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.potionSplash()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.PotionSplashEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/PotionSplashEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityExplode()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityExplodeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityExplodeEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityBreakDoor()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityBreakDoorEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityBreakDoorEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityPortal()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityPortalEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityPortalEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.creeperPower()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.CreeperPowerEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/CreeperPowerEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.areaEffectCloudApply()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.AreaEffectCloudApplyEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/AreaEffectCloudApplyEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.itemDespawn()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.ItemDespawnEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/ItemDespawnEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.villagerReplenishTrade()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.VillagerReplenishTradeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/VillagerReplenishTradeEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityTarget()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityTargetEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityTargetEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entitySpawn()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntitySpawnEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntitySpawnEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityPickupItem()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityPickupItemEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityPickupItemEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityDamageByBlock()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityDamageByBlockEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityDamageByBlockEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityChangeBlock()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityChangeBlockEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityChangeBlockEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityDamage()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityDamageEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityDamageEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerDeath()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.PlayerDeathEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/PlayerDeathEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityTargetLivingEntity()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityTargetLivingEntityEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityTargetLivingEntityEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityToggleGlide()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityToggleGlideEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityToggleGlideEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityDamageByEntity()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityDamageByEntityEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityDamageByEntityEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.explosionPrime()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.ExplosionPrimeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/ExplosionPrimeEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.playerLeashEntity()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.PlayerLeashEntityEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/PlayerLeashEntityEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.pigZap()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.PigZapEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/PigZapEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.enderDragonChangePhase()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EnderDragonChangePhaseEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EnderDragonChangePhaseEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityTeleport()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityTeleportEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityTeleportEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityCombustByEntity()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityCombustByEntityEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityCombustByEntityEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.projectileLaunch()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.ProjectileLaunchEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/ProjectileLaunchEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityCombustByBlock()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityCombustByBlockEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityCombustByBlockEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityCombust()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityCombustEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityCombustEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityAirChange()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityAirChangeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityAirChangeEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityBreed()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityBreedEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityBreedEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityPortalExit()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityPortalExitEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityPortalExitEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityUnleash()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityUnleashEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityUnleashEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityInteract()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityInteractEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityInteractEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.fireworkExplode()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.FireworkExplodeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/FireworkExplodeEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityCreatePortal()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityCreatePortalEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityCreatePortalEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityDeath()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityDeathEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityDeathEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.spawnerSpawn()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.SpawnerSpawnEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/SpawnerSpawnEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityShootBow()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityShootBowEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityShootBowEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.foodLevelChange()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.FoodLevelChangeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/FoodLevelChangeEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.slimeSplit()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.SlimeSplitEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/SlimeSplitEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityRegainHealth()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityRegainHealthEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityRegainHealthEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.sheepDyeWool()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.SheepDyeWoolEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/SheepDyeWoolEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.expBottle()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.ExpBottleEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/ExpBottleEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.horseJump()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.HorseJumpEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/HorseJumpEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.sheepRegrowWool()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.SheepRegrowWoolEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/SheepRegrowWoolEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.projectileHit()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.ProjectileHitEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/ProjectileHitEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.entityPortalEnter()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.EntityPortalEnterEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityPortalEnterEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.itemSpawn()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.ItemSpawnEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/ItemSpawnEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.itemMerge()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [entity.ItemMergeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/ItemMergeEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.hangingBreakByEntity()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [hanging.HangingBreakByEntityEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/hanging/HangingBreakByEntityEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.hangingBreak()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [hanging.HangingBreakEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/hanging/HangingBreakEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.hangingPlace()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [hanging.HangingPlaceEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/hanging/HangingPlaceEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.brew()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [inventory.BrewEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/BrewEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.inventory()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [inventory.InventoryEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/InventoryEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.brewingStandFuel()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [inventory.BrewingStandFuelEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/BrewingStandFuelEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.inventoryDrag()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [inventory.InventoryDragEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/InventoryDragEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.inventoryMoveItem()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [inventory.InventoryMoveItemEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/InventoryMoveItemEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.craftItem()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [inventory.CraftItemEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/CraftItemEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.inventoryClose()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [inventory.InventoryCloseEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/InventoryCloseEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.prepareItemCraft()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [inventory.PrepareItemCraftEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/PrepareItemCraftEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.inventoryOpen()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [inventory.InventoryOpenEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/InventoryOpenEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.furnaceSmelt()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [inventory.FurnaceSmeltEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/FurnaceSmeltEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.prepareAnvil()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [inventory.PrepareAnvilEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/PrepareAnvilEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.furnaceExtract()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [inventory.FurnaceExtractEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/FurnaceExtractEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.furnaceBurn()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [inventory.FurnaceBurnEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/FurnaceBurnEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.inventoryPickupItem()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [inventory.InventoryPickupItemEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/InventoryPickupItemEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.inventoryCreative()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [inventory.InventoryCreativeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/InventoryCreativeEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.inventoryClick()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [inventory.InventoryClickEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/InventoryClickEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.chunkUnload()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [world.ChunkUnloadEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/world/ChunkUnloadEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.worldSave()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [world.WorldSaveEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/world/WorldSaveEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.spawnChange()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [world.SpawnChangeEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/world/SpawnChangeEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.structureGrow()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [world.StructureGrowEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/world/StructureGrowEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.chunkLoad()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [world.ChunkLoadEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/world/ChunkLoadEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.worldInit()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [world.WorldInitEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/world/WorldInitEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.portalCreate()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [world.PortalCreateEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/world/PortalCreateEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.worldLoad()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [world.WorldLoadEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/world/WorldLoadEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.chunkPopulate()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [world.ChunkPopulateEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/world/ChunkPopulateEvent.html) is fired
+
+ * priority - optional - see events.on() for more information.
+
+### events.worldUnload()
+
+#### Parameters 
+
+ * callback - A function which is called whenever the [world.WorldUnloadEvent event](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/world/WorldUnloadEvent.html) is fired
 
  * priority - optional - see events.on() for more information.
 
@@ -6410,9 +6455,11 @@ The following functions are provided:
  * birchFence()
  * birchFenceGate()
  * birchWoodStairs()
+ * blackGlazedTerracotta()
  * blackShulkerBox()
  * blazePowder()
  * blazeRod()
+ * blueGlazedTerracotta()
  * blueShulkerBox()
  * boat()
  * boatAcacia()
@@ -6432,6 +6479,7 @@ The following functions are provided:
  * brewingStandItem()
  * brick()
  * brickStairs()
+ * brownGlazedTerracotta()
  * brownMushroom()
  * brownShulkerBox()
  * bucket()
@@ -6469,6 +6517,8 @@ The following functions are provided:
  * commandMinecart()
  * commandRepeating()
  * compass()
+ * concrete()
+ * concretePowder()
  * cookedBeef()
  * cookedChicken()
  * cookedFish()
@@ -6476,6 +6526,7 @@ The following functions are provided:
  * cookedRabbit()
  * cookie()
  * crops()
+ * cyanGlazedTerracotta()
  * cyanShulkerBox()
  * darkOakDoor()
  * darkOakDoorItem()
@@ -6572,7 +6623,9 @@ The following functions are provided:
  * grass()
  * grassPath()
  * gravel()
+ * grayGlazedTerracotta()
  * grayShulkerBox()
+ * greenGlazedTerracotta()
  * greenRecord()
  * greenShulkerBox()
  * grilledPork()
@@ -6611,6 +6664,7 @@ The following functions are provided:
  * jungleFence()
  * jungleFenceGate()
  * jungleWoodStairs()
+ * knowledgeBook()
  * ladder()
  * lapisBlock()
  * lapisOre()
@@ -6625,12 +6679,15 @@ The following functions are provided:
  * leaves()
  * leaves2()
  * lever()
+ * lightBlueGlazedTerracotta()
  * lightBlueShulkerBox()
+ * limeGlazedTerracotta()
  * limeShulkerBox()
  * lingeringPotion()
  * log()
  * log2()
  * longGrass()
+ * magentaGlazedTerracotta()
  * magentaShulkerBox()
  * magma()
  * magmaCream()
@@ -6661,10 +6718,12 @@ The following functions are provided:
  * noteBlock()
  * observer()
  * obsidian()
+ * orangeGlazedTerracotta()
  * orangeShulkerBox()
  * packedIce()
  * painting()
  * paper()
+ * pinkGlazedTerracotta()
  * pinkShulkerBox()
  * pistonBase()
  * pistonExtension()
@@ -6685,6 +6744,7 @@ The following functions are provided:
  * pumpkinPie()
  * pumpkinSeeds()
  * pumpkinStem()
+ * purpleGlazedTerracotta()
  * purpleShulkerBox()
  * purpurBlock()
  * purpurDoubleSlab()
@@ -6713,6 +6773,7 @@ The following functions are provided:
  * record7()
  * record8()
  * record9()
+ * redGlazedTerracotta()
  * redMushroom()
  * redNetherBrick()
  * redRose()
@@ -6743,6 +6804,7 @@ The following functions are provided:
  * shulkerShell()
  * sign()
  * signPost()
+ * silverGlazedTerracotta()
  * silverShulkerBox()
  * skull()
  * skullItem()
@@ -6808,6 +6870,7 @@ The following functions are provided:
  * waterLily()
  * web()
  * wheat()
+ * whiteGlazedTerracotta()
  * whiteShulkerBox()
  * wood()
  * woodAxe()
@@ -6826,6 +6889,7 @@ The following functions are provided:
  * workbench()
  * writtenBook()
  * yellowFlower()
+ * yellowGlazedTerracotta()
  * yellowShulkerBox()
 
 
@@ -7428,6 +7492,7 @@ The following functions are provided:
  * guardian()
  * horse()
  * husk()
+ * illusioner()
  * iron_golem()
  * item_frame()
  * leash_hitch()
@@ -7447,6 +7512,7 @@ The following functions are provided:
  * mushroom_cow()
  * ocelot()
  * painting()
+ * parrot()
  * pig()
  * pig_zombie()
  * player()
