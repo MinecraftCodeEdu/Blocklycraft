@@ -189,8 +189,9 @@ Contains the generator for the javascript used in scriptcraft
 Blockly.JavaScript['onchat'] = function(block) {
 	var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
 	var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
+	var webip = window.myIP;
 	// TODO: Assemble JavaScript into code variable.
-	var code = "command( " + value_command + ", function ( parameters, player ) {\n";
+	var code = "command( '"+webip+value_command.replace(/'/g,"")+"', function ( parameters, player ) {\n";
 	code = code + statements_statements;
 	code = code + "});";
   return code;
@@ -246,8 +247,9 @@ Blockly.JavaScript['onmobkilled'] = function(block) {
 
 Blockly.JavaScript['teleport_command'] = function(block) {
   var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
+  var webip = window.myIP;
   // TODO: Assemble JavaScript into code variable.
-  var code = "command("+value_command+", function(parameters, player) {\n\
+  var code = "command('"+webip+value_command.replace(/'/g,"")+"', function(parameters, player) {\n\
   var bkLocation = Packages.org.bukkit.Location;\n\
   if(isNaN(Number(parameters[0])) || isNaN(Number(parameters[1])) || isNaN(Number(parameters[2]))){\n\
     player.sendMessage('please input number.');\n\
@@ -321,8 +323,9 @@ Blockly.JavaScript['moveforward'] = function(block) {
 
 Blockly.JavaScript['directforward'] = function(block) {
   var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
+  var webip = window.myIP;
   // TODO: Assemble JavaScript into code variable.
-  var code = "command( "+value_command+", function ( parameters, player ) {\n\
+  var code = "command( '"+webip+value_command.replace(/'/g,"")+"', function ( parameters, player ) {\n\
   var bkLocation = org.bukkit.Location;\n\
   var world = player.getWorld();\n\
   var loc = player.getLocation();\n\
@@ -341,8 +344,9 @@ Blockly.JavaScript['directforward'] = function(block) {
 
 Blockly.JavaScript['facing'] = function(block) {
   var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
+  var webip = window.myIP;
   // TODO: Assemble JavaScript into code variable.
-    var code = "command( "+value_command+", function ( parameters, player ) {\n\
+    var code = "command( '"+webip+value_command.replace(/'/g,"")+"', function ( parameters, player ) {\n\
   var bkLocation = org.bukkit.Location;\n\
   var world = player.getWorld();\n\
   var loc = player.getLocation();\n\
@@ -380,9 +384,10 @@ Blockly.JavaScript['name_location'] = function(block) {
 Blockly.JavaScript['save_teleport'] = function(block) {
   var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_statement = Blockly.JavaScript.statementToCode(block, 'statement');
+  var webip = window.myIP;
   // TODO: Assemble JavaScript into code variable.
   var code = "\
-command("+value_command+", function ( parameters, player ) {\n\
+command('"+webip+value_command.replace(/'/g,"")+"', function ( parameters, player ) {\n\
   var bkLocation = Packages.org.bukkit.Location;\n\
   var bkPrompt = org.bukkit.conversations.Prompt,\n\
   bkConversationFactory = org.bukkit.conversations.ConversationFactory;\n\
