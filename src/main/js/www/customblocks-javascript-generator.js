@@ -232,10 +232,12 @@ Blockly.JavaScript['animalmob'] = function(block) {
 Blockly.JavaScript['onmobkilled'] = function(block) {
   var value_mob = Blockly.JavaScript.valueToCode(block, 'Mob', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_command = Blockly.JavaScript.statementToCode(block, 'command');
+  var webip = window.myIP;
   // TODO: Assemble JavaScript into code variable.
-  var code = "events.entityDeath( function( event ) {\n"
-			+ "  if( event.getEntity().getType() == '"+value_mob+"' ) {\n"
-			+ "  var player = event.getEntity().getKiller()\n";
+    var code = "command( '" + webip + "', function ( parameters, player ) {});\n"
+        +" events.entityDeath( function( event ) {\n"
+                        + "  if( event.getEntity().getType() == '"+value_mob+"' ) {\n"
+                        + "  var player = event.getEntity().getKiller()\n";
 	code = code + statements_command;
 	code = code + "}});";
   return code;
