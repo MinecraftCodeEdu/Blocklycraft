@@ -603,7 +603,7 @@ player.getWorld().getBlockAt("+value_block_location+").setData("+dropdown_direct
 var block = "+value_block_location+".getBlock();\n\
 var dispenser = block.getState();\n\
 var dispenserInv = dispenser.getInventory();\n\
-dispenserInv.addItem(new bkItemStack("+dropdown_item+", "+value_name+"));\n\
+dispenserInv.addItem(new bkItemStack('"+dropdown_item+"', "+value_name+"));\n\
 ";
   return code;
 };
@@ -622,7 +622,7 @@ block.setType(bkMaterial.DISPENSER);\n\
 var container = block.getState();\n\
 var containerInv = container.getInventory();\n\
 \n\
-containerInv.addItem(new bkItemStack("+dropdown_material+", "+value_number+"));\n\
+containerInv.addItem(new bkItemStack('"+dropdown_material+"', "+value_number+"));\n\
 ";
 
   return code;
