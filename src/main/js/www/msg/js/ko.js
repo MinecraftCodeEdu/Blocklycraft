@@ -18,10 +18,12 @@ var MSG = {
     catDrone: "드론",
     catInventory: "인벤토리",
 
-    catTeleport: "텔레포트이동",
-    catBuilding: "건물짓기",
-    catFarming: "농사짓기",
-    catRail: "철도만들기",
+	catCoala: "코알라",
+    catTeleport: "텔레포트 사용하기",
+    catBuilding: "울타리 만들기",
+    catFarmland: "대규모 밀밭 만들기",
+	catFarming: "자동화 농사 짓기",
+    catRail: "롤러코스터 만들기",
     catRiding: "승마,보트",
     catVillage: "마을짓기,폭격",
     catTrampoline: "트램폴린동산",
@@ -179,8 +181,8 @@ Blockly.Msg.OBJNAMES[23] = "투척기";
 Blockly.Msg.OBJNAMES[24] = "모래돌";
 Blockly.Msg.OBJNAMES[25] = "note";
 Blockly.Msg.OBJNAMES[26] = "침대";
-Blockly.Msg.OBJNAMES[27] = "powered rail";
-Blockly.Msg.OBJNAMES[28] = "detector rail";
+Blockly.Msg.OBJNAMES[27] = "전동 레일";
+Blockly.Msg.OBJNAMES[28] = "탐지 레일";
 Blockly.Msg.OBJNAMES[29] = "sticky piston";
 Blockly.Msg.OBJNAMES[30] = "거미줄";
 Blockly.Msg.OBJNAMES[31] = "grass tall";
@@ -216,7 +218,7 @@ Blockly.Msg.OBJNAMES[55] = "레드스톤 회로";
 Blockly.Msg.OBJNAMES[56] = "다이아몬드 광석";
 Blockly.Msg.OBJNAMES[57] = "다이아몬드";
 Blockly.Msg.OBJNAMES[58] = "crafting table";
-Blockly.Msg.OBJNAMES[59] = "wheat seeds";
+Blockly.Msg.OBJNAMES[59] = "밀 씨앗";
 Blockly.Msg.OBJNAMES[60] = "농지";
 Blockly.Msg.OBJNAMES[61] = "furnance";
 Blockly.Msg.OBJNAMES[62] = "furnace burning";
@@ -233,7 +235,7 @@ Blockly.Msg.OBJNAMES[72] = "나무 압력기";
 Blockly.Msg.OBJNAMES[73] = "redstone ore";
 Blockly.Msg.OBJNAMES[74] = "redstone ore glowing";
 Blockly.Msg.OBJNAMES[75] = "torch redstone";
-Blockly.Msg.OBJNAMES[76] = "torch redstone active";
+Blockly.Msg.OBJNAMES[76] = "레드스톤 횃불";
 Blockly.Msg.OBJNAMES[77] = "stone button";
 Blockly.Msg.OBJNAMES[78] = "slab snow";
 Blockly.Msg.OBJNAMES[79] = "얼음";
@@ -264,7 +266,7 @@ Blockly.Msg.OBJNAMES[103] = "메론";
 Blockly.Msg.OBJNAMES[104] = "pumpkin stem";
 Blockly.Msg.OBJNAMES[105] = "melon stem";
 Blockly.Msg.OBJNAMES[106] = "vines";
-Blockly.Msg.OBJNAMES[107] = "fence gate";
+Blockly.Msg.OBJNAMES[107] = "울타리 문";
 Blockly.Msg.OBJNAMES[110] = "mycelium";
 Blockly.Msg.OBJNAMES[111] = "lily pad";
 Blockly.Msg.OBJNAMES[112] = "nether";
@@ -301,11 +303,11 @@ Blockly.Msg.OBJNAMES[148] = "pressure plate weighted heavy";
 Blockly.Msg.OBJNAMES[149] = "레드스톤 비교기";
 Blockly.Msg.OBJNAMES[150] = "redstone comparator active";
 Blockly.Msg.OBJNAMES[151] = "daylight sensor";
-Blockly.Msg.OBJNAMES[152] = "레드스톤";
+Blockly.Msg.OBJNAMES[152] = "레드스톤블록";
 Blockly.Msg.OBJNAMES[153] = "netherquartzore";
 Blockly.Msg.OBJNAMES[154] = "깔대기(호퍼)";
 Blockly.Msg.OBJNAMES[155] = "quartz";
-Blockly.Msg.OBJNAMES[157] = "rail activator";
+Blockly.Msg.OBJNAMES[157] = "활성화 레일";
 Blockly.Msg.OBJNAMES[158] = "dropper";
 Blockly.Msg.OBJNAMES[159] = "stained clay white";
 Blockly.Msg.OBJNAMES[161] = "acacia leaves";
@@ -318,9 +320,11 @@ Blockly.Msg.OBJNAMES[173] = "coal block";
 Blockly.Msg.OBJNAMES[174] = "packed ice";
 Blockly.Msg.OBJNAMES[175] = "double plant";
 Blockly.Msg.OBJNAMES[205] = "보라색판석";
+Blockly.Msg.OBJNAMES[207] = "사탕무 씨앗";
 Blockly.Msg.OBJNAMES[213] = "마그마블록";
 Blockly.Msg.OBJNAMES[218] = "관측기";
 
+Blockly.Msg.OBJNAMES[53] = "참나무 계단";
 Blockly.Msg.OBJNAMES[108] = "벽돌계단";
 Blockly.Msg.OBJNAMES[109] = "돌계단";
 Blockly.Msg.OBJNAMES[128] = "모래계단";
