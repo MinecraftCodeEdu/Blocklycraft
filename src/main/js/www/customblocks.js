@@ -947,7 +947,7 @@ Blockly.Blocks['delay_time'] = { /*시간 지연 블록*/
     this.appendValueInput("SECOND")
         .setCheck(null);
     this.appendDummyInput()
-        .appendField("초 일시정지 후");
+        .appendField("초 정지 후");
     this.appendStatementInput("DELAY")
         .setCheck(null)
         .appendField("실행");
