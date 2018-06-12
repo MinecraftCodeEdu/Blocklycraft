@@ -658,6 +658,23 @@ block.setTypeId("+dropdown_material+");\n\
   return code;
 };
 
+Blockly.JavaScript['copy_place'] = function(block) {
+  var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_length = Blockly.JavaScript.valueToCode(block, 'LENGTH', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_height = Blockly.JavaScript.valueToCode(block, 'HEIGHT', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_width = Blockly.JavaScript.valueToCode(block, 'WIDTH', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.theDrone.copy("+value_name+","+value_length+","+value_height+","+value_width+");\n";
+  return code;
+};
+
+Blockly.JavaScript['paste_place'] = function(block) {
+  var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.theDrone.paste("+value_name+");\n";
+  return code;
+};
+
 
 /*
  * 승마, 보트

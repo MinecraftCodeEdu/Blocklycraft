@@ -1050,3 +1050,44 @@ Blockly.Blocks['flower_choice'] = {  /*꽃종류 변수*/
   }
 };
 
+Blockly.Blocks['copy_place'] = {   /*해당 좌표에 건축물과 블록을 복사한다.*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("복사");
+    this.appendValueInput("NAME")
+        .setCheck(null)
+        .appendField("변수이름");
+    this.appendValueInput("LENGTH")
+        .setCheck(null)
+        .appendField("가로");
+    this.appendValueInput("HEIGHT")
+        .setCheck(null)
+        .appendField("높이");
+    this.appendValueInput("WIDTH")
+        .setCheck(null)
+        .appendField("세로");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['paste_place'] = {   /*해당 좌표에 복사한 건축물과블록을 붙여넣는다.*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("붙여넣기");
+    this.appendValueInput("NAME")
+        .setCheck(null)
+        .appendField("변수이름");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
