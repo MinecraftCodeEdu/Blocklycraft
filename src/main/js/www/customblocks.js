@@ -405,21 +405,6 @@ Blockly.Blocks['onmobkilled'] = {
 /***
 	Coalab (2018.03.12) 
 ***/
-
-Blockly.Blocks['teleport_command'] = {
-  init: function() {
-    this.appendValueInput("command")
-        .setCheck(null)
-        .appendField("입력한 좌표로 텔레포트 : ");
-    this.appendDummyInput()
-        .appendField("x y z");
-    this.setInputsInline(true);
-    this.setColour(210);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
-};
-
 Blockly.Blocks['teleport_location'] = {
   init: function() {
     this.appendValueInput("NAME")
@@ -1097,7 +1082,27 @@ Blockly.Blocks['paste_place'] = {   /*해당 좌표에 복사한 건축물과블
   }
 };
 
-Blockly.Blocks['farming_material'] = {
+/*
+ * 텔레포트 사용하기
+ */
+Blockly.Blocks['teleport_command'] = { /* 텔레포트 함수 */
+  init: function() {
+    this.appendValueInput("command")
+        .setCheck(null)
+        .appendField("입력한 좌표로 텔레포트 : ");
+    this.appendDummyInput()
+        .appendField("x y z");
+    this.setInputsInline(true);
+    this.setColour(210);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+/*
+ * 대규모 밀밭 만들기
+ */
+Blockly.Blocks['farming_material'] = { /* 밀밭 만들기 재료 */
     init: function () {
         this.appendDummyInput()
             .appendField(Blockly.Msg.MATERIALS)
@@ -1111,7 +1116,10 @@ Blockly.Blocks['farming_material'] = {
     }
 };
 
-Blockly.Blocks['train_material'] = {
+/*
+ * 롤러코스터 만들기
+ */
+Blockly.Blocks['train_material'] = { /* 롤러코스터 재료 */
     init: function () {
         this.appendDummyInput()
             .appendField(Blockly.Msg.MATERIALS)
@@ -1125,7 +1133,10 @@ Blockly.Blocks['train_material'] = {
     }
 };
 
-Blockly.Blocks['fence_material'] = {
+/*
+ * 울타리 만들기
+ */
+Blockly.Blocks['fence_material'] = { /* 울타리 재료 */
     init: function () {
         this.appendDummyInput()
             .appendField(Blockly.Msg.MATERIALS)

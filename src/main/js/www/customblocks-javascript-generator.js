@@ -228,7 +228,7 @@ Blockly.JavaScript['animalmob'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-
+/*
 Blockly.JavaScript['onmobkilled'] = function(block) {
   var value_mob = Blockly.JavaScript.valueToCode(block, 'Mob', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_command = Blockly.JavaScript.statementToCode(block, 'command');
@@ -242,25 +242,10 @@ Blockly.JavaScript['onmobkilled'] = function(block) {
 	code = code + "}}});";
   return code;
 };
-
+*/
 /***
 	Coalab (2018.03.12) 
 ***/
-
-Blockly.JavaScript['teleport_command'] = function(block) {
-  var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
-  var webip = window.myIP;
-  // TODO: Assemble JavaScript into code variable.
-  var code = "command('"+webip+value_command.replace(/'/g,"")+"', function(parameters, player) {\n\
-  var bkLocation = Packages.org.bukkit.Location;\n\
-  if(isNaN(Number(parameters[0])) || isNaN(Number(parameters[1])) || isNaN(Number(parameters[2]))){\n\
-    player.sendMessage('please input number.');\n\
-    return false;\n\
-  }\n\
-  player.teleport(new bkLocation(player.world, parameters[0], parameters[1], parameters[2]));\n\
-});\n";
-  return code;
-};
 
 Blockly.JavaScript['teleport_location'] = function(block) {
   var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
@@ -785,19 +770,46 @@ Blockly.JavaScript['flower_choice'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
-Blockly.JavaScript['farming_material'] = function (block) {
+/*
+ * 텔레포트 사용하기
+ */
+Blockly.JavaScript['teleport_command'] = function(block) { /* 텔레포트 함수 */
+  var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
+  var webip = window.myIP;
+  // TODO: Assemble JavaScript into code variable.
+  var code = "command('"+webip+value_command.replace(/'/g,"")+"', function(parameters, player) {\n\
+  var bkLocation = Packages.org.bukkit.Location;\n\
+  if(isNaN(Number(parameters[0])) || isNaN(Number(parameters[1])) || isNaN(Number(parameters[2]))){\n\
+    player.sendMessage('please input number.');\n\
+    return false;\n\
+  }\n\
+  player.teleport(new bkLocation(player.world, parameters[0], parameters[1], parameters[2]));\n\
+});\n";
+  return code;
+};
+
+/*
+ * 대규모 밀밭 만들기
+ */
+Blockly.JavaScript['farming_material'] = function (block) { /* 밀밭 만들기 재료 */
     var dropdown_material = block.getFieldValue('material');
     var code = "theDrone." + 'box(' + dropdown_material + ');\n';
     return code;
 };
 
-Blockly.JavaScript['train_material'] = function (block) {
+/*
+ * 롤러코스터 만들기
+ */
+Blockly.JavaScript['train_material'] = function (block) { /* 롤러코스터 재료 */
     var dropdown_material = block.getFieldValue('material');
     var code = "theDrone." + 'box(' + dropdown_material + ');\n';
     return code;
 };
 
-Blockly.JavaScript['fence_material'] = function (block) {
+/*
+ * 울타리 만들기
+ */
+Blockly.JavaScript['fence_material'] = function (block) { /* 울타리 재료 */
     var dropdown_material = block.getFieldValue('material');
     var code = "theDrone." + 'box(' + dropdown_material + ');\n';
     return code;
