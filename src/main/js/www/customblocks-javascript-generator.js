@@ -237,7 +237,7 @@ Blockly.JavaScript['onmobkilled'] = function(block) {
     var code = "command( '" + webip + "', function ( parameters, player ) {});\n"
         +" events.entityDeath( function( event ) {\n"
                         + "  if( event.getEntity().getType() == '"+value_mob+"' ) {\n"
-                        + "  var player = event.getEntity().getKiller()\n" + " if ( "+webip+" == player.getAddress().getAddress().getHostAddress().replace(/[:.]/gi,'')) {;
+                        + "  var player = event.getEntity().getKiller()\n" + " if ( "+webip+" == player.getAddress().getAddress().getHostAddress().replace(/[:.]/gi,'')) {;\n"
 	code = code + statements_command;
 	code = code + "}}});";
   return code;
