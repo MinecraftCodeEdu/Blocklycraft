@@ -7,7 +7,7 @@ Contains the description of the Minecraft blocks for Blockly
 ***/
 
 //Naturally generated and created material blocks http://minecraft.gamepedia.com/Block 
-var materials = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 4, 7, 8, 9, 12, 30, 33, 35, 37, 44, 55, 69.6, 70, 81, 85, 89, 149, 218]);
+var materials = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 4, 5, 7, 8, 9, 12, 30, 33, 35, 35.1, 35.2, 35.3, 35.4, 37, 44, 47, 53, 55, 64, 66, 69.6, 70, 72, 81, 85, 89, 149, 154, 205, 218]);
 
 /*
 var materials = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 26, 37, 38, 39, 40, 41, 42, 44, 46, 47, 48, 49, 50, 51, 56, 57, 57, 60, 66, 68, 69, 79, 80, 81, 82, 83, 85, 86, 92, 101, 103, 122, 127, 129, 140, 141, 142, 152, 165, 170, 213]);
@@ -230,7 +230,7 @@ Blockly.Blocks['prism'] = {
         .setCheck(null)
         .appendField("길이");
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["돌","1"], ["계단","53"], ["물블록","9"]]), "MATERIAL");
+        .appendField(new Blockly.FieldDropdown([["돌","1"], ["나무계단","53"], ["물블록","9"]]), "MATERIAL");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -923,7 +923,7 @@ Blockly.Blocks['drone_variable'] = {
  * 마을짓기, 폭격
  */
 
-Blockly.Blocks['redstone_comparator'] = {
+Blockly.Blocks['redstone_comparator'] = { /*레드스톤 비교기 블록 방향, 불켜짐 조정가능*/
   init: function() {
     this.appendDummyInput()
         .appendField("레드스톤비교기");
@@ -942,7 +942,7 @@ Blockly.Blocks['redstone_comparator'] = {
   }
 };
 
-Blockly.Blocks['delay_time'] = {
+Blockly.Blocks['delay_time'] = { /*시간 지연 블록*/
   init: function() {
     this.appendValueInput("SECOND")
         .setCheck(null);
@@ -960,7 +960,7 @@ Blockly.Blocks['delay_time'] = {
   }
 };
 
-Blockly.Blocks['redstone_repeater'] = {
+Blockly.Blocks['redstone_repeater'] = { /*레드스톤 중계기 블록. 간격, 방향 조정가능*/
   init: function() {
     this.appendDummyInput()
         .appendField("레드스톤중계기");
@@ -971,6 +971,121 @@ Blockly.Blocks['redstone_repeater'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['four_direction'] = {   /*재료의 방향이 동서남북일때 ex)계단*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("재료")
+        .appendField(new Blockly.FieldDropdown([["나무계단","53"], ["돌계단","67"]]), "ITEM");
+    this.appendValueInput("width")
+        .setCheck(null)
+        .appendField("가로");
+    this.appendValueInput("length")
+        .setCheck(null)
+        .appendField("세로");
+    this.appendDummyInput()
+        .appendField("방향")
+        .appendField(new Blockly.FieldDropdown([["동쪽","0"], ["서쪽","1"], ["남쪽","2"], ["북쪽","3"]]), "DIRECTION");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['button_attached'] = {  /*버튼 블록(다른 블록과 합칠때)*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("버튼")
+        .appendField(new Blockly.FieldDropdown([["돌버튼","STONE_BUTTON"], ["나무버튼","WOODEN_BUTTON"]]), "BUTTON_MATERIAL");
+    this.appendDummyInput()
+        .appendField("부착될 블록")
+        .appendField(new Blockly.FieldDropdown([["돌","1"], ["목재","5"]]), "BLOCK_MATERIAL");
+    this.appendDummyInput()
+        .appendField("방향")
+        .appendField(new Blockly.FieldDropdown([["동쪽","EAST"], ["서쪽","WEST"], ["남쪽","SOUTH"], ["북쪽","NORTH"]]), "DIRECTION");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['door_drone'] = {  /*문 64:0 동쪽 64:1 남쪽 64:2 서쪽 64:3 북쪽 손잡이 왼
+쪽*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("문")
+        .appendField(new Blockly.FieldDropdown([["나무문","64"], ["철문","71"]]), "material");
+    this.appendDummyInput()
+        .appendField("방향")
+        .appendField(new Blockly.FieldDropdown([["동쪽","0"], ["남쪽","1"], ["서쪽","2"], ["북쪽","3"]]), "direction");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['flower_choice'] = {  /*꽃종류 변수*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("꽃")
+        .appendField(new Blockly.FieldDropdown([["민들레","'37'"], ["양귀비","'38'"], ["파란색난초","'38:1'"], ["보라색꽃","'38:2'"], ["파란색꽃","'38:3'"], ["빨간튤립","'38:4'"], ["주황튤립","'38:5'"], ["하얀튤립","'38:6'"], ["연보라튤립","'38:7'"], ["국화","'38:8'"]]), "FLOWERS");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['copy_place'] = {   /*해당 좌표에 건축물과 블록을 복사한다.*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("복사");
+    this.appendValueInput("NAME")
+        .setCheck(null)
+        .appendField("변수이름");
+    this.appendValueInput("LENGTH")
+        .setCheck(null)
+        .appendField("가로");
+    this.appendValueInput("HEIGHT")
+        .setCheck(null)
+        .appendField("높이");
+    this.appendValueInput("WIDTH")
+        .setCheck(null)
+        .appendField("세로");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['paste_place'] = {   /*해당 좌표에 복사한 건축물과블록을 붙여넣는다.*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("붙여넣기");
+    this.appendValueInput("NAME")
+        .setCheck(null)
+        .appendField("변수이름");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
  this.setTooltip("");
  this.setHelpUrl("");
   }
