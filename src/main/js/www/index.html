@@ -160,15 +160,14 @@
 
 	    <sep></sep>
 	
-	    <category id="catTeleport">
+		<category id="catCoala">
 		<block type="onchat">
-	  	  <value name="command">
-		    <block type="text">
-		      <field name="TEXT">run</field>
-		    </block>
-		  </value>
+			<value name="command">
+				<block type="text">
+					<field name="TEXT">run</field>
+				</block>
+			</value>
 		</block>
-<!-- 		<block type="teleport"></block> -->
 		<block type="onmobkilled">
 		  <value name="Mob">
 			<block type="animalmob"></block>
@@ -221,13 +220,6 @@
 			  <block type="text">
 				<field name="TEXT">jump</field>
 			  </block>
-			</value>
-		</block>
-		<block type="teleport_command">
-			<value name="command">
-				<block type="text">
-					<field name="TEXT">teleport</field>
-				</block>
 			</value>
 		</block>
 		<block type="moveforward">
@@ -417,7 +409,38 @@
 			</value>
 		</block>
 	    </category>
-	<category id="catBuilding">
+		<category id="catTeleport">
+			<block type="teleport_command">
+				<value name="command">
+					<block type="text">
+						<field name="TEXT">teleport</field>
+					</block>
+				</value>
+			</block>
+    	</category>
+	    <category id="catBuilding">
+            <block type="drone"></block>
+            <block type="fence_material"></block>
+			<block type="drone_move"></block>
+            <block type="controls_repeat_ext">
+                <value name="TIMES">
+                    <block type="math_number">
+                        <field name="NUM">10</field>
+                    </block>
+                </value>
+            </block>
+    	</category>
+	    <category id="catFarmland" >
+            <block type="drone"></block>
+			<block type="farming_material"></block>
+			<block type="drone_move"></block>
+            <block type="controls_repeat_ext">
+                <value name="TIMES">
+                    <block type="math_number">
+                        <field name="NUM">10</field>
+                    </block>
+                </value>
+            </block>
     	</category>
 	<category id="catFarming">
 	  <block type="drone"></block>
@@ -502,6 +525,20 @@
           </block>
 	</category>
     	<category id="catRail">
+            <block type="drone"></block>
+			<block type="train_material"></block>
+			<block type="drone_move"></block>
+            <block type="controls_repeat_ext">
+                <value name="TIMES">
+                    <block type="math_number">
+                        <field name="NUM">10</field>
+                    </block>
+                </value>
+            </block>
+			<block type="controls_whileUntil"></block>
+            <block type="math_number"></block>
+            <block type="math_arithmetic"></block>
+			<block type="logic_compare"></block>
       	</category>
     	<category id="catRiding">
 	  <block type="spawn_animal">

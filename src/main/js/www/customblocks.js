@@ -18,6 +18,12 @@ var stairs = getObjNames(Blockly.Msg.OBJNAMES, [53, 108, 109, 128, 134, 135, 136
 var others = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 2, 3, 4, 7, 8, 10, 12, 13, 14, 15, 16, 17, 18, 20, 21, 24, 27, 31, 32, 37, 38, 39, 40, 41, 44, 46, 49, 51, 55, 56, 65, 66, 73, 78, 79, 80, 81, 82, 83, 85, 86, 93, 99, 100, 103, 106, 110, 111, 129, 152, 159, 161, 162, 172, 174, 175]);
 */
 
+var farming = getObjNames(Blockly.Msg.OBJNAMES, [8, 60, 59, 207, 142, 141]);
+
+var train = getObjNames(Blockly.Msg.OBJNAMES, [66, 27, 28, 157, 152, 2]);
+
+var fence = getObjNames(Blockly.Msg.OBJNAMES, [85, 107]);
+
 //http://minecraft.gamepedia.com/Tools
 var items_tools = getObjNames(Blockly.Msg.ITEMS_NAMES, ['diamondAxe', 'diamondHoe', 'diamondSpade', 'diamondPickaxe', 'shears', 'flintAndSteel', 'fishingRod', 'bed', 'torch', 'wood']);
 
@@ -1091,3 +1097,44 @@ Blockly.Blocks['paste_place'] = {   /*해당 좌표에 복사한 건축물과블
   }
 };
 
+Blockly.Blocks['farming_material'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MATERIALS)
+            .appendField(new Blockly.FieldDropdown(farming), "material");
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setColour(0);
+        this.setTooltip(Blockly.Msg.TOOLTIP_MATERIALS);
+        this.setHelpUrl('http://minecraft.gamepedia.com/Block');
+    }
+};
+
+Blockly.Blocks['train_material'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MATERIALS)
+            .appendField(new Blockly.FieldDropdown(train), "material");
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setColour(0);
+        this.setTooltip(Blockly.Msg.TOOLTIP_MATERIALS);
+        this.setHelpUrl('http://minecraft.gamepedia.com/Block');
+    }
+};
+
+Blockly.Blocks['fence_material'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MATERIALS)
+            .appendField(new Blockly.FieldDropdown(fence), "material");
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setColour(0);
+        this.setTooltip(Blockly.Msg.TOOLTIP_MATERIALS);
+        this.setHelpUrl('http://minecraft.gamepedia.com/Block');
+    }
+};

@@ -235,7 +235,6 @@ Blockly.JavaScript['onmobkilled'] = function(block) {
   var webip = window.myIP;
   // TODO: Assemble JavaScript into code variable.
     var code = "command( '" + webip + "', function ( parameters, player ) {});\n"
-        +" events.entityDeath( function( event ) {\n"
                         + "  if( event.getEntity().getType() == '"+value_mob+"' ) {\n"
                         + "  var player = event.getEntity().getKiller()\n" + " if ( "+webip+" == player.getAddress().getAddress().getHostAddress().replace(/[:.]/gi,'')) {;\n"
 	code = code + statements_command;
@@ -785,3 +784,20 @@ Blockly.JavaScript['flower_choice'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
+Blockly.JavaScript['farming_material'] = function (block) {
+    var dropdown_material = block.getFieldValue('material');
+    var code = "theDrone." + 'box(' + dropdown_material + ');\n';
+    return code;
+};
+
+Blockly.JavaScript['train_material'] = function (block) {
+    var dropdown_material = block.getFieldValue('material');
+    var code = "theDrone." + 'box(' + dropdown_material + ');\n';
+    return code;
+};
+
+Blockly.JavaScript['fence_material'] = function (block) {
+    var dropdown_material = block.getFieldValue('material');
+    var code = "theDrone." + 'box(' + dropdown_material + ');\n';
+    return code;
+};
