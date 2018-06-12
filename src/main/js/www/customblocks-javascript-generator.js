@@ -785,3 +785,20 @@ Blockly.JavaScript['flower_choice'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
+Blockly.JavaScript['farming_material'] = function (block) {
+    var dropdown_material = block.getFieldValue('material');
+    var code = "theDrone." + 'box(' + dropdown_material + ');\n';
+    return code;
+};
+
+Blockly.JavaScript['train_material'] = function (block) {
+    var dropdown_material = block.getFieldValue('material');
+    var code = "theDrone." + 'box(' + dropdown_material + ');\n';
+    return code;
+};
+
+Blockly.JavaScript['fence_material'] = function (block) {
+    var dropdown_material = block.getFieldValue('material');
+    var code = "theDrone." + 'box(' + dropdown_material + ');\n';
+    return code;
+};
