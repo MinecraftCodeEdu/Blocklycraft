@@ -674,6 +674,41 @@ Blockly.JavaScript['paste_place'] = function(block) {
   return code;
 };
 
+Blockly.JavaScript['controls_try'] = function(block) {
+
+  // try catch
+  var tryblock = Blockly.JavaScript.statementToCode(block, 'TRY');
+  var catchblock = Blockly.JavaScript.statementToCode(block, 'CATCH');
+  var code = 'try {\n' + tryblock + '}\n';
+  code += "catch(err){ player.chat(err.message);\n" + catchblock + '\n}';
+  return code + '\n';
+};
+
+Blockly.JavaScript['block_around_information'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = "var block_left = \"\";\nvar block_right = \"\";\nvar block_back = \"\";\nvar block_fwd = \"\";\n\
+global.theDrone.chkpt('block');\n\
+block_left = global.theDrone.left().getLocation().getBlock().getType();\n\
+global.theDrone.move('block');\n\
+block_right = global.theDrone.right().getLocation().getBlock().getType();\n\
+global.theDrone.move('block');\n\
+block_back = global.theDrone.back().getLocation().getBlock().getType();\n\
+global.theDrone.move('block');\n\
+block_fwd = global.theDrone.fwd().getLocation().getBlock().getType();\n\
+global.theDrone.move('block');\n\
+";
+  return code;
+};
+
+Blockly.JavaScript['block_around'] = function(block) {
+  var dropdown_material = block.getFieldValue('MATERIAL');
+  var dropdown_exist = block.getFieldValue('EXIST');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "block_left"+dropdown_exist+" '"+dropdown_material+"' || block_right"+dropdown_exist+" '"+dropdown_material+"' || block_back"+dropdown_exist+" '"+dropdown_material+"' || block_fwd"+dropdown_exist+" '"+dropdown_material+"'";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
 
 /*
  * 승마, 보트

@@ -1056,6 +1056,52 @@ Blockly.Blocks['flower_choice'] = {  /*꽃종류 변수*/
   }
 };
 
+Blockly.Blocks['block_around_information'] = { /*해당 블록 주위에 정보를 가져온다.*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("해당블록 주위에 정보가져오기");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['block_around'] = {  /*해당블록 주위에 해당 블록이 있는지 없는지 조건블록*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("해당블록 주위에")
+        .appendField(new Blockly.FieldDropdown([["물","STATIONARY_WATER"], ["option","OPTIONNAME"]]), "MATERIAL");
+    this.appendDummyInput()
+        .appendField("이")
+        .appendField(new Blockly.FieldDropdown([["있을때","=="], ["없을때","!="]]), "EXIST");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['controls_try'] = {  /*예외처리 블록*/
+  // Try
+  init: function() {
+    this.setHelpUrl(Blockly.Msg.CONTROLS_REPEAT_HELPURL);
+
+    this.setColour(120);
+    this.appendStatementInput('TRY')
+        .appendField('실행');
+    this.appendStatementInput('CATCH')
+        .appendField('예외처리');
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('Standard try { } carch (err) {..} you must provide an error handler to consume the error message');
+  }
+};
+
+
 Blockly.Blocks['copy_place'] = {   /*해당 좌표에 건축물과 블록을 복사한다.*/
   init: function() {
     this.appendDummyInput()
