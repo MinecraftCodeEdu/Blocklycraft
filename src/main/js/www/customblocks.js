@@ -317,6 +317,22 @@ Blockly.Blocks['torch'] = { /*횃불*/
   }
 };
 
+Blockly.Blocks['player_direction'] = { /*플레이어가 바라보고 있는 방향*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("플레이어 방향");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(0);
+    if ((this.workspace.options.comments ||
+         (this.workspace.options.parentWorkspace &&
+          this.workspace.options.parentWorkspace.options.comments))) {
+      this.setCommentText("0:동쪽,1:서쪽,2:남쪽,3:북쪽\n드론함수필요");
+    }
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
 
 /*
  * 인벤토리

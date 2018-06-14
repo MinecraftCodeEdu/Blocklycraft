@@ -145,6 +145,12 @@ Blockly.JavaScript['torch'] = function(block) {
   return code;
 };
 
+Blockly.JavaScript['player_direction'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = "Drone.PLAYER_STAIRS_FACING[global.theDrone.dir]";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
 
 Blockly.JavaScript['inventory'] = function (block) {
     var fname = block.getFieldValue('param');
