@@ -18,7 +18,7 @@ var stairs = getObjNames(Blockly.Msg.OBJNAMES, [53, 108, 109, 128, 134, 135, 136
 var others = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 2, 3, 4, 7, 8, 10, 12, 13, 14, 15, 16, 17, 18, 20, 21, 24, 27, 31, 32, 37, 38, 39, 40, 41, 44, 46, 49, 51, 55, 56, 65, 66, 73, 78, 79, 80, 81, 82, 83, 85, 86, 93, 99, 100, 103, 106, 110, 111, 129, 152, 159, 161, 162, 172, 174, 175]);
 */
 
-var farming = getObjNames(Blockly.Msg.OBJNAMES, [8, 60, 59, 207, 142, 141]);
+var farmland = getObjNames(Blockly.Msg.OBJNAMES, [8, 60, 59, 207, 142, 141]);
 
 var train = getObjNames(Blockly.Msg.OBJNAMES, [66, 27, 28, 157, 152, 2]);
 
@@ -331,15 +331,6 @@ Blockly.Blocks['weapons_armor'] = {
     }
 };
 
-
-/************************************************************************
-## Blockly-Minecraft blocks
-Coalab (2018.03.06)
-
-Contains the description of the Minecraft blocks for Blockly
-
-***/
-
 Blockly.Blocks['onchat'] = {
   init: function() {
     this.appendValueInput("command")
@@ -402,10 +393,6 @@ Blockly.Blocks['onmobkilled'] = {
   }
 };
 
-
-/***
-	Coalab (2018.03.12) 
-***/
 Blockly.Blocks['teleport_location'] = {
   init: function() {
     this.appendValueInput("NAME")
@@ -461,10 +448,6 @@ Blockly.Blocks['absolute_location'] = {
  this.setHelpUrl("");
   }
 };
-
-/***
-	Coalab (2018.03.13) 
-***/
 
 Blockly.Blocks['player_chat'] = {
   init: function() {
@@ -549,10 +532,6 @@ Blockly.Blocks['pause'] = {
   }
 };
 
-/***
-	Coalab (2018.03.27) 
-***/
-
 Blockly.Blocks['name_location'] = {
   init: function() {
     this.appendValueInput("name")
@@ -602,10 +581,6 @@ Blockly.Blocks['savelocation'] = {
   }
 };
 
-/***
-	Coalab (2018.03.29) 
-***/
-
 Blockly.Blocks['player_x'] = {
   init: function() {
     this.appendDummyInput()
@@ -649,10 +624,6 @@ Blockly.Blocks['player_location'] = {
  this.setHelpUrl("");
   }
 };
-
-/***
-	Coalab (2018.04.03) 
-***/
 
 Blockly.Blocks['notice_standing_block'] = {
   init: function() {
@@ -728,9 +699,7 @@ Blockly.Blocks['random_teleport'] = {
  this.setHelpUrl("");
   }
 };
-/***
-	Coalab (2018.04.12) 
-***/
+
 Blockly.Blocks['materials_limited'] = {
     init: function () {
         this.appendDummyInput()
@@ -744,9 +713,7 @@ Blockly.Blocks['materials_limited'] = {
         this.setHelpUrl("");
     }
 };
-/***
-	Coalab (2018.04.26) 
-***/
+
 Blockly.Blocks['plant'] = {
   init: function() {
     this.appendValueInput("location")
@@ -1283,11 +1250,11 @@ Blockly.Blocks['maze_example'] = { /*미로예제블록*/
 /*
  * 대규모 밀밭 만들기
  */
-Blockly.Blocks['farming_material'] = { /* 밀밭 만들기 재료 */
+Blockly.Blocks['farmland_material'] = { /* 밀밭 만들기 재료 */
     init: function () {
         this.appendDummyInput()
             .appendField(Blockly.Msg.MATERIALS)
-            .appendField(new Blockly.FieldDropdown(farming), "material");
+            .appendField(new Blockly.FieldDropdown(farmland), "material");
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -1300,7 +1267,7 @@ Blockly.Blocks['farming_material'] = { /* 밀밭 만들기 재료 */
 /*
  * 롤러코스터 만들기
  */
-Blockly.Blocks['train_material'] = { /* 롤러코스터 재료 */
+Blockly.Blocks['rail_material'] = { /* 롤러코스터 재료 */
     init: function () {
         this.appendDummyInput()
             .appendField(Blockly.Msg.MATERIALS)

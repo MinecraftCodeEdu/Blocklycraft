@@ -739,7 +739,7 @@ Code.initLanguage = function () {
     document.getElementById('trashButton').title = MSG.trashTooltip;
 
     var categories = ['catLogic', 'catLoops', 'catMath', 'catText', 'catLists', 'catFunctions',
-        'catColour', 'catVariables', 'catDrone', 'catInventory', 'catCoala', 'catTeleport', 'catBuilding', 'catFarmland' , 'catFarming', 'catRail', 'catRiding', 'catVillage', 'catTrampoline', 'catRecipe', 'catRanching', 'catWar', 'catJukebox', 'catDisaster', 'catRace', 'catCastle', 'catTag', 'catExample'
+        'catColour', 'catVariables', 'catDrone', 'catInventory', 'catCoala', 'catTeleport', 'catFence', 'catFarmland' , 'catFarming', 'catRail', 'catRiding', 'catVillage', 'catTrampoline', 'catRecipe', 'catRanching', 'catWar', 'catJukebox', 'catDisaster', 'catRace', 'catCastle', 'catTag', 'catExample'
     ];
 
     for (var i = 0, cat; cat = categories[i]; i++) {
