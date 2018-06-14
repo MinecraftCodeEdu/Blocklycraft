@@ -7,7 +7,7 @@ Contains the description of the Minecraft blocks for Blockly
 ***/
 
 //Naturally generated and created material blocks http://minecraft.gamepedia.com/Block 
-var materials = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 4, 5, 7, 8, 9, 12, 30, 33, 35, 35.1, 35.2, 35.3, 35.4, 37, 44, 47, 53, 55, 64, 66, 69.6, 70, 72, 81, 85, 89, 149, 154, 205, 218]);
+var materials = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 4, 5, 7, 8, 9, 12, 30, 33, 35, 35.1, 35.2, 35.3, 35.4, 37, 44, 47, 53, 55, 60, 64, 66, 69.6, 70, 72, 81, 85, 89, 149, 154, 205, 218]);
 
 /*
 var materials = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 26, 37, 38, 39, 40, 41, 42, 44, 46, 47, 48, 49, 50, 51, 56, 57, 57, 60, 66, 68, 69, 79, 80, 81, 82, 83, 85, 86, 92, 101, 103, 122, 127, 129, 140, 141, 142, 152, 165, 170, 213]);
@@ -28,7 +28,7 @@ var fence = getObjNames(Blockly.Msg.OBJNAMES, [85, 107]);
 var items_tools = getObjNames(Blockly.Msg.ITEMS_NAMES, ['diamondAxe', 'diamondHoe', 'diamondSpade', 'diamondPickaxe', 'shears', 'flintAndSteel', 'fishingRod', 'bed', 'torch', 'wood']);
 
 //http://minecraft.gamepedia.com/Food -> Vegetarian diet :-)
-var items_food = getObjNames(Blockly.Msg.ITEMS_NAMES, ['carrot', 'potato', 'cocoa', 'apple', 'melon', 'sugar', 'milkBucket', 'egg', 'wheat', 'pumpkin', 'sugarCane']);
+var items_food = getObjNames(Blockly.Msg.ITEMS_NAMES, ['carrot', 'potato', 'cocoa', 'apple', 'melon', 'sugar', 'milkBucket', 'egg', 'wheat', 'pumpkin', 'sugarCane', 'seeds']);
 
 //http://minecraft.gamepedia.com/Transportation
 var items_transportation = getObjNames(Blockly.Msg.ITEMS_NAMES, ['rails', 'poweredRail', 'redstoneTorchOn', 'minecart', 'ladder', 'boat']);
@@ -138,8 +138,9 @@ Blockly.Blocks['drone_move'] = {
                 [Blockly.Msg.MOUVEMENT_RIGHT, "right()"],
                 [Blockly.Msg.MOUVEMENT_LEFT, "left()"],
                 [Blockly.Msg.MOUVEMENT_TURN_RIGHT, "turn()"],
-                [Blockly.Msg.MOUVEMENT_TURN_LEFT, "turn(2)"],
-                [Blockly.Msg.MOUVEMENT_BACKTOSTART, "move('start')"],
+                [Blockly.Msg.MOUVEMENT_TURN_LEFT, "turn(3)"],
+		[Blockly.Msg.MOUVEMENT_TURN_BACK, "turn(2)"],
+		[Blockly.Msg.MOUVEMENT_BACKTOSTART, "move('start')"],
                 [Blockly.Msg.MOUVEMENT_SAVESTART, "chkpt('start')"]
             ]), "direction");
         this.setInputsInline(true);
@@ -1041,6 +1042,52 @@ Blockly.Blocks['flower_choice'] = {  /*꽃종류 변수*/
   }
 };
 
+Blockly.Blocks['block_around_information'] = { /*해당 블록 주위에 정보를 가져온다.*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("해당블록 주위에 정보가져오기");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['block_around'] = {  /*해당블록 주위에 해당 블록이 있는지 없는지 조건블록*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("해당블록 주위에")
+        .appendField(new Blockly.FieldDropdown([["물","STATIONARY_WATER"], ["option","OPTIONNAME"]]), "MATERIAL");
+    this.appendDummyInput()
+        .appendField("이")
+        .appendField(new Blockly.FieldDropdown([["있을때","=="], ["없을때","!="]]), "EXIST");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['controls_try'] = {  /*예외처리 블록*/
+  // Try
+  init: function() {
+    this.setHelpUrl(Blockly.Msg.CONTROLS_REPEAT_HELPURL);
+
+    this.setColour(120);
+    this.appendStatementInput('TRY')
+        .appendField('실행');
+    this.appendStatementInput('CATCH')
+        .appendField('예외처리');
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('Standard try { } carch (err) {..} you must provide an error handler to consume the error message');
+  }
+};
+
+
 Blockly.Blocks['copy_place'] = {   /*해당 좌표에 건축물과 블록을 복사한다.*/
   init: function() {
     this.appendDummyInput()
@@ -1094,10 +1141,144 @@ Blockly.Blocks['teleport_command'] = { /* 텔레포트 함수 */
         .appendField("x y z");
     this.setInputsInline(true);
     this.setColour(210);
+    this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+/**
+ * 예제 블록들
+ */
+Blockly.Blocks['block_type_example'] = {  /*블록에서 텍스트를 만듬. 게임 내 표지판*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("블록표지판");
+    this.appendValueInput("MESSAGE")
+        .setCheck(null)
+        .appendField("쓸 문구(영어)");
+    this.appendDummyInput()
+        .appendField("블록")
+        .appendField(new Blockly.FieldDropdown([["돌","blocks.stone"], ["물블록","blocks.water_still"], ["용암블록","blocks.lava_still"]]), "MATERIAL");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
  this.setTooltip("");
  this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['castle_example'] = {  /*캐슬 자동생성 예제*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("성(캐슬)");
+    this.appendValueInput("LENGTH")
+        .setCheck(null)
+        .appendField("너비");
+    this.appendValueInput("HEIGHT")
+        .setCheck(null)
+        .appendField("높이");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    if ((this.workspace.options.comments ||
+         (this.workspace.options.parentWorkspace &&
+          this.workspace.options.parentWorkspace.options.comments))) {
+      this.setCommentText("최소 너비 20이상 최소 높이 8이상");
+    }   	  
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+
+Blockly.Blocks['house_example'] = {    /*cottage 집과 집+길 생성 예제블록*/
+  init: function() {
+
+    var thisBlock = this;
+    var dropdown = new Blockly.FieldDropdown([["집","cottage"], ["마을","cottage_road"]], function(newOp) {
+      thisBlock.updateType_(newOp);
+    });
+    this.appendDummyInput()
+        .appendField("집짓기");
+    this.appendDummyInput()
+	.appendField("선택")
+        .appendField(dropdown, "OPTION");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  },
+  updateType_: function(newOp) {
+    if (newOp == 'cottage') {
+      this.removeInput("NUMBER");
+    } else if(newOp == 'cottage_road') {
+      this.appendValueInput("NUMBER")
+        .setCheck(null)
+	.appendField("집개수");
+    }
+  },
+  // storing output type
+  mutationToDom: function() {
+    var container = document.createElement('mutation');
+    container.setAttribute('op', this.getFieldValue('OP'));
+    return container;
+  },
+  // retrieving output type
+  domToMutation: function(xmlElement) {
+    //var villageInput = (xmlElement.getAttribute('op') == 'true');
+    this.updateType_(xmlElement.getAttribute('op'));
+  }
+};
+
+Blockly.Blocks['temple_example'] = {  /*신전예제블록*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("신전");
+    this.appendValueInput("LENGTH")
+        .setCheck(null)
+        .appendField("너비");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    if ((this.workspace.options.comments ||
+         (this.workspace.options.parentWorkspace &&
+          this.workspace.options.parentWorkspace.options.comments))) {
+      this.setCommentText("최소 너비 6이상 짝수값\n6일때 1층");
+    }
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['maze_example'] = { /*미로예제블록*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("미로");
+    this.appendValueInput("LENGTH")
+        .setCheck(null)
+        .appendField("가로/2");
+    this.appendValueInput("WIDTH")
+        .setCheck(null)
+        .appendField("세로/2");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    if ((this.workspace.options.comments ||
+         (this.workspace.options.parentWorkspace &&
+          this.workspace.options.parentWorkspace.options.comments))) {
+      this.setCommentText("입력한 가로·세로길이 2배길이로 생성");
+    }	  
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
 
 /*
  * 대규모 밀밭 만들기

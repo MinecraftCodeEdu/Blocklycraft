@@ -35,6 +35,7 @@ var MSG = {
     catRace: "달리기 경주",
     catCastle: "요새 만들기",
     catTag: "술래잡기",
+    catExample: "예제",
 
     listVariable: "리스트",
     textVariable: "텍스트",
@@ -73,6 +74,7 @@ Blockly.Msg.MOUVEMENT_RIGHT = "오른쪽";
 Blockly.Msg.MOUVEMENT_LEFT = "왼쪽";
 Blockly.Msg.MOUVEMENT_TURN_RIGHT = "오른쪽으로 돌기";
 Blockly.Msg.MOUVEMENT_TURN_LEFT = "왼쪽으로 돌기";
+Blockly.Msg.MOUVEMENT_TURN_BACK = "뒤로 돌기";
 Blockly.Msg.MOUVEMENT_BACKTOSTART = "다시 시작하기";
 Blockly.Msg.MOUVEMENT_SAVESTART = "시작 저장하기";
 
@@ -132,6 +134,7 @@ Blockly.Msg.ITEMS_NAMES.egg = "달걀";
 Blockly.Msg.ITEMS_NAMES.wheat = "밀";
 Blockly.Msg.ITEMS_NAMES.pumpkin = "호박";
 Blockly.Msg.ITEMS_NAMES.sugarCane = "사탕수수";
+Blockly.Msg.ITEMS_NAMES.seeds = "밀씨앗";
 
 //transportation
 Blockly.Msg.ITEMS_NAMES.rails = "레일";

@@ -67,12 +67,10 @@
                             <input type="file" id="loadxml" style="display: none;"/>
                             <button id="fakeload1">추가파일불러오기</button>
                             <input type="file" id="loadextraxml" style="display: none;"/>
-
-			    <button id="linkButton" class="notext" style="display: none" title="...">
+            			    <button id="linkButton" class="notext" style="display: none" title="">
                                 <img src='google-blockly/media/1x1.gif' class="link icon21">
                             </button>
-
-			    <button id="deployButton" class="notext primary" title="">
+			                <button id="deployButton" class="notext primary" title="">
                                 <img src='google-blockly/media/1x1.gif' class="run icon21">
                             </button>
                             <button id="trashButton" class="notext" title="">
@@ -525,6 +523,9 @@
               <block type="text"></block>
             </value>
           </block>
+	  <block type="block_around"></block>
+          <block type="block_around_information"></block>
+	  <block type="controls_try"></block>
 	</category>
     	<category id="catRail">
             <block type="drone"></block>
@@ -596,6 +597,44 @@
 	<category id="catCastle">
 	</category>
 	<category id="catTag">
+	</category>
+        <sep></sep>
+	<category id="caExample">
+	<block type="block_type_example">
+          <value name="MESSAGE">
+            <block type="text">
+              <field name="TEXT"></field>
+            </block>
+          </value>
+        </block>
+        <block type="castle_example">
+          <value name="LENGTH">
+            <block type="math_number">
+            </block>
+          </value>
+          <value name="HEIGHT">
+            <block type="math_number">
+            </block>
+          </value>
+        </block>
+        <block type="house_example">
+        </block>
+        <block type="temple_example">
+          <value name="LENGTH">
+            <block type="math_number">
+            </block>
+          </value>
+        </block>
+        <block type="maze_example">
+          <value name="LENGTH">
+            <block type="math_number">
+            </block>
+          </value>
+          <value name="WIDTH">
+            <block type="math_number">
+            </block>
+          </value>
+        </block>
 	</category>
         <sep></sep>
 	<category id="catLogic">
