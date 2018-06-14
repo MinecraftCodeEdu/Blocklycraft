@@ -200,14 +200,6 @@ Blockly.JavaScript['transportation'] = function (block) {
     return code;
 };
 
-/************************************************************************
-## Blockly -> ScriptCraft Javascript Code generator
-Coalab (2018.03.06)
-
-Contains the generator for the javascript used in scriptcraft
-
-***/
-
 Blockly.JavaScript['onchat'] = function(block) {
 	var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
 	var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
@@ -261,9 +253,6 @@ Blockly.JavaScript['onmobkilled'] = function(block) {
   return code;
 };
 */
-/***
-	Coalab (2018.03.12) 
-***/
 
 Blockly.JavaScript['teleport_location'] = function(block) {
   var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
@@ -294,9 +283,6 @@ Blockly.JavaScript['absolute_location'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-/***
-	Coalab (2018.03.13) 
-***/
 Blockly.JavaScript['player_chat'] = function(block) {
   var chat = Blockly.JavaScript.valueToCode(block, 'chat', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
@@ -374,10 +360,6 @@ while(new Date().getTime() < unixtime_ms + "+ms+") {}\n";
   return code;
 };
 
-/***
-	Coalab (2018.03.27) 
-***/
-
 Blockly.JavaScript['name_location'] = function(block) {
   var value_name = Blockly.JavaScript.valueToCode(block, 'name', Blockly.JavaScript.ORDER_ATOMIC);
   var value_location = Blockly.JavaScript.valueToCode(block, 'location', Blockly.JavaScript.ORDER_ATOMIC);
@@ -444,10 +426,6 @@ Blockly.JavaScript['savelocation'] = function(block) {
   return code;
 };
 
-/***
-	Coalab (2018.03.29) 
-***/
-
 Blockly.JavaScript['player_x'] = function(block) {
   // TODO: Assemble JavaScript into code variable.
   var code = "player.getLocation().getBlockX()";
@@ -475,10 +453,6 @@ Blockly.JavaScript['player_location'] = function(block) {
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
-
-/***
-	Coalab (2018.04.03) 
-***/
 
 Blockly.JavaScript['notice_standing_block'] = function(block) {
   var value_player = Blockly.JavaScript.valueToCode(block, 'player', Blockly.JavaScript.ORDER_ATOMIC);
@@ -554,17 +528,13 @@ player.sendMessage('The position is moved after 60 seconds.');\n\
 ";
   return code;
 };
-/***
-	Coalab (2018.04.12) 
-***/
+
 Blockly.JavaScript['materials_limited'] = function (block) {
     var dropdown_material = block.getFieldValue('material');
     var code = "global.theDrone." + 'box(' + dropdown_material + ');\n';
     return code;
 };
-/***
-	Coalab (2018.04.26) 
-***/
+
 Blockly.JavaScript['place_block'] = function(block) {
   var value_location = Blockly.JavaScript.valueToCode(block, 'location', Blockly.JavaScript.ORDER_ATOMIC);
   var dropdown_block = block.getFieldValue('block');
@@ -890,7 +860,7 @@ Blockly.JavaScript['maze_example'] = function(block) {
 /*
  * 대규모 밀밭 만들기
  */
-Blockly.JavaScript['farming_material'] = function (block) { /* 밀밭 만들기 재료 */
+Blockly.JavaScript['farmland_material'] = function (block) { /* 밀밭 만들기 재료 */
     var dropdown_material = block.getFieldValue('material');
     var code = "global.theDrone." + 'box(' + dropdown_material + ');\n';
     return code;
@@ -899,7 +869,7 @@ Blockly.JavaScript['farming_material'] = function (block) { /* 밀밭 만들기 
 /*
  * 롤러코스터 만들기
  */
-Blockly.JavaScript['train_material'] = function (block) { /* 롤러코스터 재료 */
+Blockly.JavaScript['rail_material'] = function (block) { /* 롤러코스터 재료 */
     var dropdown_material = block.getFieldValue('material');
     var code = "global.theDrone." + 'box(' + dropdown_material + ');\n';
     return code;

@@ -18,7 +18,7 @@ var MSG = {
     catInventory: "Inventory",
 
     catTeleport: "Teleport",
-    catBuilding: "Building",
+    catFence: "Fence",
     catFarming: "Farming",
     catRail: "Rail",
     catRiding: "Riding,Boat",

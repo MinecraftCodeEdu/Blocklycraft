@@ -20,7 +20,7 @@ var MSG = {
 
 	catCoala: "코알라",
     catTeleport: "텔레포트 사용하기",
-    catBuilding: "울타리 만들기",
+    catFence: "울타리 만들기",
     catFarmland: "대규모 밀밭 만들기",
 	catFarming: "자동화 농사 짓기",
     catRail: "롤러코스터 만들기",
