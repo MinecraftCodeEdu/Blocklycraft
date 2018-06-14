@@ -123,6 +123,28 @@ Blockly.JavaScript['delete'] = function (block) {
     return code;
 };
 
+Blockly.JavaScript['door'] = function(block) {
+  var dropdown_type = block.getFieldValue('TYPE');
+  var dropdown_material = block.getFieldValue('MATERIAL');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.theDrone."+dropdown_type+dropdown_material+"();\n";
+  return code;
+};
+
+Blockly.JavaScript['ladder'] = function(block) {
+  var value_height = Blockly.JavaScript.valueToCode(block, 'HEIGHT', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.theDrone.ladder("+value_height+");\n";
+  return code;
+};
+
+Blockly.JavaScript['torch'] = function(block) {
+  var dropdown_type = block.getFieldValue('TYPE');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.theDrone.hangtorch("+dropdown_type+");\n";
+  return code;
+};
+
 
 Blockly.JavaScript['inventory'] = function (block) {
     var fname = block.getFieldValue('param');
@@ -879,3 +901,5 @@ Blockly.JavaScript['fence_material'] = function (block) {
     var code = "global.theDrone." + 'box(' + dropdown_material + ');\n';
     return code;
 };
+
+

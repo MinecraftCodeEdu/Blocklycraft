@@ -266,6 +266,61 @@ Blockly.Blocks['delete'] = {
     }
 };
 
+Blockly.Blocks['door'] = { /*문 종류및 재료*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("문");
+    this.appendDummyInput()
+        .appendField("종류")
+        .appendField(new Blockly.FieldDropdown([["한쪽문","door"], ["양쪽문","door2"]]), "TYPE");
+    this.appendDummyInput()
+        .appendField("재료")
+        .appendField(new Blockly.FieldDropdown([["철","_iron"],["나무",""]]), "MATERIAL");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['ladder'] = {  /*사다리*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("사다리");
+    this.appendValueInput("HEIGHT")
+        .setCheck(null)
+        .appendField("높이");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['torch'] = { /*횃불*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("횃불");
+    this.appendDummyInput()
+        .appendField("종류")
+        .appendField(new Blockly.FieldDropdown([["횃불","0"], ["레드스톤횃불","1"]]), "TYPE");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+
+/*
+ * 인벤토리
+ */
 Blockly.Blocks['inventory'] = {
     init: function () {
         this.appendStatementInput("statements")

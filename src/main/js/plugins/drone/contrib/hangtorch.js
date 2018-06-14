@@ -45,8 +45,9 @@ function canHang( block ) {
   }
   return false;
 }  
-function hangtorch() { 
-  var torch = blocks.torch + ':' + Drone.PLAYER_TORCH_FACING[this.dir];
+function hangtorch(number) { 
+  var type_torch = (number==0) ? blocks.torch : blocks.torch_redstone_active;
+  var torch = type_torch + ':' + Drone.PLAYER_TORCH_FACING[this.dir];
   var moves = 0;
   var block = this.getBlock();
 
