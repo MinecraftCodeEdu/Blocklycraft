@@ -1144,6 +1144,140 @@ Blockly.Blocks['paste_place'] = {   /*해당 좌표에 복사한 건축물과블
   }
 };
 
+/**
+ * 예제 블록들
+ */
+Blockly.Blocks['block_type_example'] = {  /*블록에서 텍스트를 만듬. 게임 내 표지판*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("블록표지판");
+    this.appendValueInput("MESSAGE")
+        .setCheck(null)
+        .appendField("쓸 문구(영어)");
+    this.appendDummyInput()
+        .appendField("블록")
+        .appendField(new Blockly.FieldDropdown([["돌","blocks.stone"], ["물블록","blocks.water_still"], ["용암블록","blocks.lava_still"]]), "MATERIAL");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['castle_example'] = {  /*캐슬 자동생성 예제*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("성(캐슬)");
+    this.appendValueInput("LENGTH")
+        .setCheck(null)
+        .appendField("너비");
+    this.appendValueInput("HEIGHT")
+        .setCheck(null)
+        .appendField("높이");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    if ((this.workspace.options.comments ||
+         (this.workspace.options.parentWorkspace &&
+          this.workspace.options.parentWorkspace.options.comments))) {
+      this.setCommentText("최소 너비 20이상 최소 높이 8이상");
+    }   	  
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+
+Blockly.Blocks['house_example'] = {    /*cottage 집과 집+길 생성 예제블록*/
+  init: function() {
+
+    var thisBlock = this;
+    var dropdown = new Blockly.FieldDropdown([["집","cottage"], ["마을","cottage_road"]], function(newOp) {
+      thisBlock.updateType_(newOp);
+    });
+    this.appendDummyInput()
+        .appendField("집짓기");
+    this.appendDummyInput()
+	.appendField("선택")
+        .appendField(dropdown, "OPTION");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  },
+  updateType_: function(newOp) {
+    if (newOp == 'cottage') {
+      this.removeInput("NUMBER");
+    } else if(newOp == 'cottage_road') {
+      this.appendValueInput("NUMBER")
+        .setCheck(null)
+	.appendField("집개수");
+    }
+  },
+  // storing output type
+  mutationToDom: function() {
+    var container = document.createElement('mutation');
+    container.setAttribute('op', this.getFieldValue('OP'));
+    return container;
+  },
+  // retrieving output type
+  domToMutation: function(xmlElement) {
+    //var villageInput = (xmlElement.getAttribute('op') == 'true');
+    this.updateType_(xmlElement.getAttribute('op'));
+  }
+};
+
+Blockly.Blocks['temple_example'] = {  /*신전예제블록*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("신전");
+    this.appendValueInput("LENGTH")
+        .setCheck(null)
+        .appendField("너비");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    if ((this.workspace.options.comments ||
+         (this.workspace.options.parentWorkspace &&
+          this.workspace.options.parentWorkspace.options.comments))) {
+      this.setCommentText("최소 너비 6이상 짝수값\n6일때 1층");
+    }
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['maze_example'] = { /*미로예제블록*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("미로");
+    this.appendValueInput("LENGTH")
+        .setCheck(null)
+        .appendField("가로/2");
+    this.appendValueInput("WIDTH")
+        .setCheck(null)
+        .appendField("세로/2");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    if ((this.workspace.options.comments ||
+         (this.workspace.options.parentWorkspace &&
+          this.workspace.options.parentWorkspace.options.comments))) {
+      this.setCommentText("입력한 가로·세로길이 2배길이로 생성");
+    }	  
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+
 Blockly.Blocks['farming_material'] = {
     init: function () {
         this.appendDummyInput()

@@ -816,6 +816,52 @@ Blockly.JavaScript['flower_choice'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
+
+Blockly.JavaScript['block_type_example'] = function(block) {
+  var value_message = Blockly.JavaScript.valueToCode(block, 'MESSAGE', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_material = block.getFieldValue('MATERIAL');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.theDrone.blocktype("+value_message+","+dropdown_material+");\n";
+  return code;
+};
+
+Blockly.JavaScript['castle_example'] = function(block) {
+  var value_length = Blockly.JavaScript.valueToCode(block, 'LENGTH', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_height = Blockly.JavaScript.valueToCode(block, 'HEIGHT', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.theDrone.castle("+value_length+","+value_height+");\n";
+  return code;
+};
+
+Blockly.JavaScript['house_example'] = function(block) {
+  var dropdown_option = block.getFieldValue('OPTION');
+  var value_number = Blockly.JavaScript.valueToCode(block, 'NUMBER', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+if(!Boolean(value_number)){
+  var code = "global.theDrone."+dropdown_option+"(0);\n";	
+} else {
+  var code = "global.theDrone."+dropdown_option+"("+value_number+");\n";
+}
+	
+  return code;
+};
+
+Blockly.JavaScript['temple_example'] = function(block) {
+  var value_length = Blockly.JavaScript.valueToCode(block, 'LENGTH', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.theDrone.temple("+value_length+");\n";
+  return code;
+};
+
+Blockly.JavaScript['maze_example'] = function(block) {
+  var value_length = Blockly.JavaScript.valueToCode(block, 'LENGTH', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_width = Blockly.JavaScript.valueToCode(block, 'WIDTH', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.theDrone.maze("+value_length+","+value_width+");\n";
+  return code;
+};
+
+
 Blockly.JavaScript['farming_material'] = function (block) {
     var dropdown_material = block.getFieldValue('material');
     var code = "global.theDrone." + 'box(' + dropdown_material + ');\n';
