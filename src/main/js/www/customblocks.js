@@ -7,7 +7,7 @@ Contains the description of the Minecraft blocks for Blockly
 ***/
 
 //Naturally generated and created material blocks http://minecraft.gamepedia.com/Block 
-var materials = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 4, 5, 7, 8, 9, 12, 30, 33, 35, 35.1, 35.2, 35.3, 35.4, 37, 44, 47, 53, 55, 64, 66, 69.6, 70, 72, 81, 85, 89, 149, 154, 205, 218]);
+var materials = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 4, 5, 7, 8, 9, 12, 30, 33, 35, 35.1, 35.2, 35.3, 35.4, 37, 44, 47, 53, 55, 60, 64, 66, 69.6, 70, 72, 81, 85, 89, 149, 154, 205, 218]);
 
 /*
 var materials = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 26, 37, 38, 39, 40, 41, 42, 44, 46, 47, 48, 49, 50, 51, 56, 57, 57, 60, 66, 68, 69, 79, 80, 81, 82, 83, 85, 86, 92, 101, 103, 122, 127, 129, 140, 141, 142, 152, 165, 170, 213]);
@@ -28,7 +28,7 @@ var fence = getObjNames(Blockly.Msg.OBJNAMES, [85, 107]);
 var items_tools = getObjNames(Blockly.Msg.ITEMS_NAMES, ['diamondAxe', 'diamondHoe', 'diamondSpade', 'diamondPickaxe', 'shears', 'flintAndSteel', 'fishingRod', 'bed', 'torch', 'wood']);
 
 //http://minecraft.gamepedia.com/Food -> Vegetarian diet :-)
-var items_food = getObjNames(Blockly.Msg.ITEMS_NAMES, ['carrot', 'potato', 'cocoa', 'apple', 'melon', 'sugar', 'milkBucket', 'egg', 'wheat', 'pumpkin', 'sugarCane']);
+var items_food = getObjNames(Blockly.Msg.ITEMS_NAMES, ['carrot', 'potato', 'cocoa', 'apple', 'melon', 'sugar', 'milkBucket', 'egg', 'wheat', 'pumpkin', 'sugarCane', 'seeds']);
 
 //http://minecraft.gamepedia.com/Transportation
 var items_transportation = getObjNames(Blockly.Msg.ITEMS_NAMES, ['rails', 'poweredRail', 'redstoneTorchOn', 'minecart', 'ladder', 'boat']);
@@ -138,8 +138,9 @@ Blockly.Blocks['drone_move'] = {
                 [Blockly.Msg.MOUVEMENT_RIGHT, "right()"],
                 [Blockly.Msg.MOUVEMENT_LEFT, "left()"],
                 [Blockly.Msg.MOUVEMENT_TURN_RIGHT, "turn()"],
-                [Blockly.Msg.MOUVEMENT_TURN_LEFT, "turn(2)"],
-                [Blockly.Msg.MOUVEMENT_BACKTOSTART, "move('start')"],
+                [Blockly.Msg.MOUVEMENT_TURN_LEFT, "turn(3)"],
+		[Blockly.Msg.MOUVEMENT_TURN_BACK, "turn(2)"],
+		[Blockly.Msg.MOUVEMENT_BACKTOSTART, "move('start')"],
                 [Blockly.Msg.MOUVEMENT_SAVESTART, "chkpt('start')"]
             ]), "direction");
         this.setInputsInline(true);

@@ -28,7 +28,7 @@ Blockly.JavaScript['drone'] = function (block) {
     var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
     var webip = window.myIP;
 
-    var code = "command( '" + webip + fname + "', function ( parameters, player ) {\nvar theDrone = new Drone(player);\nvar bkBlockFace = Packages.org.bukkit.block.BlockFace;\nvar bkItemStack = Packages.org.bukkit.inventory.ItemStack;\nvar bkMaterial = Packages.org.bukkit.Material;\nvar bkLocation = Packages.org.bukkit.Location;\ntheDrone.up();\ntheDrone.chkpt('start');\n";
+    var code = "command( '" + webip + fname + "', function ( parameters, player ) {\nvar theDrone = new Drone(player);\nglobal.theDrone = theDrone;\nvar bkBlockFace = Packages.org.bukkit.block.BlockFace;\nvar bkItemStack = Packages.org.bukkit.inventory.ItemStack;\nvar bkMaterial = Packages.org.bukkit.Material;\nvar bkLocation = Packages.org.bukkit.Location;\nglobal.theDrone.up();\nglobal.theDrone.chkpt('start');\n";
     code = code + "var timeoutStop = new Date().getTime()+500;\n"; // set maximum run time for a script
     code = code + statements_statements;
     code = code + "});";
@@ -54,14 +54,14 @@ Blockly.JavaScript['drone'] = function (block) {
 
 Blockly.JavaScript['drone_move'] = function (block) {
     var dropdown_direction = block.getFieldValue('direction');
-    var code = "theDrone." + dropdown_direction + ";\n";
+    var code = "global.theDrone." + dropdown_direction + ";\n";
     return code;
 };
 
 Blockly.JavaScript['drone_move_count'] = function (block) {
     var dropdown_direction = block.getFieldValue('direction');
     var value_count = Blockly.JavaScript.valueToCode(block, 'COUNT', Blockly.JavaScript.ORDER_ATOMIC);
-    var code = "theDrone." + dropdown_direction + "(" + value_count + ");\n";
+    var code = "global.theDrone." + dropdown_direction + "(" + value_count + ");\n";
     return code;
 };
 
@@ -69,20 +69,20 @@ Blockly.JavaScript['materials'] = function (block) {
     var dropdown_material = block.getFieldValue('material');
 //    JSON.stringify(dropdown_material).replace('1','10');
 //    var code = "theDrone." + 'box(' + JSON.stringify(dropdown_material) + ');\n';
-var code = "theDrone.box(" + JSON.stringify(dropdown_material).replace(/"/g,"").replace(".",":")+ ");\n";
+var code = "global.theDrone.box(" + JSON.stringify(dropdown_material).replace(/"/g,"").replace(".",":")+ ");\n";
 
     return code;
 };
 
 Blockly.JavaScript['animals'] = function (block) {
     var dropdown_animal = block.getFieldValue('animal');
-    var code = "if (__plugin.bukkit) {\n        theDrone.getLocation().world.spawnEntity(theDrone.getLocation(), org.bukkit.entity.EntityType." + dropdown_animal + ");\n    }\n    if (__plugin.canary) {\n ar Canary = Packages.net.canarymod.Canary,\n            entityInstance = Canary.factory().entityFactory.newEntity('" + dropdown_animal + "', theDrone.getLocation());\n        entityInstance.spawn();\n    }";
+    var code = "if (__plugin.bukkit) {\n        global.theDrone.getLocation().world.spawnEntity(global.theDrone.getLocation(), org.bukkit.entity.EntityType." + dropdown_animal + ");\n    }\n    if (__plugin.canary) {\n ar Canary = Packages.net.canarymod.Canary,\n            entityInstance = Canary.factory().entityFactory.newEntity('" + dropdown_animal + "', global.theDrone.getLocation());\n        entityInstance.spawn();\n    }";
     return code;
 };
 
 Blockly.JavaScript['trees'] = function (block) {
     var dropdown_tree = block.getFieldValue('tree');
-    var code = "theDrone.getLocation().world.generateTree(theDrone.getLocation(), org.bukkit.TreeType."+dropdown_tree+");";
+    var code = "global.theDrone.getLocation().world.generateTree(global.theDrone.getLocation(), org.bukkit.TreeType."+dropdown_tree+");";
     return code;
 };
 
@@ -92,7 +92,7 @@ Blockly.JavaScript['rectangle'] = function (block) {
     var value_length = Blockly.JavaScript.valueToCode(block, 'length', Blockly.JavaScript.ORDER_ATOMIC);
     var dropdown_material = block.getFieldValue('material');
     var dropdown_fill = block.getFieldValue('fill');
-    var code = "theDrone.box" + dropdown_fill + "(" + JSON.stringify(dropdown_material).replace(/"/g,"").replace(".",":") + "," + value_width + ",1," + value_length + ");\n";
+    var code = "global.theDrone.box" + dropdown_fill + "(" + JSON.stringify(dropdown_material).replace(/"/g,"").replace(".",":") + "," + value_width + ",1," + value_length + ");\n";
 
     return code;
 };
@@ -101,7 +101,7 @@ Blockly.JavaScript['circle'] = function (block) {
     var value_radius = Blockly.JavaScript.valueToCode(block, 'radius', Blockly.JavaScript.ORDER_ATOMIC);
     var dropdown_material = block.getFieldValue('material');
     var dropdown_fill = block.getFieldValue('fill');
-    var code = "theDrone.cylinder" + dropdown_fill + "(" + JSON.stringify(dropdown_material).replace(/"/g,"").replace(".",":") + "," + value_radius + ",1);\n";
+    var code = "global.theDrone.cylinder" + dropdown_fill + "(" + JSON.stringify(dropdown_material).replace(/"/g,"").replace(".",":") + "," + value_radius + ",1);\n";
     return code;
 };
 
@@ -111,7 +111,7 @@ Blockly.JavaScript['prism'] = function(block) {
   var value_length = Blockly.JavaScript.valueToCode(block, 'length', Blockly.JavaScript.ORDER_ATOMIC);
   var dropdown_material = block.getFieldValue('MATERIAL');
   // TODO: Assemble JavaScript into code variable.
-  var code = "theDrone.prism" + dropdown_shape + "(" + dropdown_material + "," + value_width + "," + value_length + ");\n";
+  var code = "global.theDrone.prism" + dropdown_shape + "(" + dropdown_material + "," + value_width + "," + value_length + ");\n";
   return code;
 };
 
@@ -119,7 +119,7 @@ Blockly.JavaScript['delete'] = function (block) {
     var value_width = Blockly.JavaScript.valueToCode(block, 'width', Blockly.JavaScript.ORDER_ATOMIC);
     var value_height = Blockly.JavaScript.valueToCode(block, 'height', Blockly.JavaScript.ORDER_ATOMIC);
     var value_length = Blockly.JavaScript.valueToCode(block, 'length', Blockly.JavaScript.ORDER_ATOMIC);
-    var code = "theDrone.box(0," + value_width + "," + value_height + "," + value_length + ");\n";
+    var code = "global.theDrone.box(0," + value_width + "," + value_height + "," + value_length + ");\n";
     return code;
 };
 
@@ -204,10 +204,7 @@ Blockly.JavaScript['spawn_animal'] = function(block) {
         var checkbox_saddle = block.getFieldValue('SADDLE') == 'TRUE';
         var horse = "'CraftHorse{variant=HORSE, owner=null}'";
         var tryError = "'말 이외에는 안장사용불가'";
-        var code = "var theDrone = new Drone(player);\n\
-theDrone.up();\n\
-theDrone.chkpt('start');\n\
-var animal_type = theDrone.getLocation().world.spawnEntity(theDrone.getLocation(), org.bukkit.entity.EntityType." + value_animal + ");\n\
+        var code = "var animal_type = global.theDrone.getLocation().world.spawnEntity(global.theDrone.getLocation(), org.bukkit.entity.EntityType." + value_animal + ");\n\
 animal_type."+ dropdown_age +";\n\
 if(animal_type=="+horse+"){animal_type.setTamed(true);}\n\
 if("+checkbox_saddle+"){\n\
@@ -555,7 +552,7 @@ player.sendMessage('The position is moved after 60 seconds.');\n\
 ***/
 Blockly.JavaScript['materials_limited'] = function (block) {
     var dropdown_material = block.getFieldValue('material');
-    var code = "theDrone." + 'box(' + dropdown_material + ');\n';
+    var code = "global.theDrone." + 'box(' + dropdown_material + ');\n';
     return code;
 };
 /***
@@ -619,7 +616,7 @@ Blockly.JavaScript['dispenser_drone'] = function(block) {
   var dropdown_material = dropdown_material.split(':');
 
   var code = "\
-var droneData = theDrone.box('" + dispenser_num + ":" + dropdown_direction + "');\n\
+var droneData = global.theDrone.box('" + dispenser_num + ":" + dropdown_direction + "');\n\
 var block = droneData.getLocation().getBlock();\n\
 block.setType(bkMaterial.DISPENSER);\n\
 var container = block.getState();\n\
@@ -637,7 +634,7 @@ Blockly.JavaScript['block_direction'] = function(block) {
   var value_width = Blockly.JavaScript.valueToCode(block, 'width', Blockly.JavaScript.ORDER_ATOMIC);
   var value_length = Blockly.JavaScript.valueToCode(block, 'length', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = "theDrone.box('" + dropdown_item + ":" + dropdown_direction + "'," + value_width + ",1," + value_length + ");\n";
+  var code = "global.theDrone.box('" + dropdown_item + ":" + dropdown_direction + "'," + value_width + ",1," + value_length + ");\n";
 
   return code;
 };
@@ -726,7 +723,7 @@ Blockly.JavaScript['two_dimension'] = function(block) {
 Blockly.JavaScript['drone_variable'] = function(block) {
   var value_material = Blockly.JavaScript.valueToCode(block, 'material', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = "theDrone.box("+value_material+");\n";
+  var code = "global.theDrone.box("+value_material+");\n";
   return code;
 };
 
@@ -738,9 +735,9 @@ Blockly.JavaScript['redstone_comparator'] = function(block) {
   var checkbox_4 = block.getFieldValue('4') == 'TRUE';
   // TODO: Assemble JavaScript into code variable.
   if(checkbox_4) {
-    var code = "theDrone.box('149:" + (Number(dropdown_direction) + 4) + "');\n";
+    var code = "global.theDrone.box('149:" + (Number(dropdown_direction) + 4) + "');\n";
   } else {
-    var code = "theDrone.box('149:" + dropdown_direction + "');\n";
+    var code = "global.theDrone.box('149:" + dropdown_direction + "');\n";
   }
 
   return code;
@@ -759,7 +756,7 @@ delay_add += "+ Number(value_second*1000) +";\n";
 Blockly.JavaScript['redstone_repeater'] = function(block) {
   var dropdown_direction = block.getFieldValue('DIRECTION');
   // TODO: Assemble JavaScript into code variable.
-  var code = "theDrone.box('93:" + dropdown_direction + "');\n";
+  var code = "global.theDrone.box('93:" + dropdown_direction + "');\n";
   return code;
 };
 
@@ -769,7 +766,7 @@ Blockly.JavaScript['four_direction'] = function(block) {
   var value_length = Blockly.JavaScript.valueToCode(block, 'length', Blockly.JavaScript.ORDER_ATOMIC);
   var dropdown_direction = block.getFieldValue('DIRECTION');
   // TODO: Assemble JavaScript into code variable.
-  var code = "theDrone.box('" + dropdown_item + ":" + dropdown_direction + "'," + value_width + ",1," + value_length + ");\n";
+  var code = "global.theDrone.box('" + dropdown_item + ":" + dropdown_direction + "'," + value_width + ",1," + value_length + ");\n";
   return code;
 };
 
@@ -796,7 +793,7 @@ Blockly.JavaScript['button_attached'] = function(block) {
   }
   // TODO: Assemble JavaScript into code variable.
   var code = "\n\
-var blockButton = theDrone.box('"+ dropdown_block_material +"').back(2);\n\
+var blockButton = global.theDrone.box('"+ dropdown_block_material +"').back(2);\n\
 var blockLocation = new bkLocation(player.world, blockButton.x, blockButton.y, blockButton.z );\n\
 blockLocation.getBlock().getRelative(bkBlockFace."+ dropdown_direction +").setType(bkMaterial."+ dropdown_button_material +");\n\
 blockLocation.getBlock().getRelative(bkBlockFace."+ dropdown_direction +").setData("+ button_setdata +");\n";
@@ -821,18 +818,18 @@ Blockly.JavaScript['flower_choice'] = function(block) {
 
 Blockly.JavaScript['farming_material'] = function (block) {
     var dropdown_material = block.getFieldValue('material');
-    var code = "theDrone." + 'box(' + dropdown_material + ');\n';
+    var code = "global.theDrone." + 'box(' + dropdown_material + ');\n';
     return code;
 };
 
 Blockly.JavaScript['train_material'] = function (block) {
     var dropdown_material = block.getFieldValue('material');
-    var code = "theDrone." + 'box(' + dropdown_material + ');\n';
+    var code = "global.theDrone." + 'box(' + dropdown_material + ');\n';
     return code;
 };
 
 Blockly.JavaScript['fence_material'] = function (block) {
     var dropdown_material = block.getFieldValue('material');
-    var code = "theDrone." + 'box(' + dropdown_material + ');\n';
+    var code = "global.theDrone." + 'box(' + dropdown_material + ');\n';
     return code;
 };
