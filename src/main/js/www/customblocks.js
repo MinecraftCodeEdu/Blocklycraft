@@ -214,6 +214,8 @@ Blockly.Blocks['circle'] = {
             ]), "fill");
         this.appendValueInput("radius").setCheck("Number")
             .appendField(Blockly.Msg.RADIUS);
+	this.appendValueInput("height").setCheck("Number")
+            .appendField(Blockly.Msg.HEIGHT);
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown(materials), "material");
         this.setInputsInline(true);
