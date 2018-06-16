@@ -32,21 +32,20 @@ To construct a spiral staircase 5 floors high made of oak...
     spiral_stairs('oak', 5);
 
 ***/
-function spiral_stairs(stairBlock, flights){
+function spiral_stairs(stairBlock, width, flights){
   this.chkpt('spiral_stairs');
-    
-  for (var i = 0; i < flights; i++){
-    this
-      .box(blocks.stairs[stairBlock] )
-      .up()
-      .fwd()
-      .box(blocks.stairs[stairBlock] )
-      .up()
-      .fwd()
-      .box(blocks.slab[stairBlock])
-      .turn()
-      .fwd();
+  
+  for (var i = 0; i < flights; i++){ 
+  for (var j = 0; j < width; j++) {
+      this.box(blocks.stairs[stairBlock] )
+        .up()
+        .fwd();
+      }
+      this.box(blocks.slab[stairBlock])
+        .turn()
+        .fwd();
   }
+
   this.move('spiral_stairs');
 }
 Drone.extend(spiral_stairs);

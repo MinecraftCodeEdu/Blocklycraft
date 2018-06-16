@@ -336,6 +336,29 @@ Blockly.Blocks['player_direction'] = { /*플레이어가 바라보고 있는 방
   }
 };
 
+Blockly.Blocks['spiral_stair'] = { /*나선형 계단(탑내부에 계단만들때 사용)*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("나선형계단");
+    this.appendDummyInput()
+        .appendField("재료")
+        .appendField(new Blockly.FieldDropdown([["나무계단","oak"], ["돌계단","stone"], ["벽돌계단","brick"], ["모래계단","sandstone"]]), "MATERIAL");
+    this.appendValueInput("WIDTH")
+        .setCheck(null)
+        .appendField("너비");
+    this.appendValueInput("FLIGHTS")
+        .setCheck(null)
+        .appendField("층수");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+
 /*
  * 인벤토리
  */

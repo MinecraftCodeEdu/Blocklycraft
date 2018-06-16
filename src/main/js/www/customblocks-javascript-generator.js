@@ -153,6 +153,15 @@ Blockly.JavaScript['player_direction'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
+Blockly.JavaScript['spiral_stair'] = function(block) {
+  var dropdown_material = block.getFieldValue('MATERIAL');
+  var value_width = Blockly.JavaScript.valueToCode(block, 'WIDTH', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_flights = Blockly.JavaScript.valueToCode(block, 'FLIGHTS', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.theDrone.spiral_stairs('"+dropdown_material+"',"+value_width+","+value_flights+");\n";
+  return code;
+};
+
 Blockly.JavaScript['inventory'] = function (block) {
     var fname = block.getFieldValue('param');
     var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
