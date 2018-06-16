@@ -1319,6 +1319,51 @@ Blockly.Blocks['maze_example'] = { /*미로예제블록*/
   }
 };
 
+Blockly.Blocks['rainbow_example'] = {  /*무지개 예제*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("무지개");
+    this.appendValueInput("RADIUS")
+        .setCheck(null)
+        .appendField("반지름");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    if ((this.workspace.options.comments ||
+         (this.workspace.options.parentWorkspace &&
+          this.workspace.options.parentWorkspace.options.comments))) {
+      this.setCommentText("반지름 최소 8이상");
+    }
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['garden_example'] = {  /*정원예제*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("정원");
+    this.appendValueInput("WIDTH")
+        .setCheck(null)
+        .appendField("가로");
+    this.appendValueInput("LENGTH")
+        .setCheck(null)
+        .appendField("세로");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    if ((this.workspace.options.comments ||
+         (this.workspace.options.parentWorkspace &&
+          this.workspace.options.parentWorkspace.options.comments))) {
+      this.setCommentText("가로·세로 넓이만큼 랜덤으로 꽃 생성");
+    }
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
 
 /*
  * 대규모 밀밭 만들기

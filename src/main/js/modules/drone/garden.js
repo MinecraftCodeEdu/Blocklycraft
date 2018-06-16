@@ -37,7 +37,12 @@ function garden( width, depth ) {
   var dist = { };
   dist[blocks.rose] = 3;
   dist[blocks.dandelion] = 3;
-  dist[blocks.grass_tall] = 2;
+  dist[blocks.mushroom_brown] = 2;
+  dist[blocks.flower.blueorchid] = 2;
+  dist[blocks.flower.allium] = 2;
+  dist[blocks.flower.azure_bluet] = 2;
+  dist[blocks.flower.white_tulip] = 2;
+  dist[blocks.flower.oxeye_daisy] = 2;
   dist[blocks.air] = 1;
 
   this

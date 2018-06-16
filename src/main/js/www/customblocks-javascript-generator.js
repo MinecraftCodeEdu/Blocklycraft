@@ -863,6 +863,22 @@ Blockly.JavaScript['maze_example'] = function(block) {
   return code;
 };
 
+Blockly.JavaScript['rainbow_example'] = function(block) {
+  var value_radius = Blockly.JavaScript.valueToCode(block, 'RADIUS', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_number_colors = block.getFieldValue('NUMBER_COLORS');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.theDrone.rainbow("+value_radius+");\n";
+  return code;
+};
+
+Blockly.JavaScript['garden_example'] = function(block) {
+  var value_width = Blockly.JavaScript.valueToCode(block, 'WIDTH', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_length = Blockly.JavaScript.valueToCode(block, 'LENGTH', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.theDrone.garden("+value_width+","+value_length+");\n";
+  return code;
+};
+
 
 /*
  * 대규모 밀밭 만들기
