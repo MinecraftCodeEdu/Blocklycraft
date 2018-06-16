@@ -36,7 +36,7 @@ function spiral_stairs(stairBlock, width, flights){
   this.chkpt('spiral_stairs');
   
   for (var i = 0; i < flights; i++){ 
-  for (var j = 0; j < width; j++) {
+  for (var j = 0; j < width-1; j++) {
       this.box(blocks.stairs[stairBlock] )
         .up()
         .fwd();

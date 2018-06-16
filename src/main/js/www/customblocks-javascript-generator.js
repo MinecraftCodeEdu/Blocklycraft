@@ -888,6 +888,13 @@ Blockly.JavaScript['garden_example'] = function(block) {
   return code;
 };
 
+Blockly.JavaScript['firework'] = function(block) {
+  var dropdown_color = block.getFieldValue('COLOR');
+  var dropdown_type = block.getFieldValue('TYPE');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.theDrone.firework("+dropdown_color+","+dropdown_type+");\n";
+  return code;
+};
 
 /*
  * 대규모 밀밭 만들기
