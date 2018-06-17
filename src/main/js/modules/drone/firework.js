@@ -16,6 +16,6 @@ To launch a firework:
 ***/
 module.exports = function(Drone){
   Drone.extend( function firework( ) {
-    fireworks.firework( this.getLocation() );
+    fireworks.firework( this.getLocation(), arguments[0], arguments[1] );
   });
 };

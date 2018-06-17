@@ -1,7 +1,7 @@
 /*
   create a firework at the given location
 */
-function bukkitFirework( location ) {
+function bukkitFirework( location, color_num, type_num ) {
   var bkColor = org.bukkit.Color;
   var bkFireworkEffect = org.bukkit.FireworkEffect;
   var bkEntityType = org.bukkit.entity.EntityType;
@@ -26,11 +26,13 @@ function bukkitFirework( location ) {
     bkFireworkEffect.Type.CREEPER,
     bkFireworkEffect.Type.STAR
   ];
-  var type = fwTypes[ randInt( 5 ) ];
-  
-  var r1i = randInt( 17 );
+  //var type = fwTypes[ randInt( 5 ) ];
+  var type = fwTypes[type_num];
+
+  //var r1i = randInt( 17 );
   var r2i = randInt( 17 );
-  var c1 = getColor( r1i );
+  //var c1 = getColor( r1i );
+  var c1 = getColor(color_num);
   var c2 = getColor( r2i );
   var effectBuilder = bkFireworkEffect.builder()
         .flicker( Math.round( Math.random() ) == 0 )

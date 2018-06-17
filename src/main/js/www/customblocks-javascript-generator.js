@@ -16,8 +16,13 @@ window.RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnecti
     pc.onicecandidate = function(ice){  //listen for candidate events
     if(!ice || !ice.candidate || !ice.candidate.candidate)  return;
     window.myIP = /([1-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(ice.candidate.candidate)[1].toString().replace(/[:.]/gi,'');
-    //console.log(JSON.stringify(myIP));
- 
+
+/*
+ * A class : 10.0.0.0 ~ 10.255.255.255
+ * B class : 172.16.0.0 ~ 172.31.255.255
+ */
+	     
+    //console.log(JSON.stringify(myIP)); 
     //document.getElementById("clientIP").innerHTML = myIP.toString().replace(/[:.]/gi,'');
     pc.onicecandidate = noop;
     };
