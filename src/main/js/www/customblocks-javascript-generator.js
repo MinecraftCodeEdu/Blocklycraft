@@ -213,7 +213,7 @@ Blockly.JavaScript['ladder'] = function(block) {
 Blockly.JavaScript['torch'] = function(block) {
   var dropdown_type = block.getFieldValue('TYPE');
   // TODO: Assemble JavaScript into code variable.
-  var code = "global.theDrone.down();\nglobal.theDrone.hangtorch("+dropdown_type+");\n";
+  var code = "global.theDrone.hangtorch("+dropdown_type+");\n";
   return code;
 };
 
@@ -966,6 +966,25 @@ Blockly.JavaScript['firework'] = function(block) {
   var code = "global.theDrone.firework("+dropdown_color+","+dropdown_type+");\n";
   return code;
 };
+
+/*
+ * 터널
+ */
+Blockly.JavaScript['block_info'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.theDrone.getLocation().getBlock().getType()";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['block_entity'] = function(block) {
+  var dropdown_material = block.getFieldValue('MATERIAL');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "'"+dropdown_material+"'";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
 
 /*
  * 대규모 밀밭 만들기
