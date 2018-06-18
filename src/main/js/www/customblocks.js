@@ -7,7 +7,7 @@ Contains the description of the Minecraft blocks for Blockly
 ***/
 
 //Naturally generated and created material blocks http://minecraft.gamepedia.com/Block 
-var materials = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 4, 5, 7, 8, 9, 12, 30, 33, 35, 35.1, 35.2, 35.3, 35.4, 37, 44, 47, 53, 55, 59, 60, 64, 66, 69.6, 70, 72, 81, 85, 89, 149, 154, 205, 218]);
+var materials = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 4, 5, 7, 8, 9, 12, 30, 33, 35, 35.1, 35.2, 35.3, 35.4, 37, 44, 47, 53, 55, 57, 59, 60, 64, 66, 69.6, 70, 72, 81, 85, 89, 138, 149, 154, 205, 218]);
 
 /*
 var materials = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 26, 37, 38, 39, 40, 41, 42, 44, 46, 47, 48, 49, 50, 51, 56, 57, 57, 60, 66, 68, 69, 79, 80, 81, 82, 83, 85, 86, 92, 101, 103, 122, 127, 129, 140, 141, 142, 152, 165, 170, 213]);
@@ -303,13 +303,13 @@ Blockly.Blocks['ladder'] = {  /*사다리*/
   }
 };
 
-Blockly.Blocks['torch'] = { /*횃불*/
+Blockly.Blocks['torch'] = { /*블록옆에 매달리는 아이템*/
   init: function() {
     this.appendDummyInput()
-        .appendField("횃불");
+        .appendField("매달기");
     this.appendDummyInput()
         .appendField("종류")
-        .appendField(new Blockly.FieldDropdown([["횃불","0"], ["레드스톤횃불","1"]]), "TYPE");
+        .appendField(new Blockly.FieldDropdown([["횃불","0"], ["레드스톤횃불","1"], ["트립와이어 후크","2"]]), "TYPE");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);

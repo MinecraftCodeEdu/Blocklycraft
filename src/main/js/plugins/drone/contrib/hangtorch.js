@@ -46,8 +46,21 @@ function canHang( block ) {
   return false;
 }  
 function hangtorch(number) { 
+
+  if(number == 0){
+    var hangItem = blocks.torch + ':' + Drone.PLAYER_TORCH_FACING[this.dir];
+  } else if(number == 1){
+    var hangItem = blocks.torch_redstone_active + ':' + Drone.PLAYER_TORCH_FACING[this.dir];
+  } else if(number == 2){
+    var hangItem = blocks.tripwire_hook + ':' + Drone.PLAYER_TRIPWIRE_FACING[this.dir];
+  }
+		
+/*	
   var type_torch = (number==0) ? blocks.torch : blocks.torch_redstone_active;
   var torch = type_torch + ':' + Drone.PLAYER_TORCH_FACING[this.dir];
+*/
+
+
   var moves = 0;
   var block = this.getBlock();
 
@@ -64,7 +77,7 @@ function hangtorch(number) {
     block = this.getBlock();
   }
   this
-    .box(torch)
+    .box(hangItem)
     .fwd(moves);
 }
 Drone.extend(hangtorch);

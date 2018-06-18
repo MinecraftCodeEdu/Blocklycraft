@@ -213,7 +213,7 @@ Blockly.JavaScript['ladder'] = function(block) {
 Blockly.JavaScript['torch'] = function(block) {
   var dropdown_type = block.getFieldValue('TYPE');
   // TODO: Assemble JavaScript into code variable.
-  var code = "global.theDrone.hangtorch("+dropdown_type+");\n";
+  var code = "global.theDrone.down();\nglobal.theDrone.hangtorch("+dropdown_type+");\n";
   return code;
 };
 

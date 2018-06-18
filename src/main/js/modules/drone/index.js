@@ -760,6 +760,7 @@ Drone.prototype.cuboid0 = function( block, w, h, d, immediate ) {
 // block dirs:  0 = east, 1 = west,  2 = south , 3 = north
 // sign dirs:   5 = east, 3 = south, 4 = west, 2 = north
 Drone.PLAYER_STAIRS_FACING = [ 0, 2, 1, 3 ];
+Drone.PLAYER_TRIPWIRE_FACING = [1, 2, 3, 0];
 
 // for blocks 68 (wall signs) 65 (ladders) 61,62 (furnaces) 23 (dispenser) and 54 (chest)
 Drone.PLAYER_SIGN_FACING = [ 4, 2, 5, 3 ]; 
