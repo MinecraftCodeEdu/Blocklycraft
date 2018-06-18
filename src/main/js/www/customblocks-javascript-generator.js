@@ -9,6 +9,8 @@ Contains the generator for the javascript used in scriptcraft
 /*
 ** javascript get IP Address from RTC
 */
+
+/*
 window.RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;   //compatibility for firefox and chrome
     var pc = new RTCPeerConnection({iceServers:[]}), noop = function(){};
     pc.createDataChannel("");    //create a bogus data channel
@@ -17,15 +19,79 @@ window.RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnecti
     if(!ice || !ice.candidate || !ice.candidate.candidate)  return;
     window.myIP = /([1-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(ice.candidate.candidate)[1].toString().replace(/[:.]/gi,'');
 
-/*
- * A class : 10.0.0.0 ~ 10.255.255.255
- * B class : 172.16.0.0 ~ 172.31.255.255
- */
+
+  //A class : 10.0.0.0 ~ 10.255.255.255
+  //B class : 172.16.0.0 ~ 172.31.255.255
 	     
     //console.log(JSON.stringify(myIP)); 
     //document.getElementById("clientIP").innerHTML = myIP.toString().replace(/[:.]/gi,'');
     pc.onicecandidate = noop;
     };
+*/
+
+function getIPs(callback){
+                var ip_dups = {};
+                //compatibility for firefox and chrome
+                var RTCPeerConnection = window.RTCPeerConnection
+                    || window.mozRTCPeerConnection
+                    || window.webkitRTCPeerConnection;
+                var useWebKit = !!window.webkitRTCPeerConnection;
+                //bypass naive webrtc blocking using an iframe
+                if(!RTCPeerConnection){
+                    //NOTE: you need to have an iframe in the page right above the script tag
+                    //
+                    //<iframe id="iframe" sandbox="allow-same-origin" style="display: none"></iframe>
+                    //<script>...getIPs called in here...
+                    //
+                    var win = iframe.contentWindow;
+                    RTCPeerConnection = win.RTCPeerConnection
+                        || win.mozRTCPeerConnection
+                        || win.webkitRTCPeerConnection;
+                    useWebKit = !!win.webkitRTCPeerConnection;
+                }
+                //minimal requirements for data connection
+                var mediaConstraints = {
+                    optional: [{RtpDataChannels: true}]
+                };
+                var servers = {iceServers: [{urls: "stun:stun.services.mozilla.com"}]};
+                //construct a new RTCPeerConnection
+                var pc = new RTCPeerConnection(servers, mediaConstraints);
+                function handleCandidate(candidate){
+                    //match just the IP address
+                    var ip_regex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/
+                    var ip_addr = ip_regex.exec(candidate)[1];
+                    //remove duplicates
+                    if(ip_dups[ip_addr] === undefined)
+                        callback(ip_addr);
+                    ip_dups[ip_addr] = true;
+                }
+                //listen for candidate events
+                pc.onicecandidate = function(ice){
+                    //skip non-candidate events
+                    if(ice.candidate)
+                        handleCandidate(ice.candidate.candidate);
+                };
+                //create a bogus data channel
+                pc.createDataChannel("");
+                //create an offer sdp
+                pc.createOffer(function(result){
+                    //trigger the stun server request
+                    pc.setLocalDescription(result, function(){}, function(){});
+                }, function(){});
+                //wait for a while to let everything done
+                setTimeout(function(){
+                    //read candidate info from local description
+                    var lines = pc.localDescription.sdp.split('\n');
+                    lines.forEach(function(line){
+                        if(line.indexOf('a=candidate:') === 0)
+                            handleCandidate(line);
+                    });
+                }, 1000);
+}
+
+getIPs(function(ip){
+  window.myIP = ip.toString().replace(/[:.]/gi,'');
+});
 
 
 Blockly.JavaScript['drone'] = function (block) {
@@ -33,7 +99,7 @@ Blockly.JavaScript['drone'] = function (block) {
     var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
     var webip = window.myIP;
 
-    var code = "command( '" + webip + fname + "', function ( parameters, player ) {\nvar theDrone = new Drone(player);\nglobal.theDrone = theDrone;\nvar bkBlockFace = Packages.org.bukkit.block.BlockFace;\nvar bkItemStack = Packages.org.bukkit.inventory.ItemStack;\nvar bkMaterial = Packages.org.bukkit.Material;\nvar bkLocation = Packages.org.bukkit.Location;\nglobal.theDrone.up();\nglobal.theDrone.chkpt('start');\n";
+    var code = "command( '" + webip + fname + "', function ( parameters, player ) {\nvar delay_add=0;\nvar theDrone = new Drone(player);\nglobal.theDrone = theDrone;\nvar bkBlockFace = Packages.org.bukkit.block.BlockFace;\nvar bkItemStack = Packages.org.bukkit.inventory.ItemStack;\nvar bkMaterial = Packages.org.bukkit.Material;\nvar bkLocation = Packages.org.bukkit.Location;\nglobal.theDrone.up();\nglobal.theDrone.chkpt('start');\n";
     code = code + "var timeoutStop = new Date().getTime()+500;\n"; // set maximum run time for a script
     code = code + statements_statements;
     code = code + "});";
