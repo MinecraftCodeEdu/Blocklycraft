@@ -1197,6 +1197,7 @@ Blockly.Blocks['paste_place'] = {   /*해당 좌표에 복사한 건축물과블
   }
 };
 
+
 /*
  * 텔레포트 사용하기
  */
@@ -1412,6 +1413,26 @@ Blockly.Blocks['firework'] = { /*폭죽*/
   }
 };
 
+Blockly.Blocks['chessboard_example'] = { /*체스보드*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("체스보드");
+    this.appendValueInput("WIDTH")
+        .setCheck(null)
+        .appendField("가로");
+    this.appendValueInput("DEPTH")
+        .setCheck(null)
+        .appendField("세로");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+
 /*
  * 터널
  */
@@ -1429,6 +1450,8 @@ Blockly.Blocks['block_info'] = { /*해당블록의 정보를 가져온다.*/
 Blockly.Blocks['block_entity'] = { /*블록이 무엇인지 변수로 나타낸다. */
   init: function() {
     this.appendDummyInput()
+        .appendField("확인블록"); 
+    this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown([["잔디","GRASS"], ["공기","AIR"], ["흙","DIRT"], ["베드록","BEDROCK"]]), "MATERIAL");
     this.setOutput(true, null);
     this.setColour(230);
@@ -1437,6 +1460,27 @@ Blockly.Blocks['block_entity'] = { /*블록이 무엇인지 변수로 나타낸�
   }
 };
 
+Blockly.Blocks['stripes'] = {  /*블록들을 리스트로 저장하여 줄무늬로 출력*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("줄무늬");
+    this.appendValueInput("LISTS")
+        .setCheck("Array")
+        .appendField("블록리스트");
+    this.appendValueInput("WIDTH")
+        .setCheck(null)
+        .appendField("가로");
+    this.appendValueInput("DEPTH")
+        .setCheck(null)
+        .appendField("세로");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
 
 
 /*

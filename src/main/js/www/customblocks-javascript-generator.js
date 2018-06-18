@@ -967,6 +967,15 @@ Blockly.JavaScript['firework'] = function(block) {
   return code;
 };
 
+Blockly.JavaScript['chessboard_example'] = function(block) {
+  var value_width = Blockly.JavaScript.valueToCode(block, 'WIDTH', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_depth = Blockly.JavaScript.valueToCode(block, 'DEPTH', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.theDrone.chessboard(undefined,undefined,"+value_width+","+value_depth+");\n";
+  return code;
+};
+
+
 /*
  * 터널
  */
@@ -983,6 +992,15 @@ Blockly.JavaScript['block_entity'] = function(block) {
   var code = "'"+dropdown_material+"'";
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['stripes'] = function(block) {
+  var value_lists = Blockly.JavaScript.valueToCode(block, 'LISTS', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_width = Blockly.JavaScript.valueToCode(block, 'WIDTH', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_depth = Blockly.JavaScript.valueToCode(block, 'DEPTH', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.theDrone.boxa("+value_lists+","+value_width+",1,"+value_depth+");\n";
+  return code;
 };
 
 
