@@ -1470,6 +1470,9 @@ Blockly.Blocks['stripes'] = {  /*블록들을 리스트로 저장하여 줄무�
     this.appendValueInput("WIDTH")
         .setCheck(null)
         .appendField("가로");
+    this.appendValueInput("HEIGHT")
+        .setCheck(null)
+        .appendField("높이");
     this.appendValueInput("DEPTH")
         .setCheck(null)
         .appendField("세로");
@@ -1479,6 +1482,43 @@ Blockly.Blocks['stripes'] = {  /*블록들을 리스트로 저장하여 줄무�
     this.setColour(0);
  this.setTooltip("");
  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['block_number'] = { /*블록 변수 숫자 및 blocks.**/
+  init: function() {
+    var thisBlock = this;
+    var dropdown = new Blockly.FieldDropdown([["돌","1"], ["투척기","23"], ["흰색양모","35"], ["보라색양모","35:2"], ["회색양모","35:7"]], function(newOp) {
+      thisBlock.updateType_(newOp);
+    });
+    this.appendDummyInput()
+        .appendField("블록")
+        .appendField(dropdown, "BLOCKS");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  },
+  updateType_: function(newOp) {
+    if (newOp == '1') {
+      this.removeInput("DIRECTION");
+    } else if(newOp == '23') {
+      this.appendValueInput("DIRECTION")
+        .setCheck(null)
+        .appendField("방향");
+    }
+  },
+  // storing output type
+  mutationToDom: function() {
+    var container = document.createElement('mutation');
+    container.setAttribute('op', this.getFieldValue('OP'));
+    return container;
+  },
+  // retrieving output type
+  domToMutation: function(xmlElement) {
+    //var villageInput = (xmlElement.getAttribute('op') == 'true');
+    this.updateType_(xmlElement.getAttribute('op'));
   }
 };
 
