@@ -1455,6 +1455,7 @@ Blockly.Blocks['block_entity'] = { /*블록이 무엇인지 변수로 나타낸�
         .appendField(new Blockly.FieldDropdown([["잔디","GRASS"], ["공기","AIR"], ["흙","DIRT"], ["베드록","BEDROCK"]]), "MATERIAL");
     this.setOutput(true, null);
     this.setColour(230);
+    this.setInputsInline(true);
  this.setTooltip("");
  this.setHelpUrl("");
   }

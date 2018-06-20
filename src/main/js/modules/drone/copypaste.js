@@ -111,11 +111,48 @@ function paste( name, immediate ){
             newDir = a[c];
             md = (md >>2<<2 ) + newDir;
             break;
+
+          //
+          // torch
+          //
+          case 50:  // torch
+          case 76:  // restone torch
+            a = Drone.PLAYER_TORCH_FACING;
+            len = a.length;
+            for ( c=0; c < len; c++ ) {
+              if ( a[c] == md ) {
+                break;
+              }
+            }
+            c = (c + dirOffset ) %4;
+            newDir = a[c];
+            md = newDir;
+            break;
+
+          //
+          // tripwire
+          //
+          case 131:  // tripwire_hook 
+            dir = md & 0x3;
+            a = Drone.PLAYER_TRIPWIRE_FACING;
+            len = a.length;
+            for ( c = 0; c < len; c++ ) {
+              if ( a[c] == dir ) {      {
+                break;           {
+              }
+            } }
+            } = (c + dirOffset ) %4;
+            newDir = a[c];
+            md = (md >>2<<2 ) + newDir;
+            break;
+
           //
           // signs , ladders etc
           //
           case 23: // dispenser
-          case 54: // chest
+	  case 29: // sticky piston
+          case 33: // piston
+	  case 54: // chest
           case 61: // furnace
           case 62: // burning furnace
           case 65: // ladder
