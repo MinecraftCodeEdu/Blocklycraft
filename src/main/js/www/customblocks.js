@@ -1404,8 +1404,7 @@ Blockly.Blocks['firework'] = { /*폭죽*/
         .appendField(new Blockly.FieldDropdown([["검정색","1"], ["파란색","2"], ["회색","4"], ["초록색","5"], ["노란색","6"], ["주황색","10"], ["보라색","11"], ["빨간색","12"], ["흰색","15"]]), "COLOR");
     this.appendDummyInput()
         .appendField("종류")
-        .appendField(new Blockly.FieldDropdown([["공모양","0"], ["큰공모양","1"], ["폭발
-","2"], ["넝쿨모양","3"], ["별모양","4"]]), "TYPE");
+        .appendField(new Blockly.FieldDropdown([["공모양","0"], ["큰공모양","1"], ["폭발","2"], ["넝쿨모양","3"], ["별모양","4"]]), "TYPE");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
