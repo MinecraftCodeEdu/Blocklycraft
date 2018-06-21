@@ -7,7 +7,7 @@ Contains the description of the Minecraft blocks for Blockly
 ***/
 
 //Naturally generated and created material blocks http://minecraft.gamepedia.com/Block 
-var materials = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 4, 5, 7, 8, 9, 12, 30, 33, 35, 35.1, 35.2, 35.3, 35.4, 37, 44, 47, 53, 55, 60, 64, 66, 69.6, 70, 72, 81, 85, 89, 149, 154, 205, 218]);
+var materials = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 4, 5, 7, 8, 9, 12, 30, 33, 35, 35.1, 35.2, 35.3, 35.4, 37, 44, 47, 53, 55, 57, 59, 60, 64, 66, 69.6, 70, 72, 81, 85, 89, 132, 138, 149, 154, 205, 218]);
 
 /*
 var materials = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 26, 37, 38, 39, 40, 41, 42, 44, 46, 47, 48, 49, 50, 51, 56, 57, 57, 60, 66, 68, 69, 79, 80, 81, 82, 83, 85, 86, 92, 101, 103, 122, 127, 129, 140, 141, 142, 152, 165, 170, 213]);
@@ -23,8 +23,6 @@ var farmland = getObjNames(Blockly.Msg.OBJNAMES, [8, 60, 59, 207, 142, 141]);
 var train = getObjNames(Blockly.Msg.OBJNAMES, [66, 27, 28, 157, 152, 2]);
 
 var fence = getObjNames(Blockly.Msg.OBJNAMES, [85, 107]);
-
-var castle = getObjNames(Blockly.Msg.OBJNAMES, [98, 79, 20, 45, 5]);
 
 //http://minecraft.gamepedia.com/Tools
 var items_tools = getObjNames(Blockly.Msg.ITEMS_NAMES, ['diamondAxe', 'diamondHoe', 'diamondSpade', 'diamondPickaxe', 'shears', 'flintAndSteel', 'fishingRod', 'bed', 'torch', 'wood']);
@@ -216,6 +214,8 @@ Blockly.Blocks['circle'] = {
             ]), "fill");
         this.appendValueInput("radius").setCheck("Number")
             .appendField(Blockly.Msg.RADIUS);
+	this.appendValueInput("height").setCheck("Number")
+            .appendField(Blockly.Msg.HEIGHT);
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown(materials), "material");
         this.setInputsInline(true);
@@ -268,6 +268,100 @@ Blockly.Blocks['delete'] = {
     }
 };
 
+Blockly.Blocks['door'] = { /*문 종류및 재료*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("문");
+    this.appendDummyInput()
+        .appendField("종류")
+        .appendField(new Blockly.FieldDropdown([["한쪽문","door"], ["양쪽문","door2"]]), "TYPE");
+    this.appendDummyInput()
+        .appendField("재료")
+        .appendField(new Blockly.FieldDropdown([["철","_iron"],["나무",""]]), "MATERIAL");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['ladder'] = {  /*사다리*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("사다리");
+    this.appendValueInput("HEIGHT")
+        .setCheck(null)
+        .appendField("높이");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['torch'] = { /*블록옆에 매달리는 아이템*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("매달기");
+    this.appendDummyInput()
+        .appendField("종류")
+        .appendField(new Blockly.FieldDropdown([["횃불","0"], ["레드스톤횃불","1"], ["트립와이어 후크","2"]]), "TYPE");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['player_direction'] = { /*플레이어가 바라보고 있는 방향*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("플레이어 방향");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(0);
+    if ((this.workspace.options.comments ||
+         (this.workspace.options.parentWorkspace &&
+          this.workspace.options.parentWorkspace.options.comments))) {
+      this.setCommentText("0:동쪽,1:서쪽,2:남쪽,3:북쪽\n드론함수필요");
+    }
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['spiral_stair'] = { /*나선형 계단(탑내부에 계단만들때 사용)*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("나선형계단");
+    this.appendDummyInput()
+        .appendField("재료")
+        .appendField(new Blockly.FieldDropdown([["나무계단","oak"], ["돌계단","stone"], ["벽돌계단","brick"], ["모래계단","sandstone"]]), "MATERIAL");
+    this.appendValueInput("WIDTH")
+        .setCheck(null)
+        .appendField("너비");
+    this.appendValueInput("FLIGHTS")
+        .setCheck(null)
+        .appendField("층수");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+
+/*
+ * 인벤토리
+ */
 Blockly.Blocks['inventory'] = {
     init: function () {
         this.appendStatementInput("statements")
@@ -804,7 +898,7 @@ Blockly.Blocks['block_direction'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("재료")
-        .appendField(new Blockly.FieldDropdown([["피스톤","33"], ["관측기","218"]]), "ITEM");
+        .appendField(new Blockly.FieldDropdown([["피스톤","33"], ["끈끈이피스톤","29"],["관측기","218"]]), "ITEM");
     this.appendValueInput("width").setCheck("Number")
             .appendField(Blockly.Msg.WIDTH);
     this.appendValueInput("length").setCheck("Number")
@@ -916,6 +1010,11 @@ Blockly.Blocks['delay_time'] = { /*시간 지연 블록*/
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(230);
+    if ((this.workspace.options.comments ||
+         (this.workspace.options.parentWorkspace &&
+          this.workspace.options.parentWorkspace.options.comments))) {
+      this.setCommentText("시간 지연 안에 블록이 다 포함되어야함.\n시간지연 바깥에 블록이 오면 순서와 관계없이 바로실행됨.");
+    }	  
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -1098,6 +1197,7 @@ Blockly.Blocks['paste_place'] = {   /*해당 좌표에 복사한 건축물과블
   }
 };
 
+
 /*
  * 텔레포트 사용하기
  */
@@ -1248,6 +1348,181 @@ Blockly.Blocks['maze_example'] = { /*미로예제블록*/
   }
 };
 
+Blockly.Blocks['rainbow_example'] = {  /*무지개 예제*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("무지개");
+    this.appendValueInput("RADIUS")
+        .setCheck(null)
+        .appendField("반지름");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    if ((this.workspace.options.comments ||
+         (this.workspace.options.parentWorkspace &&
+          this.workspace.options.parentWorkspace.options.comments))) {
+      this.setCommentText("반지름 최소 8이상");
+    }
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['garden_example'] = {  /*정원예제*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("정원");
+    this.appendValueInput("WIDTH")
+        .setCheck(null)
+        .appendField("가로");
+    this.appendValueInput("LENGTH")
+        .setCheck(null)
+        .appendField("세로");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    if ((this.workspace.options.comments ||
+         (this.workspace.options.parentWorkspace &&
+          this.workspace.options.parentWorkspace.options.comments))) {
+      this.setCommentText("가로·세로 넓이만큼 랜덤으로 꽃 생성");
+    }
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['firework'] = { /*폭죽*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("폭죽");
+    this.appendDummyInput()
+        .appendField("색깔")
+        .appendField(new Blockly.FieldDropdown([["검정색","1"], ["파란색","2"], ["회색","4"], ["초록색","5"], ["노란색","6"], ["주황색","10"], ["보라색","11"], ["빨간색","12"], ["흰색","15"]]), "COLOR");
+    this.appendDummyInput()
+        .appendField("종류")
+        .appendField(new Blockly.FieldDropdown([["공모양","0"], ["큰공모양","1"], ["폭발
+","2"], ["넝쿨모양","3"], ["별모양","4"]]), "TYPE");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['chessboard_example'] = { /*체스보드*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("체스보드");
+    this.appendValueInput("WIDTH")
+        .setCheck(null)
+        .appendField("가로");
+    this.appendValueInput("DEPTH")
+        .setCheck(null)
+        .appendField("세로");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+
+/*
+ * 터널
+ */
+Blockly.Blocks['block_info'] = { /*해당블록의 정보를 가져온다.*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("해당블록");
+    this.setOutput(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['block_entity'] = { /*블록이 무엇인지 변수로 나타낸다. */
+  init: function() {
+    this.appendDummyInput()
+        .appendField("확인블록"); 
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldDropdown([["잔디","GRASS"], ["공기","AIR"], ["흙","DIRT"], ["베드록","BEDROCK"]]), "MATERIAL");
+    this.setOutput(true, null);
+    this.setColour(230);
+    this.setInputsInline(true);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['stripes'] = {  /*블록들을 리스트로 저장하여 줄무늬로 출력*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("줄무늬");
+    this.appendValueInput("LISTS")
+        .setCheck("Array")
+        .appendField("블록리스트");
+    this.appendValueInput("WIDTH")
+        .setCheck(null)
+        .appendField("가로");
+    this.appendValueInput("HEIGHT")
+        .setCheck(null)
+        .appendField("높이");
+    this.appendValueInput("DEPTH")
+        .setCheck(null)
+        .appendField("세로");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['block_number'] = { /*블록 변수 숫자 및 blocks.**/
+  init: function() {
+    var thisBlock = this;
+    var dropdown = new Blockly.FieldDropdown([["돌","1"], ["투척기","23"], ["흰색양모","35"], ["보라색양모","35:2"], ["회색양모","35:7"]], function(newOp) {
+      thisBlock.updateType_(newOp);
+    });
+    this.appendDummyInput()
+        .appendField("블록")
+        .appendField(dropdown, "BLOCKS");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  },
+  updateType_: function(newOp) {
+    if (newOp == '1') {
+      this.removeInput("DIRECTION");
+    } else if(newOp == '23') {
+      this.appendValueInput("DIRECTION")
+        .setCheck(null)
+        .appendField("방향");
+    }
+  },
+  // storing output type
+  mutationToDom: function() {
+    var container = document.createElement('mutation');
+    container.setAttribute('op', this.getFieldValue('OP'));
+    return container;
+  },
+  // retrieving output type
+  domToMutation: function(xmlElement) {
+    //var villageInput = (xmlElement.getAttribute('op') == 'true');
+    this.updateType_(xmlElement.getAttribute('op'));
+  }
+};
+
 
 /*
  * 대규모 밀밭 만들기
@@ -1291,23 +1566,6 @@ Blockly.Blocks['fence_material'] = { /* 울타리 재료 */
         this.appendDummyInput()
             .appendField(Blockly.Msg.MATERIALS)
             .appendField(new Blockly.FieldDropdown(fence), "material");
-        this.setInputsInline(true);
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setColour(0);
-        this.setTooltip(Blockly.Msg.TOOLTIP_MATERIALS);
-        this.setHelpUrl('http://minecraft.gamepedia.com/Block');
-    }
-};
-
-/*
- * 요새 만들기
- */
-Blockly.Blocks['castle_material'] = { /* 요새 재료 */
-    init: function () {
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.MATERIALS)
-            .appendField(new Blockly.FieldDropdown(castle), "material");
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
