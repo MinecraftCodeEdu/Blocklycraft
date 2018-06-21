@@ -113,18 +113,7 @@
 	        </value>
 	    </block>
 
-	    <block type="circle">
-	      <value name="radius">
-                 <block type="math_number">
-                    <field name="NUM">0</field>
-                 </block>
-              </value>   
-              <value name="height">
-                 <block type="math_number">
-                   <field name="NUM">0</field>
-                 </block>
-              </value>
-	    </block>
+	    <block type="circle"></block>
 	    <block type="prism">
               <value name="width">
                  <block type="math_number">
@@ -160,24 +149,7 @@
                 <block type="math_number"></block>
               </value>
             </block>
-	    <block type="door"></block>
-            <block type="ladder">
-              <value name="HEIGHT">
-                <block type="math_number"></block>
-              </value>
-            </block>
-            <block type="torch"></block>
-	    <block type="player_direction"></block>
-	    <block type="spiral_stair">
-              <value name="WIDTH">
-                <block type="math_number"></block>
-              </value>
-              <value name="FLIGHTS">
-                <block type="math_number"></block>
-              </value>
-            </block>
-	    <block type="firework"></block>
-	</category>
+        </category>
         <category id="catInventory">
             <block type="inventory"></block>
             <block type="tools"></block>
@@ -615,20 +587,6 @@
     	<category id="catRanching">
        	</category>
     	<category id="catWar">
-	  <block type="block_info"></block>
-          <block type="block_entity"></block>
-	  <block type="stripes">
-            <value name="WIDTH">
-              <block type="math_number"></block>
-            </value>
-	    <value name="HEIGHT">
-              <block type="math_number"></block>
-            </value>
-            <value name="DEPTH">
-              <block type="math_number"></block>
-            </value>
-          </block>
-	  <block type="block_number"></block>
     	</category>
     	<category id="catJukebox">
     	</category>
@@ -636,10 +594,20 @@
     	</category>
     	<category id="catRace">
     	</category>
-	<category id="catCastle">
-	</category>
-	<category id="catTag">
-	</category>
+		<category id="catCastle">
+            <block type="drone"></block>
+			<block type="castle_material"></block>
+			<block type="drone_move"></block>
+            <block type="controls_repeat_ext">
+                <value name="TIMES">
+                    <block type="math_number">
+                        <field name="NUM">10</field>
+                    </block>
+                </value>
+            </block>
+		</category>
+		<category id="catTag">
+		</category>
         <sep></sep>
 	<category id="catExample">
 	<block type="block_type_example">
@@ -677,35 +645,9 @@
             </block>
           </value>
         </block>
-	<block type="rainbow_example">
-          <value name="RADIUS">
-            <block type="math_number">
-            </block>
-          </value>
-        </block>
-        <block type="garden_example">
-          <value name="WIDTH">
-            <block type="math_number">
-            </block>
-          </value>
-          <value name="LENGTH">
-            <block type="math_number">
-            </block>
-          </value>
-        </block>
-	<block type="chessboard_example">
-          <value name="WIDTH">
-            <block type="math_number">
-            </block>
-          </value>
-          <value name="DEPTH">
-            <block type="math_number">
-            </block>
-          </value>
-        </block>
 	</category>
         <sep></sep>
-	<category id="catLogic" colour="210">
+	<category id="catLogic">
             <block type="controls_if"></block>
             <block type="logic_compare"></block>
             <block type="logic_operation"></block>
@@ -714,7 +656,7 @@
             <block type="logic_null"></block>
             <block type="logic_ternary"></block>
         </category>
-        <category id="catLoops" colour="120">
+        <category id="catLoops">
             <block type="controls_repeat_ext">
                 <value name="TIMES">
                     <block type="math_number">
@@ -742,7 +684,7 @@
             </block>
             <block type="controls_flow_statements"></block>
         </category>
-        <category id="catMath" colour="230">
+        <category id="catMath">
             <block type="math_number"></block>
             <block type="math_arithmetic"></block>
             <block type="math_single"></block>
@@ -786,7 +728,7 @@
             <block type="math_random_float"></block>
         </category>
         <sep></sep>
-        <category id="catText" colour="160">
+        <category id="catText">
             <block type="text"></block>
             <block type="text_join"></block>
             <block type="text_append">
@@ -826,7 +768,7 @@
                 </value>
             </block>
         </category>
-        <category id="catLists" colour="260">
+        <category id="catLists">
             <block type="lists_create_empty"></block>
             <block type="lists_create_with"></block>
             <block type="lists_repeat">
@@ -873,12 +815,11 @@
                     </block>
                 </value>
             </block>
-	    <block type="lists_reverse"></block>
         </category>
-	<category id="catFunctions" custom="PROCEDURE" colour="290">
+	<category id="catFunctions" custom="PROCEDURE">
 	</category>
 
-	<category id="catVariables" custom="VARIABLE" colour="330">
+	<category id="catVariables" custom="VARIABLE">
             <category id="catColour">
         </category>
 

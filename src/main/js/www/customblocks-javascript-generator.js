@@ -1032,3 +1032,13 @@ Blockly.JavaScript['fence_material'] = function (block) { /* 울타리 재료 */
 };
 
 
+/*
+ * 요새 만들기
+ */
+Blockly.JavaScript['castle_material'] = function (block) { /* 요새 재료 */
+    var dropdown_material = block.getFieldValue('material');
+    var code = "global.theDrone." + 'box(' + dropdown_material + ');\n';
+    return code;
+};
+
+
