@@ -24,6 +24,8 @@ var train = getObjNames(Blockly.Msg.OBJNAMES, [66, 27, 28, 157, 152, 2]);
 
 var fence = getObjNames(Blockly.Msg.OBJNAMES, [85, 107]);
 
+var castle = getObjNames(Blockly.Msg.OBJNAMES, [98, 79, 20, 45, 5]);
+
 //http://minecraft.gamepedia.com/Tools
 var items_tools = getObjNames(Blockly.Msg.ITEMS_NAMES, ['diamondAxe', 'diamondHoe', 'diamondSpade', 'diamondPickaxe', 'shears', 'flintAndSteel', 'fishingRod', 'bed', 'torch', 'wood']);
 
@@ -1402,8 +1404,7 @@ Blockly.Blocks['firework'] = { /*폭죽*/
         .appendField(new Blockly.FieldDropdown([["검정색","1"], ["파란색","2"], ["회색","4"], ["초록색","5"], ["노란색","6"], ["주황색","10"], ["보라색","11"], ["빨간색","12"], ["흰색","15"]]), "COLOR");
     this.appendDummyInput()
         .appendField("종류")
-        .appendField(new Blockly.FieldDropdown([["공모양","0"], ["큰공모양","1"], ["폭발
-","2"], ["넝쿨모양","3"], ["별모양","4"]]), "TYPE");
+        .appendField(new Blockly.FieldDropdown([["공모양","0"], ["큰공모양","1"], ["폭발","2"], ["넝쿨모양","3"], ["별모양","4"]]), "TYPE");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -1572,5 +1573,47 @@ Blockly.Blocks['fence_material'] = { /* 울타리 재료 */
         this.setColour(0);
         this.setTooltip(Blockly.Msg.TOOLTIP_MATERIALS);
         this.setHelpUrl('http://minecraft.gamepedia.com/Block');
+    }
+};
+
+/*
+ * 요새 만들기
+ */
+Blockly.Blocks['castle_material'] = { /* 요새 재료 */
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MATERIALS)
+            .appendField(new Blockly.FieldDropdown(castle), "material");
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setColour(0);
+        this.setTooltip(Blockly.Msg.TOOLTIP_MATERIALS);
+        this.setHelpUrl('http://minecraft.gamepedia.com/Block');
+    }
+};
+
+Blockly.Blocks['castle_rectangle'] = { /* 요새 직사각형 재료 */
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.RECTANGLE);
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.Msg.EMPTY, "0"],
+                [Blockly.Msg.FULL, " "]
+            ]), "fill");
+        this.appendValueInput("width").setCheck("Number")
+            .appendField(Blockly.Msg.WIDTH);
+        this.appendValueInput("length").setCheck("Number")
+            .appendField(Blockly.Msg.LENGTH);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MATERIAL)
+            .appendField(new Blockly.FieldDropdown(castle), "material");
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setColour(0);
+        this.setTooltip(Blockly.Msg.TOOLTIP_RECTANGLE);
+        this.setHelpUrl('https://github.com/walterhiggins/ScriptCraft/blob/master/docs/API-Reference.md#dronebox-method');
     }
 };

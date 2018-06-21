@@ -567,6 +567,23 @@
                 </value>
             </block>
 			<block type="controls_whileUntil"></block>
+			<block type="controls_for">
+                <value name="FROM">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+                <value name="TO">
+                    <block type="math_number">
+                        <field name="NUM">10</field>
+                    </block>
+                </value>
+                <value name="BY">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+            </block>
             <block type="math_number"></block>
             <block type="math_arithmetic"></block>
 			<block type="logic_compare"></block>
@@ -637,6 +654,33 @@
     	<category id="catRace">
     	</category>
 	<category id="catCastle">
+            <block type="drone"></block>
+			<block type="castle_material"></block>
+			<block type="castle_rectangle">
+					<value name="width">
+					   <block type="math_number">
+					   <field name="NUM">0</field>
+					   </block>
+					</value>
+					<value name="length">
+					   <block type="math_number">
+				   <field name="NUM">0</field>
+					   </block>
+				</value>
+			</block>
+			<block type="drone_move"></block>
+			<block type="drone_move_count">
+              <value name="COUNT">
+                <block type="math_number"></block>
+              </value>
+            </block>
+            <block type="controls_repeat_ext">
+                <value name="TIMES">
+                    <block type="math_number">
+                        <field name="NUM">10</field>
+                    </block>
+                </value>
+            </block>
 	</category>
 	<category id="catTag">
 	</category>
