@@ -1592,3 +1592,28 @@ Blockly.Blocks['castle_material'] = { /* 요새 재료 */
         this.setHelpUrl('http://minecraft.gamepedia.com/Block');
     }
 };
+
+Blockly.Blocks['castle_rectangle'] = { /* 요새 직사각형 재료 */
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.RECTANGLE);
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.Msg.EMPTY, "0"],
+                [Blockly.Msg.FULL, " "]
+            ]), "fill");
+        this.appendValueInput("width").setCheck("Number")
+            .appendField(Blockly.Msg.WIDTH);
+        this.appendValueInput("length").setCheck("Number")
+            .appendField(Blockly.Msg.LENGTH);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MATERIAL)
+            .appendField(new Blockly.FieldDropdown(castle), "material");
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setColour(0);
+        this.setTooltip(Blockly.Msg.TOOLTIP_RECTANGLE);
+        this.setHelpUrl('https://github.com/walterhiggins/ScriptCraft/blob/master/docs/API-Reference.md#dronebox-method');
+    }
+};

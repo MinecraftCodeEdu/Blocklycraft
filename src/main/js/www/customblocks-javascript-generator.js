@@ -1040,4 +1040,14 @@ Blockly.JavaScript['castle_material'] = function (block) { /* 요새 재료 */
     return code;
 };
 
+Blockly.JavaScript['castle_rectangle'] = function (block) { /* 요새 직사각형 재료 */
+    var value_width = Blockly.JavaScript.valueToCode(block, 'width', Blockly.JavaScript.ORDER_ATOMIC);
+    var value_length = Blockly.JavaScript.valueToCode(block, 'length', Blockly.JavaScript.ORDER_ATOMIC);
+    var dropdown_material = block.getFieldValue('material');
+    var dropdown_fill = block.getFieldValue('fill');
+    var code = "global.theDrone.box" + dropdown_fill + "(" + JSON.stringify(dropdown_material).replace(/"/g,"").replace(".",":") + "," + value_width + ",1," + value_length + ");\n";
+
+    return code;
+};
+
 
