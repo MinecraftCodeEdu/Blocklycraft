@@ -24,6 +24,8 @@ var train = getObjNames(Blockly.Msg.OBJNAMES, [66, 27, 28, 157, 152, 2]);
 
 var fence = getObjNames(Blockly.Msg.OBJNAMES, [85, 107]);
 
+var castle = getObjNames(Blockly.Msg.OBJNAMES, [98, 79, 20, 45, 5]);
+
 //http://minecraft.gamepedia.com/Tools
 var items_tools = getObjNames(Blockly.Msg.ITEMS_NAMES, ['diamondAxe', 'diamondHoe', 'diamondSpade', 'diamondPickaxe', 'shears', 'flintAndSteel', 'fishingRod', 'bed', 'torch', 'wood']);
 
@@ -1566,6 +1568,23 @@ Blockly.Blocks['fence_material'] = { /* 울타리 재료 */
         this.appendDummyInput()
             .appendField(Blockly.Msg.MATERIALS)
             .appendField(new Blockly.FieldDropdown(fence), "material");
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setColour(0);
+        this.setTooltip(Blockly.Msg.TOOLTIP_MATERIALS);
+        this.setHelpUrl('http://minecraft.gamepedia.com/Block');
+    }
+};
+
+/*
+ * 요새 만들기
+ */
+Blockly.Blocks['castle_material'] = { /* 요새 재료 */
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MATERIALS)
+            .appendField(new Blockly.FieldDropdown(castle), "material");
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
