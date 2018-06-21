@@ -136,15 +136,16 @@ function paste( name, immediate ){
             dir = md & 0x3;
             a = Drone.PLAYER_TRIPWIRE_FACING;
             len = a.length;
-            for ( c = 0; c < len; c++ ) {
-              if ( a[c] == dir ) {      {
-                break;           {
+            for ( c = 0; c < len; c++ ) { 
+              if ( a[c] == dir ) { 
+                break;
               }
-            } }
-            } = (c + dirOffset ) %4;
+            }
+            c = (c + dirOffset ) %4; 
             newDir = a[c];
             md = (md >>2<<2 ) + newDir;
             break;
+
 
           //
           // signs , ladders etc
