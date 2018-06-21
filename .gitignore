@@ -23,3 +23,4 @@ build.local.properties
 /src/docs/build/classes/hello.js
 /src/docs/build/classes/.netbeans_automatic_build
 /src/docs/build/classes/.netbeans_update_resources
+docs/API-Reference.md
