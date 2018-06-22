@@ -326,7 +326,6 @@ Blockly.JavaScript['animalmob'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-/*
 Blockly.JavaScript['onmobkilled'] = function(block) {
   var value_mob = Blockly.JavaScript.valueToCode(block, 'Mob', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_command = Blockly.JavaScript.statementToCode(block, 'command');
@@ -339,7 +338,6 @@ Blockly.JavaScript['onmobkilled'] = function(block) {
 	code = code + "}}});";
   return code;
 };
-*/
 
 Blockly.JavaScript['teleport_location'] = function(block) {
   var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
