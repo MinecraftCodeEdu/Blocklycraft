@@ -7,7 +7,7 @@ Contains the description of the Minecraft blocks for Blockly
 ***/
 
 //Naturally generated and created material blocks http://minecraft.gamepedia.com/Block 
-var materials = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 4, 5, 7, 8, 9, 12, 30, 33, 35, 35.1, 35.2, 35.3, 35.4, 37, 44, 47, 53, 55, 57, 59, 60, 64, 66, 69.6, 70, 72, 81, 85, 89, 132, 138, 149, 154, 205, 218]);
+var materials = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 4, 5, 7, 8, 9, 12, 30, 33, 35, 35.1, 35.2, 35.3, 35.4, 37, 44, 47, 53, 55, 57, 59, 60, 64, 66, 69.6, 70, 72, 81, 85, 89, 107, 132, 138, 149, 154, 205, 218]);
 
 /*
 var materials = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 26, 37, 38, 39, 40, 41, 42, 44, 46, 47, 48, 49, 50, 51, 56, 57, 57, 60, 66, 68, 69, 79, 80, 81, 82, 83, 85, 86, 92, 101, 103, 122, 127, 129, 140, 141, 142, 152, 165, 170, 213]);
@@ -1612,7 +1612,7 @@ Blockly.Blocks['item_drop'] = {  /*아이템 드랍*/
         .appendField("위치");
     this.appendDummyInput()
         .appendField("아이템")
-        .appendField(new Blockly.FieldDropdown([["구운소고기","COOKED_BEEF"], ["구운돼지고기","GRILLED_PORK"], ["구운닭고기","COOKED_CHICKEN"]]), "ITEMS");
+        .appendField(new Blockly.FieldDropdown([["날소고기","RAW_BEEF"], ["날돼지고기","PORK"], ["날닭고기","RAW_CHICKEN"], ["구운소고기","COOKED_BEEF"], ["구운돼지고기","GRILLED_PORK"], ["구운닭고기","COOKED_CHICKEN"]]), "ITEMS");
     this.appendValueInput("NUMBER")
         .setCheck(null)
         .appendField("개수");
@@ -1681,6 +1681,152 @@ Blockly.Blocks['kill_entity'] = { /*개체를 죽인 개체 변수 (나 자신�
   }
 };
 
+Blockly.Blocks['animal_var'] = { /*동물변수(조건문에서 쓰임)*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("동물")
+        .appendField(new Blockly.FieldDropdown([["소","CraftCow"], ["돼지","CraftPig"], ["닭","CraftChicken"]]), "ANIMALS");
+    this.setOutput(true, null);
+    this.setColour(90);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+/*
+ * 트램폴린
+ */
+Blockly.Blocks['event_playerinteract'] = { /*사용자가 상호작용하는 이벤트*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("이벤트");
+    this.appendStatementInput("INTERACT")
+        .setCheck(null)
+        .appendField("사용자 상호작용");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(180);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['timer_countup_start'] = { /*시간측정을 시작할때 사용*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("시간측정(Count-Up)")
+        .appendField("시작");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(180);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['timer_countup_stop'] = { /*시간측정 멈춤*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("시간측정(Count-Up)")
+        .appendField("멈춤");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(180);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['block_click_var'] = { /*오른쪽 클릭한 블록*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("클릭한 블록");
+    this.setOutput(true, null);
+    this.setColour(180);
+     if ((this.workspace.options.comments ||
+         (this.workspace.options.parentWorkspace &&
+          this.workspace.options.parentWorkspace.options.comments))) {
+      this.setCommentText("사용자 상호작용 이벤트 필요");
+    }
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['blockvar_ore'] = { /*광석 변수 (오른쪽 클릭 이벤트에서 사용)*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("블록")
+        .appendField(new Blockly.FieldDropdown([["다이아몬드","DIAMOND_BLOCK"], ["금","GOLD_BLOCK"], ["철","IRON_BLOCK"], ["에매랄드","EMERALD_BLOCK"], ["슬라임블록","SLIME_BLOCK"]]), "BLOCKS");
+    this.setOutput(true, null);
+    this.setColour(180);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['clickblock_type'] = { /*오른쪽 클릭한 블록의 종류를 알아내는 블록*/
+  init: function() {
+    this.appendValueInput("NAME")
+        .setCheck(null);
+    this.appendDummyInput()
+        .appendField("의 종류");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(180);
+    if ((this.workspace.options.comments ||
+         (this.workspace.options.parentWorkspace &&
+          this.workspace.options.parentWorkspace.options.comments))) {
+      this.setCommentText("블록의 종류를 알아내는 블록\n빈칸에 오른쪽 클릭한 블록 들어옴");
+    }
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['block_change_click'] = { /*클릭한 블록을 원하는 블록으로 변경*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("블록");
+    this.appendValueInput("BEFORE")
+        .setCheck(null);
+    this.appendValueInput("AFTER")
+        .setCheck(null)
+        .appendField("을/를");
+    this.appendDummyInput()
+        .appendField("로 변경");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(180);
+    if ((this.workspace.options.comments ||
+         (this.workspace.options.parentWorkspace &&
+          this.workspace.options.parentWorkspace.options.comments))) {
+      this.setCommentText("사용자 상호작용 이벤트 필요");
+    }
+ 	  
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['measure_time'] = { /*측정된 시간 출력 변수*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("측정시간출력");
+    this.setOutput(true, null);
+    this.setColour(180);
+    if ((this.workspace.options.comments ||
+         (this.workspace.options.parentWorkspace &&
+          this.workspace.options.parentWorkspace.options.comments))) {
+      this.setCommentText("시간측정시작 블록 필요");
+    }
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
 
 
 /*
