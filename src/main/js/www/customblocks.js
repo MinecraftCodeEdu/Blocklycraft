@@ -1524,6 +1524,164 @@ Blockly.Blocks['block_number'] = { /*블록 변수 숫자 및 blocks.**/
   }
 };
 
+/*
+ * 목장
+ */
+Blockly.Blocks['event_playerentity'] = { /*개체와 상호작용하는 이벤트함수*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("이벤트");
+    this.appendStatementInput("ENTITY")
+        .setCheck(null)
+        .appendField("개체와 상호작용");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(90);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['entity_rightclick'] = { /*우클릭했을때 (개체 상호작용 이벤트함수 종속)*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("오른쪽 클릭한 개체");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(90);
+    if ((this.workspace.options.comments ||
+         (this.workspace.options.parentWorkspace &&
+          this.workspace.options.parentWorkspace.options.comments))) {
+      this.setCommentText("개체 상호작용 이벤트 필요");
+    }
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['dye_color'] = {  /*양 염색 색깔*/
+  init: function() {
+    this.appendValueInput("ENTITY")
+        .setCheck(null);
+    this.appendValueInput("COLOR")
+        .setCheck(null)
+        .appendField("염색색깔");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(90);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['colors_var'] = { /*색깔*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("색깔")
+        .appendField(new Blockly.FieldDropdown([["빨간색","org.bukkit.DyeColor.RED"], ["주황색","org.bukkit.DyeColor.ORANGE"], ["노란색","org.bukkit.DyeColor.YELLOW"], ["초록색","org.bukkit.DyeColor.GREEN"], ["파란색","org.bukkit.DyeColor.BLUE"], ["보라색","org.bukkit.DyeColor.PURPLE"], ["갈색","org.bukkit.DyeColor.BROWN"], ["회색","org.bukkit.DyeColor.GRAY"], ["검정색","org.bukkit.DyeColor.BLACK"], ["흰색","org.bukkit.DyeColor.WHITE"]]), "COLOR");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(90);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['event_entitydeath'] = { /*개체가 죽었을때 이벤트함수*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("이벤트");
+    this.appendStatementInput("DEATH")
+        .setCheck(null)
+        .appendField("개체가 죽었을때");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(90);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['item_drop'] = {  /*아이템 드랍*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("떨어뜨리기(dropdown)");
+    this.appendValueInput("LOCATION")
+        .setCheck(null)
+        .appendField("위치");
+    this.appendDummyInput()
+        .appendField("아이템")
+        .appendField(new Blockly.FieldDropdown([["구운소고기","COOKED_BEEF"], ["구운돼지고기","GRILLED_PORK"], ["구운닭고기","COOKED_CHICKEN"]]), "ITEMS");
+    this.appendValueInput("NUMBER")
+        .setCheck(null)
+        .appendField("개수");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(90);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['death_entity'] = { /*죽은 개체 변수*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("죽은개체");
+    this.setOutput(true, null);
+    this.setColour(90);
+    if ((this.workspace.options.comments ||
+         (this.workspace.options.parentWorkspace &&
+          this.workspace.options.parentWorkspace.options.comments))) {
+      this.setCommentText("개체가 죽었을때 이벤트필요");
+    }
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['death_explosion'] = { /*죽었을때 폭발*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("폭발");
+    this.appendValueInput("LOCATION")
+        .setCheck(null)
+        .appendField("위치");
+    this.appendValueInput("POWER")
+        .setCheck(null)
+        .appendField("위력");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(90);
+    if ((this.workspace.options.comments ||
+         (this.workspace.options.parentWorkspace &&
+          this.workspace.options.parentWorkspace.options.comments))) {
+      this.setCommentText("개체가 죽었을때 이벤트필요\n위력 1~100까지 사용가능.\n 숫자가 높을수록 폭발위력 높음");
+    }
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['kill_entity'] = { /*개체를 죽인 개체 변수 (나 자신을 나타냄)*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("죽인개체(나)");
+    this.setOutput(true, null);
+    this.setColour(90);
+    if ((this.workspace.options.comments ||
+         (this.workspace.options.parentWorkspace &&
+          this.workspace.options.parentWorkspace.options.comments))) {
+      this.setCommentText("개체가 죽었을때 이벤트필요");
+    }
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+
 
 /*
  * 대규모 밀밭 만들기
