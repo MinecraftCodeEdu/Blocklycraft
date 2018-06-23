@@ -1090,6 +1090,79 @@ Blockly.JavaScript['death_explosion'] = function(block) { /*죽었을때 폭발*
   return code;
 };
 
+Blockly.JavaScript['animal_var'] = function(block) { /*동물변수(조건문에서 쓰임)*/
+  var dropdown_animals = block.getFieldValue('ANIMALS');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "'"+dropdown_animals+"'";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+/*
+ * 트램폴린
+ */
+Blockly.JavaScript['event_playerinteract'] = function(block) { /*사용자가 상호작용하는 이벤트*/
+  var statements_interact = Blockly.JavaScript.statementToCode(block, 'INTERACT');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "events.on( org.bukkit.event.player.PlayerInteractEvent , function( evt, cancel ) {\n\
+   "+statements_interact+"\n\
+});\n";
+  return code;
+};
+
+Blockly.JavaScript['timer_countup_start'] = function(block) { /*시간측정을 시작할때 사용*/
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.countTime = 0;\nglobal.timeInterval = setInterval(function(){\n\
+    global.countTime++;\n\
+  }, 1000);\n";
+  return code;
+};
+
+Blockly.JavaScript['timer_countup_stop'] = function(block) { /*시간측정 멈춤*/
+  // TODO: Assemble JavaScript into code variable.
+  var code = "clearInterval(global.timeInterval);\n";
+  return code;
+};
+
+Blockly.JavaScript['block_click_var'] = function(block) { /*오른쪽 클릭한 블록*/
+  // TODO: Assemble JavaScript into code variable.
+  var code = "evt.getClickedBlock()";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['blockvar_ore'] = function(block) {  /*광석 변수 (오른쪽 클릭 이벤트에서 사용)*/
+  var dropdown_blocks = block.getFieldValue('BLOCKS');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "'"+dropdown_blocks+"'";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['clickblock_type'] = function(block) {  /*오른쪽 클릭한 블록의 종류를 알아내는 블록*/
+  var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  //var code = value_name+".getType().toString().toLowerCase().replace(\"_\", \"\")";
+  var code = value_name+".getType().toString()";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['block_change_click'] = function(block) {  /*클릭한 블록을 원하는 블록으로 변경*/
+  var value_before = Blockly.JavaScript.valueToCode(block, 'BEFORE', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_after = Blockly.JavaScript.valueToCode(block, 'AFTER', Blockly.JavaScript.ORDER_ATOMIC);
+  value_after = value_after.replace(/'/g,"");
+  // TODO: Assemble JavaScript into code variable.
+  var code = "var bkMaterial = Packages.org.bukkit.Material;\n"+value_before+".setType(bkMaterial."+value_after+");\n";
+  return code;
+};
+
+Blockly.JavaScript['measure_time'] = function(block) {  /*측정된 시간 출력 변수*/
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.countTime+'초'";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
 
 /*
  * 대규모 밀밭 만들기
