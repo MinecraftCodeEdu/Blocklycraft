@@ -1001,6 +1001,95 @@ Blockly.JavaScript['stripes'] = function(block) {
   return code;
 };
 
+Blockly.JavaScript['block_number'] = function(block) {
+  var dropdown_blocks = block.getFieldValue('BLOCKS');
+  var value_direction = Blockly.JavaScript.valueToCode(block, 'DIRECTION', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "'"+dropdown_blocks+":"+value_direction+"'";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+/*
+ * 목장
+ */
+Blockly.JavaScript['event_playerentity'] = function(block) { /*개체와 상호작용하는 이벤트함수*/
+  var statements_entity = Blockly.JavaScript.statementToCode(block, 'ENTITY');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "events.on( org.bukkit.event.player.PlayerInteractEntityEvent , function( evt, cancel ) {\n " +statements_entity+ "\n});\n";
+  return code;
+};
+
+Blockly.JavaScript['entity_rightclick'] = function(block) {  /*우클릭했을때 (개체 상호작용 이벤트함수 종속)*/
+  // TODO: Assemble JavaScript into code variable.
+   var code = "evt.getRightClicked()"
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['dye_color'] = function(block) { /*양 염색 색깔*/
+  var value_entity = Blockly.JavaScript.valueToCode(block, 'ENTITY', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_color = Blockly.JavaScript.valueToCode(block, 'COLOR', Blockly.JavaScript.ORDER_ATOMIC);
+  //value_color = value_color.replace(/[{()}]/g, '').replace(/['"]+/g, '');
+  // TODO: Assemble JavaScript into code variable.
+  var code = value_entity+".setColor"+value_color+";\n";
+  return code;
+};
+
+
+Blockly.JavaScript['colors_var'] = function(block) { /*색깔*/
+  var dropdown_color = block.getFieldValue('COLOR');
+  // TODO: Assemble JavaScript into code variable.
+  var code = dropdown_color;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['event_entitydeath'] = function(block) { /*개체가 죽었을때 이벤트함수*/
+  var statements_death = Blockly.JavaScript.statementToCode(block, 'DEATH');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "events.on( org.bukkit.event.entity.EntityDeathEvent , function( evt, cancel ) {\n\
+   if (evt.getEntity().getKiller() != null) {\n\
+"+statements_death+"\n\
+    }\n\
+});\n";
+  return code;
+};
+
+Blockly.JavaScript['item_drop'] = function(block) {  /*아이템 드랍*/
+  var value_location = Blockly.JavaScript.valueToCode(block, 'LOCATION', Blockly.JavaScript.ORDER_ATOMIC);
+  //value_location = value_location.slice(1,-1);
+  var dropdown_items = block.getFieldValue('ITEMS');
+  var value_number = Blockly.JavaScript.valueToCode(block, 'NUMBER', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "var bkItemStack = Packages.org.bukkit.inventory.ItemStack;\nvar bkMaterial = Packages.org.bukkit.Material;\nvar playermeat = new bkItemStack( bkMaterial."+dropdown_items+", "+value_number+", undefined);\n\
+"+value_location+".getLocation().getWorld().dropItem("+value_location+".getLocation(), playermeat);\n\
+";
+  return code;
+};
+
+Blockly.JavaScript['death_entity'] = function(block) { /*죽은 개체 변수*/
+  // TODO: Assemble JavaScript into code variable.
+  var code = "evt.getEntity()";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['kill_entity'] = function(block) {  /*개체를 죽인 개체 변수 (나 자신을 나타냄)*/
+  // TODO: Assemble JavaScript into code variable.
+  var code = "evt.getEntity().getKiller()";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['death_explosion'] = function(block) { /*죽었을때 폭발*/
+  var value_location = Blockly.JavaScript.valueToCode(block, 'LOCATION', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_power = Blockly.JavaScript.valueToCode(block, 'POWER', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "if("+value_power+" < 1 || "+value_power+" > 100) { player.chat('위력에 들어간 값이 1이상 100이상을 벗어났습니다.'); }\nelse{ "+value_location+".getLocation().getWorld().createExplosion("+value_location+".getLocation(), "+value_power+");\n}\n";
+  return code;
+};
+
 
 /*
  * 대규모 밀밭 만들기
