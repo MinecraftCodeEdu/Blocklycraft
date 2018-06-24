@@ -2142,9 +2142,6 @@ Blockly.Blocks['monster_spawn'] = { /*몬스터 소환*/
         .appendField("몬스터 소환");
     this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown([["좀비","ZOMBIE"], ["스켈레톤","SKELETON"], ["크리퍼","CREEPER"], ["엔더맨","ENDERMAN"], ["아이언골렘","IRON_GOLEM"]]), "MONSTERS");
-    this.appendValueInput("NUMBER")
-        .setCheck(null)
-        .appendField("소환개수");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
