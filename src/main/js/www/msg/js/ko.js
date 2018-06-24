@@ -332,3 +332,20 @@ Blockly.Msg.OBJNAMES[128] = "사암 계단";
 Blockly.Msg.OBJNAMES[134] = "가문비나무 계단";
 Blockly.Msg.OBJNAMES[135] = "자작나무 계단";
 Blockly.Msg.OBJNAMES[136] = "정글나무 계단";
+
+
+/*딕셔너리*/
+Blockly.Msg.TYPE_CHECK = "타입체크"
+Blockly.Msg.DICT_KEYS = "모든 키값 가져오기 "
+Blockly.Msg.DICT_GET = "키에서 값 가져오기"
+Blockly.Msg.DICT_GET_TO = "부터"
+Blockly.Msg.DICTS_CREATE_WITH_INPUT_WITH = "딕셔너리의"
+Blockly.Msg.DICTS_CREATE_WITH_TOOLTIP = "새로운 딕셔너리 생성"
+Blockly.Msg.DICTS_CREATE_EMPTY_TITLE = "빈 딕셔너리 생성"
+Blockly.Msg.DICTS_CREATE_WITH_CONTAINER_TITLE_ADD = "키-값 한쌍"
+Blockly.Msg.DICTS_CREATE_WITH_CONTAINER_TOOLTIP = "**"
+Blockly.Msg.DICTS_CREATE_WITH_ITEM_TITLE = "키-값"
+Blockly.Msg.DICTS_CREATE_WITH_ITEM_TOOLTIP = "새로운 키-값 쌍 생성"
+Blockly.Msg.DICTS_CREATE_WITH_ITEM_KEY = "키"
+Blockly.Msg.DICTS_CREATE_WITH_ITEM_VALUE = "값"
+

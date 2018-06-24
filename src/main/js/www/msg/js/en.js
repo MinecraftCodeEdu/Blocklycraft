@@ -320,3 +320,20 @@ Blockly.Msg.OBJNAMES[128] = "sandstone stairs";
 Blockly.Msg.OBJNAMES[134] = "spruce wood stairs";
 Blockly.Msg.OBJNAMES[135] = "brich wood stairs";
 Blockly.Msg.OBJNAMES[136] = "jungle wood stairs";
+
+
+/*Dictionary*/
+Blockly.Msg.TYPE_CHECK = "check type of"
+Blockly.Msg.DICT_KEYS = "get all keys of "
+Blockly.Msg.DICT_GET = "get value of key"
+Blockly.Msg.DICT_GET_TO = "from"
+Blockly.Msg.DICTS_CREATE_WITH_INPUT_WITH = "dict of"
+Blockly.Msg.DICTS_CREATE_WITH_TOOLTIP = "Create a new dictionary"
+Blockly.Msg.DICTS_CREATE_EMPTY_TITLE = "Create empty dict"
+Blockly.Msg.DICTS_CREATE_WITH_CONTAINER_TITLE_ADD = "key-value pairs"
+Blockly.Msg.DICTS_CREATE_WITH_CONTAINER_TOOLTIP = "**"
+Blockly.Msg.DICTS_CREATE_WITH_ITEM_TITLE = "key-value"
+Blockly.Msg.DICTS_CREATE_WITH_ITEM_TOOLTIP = "Make a new key-value pair"
+Blockly.Msg.DICTS_CREATE_WITH_ITEM_KEY = "key"
+Blockly.Msg.DICTS_CREATE_WITH_ITEM_VALUE = "value"
+
