@@ -270,6 +270,165 @@ Blockly.Blocks['delete'] = {
     }
 };
 
+Blockly.Blocks['drone_mutator_container'] = { /*드론 Mutator Editor UI 안에 컨테이너*/
+  init: function() {
+    this.appendStatementInput("ELEMENTS")
+        .setCheck(null)
+        .appendField("나열");
+    this.setInputsInline(true);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+ this.contextMenu = false;
+  }
+};
+
+Blockly.Blocks['drone_mutator_item'] = { /*드론 Mutator Editor UI 안에 아이템*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("빈칸 추가");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+ this.contextMenu = false;
+  }
+};
+
+Blockly.Blocks['drone_mutator'] = { /*드론 Mutator 메인 블록*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("나열");
+    this.appendValueInput("DRONE1")
+        .setCheck(null);
+    this.appendValueInput("DRONE2")
+        .setCheck(null);
+
+    //this.setOutput(true, '');
+    this.setMutator(new Blockly.Mutator(['drone_mutator_item']));
+    this.itemCount_ = 3;
+
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  },
+  mutationToDom: function(workspace) {
+      var container = document.createElement('mutation');
+      container.setAttribute('items', this.itemCount_);
+      return container;
+  },
+  domToMutation: function(container) {
+        //this.removeInput('TITLE_TEXT');
+        for (var x = 0; x < this.itemCount_; x++) {
+          this.removeInput('DRONE' + x);
+        }
+        this.itemCount_ = parseInt(container.getAttribute('items'), 10);
+        for (var x = 0; x < this.itemCount_; x++) {
+          var drone_input = this.appendValueInput('DRONE' + x)
+                              .setCheck(null)
+                              .appendField("다음");
+        }
+  },
+  decompose: function(workspace) {
+        var containerBlock = new Blockly.Block.obtain(workspace, 'drone_mutator_container');
+        containerBlock.initSvg();
+        var connection = containerBlock.getInput('ELEMENTS').connection;
+        for (var x = 0; x < this.itemCount_; x++) {
+          var itemBlock = new Blockly.Block.obtain(workspace, 'drone_mutator_item');
+          itemBlock.initSvg();
+          connection.connect(itemBlock.previousConnection);
+          connection = itemBlock.nextConnection;
+        }
+        return containerBlock;
+  },
+  compose: function(containerBlock) {
+        // Disconnect all input blocks and remove all inputs.
+        if (this.itemCount_ == 0) {
+          this.removeInput('EMPTY');
+        } else {
+          //this.removeInput('TITLE_TEXT');
+          for (var x = this.itemCount_ - 1; x >= 0; x--) {
+            this.removeInput('DRONE' + x);
+          }
+        }
+        this.itemCount_ = 0;
+        // Rebuild the block's inputs.
+        var itemBlock = containerBlock.getInputTargetBlock('ELEMENTS');
+        
+	while (itemBlock) {
+          var drone_input = this.appendValueInput('DRONE' + this.itemCount_)
+                              .appendField("다음");
+          // Reconnect any child blocks.
+          if (itemBlock.valueConnection_) {
+            drone_input.connection.connect(itemBlock.valueConnection_);
+          }
+          this.itemCount_++;
+          itemBlock = itemBlock.nextConnection &&
+              itemBlock.nextConnection.targetBlock();
+        }
+        if (this.itemCount_ == 0) {
+	  this.appendDummyInput('EMPTY')
+              .appendField("빈칸추가필요");
+	}
+  },
+  saveConnections: function(containerBlock) {
+        // Store a pointer to any connected child blocks.
+        var itemBlock = containerBlock.getInputTargetBlock('ELEMENTS');
+        var x = 0;
+        while (itemBlock) {
+          var drone_input = this.getInput('DRONE' + x);
+          itemBlock.valueConnection_ = drone_input && drone_input.connection.targetConnection;
+          x++;
+          itemBlock = itemBlock.nextConnection &&
+              itemBlock.nextConnection.targetBlock();
+        }
+    } 
+
+};
+
+Blockly.Blocks['materials_var'] = { /*재료 변수블록*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.MATERIALS)
+        .appendField(new Blockly.FieldDropdown(materials), "material");
+	  
+    this.setOutput(true, null);
+    this.setColour(0);
+  this.setTooltip(Blockly.Msg.TOOLTIP_MATERIALS);
+  this.setHelpUrl('http://minecraft.gamepedia.com/Block');
+  }
+};
+
+Blockly.Blocks['drone_move_var'] = { /*드론움직임 변수*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.MOUVEMENT)
+        .appendField(
+            new Blockly.FieldDropdown([
+                [Blockly.Msg.MOUVEMENT_UP, "up()"],
+                [Blockly.Msg.MOUVEMENT_DOWN, "down()"],
+                [Blockly.Msg.MOUVEMENT_FWD, "fwd()"],
+                [Blockly.Msg.MOUVEMENT_BACK, "back()"],
+                [Blockly.Msg.MOUVEMENT_RIGHT, "right()"],
+                [Blockly.Msg.MOUVEMENT_LEFT, "left()"],
+                [Blockly.Msg.MOUVEMENT_TURN_RIGHT, "turn()"],
+                [Blockly.Msg.MOUVEMENT_TURN_LEFT, "turn(3)"],
+                [Blockly.Msg.MOUVEMENT_TURN_BACK, "turn(2)"],
+                [Blockly.Msg.MOUVEMENT_BACKTOSTART, "move('start')"],
+                [Blockly.Msg.MOUVEMENT_SAVESTART, "chkpt('start')"]
+            ]), "direction");
+		  
+    this.setOutput(true, null);
+    this.setColour(0);
+  this.setTooltip(Blockly.Msg.TOOLTIP_DRONEMOVE);
+  this.setHelpUrl('https://github.com/walterhiggins/ScriptCraft/blob/master/docs/API-Reference.md#drone-movement');
+  }
+};
+
 Blockly.Blocks['door'] = { /*문 종류및 재료*/
   init: function() {
     this.appendDummyInput()

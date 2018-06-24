@@ -93,7 +93,9 @@ getIPs(function(ip){
   window.myIP = ip.toString().replace(/[:.]/gi,'');
 });
 
-
+/*
+ * 드론
+ */
 Blockly.JavaScript['drone'] = function (block) {
     var fname = block.getFieldValue('param');
     var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
@@ -194,6 +196,37 @@ Blockly.JavaScript['delete'] = function (block) {
     var code = "global.theDrone.box(0," + value_width + "," + value_height + "," + value_length + ");\n";
     return code;
 };
+
+Blockly.JavaScript['drone_mutator'] = function(block) { /*드론 Mutator 메인 블록*/
+  // TODO: Assemble JavaScript into code variable.
+  var code = new Array(block.itemCount_);
+
+  for (var n = 0; n < block.itemCount_; n++) {
+    var drone = Blockly.JavaScript.valueToCode(block, 'DRONE' + n,
+        Blockly.JavaScript.ORDER_NONE) || 'None';
+    code[n] = drone;
+  }
+  code = "global.theDrone." + code.join(".") + ";\n";
+  return code;
+	
+};
+
+Blockly.JavaScript['materials_var'] = function(block) {  /*재료 변수블록*/
+  var dropdown_material = block.getFieldValue('material');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "box("+dropdown_material+")";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['drone_move_var'] = function(block) {  /*드론움직임 변수*/
+  var dropdown_direction = block.getFieldValue('direction');
+  // TODO: Assemble JavaScript into code variable.
+  var code = dropdown_direction;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
 
 Blockly.JavaScript['door'] = function(block) {
   var dropdown_type = block.getFieldValue('TYPE');
