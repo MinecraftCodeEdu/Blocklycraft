@@ -1165,6 +1165,34 @@ Blockly.JavaScript['measure_time'] = function(block) {  /*측정된 시간 출�
 };
 
 /*
+ * 딕셔너리(Mutator)
+ */
+Blockly.JavaScript['dict_get'] = function(block) {  
+  var dict = Blockly.JavaScript.valueToCode(block, 'DICT',
+      Blockly.JavaScript.ORDER_MEMBER) || '{}';
+  var value = Blockly.JavaScript.valueToCode(block, 'ITEM',
+      Blockly.JavaScript.ORDER_NONE) || 'None';
+  var code = dict + '[' + value + ']';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['dicts_create_with'] = function(block) {
+  var value_keys = Blockly.JavaScript.valueToCode(block, 'keys', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = new Array(block.itemCount_);
+
+  for (var n = 0; n < block.itemCount_; n++) {
+    var key = Blockly.JavaScript.valueToCode(block, 'KEY' + n,
+        Blockly.JavaScript.ORDER_NONE) || 'None';
+    var value = Blockly.JavaScript.valueToCode(block, 'VALUE' + n,
+        Blockly.JavaScript.ORDER_NONE) || 'None';
+    code[n] = key +": "+ value;
+  }
+  code = '{' + code.join(',\n\t') + '}';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+
+/*
  * 대규모 밀밭 만들기
  */
 Blockly.JavaScript['farmland_material'] = function (block) { /* 밀밭 만들기 재료 */
