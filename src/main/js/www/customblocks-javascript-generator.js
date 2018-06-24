@@ -1229,11 +1229,8 @@ Blockly.JavaScript['dicts_create_with'] = function(block) {
  */
 Blockly.JavaScript['monster_spawn'] = function(block) {
   var dropdown_monsters = block.getFieldValue('MONSTERS');
-  var value_number = Blockly.JavaScript.valueToCode(block, 'NUMBER', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = "for (var count = 0; count < "+value_number+"; count++) {\n\
-  global.theDrone.getLocation().world.spawnEntity(global.theDrone.getLocation(), org.bukkit.entity.EntityType."+dropdown_monsters+");\n\
-}";
+  var code = "global.theDrone.getLocation().world.spawnEntity(global.theDrone.getLocation(), org.bukkit.entity.EntityType."+dropdown_monsters+");\n";
   return code;
 };
 
