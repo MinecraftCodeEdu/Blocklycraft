@@ -2133,6 +2133,27 @@ Blockly.Blocks['dict_get'] = { /*딕셔너리 값 가져오기*/
   }
 };
 
+/*
+ * 레시피
+ */
+Blockly.Blocks['monster_spawn'] = { /*몬스터 소환*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("몬스터 소환");
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldDropdown([["좀비","ZOMBIE"], ["스켈레톤","SKELETON"], ["크리퍼","CREEPER"], ["엔더맨","ENDERMAN"], ["아이언골렘","IRON_GOLEM"]]), "MONSTERS");
+    this.appendValueInput("NUMBER")
+        .setCheck(null)
+        .appendField("소환개수");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(270);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
 
 
 /*

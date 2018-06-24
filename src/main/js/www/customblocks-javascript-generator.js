@@ -342,11 +342,11 @@ Blockly.JavaScript['spawn_animal'] = function(block) {
 animal_type."+ dropdown_age +";\n\
 if(animal_type=="+horse+"){animal_type.setTamed(true);}\n\
 if("+checkbox_saddle+"){\n\
-try{\n\
+  try{\n\
 var bkMaterial = Packages.org.bukkit.Material;\n\
 var bkItemStack=Packages.org.bukkit.inventory.ItemStack;\n\
-animal_type.getInventory().setSaddle(new bkItemStack(bkMaterial.SADDLE));}\n\
-catch(e){player.chat("+tryError+")}}";
+animal_type.getInventory().setSaddle(new bkItemStack(bkMaterial.SADDLE));\n\
+  } catch(e){player.chat("+tryError+")}\n}\n";
 
   return code;
 };
@@ -1223,6 +1223,20 @@ Blockly.JavaScript['dicts_create_with'] = function(block) {
   code = '{' + code.join(',\n\t') + '}';
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
+
+/*
+ * 레시피
+ */
+Blockly.JavaScript['monster_spawn'] = function(block) {
+  var dropdown_monsters = block.getFieldValue('MONSTERS');
+  var value_number = Blockly.JavaScript.valueToCode(block, 'NUMBER', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "for (var count = 0; count < "+value_number+"; count++) {\n\
+  global.theDrone.getLocation().world.spawnEntity(global.theDrone.getLocation(), org.bukkit.entity.EntityType."+dropdown_monsters+");\n\
+}";
+  return code;
+};
+
 
 
 /*
