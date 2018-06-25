@@ -2151,6 +2151,190 @@ Blockly.Blocks['monster_spawn'] = { /*몬스터 소환*/
   }
 };
 
+Blockly.Blocks['recipe_key'] = { /*레시피 딕셔너리 키 블록*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("키")
+        .appendField(new Blockly.FieldDropdown([["결과","result"], ["재료","ingredients"], ["모양","shape"]]), "KEY");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(270);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['recipe_value'] = { /*레시피 딕셔너리 값 블록*/
+  init: function() {
+    var thisBlock = this;
+    var dropdown = new Blockly.FieldDropdown([["결과","result"], ["재료","ingredients"], ["모양","shape"]], function(newOp) {
+      thisBlock.updateType_(newOp);
+    });
+
+    this.appendDummyInput()
+        .appendField("값")
+        .appendField(dropdown, "VALUE");
+
+    this.appendDummyInput()
+        .appendField(" 아이템", "ITEMS_TEXT")
+        .appendField(new Blockly.FieldDropdown([["문자선택", "0"], ["A","A"], ["B","B"], ["C","C"], ["D","D"]]), "ALPHABET")
+        .appendField(":", "COLON_TEXT");
+
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldDropdown([["흙","require('items').dirt"], ["돌","require('items').stone"], ["다이아몬드","require('items').diamondBlock"], ["다이아몬드검","require('items').diamondSword"]]), "ITEMS");
+    this.appendValueInput("NUMBER")
+        .setCheck(null)
+        .appendField(" 개수", "NUMBER_TEXT");
+
+    this.appendDummyInput()
+        .appendField("선택", "OPTION_TEXT")
+        .appendField(new Blockly.FieldDropdown([[""," "], ["A","A"], ["B","B"], ["C","C"]]), "OPTION1")
+        .appendField(new Blockly.FieldDropdown([[""," "], ["A","A"], ["B","B"], ["C","C"]]), "OPTION2")
+        .appendField(new Blockly.FieldDropdown([[""," "], ["A","A"], ["B","B"], ["C","C"]]), "OPTION3");
+    this.appendDummyInput()
+        .appendField("       ", "SPACE_ONE_TEXT")
+        .appendField(new Blockly.FieldDropdown([[""," "], ["A","A"], ["B","B"], ["C","C"]]), "OPTION4")
+        .appendField(new Blockly.FieldDropdown([[""," "], ["A","A"], ["B","B"], ["C","C"]]), "OPTION5")
+        .appendField(new Blockly.FieldDropdown([[""," "], ["A","A"], ["B","B"], ["C","C"]]), "OPTION6");
+    this.appendDummyInput()
+        .appendField("       ", "SPACE_TWO_TEXT")
+        .appendField(new Blockly.FieldDropdown([[""," "], ["A","A"], ["B","B"], ["C","C"]]), "OPTION7")
+        .appendField(new Blockly.FieldDropdown([[""," "], ["A","A"], ["B","B"], ["C","C"]]), "OPTION8")
+        .appendField(new Blockly.FieldDropdown([[""," "], ["A","A"], ["B","B"], ["C","C"]]), "OPTION9");
+
+    this.getField("OPTION1").setVisible( false );
+    this.getField("OPTION2").setVisible( false );
+    this.getField("OPTION3").setVisible( false );
+    this.getField("OPTION4").setVisible( false );
+    this.getField("OPTION5").setVisible( false );
+    this.getField("OPTION6").setVisible( false );
+    this.getField("OPTION7").setVisible( false );
+    this.getField("OPTION8").setVisible( false );
+    this.getField("OPTION9").setVisible( false );
+
+    this.getField("ALPHABET").setVisible( false );
+    this.getField("ITEMS_TEXT").setVisible( true );
+    this.getField("COLON_TEXT").setVisible( false );
+    this.getField("OPTION_TEXT").setVisible( false );
+    this.getField("SPACE_ONE_TEXT").setVisible( false );
+    this.getField("SPACE_TWO_TEXT").setVisible( false );
+
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(270);
+
+ this.setTooltip("");
+ this.setHelpUrl("");
+  },
+  updateType_: function(newOp) {
+    if (newOp == 'result') {
+
+      this.removeInput("NUMBER");
+      this.appendValueInput("NUMBER")
+        .setCheck(null)
+        .appendField("개수", "NUMBER_TEXT");
+
+      this.getField("ITEMS_TEXT").setVisible( true );
+      this.getField("COLON_TEXT").setVisible( false );
+      this.getField("OPTION_TEXT").setVisible( false );
+      this.getField("SPACE_ONE_TEXT").setVisible( false );
+      this.getField("SPACE_TWO_TEXT").setVisible( false );
+	    
+      this.getField("ITEMS").setVisible( true );
+
+      this.getField("ALPHABET").setVisible( false );
+      this.getField("OPTION1").setVisible( false );
+      this.getField("OPTION2").setVisible( false );
+      this.getField("OPTION3").setVisible( false );
+      this.getField("OPTION4").setVisible( false );
+      this.getField("OPTION5").setVisible( false );
+      this.getField("OPTION6").setVisible( false );
+      this.getField("OPTION7").setVisible( false );
+      this.getField("OPTION8").setVisible( false );
+      this.getField("OPTION9").setVisible( false );
+    this.setInputsInline(true);
+
+    } else if(newOp == 'ingredients') {
+
+      this.removeInput("NUMBER");
+      this.appendValueInput("NUMBER")
+        .setCheck(null)
+        .appendField(" 개수", "NUMBER_TEXT");
+
+      this.getField("ITEMS_TEXT").setVisible( true );
+      this.getField("COLON_TEXT").setVisible( true );
+      this.getField("OPTION_TEXT").setVisible( false );
+      this.getField("SPACE_ONE_TEXT").setVisible( false );
+      this.getField("SPACE_TWO_TEXT").setVisible( false );
+      
+      this.getField("ITEMS").setVisible( true );
+      this.getField("ALPHABET").setVisible( true );
+      
+      this.getField("OPTION1").setVisible( false );
+      this.getField("OPTION2").setVisible( false );
+      this.getField("OPTION3").setVisible( false );
+      this.getField("OPTION4").setVisible( false );
+      this.getField("OPTION5").setVisible( false );
+      this.getField("OPTION6").setVisible( false );
+      this.getField("OPTION7").setVisible( false );
+      this.getField("OPTION8").setVisible( false );
+      this.getField("OPTION9").setVisible( false );
+    this.setInputsInline(true);
+
+    } else if(newOp == 'shape') {
+
+      this.removeInput("NUMBER");
+	    
+      this.getField("ITEMS").setVisible( false );
+      this.getField("ALPHABET").setVisible( false );
+
+      this.getField("ITEMS_TEXT").setVisible( false );
+      this.getField("COLON_TEXT").setVisible( false );
+      this.getField("OPTION_TEXT").setVisible( true );
+      this.getField("SPACE_ONE_TEXT").setVisible( true );
+      this.getField("SPACE_TWO_TEXT").setVisible( true );
+
+      this.getField("OPTION1").setVisible( true );
+      this.getField("OPTION2").setVisible( true );
+      this.getField("OPTION3").setVisible( true );
+      this.getField("OPTION4").setVisible( true );
+      this.getField("OPTION5").setVisible( true );
+      this.getField("OPTION6").setVisible( true );
+      this.getField("OPTION7").setVisible( true );
+      this.getField("OPTION8").setVisible( true );
+      this.getField("OPTION9").setVisible( true );
+
+    this.setInputsInline(false);
+    }
+  },
+  // storing output type
+  mutationToDom: function() {
+    var container = document.createElement('mutation');
+    container.setAttribute('op', this.getFieldValue('OP'));
+    return container;
+  },
+  // retrieving output type
+  domToMutation: function(xmlElement) {
+    //var villageInput = (xmlElement.getAttribute('op') == 'true');
+    this.updateType_(xmlElement.getAttribute('op'));
+  }
+};
+
+Blockly.Blocks['recipe_add'] = { /*레시피에 만든 딕셔너리 변수를 추가*/
+  init: function() {
+    this.appendValueInput("RECIPE_ADD")
+        .setCheck(null)
+        .appendField("레시피에");
+    this.appendDummyInput()
+        .appendField("추가");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(270);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
 
 
 /*

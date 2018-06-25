@@ -1234,7 +1234,52 @@ Blockly.JavaScript['monster_spawn'] = function(block) {
   return code;
 };
 
+Blockly.JavaScript['recipe_key'] = function(block) { /*레시피 딕셔너리 키 블록*/
+  var dropdown_key = block.getFieldValue('KEY');
+  // TODO: Assemble JavaScript into code variable.
+  var code = dropdown_key;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
 
+Blockly.JavaScript['recipe_value'] = function(block) { /*레시피 딕셔너리 값 블록*/
+  var dropdown_value = block.getFieldValue('VALUE');
+  var dropdown_items = block.getFieldValue('ITEMS');
+  var value_number = Blockly.JavaScript.valueToCode(block, 'NUMBER', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_alphabet = block.getFieldValue('ALPHABET');
+
+  var dropdown_option1 = block.getFieldValue('OPTION1');
+  var dropdown_option2 = block.getFieldValue('OPTION2');
+  var dropdown_option3 = block.getFieldValue('OPTION3');
+  var dropdown_option4 = block.getFieldValue('OPTION4');
+  var dropdown_option5 = block.getFieldValue('OPTION5');
+  var dropdown_option6 = block.getFieldValue('OPTION6');
+  var dropdown_option7 = block.getFieldValue('OPTION7');
+  var dropdown_option8 = block.getFieldValue('OPTION8');
+  var dropdown_option9 = block.getFieldValue('OPTION9');
+	
+  // TODO: Assemble JavaScript into code variable.
+
+  if(!Boolean(value_number)){
+    var code = "['"+dropdown_option1+dropdown_option2+dropdown_option3+"','"+dropdown_option4+dropdown_option5+dropdown_option6+"','"+dropdown_option7+dropdown_option8+dropdown_option9+"']";
+  } else if (dropdown_alphabet == 0) {
+    var code = dropdown_items+"("+value_number+")";
+  } else{ 
+    var code = "{"+dropdown_alphabet+": "+dropdown_items+"("+value_number+")}";
+  }
+
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['recipe_add'] = function(block) { /*레시피에 만든 딕셔너리 변수를 추가*/ 
+
+  var value_recipe_add = Blockly.JavaScript.valueToCode(block, 'RECIPE_ADD', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "var recipes = require('recipes');\nrecipes.add("+value_recipe_add+");\n";
+  return code;
+
+}
 
 /*
  * 대규모 밀밭 만들기
