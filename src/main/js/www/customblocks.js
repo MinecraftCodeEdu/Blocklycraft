@@ -2365,6 +2365,17 @@ Blockly.Blocks['recipe_add'] = { /*레시피에 만든 딕셔너리 변수를 �
   }
 };
 
+Blockly.Blocks['module_import'] = { /* 모듈 불러오기 블록 */
+  init: function() {
+    this.appendDummyInput()
+        .appendField("모듈")
+        .appendField(new Blockly.FieldDropdown([["아이템","ITEMS"], ["레시피","RECIPES"]]), "MODULE")
+        .appendField("불러오기");
+    this.setColour(270);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
 
 /*
  * 대규모 밀밭 만들기

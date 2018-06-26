@@ -1298,6 +1298,21 @@ Blockly.JavaScript['recipe_add'] = function(block) { /*레시피에 만든 딕�
 
 }
 
+Blockly.JavaScript['module_import'] = function(block) {  /*모듈 불러오기 블록*/
+  var dropdown_module = block.getFieldValue('MODULE');
+  // TODO: Assemble JavaScript into code variable.
+  switch (dropdown_module) {
+    case "ITEMS":
+      var code = "var items = require('items');\n";
+      break;
+    case "RECIPES":
+      var code = "var recipes = require('recipes');\n";
+      break;
+  }
+  return code;
+};
+
+
 /*
  * 대규모 밀밭 만들기
  */
