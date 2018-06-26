@@ -506,8 +506,8 @@ Walter Higgins
    * [How to Play](#how-to-play)
    * [Rules](#rules)
    * [Gameplay Mechanics](#gameplay-mechanics)
- * [Blockly -> ScriptCraft Javascript Code generator](#blockly---scriptcraft-javascript-code-generator)
  * [Blockly-Minecraft blocks](#blockly-minecraft-blocks)
+ * [Blockly -> ScriptCraft Javascript Code generator](#blockly---scriptcraft-javascript-code-generator)
  * [Items module (SpigotMC version)](#items-module-spigotmc-version)
    * [Usage](#usage-13)
  * [Items module (CanaryMod version)](#items-module-canarymod-version)
@@ -6393,15 +6393,15 @@ your own mini-game...
 
 [bukscore]: http://jd.bukkit.org/beta/apidocs/org/bukkit/scoreboard/package-summary.html
 
-## Blockly -> ScriptCraft Javascript Code generator
-Lauro Canonica: Original author (Devoxx4kids Lugano 2015.04)
-
-Contains the generator for the javascript used in scriptcraft
-
 ## Blockly-Minecraft blocks
 Lauro Canonica: Original author (Devoxx4kids Lugano 2015.04)
 
 Contains the description of the Minecraft blocks for Blockly
+
+## Blockly -> ScriptCraft Javascript Code generator
+Lauro Canonica: Original author (Devoxx4kids Lugano 2015.04)
+
+Contains the generator for the javascript used in scriptcraft
 
 
 ## Items module (SpigotMC version)
