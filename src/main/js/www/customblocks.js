@@ -1852,6 +1852,35 @@ Blockly.Blocks['animal_var'] = { /*동물변수(조건문에서 쓰임)*/
   }
 };
 
+Blockly.Blocks['entity_getlocation'] = {
+  init: function() {
+    this.appendValueInput("ENTITY")
+        .setCheck(null);
+    this.appendDummyInput()
+        .appendField("의 위치");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(90);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['entity_onground'] = {
+  init: function() {
+    this.appendValueInput("ENTITY")
+        .setCheck(null);
+    this.appendDummyInput()
+        .appendField("땅 위에 존재");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(90);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+
 /*
  * 트램폴린
  */
