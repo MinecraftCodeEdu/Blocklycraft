@@ -33,7 +33,7 @@ function getIPs(callback){
                 var ip_dups = {};
                 //compatibility for firefox and chrome
                 var RTCPeerConnection = window.RTCPeerConnection
-                    || window.mozRTCPeerConnection
+                    //|| window.mozRTCPeerConnection
                     || window.webkitRTCPeerConnection;
                 var useWebKit = !!window.webkitRTCPeerConnection;
                 //bypass naive webrtc blocking using an iframe
