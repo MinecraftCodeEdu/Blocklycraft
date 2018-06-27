@@ -572,6 +572,9 @@ Blockly.JavaScript['player_location'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+/*
+ * 숨바꼭질
+ */
 Blockly.JavaScript['notice_standing_block'] = function(block) {
   var value_player = Blockly.JavaScript.valueToCode(block, 'player', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
@@ -610,14 +613,14 @@ Blockly.JavaScript['target_teleport'] = function(block) {
   var value_location = Blockly.JavaScript.valueToCode(block, 'location', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
   var code = "\
-var bkBk = org.bukkit.Bukkit;\n\
-var bkLocation = Packages.org.bukkit.Location;\n\
-var targetPlayer = bkBk.getPlayer("+value_player+");\n\
-if(targetPlayer == null){\n\
-	//player.chat('There are no players named '+"+value_player+");\n\
-} else {\n\
-	targetPlayer.teleport("+value_location+");\n\
-}\n\
+  var bkBk = org.bukkit.Bukkit;\n\
+  var bkLocation = Packages.org.bukkit.Location;\n\
+  var targetPlayer = bkBk.getPlayer("+value_player+");\n\
+  if(targetPlayer == null){\n\
+	player.chat('There are no players named '+"+value_player+");\n\
+  } else {\n\
+  	targetPlayer.teleport("+value_location+");\n\
+  }\n\
 ";
   return code;
 };
@@ -628,9 +631,11 @@ Blockly.JavaScript['onentitydamage'] = function(block) {
   // TODO: Assemble JavaScript into code variable.
     var code = "events.entityDamageByEntity( function( event ) {\n\
   if( event.getEntity().getName().equalsIgnoreCase("+value_player+")){\n\
-  var player = event.getEntity();\n"
+    var player = event.getDamager();\n"
 +statements_command+
-  "  }\n\
+  "  } else {\n\
+    event.setCancelled(true);\n\
+  }\n\
 });";
   return code;
 };
@@ -1385,4 +1390,19 @@ Blockly.JavaScript['castle_rectangle'] = function (block) { /* 요새 직사각�
     return code;
 };
 
+/*
+ * 주크박스 만들기
+ */
+Blockly.JavaScript['jukebox_material'] = function (block) { /* 주크박스 재료 */
+    var dropdown_material = block.getFieldValue('material');
+	var dropdown_delay = block.getFieldValue('delay');
+	dropdown_material = dropdown_material.replace(/'/g,"");
+	if(dropdown_material == 93){
+		var code = "global.theDrone.box('" + dropdown_material + ":'+((global.theDrone.dir+1)%4+"+Number(4*(dropdown_delay-1))+"));\n";
+	} else {
+		var code = "global.theDrone.box('" + dropdown_material + "');\n";
+	}
+
+    return code;
+};
 

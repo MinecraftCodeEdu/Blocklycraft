@@ -26,6 +26,8 @@ var fence = getObjNames(Blockly.Msg.OBJNAMES, [85, 107]);
 
 var castle = getObjNames(Blockly.Msg.OBJNAMES, [98, 79, 20, 45, 5]);
 
+var jukebox = getObjNames(Blockly.Msg.OBJNAMES, [1, 25, 55, 93]);
+
 //http://minecraft.gamepedia.com/Tools
 var items_tools = getObjNames(Blockly.Msg.ITEMS_NAMES, ['diamondAxe', 'diamondHoe', 'diamondSpade', 'diamondPickaxe', 'shears', 'flintAndSteel', 'fishingRod', 'bed', 'torch', 'wood']);
 
@@ -887,7 +889,7 @@ Blockly.Blocks['notice_standing_block'] = {
     this.appendValueInput("player")
         .setCheck(null);
     this.appendDummyInput()
-        .appendField("(이)가 있는 지역 정보 알리기");
+        .appendField("의 지역 정보 알리기");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -901,8 +903,8 @@ Blockly.Blocks['transform_block'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("내 발 밑을 5초 간")
-        .appendField(new Blockly.FieldDropdown([["돌","1"], ["잔디","2"], ["흙","3"], ["조약돌","4"]]), "material")
-        .appendField("(으)로 만들기");
+        .appendField(new Blockly.FieldDropdown([["돌","1"], ["잔디","2"], ["벽돌","45"], ["얼음","79"], ["눈","80"]]), "material")
+        .appendField("블록으로 만들기");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(230);
@@ -916,7 +918,7 @@ Blockly.Blocks['target_teleport'] = {
     this.appendValueInput("player")
         .setCheck(null);
     this.appendDummyInput()
-        .appendField("을(를)");
+        .appendField("의 캐릭터를");
     this.appendValueInput("location")
         .setCheck("location");
     this.appendDummyInput()
@@ -935,7 +937,7 @@ Blockly.Blocks['onentitydamage'] = {
     this.appendValueInput("player")
         .setCheck(null);
     this.appendDummyInput()
-        .appendField("를 치면 실행");
+        .appendField("를 건드리면 실행되는 이벤트");
     this.appendStatementInput("command")
         .setCheck(null);
     this.setInputsInline(true);
@@ -1446,6 +1448,7 @@ Blockly.Blocks['house_example'] = {    /*cottage 집과 집+길 생성 예제블
     if (newOp == 'cottage') {
       this.removeInput("NUMBER");
     } else if(newOp == 'cottage_road') {
+		this.removeInput("NUMBER");
       this.appendValueInput("NUMBER")
         .setCheck(null)
 	.appendField("집개수");
@@ -2523,4 +2526,51 @@ Blockly.Blocks['castle_rectangle'] = { /* 요새 직사각형 재료 */
         this.setTooltip(Blockly.Msg.TOOLTIP_RECTANGLE);
         this.setHelpUrl('https://github.com/walterhiggins/ScriptCraft/blob/master/docs/API-Reference.md#dronebox-method');
     }
+};
+
+/*
+ * 주크박스 만들기
+ */
+ 
+ //블록 새로고침 시 블록확장 초기화됨
+Blockly.Blocks['jukebox_material'] = { /* 주크박스 재료 */
+    init: function () {
+		
+		var thisBlock = this;
+		var dropdown = new Blockly.FieldDropdown(jukebox, function(newOp){
+			thisBlock.updateType_(newOp);
+		});
+		
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MATERIALS)
+            .appendField(dropdown, "material");
+			
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setColour(0);
+        this.setTooltip(Blockly.Msg.TOOLTIP_MATERIALS);
+        this.setHelpUrl('http://minecraft.gamepedia.com/Block');
+    },
+	updateType_: function(newOp){
+		if(newOp == "'93'"){
+			this.removeInput('dropDownField');
+			this.appendDummyInput('dropDownField')
+				.appendField("지연시간")
+				.appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"]]), "delay");
+		} else {
+			this.removeInput('dropDownField');
+		}
+	},
+	// storing output type
+	mutationToDom: function() {
+		var container = document.createElement('mutation');
+		container.setAttribute('op', this.getFieldValue('OP'));
+		return container;
+	},
+	// retrieving output type
+	domToMutation: function(xmlElement) {
+		//var villageInput = (xmlElement.getAttribute('op') == 'true');
+		this.updateType_(xmlElement.getAttribute('op'));
+	}
 };
