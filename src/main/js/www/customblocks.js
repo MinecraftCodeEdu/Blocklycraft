@@ -2109,10 +2109,10 @@ Blockly.Blocks['dicts_create_with'] = { /*딕셔너리 메인 블록*/
         this.itemCount_ = 0;
         // Rebuild the block's inputs.
         var itemBlock = containerBlock.getInputTargetBlock('STACK');
-/*
+/*문제시 수정필요*/
 	this.appendDummyInput('TITLE_TEXT')
             .appendField(Blockly.Msg.DICTS_CREATE_WITH_INPUT_WITH);
-*/
+
         while (itemBlock) {
           var key_input = this.appendValueInput('KEY' + this.itemCount_)
                               .appendField(Blockly.Msg.DICTS_CREATE_WITH_ITEM_KEY);
@@ -2196,7 +2196,7 @@ Blockly.Blocks['recipe_key'] = { /*레시피 딕셔너리 키 블록*/
 Blockly.Blocks['recipe_value'] = { /*레시피 딕셔너리 값 블록*/
   init: function() {
     var thisBlock = this;
-    var dropdown = new Blockly.FieldDropdown([["결과","result"], ["재료","ingredients"], ["모양","shape"]], function(newOp) {
+    var dropdown = new Blockly.FieldDropdown([["획득","result"], ["재료","ingredients"], ["모양","shape"]], function(newOp) {
       thisBlock.updateType_(newOp);
     });
 
@@ -2388,6 +2388,11 @@ Blockly.Blocks['scoreboard_totalkillcount'] = { /*스코어블록 플레이어�
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(270);
+    if ((this.workspace.options.comments ||
+         (this.workspace.options.parentWorkspace &&
+          this.workspace.options.parentWorkspace.options.comments))) {
+      this.setCommentText("표시이름 붙여쓰기(띄어쓰기안됨)");
+    }
  this.setTooltip("");
  this.setHelpUrl("");
   }

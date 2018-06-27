@@ -1319,7 +1319,7 @@ Blockly.JavaScript['scoreboard_totalkillcount'] = function(block) {
   var text_name = block.getFieldValue('NAME');
   // TODO: Assemble JavaScript into code variable.
   var code = "execCommand('scoreboard objectives add " + text_name + " totalKillCount "+ text_name +"');\n\
-execCommand('scoreboard objectives setdisplay list " + text_name +"');\n\
+execCommand('scoreboard objectives setdisplay sidebar " + text_name +"');\n\
 ";
   return code;
 };
