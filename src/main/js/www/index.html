@@ -352,47 +352,6 @@
 		<block type="player_y"></block>
 		<block type="player_z"></block>
 		<block type="player_location"></block>
-		<block type="notice_standing_block">
-			<value name="player">
-			  <block type="text">
-				<field name="TEXT">name</field>
-			  </block>
-			</value>
-		</block>
-		<block type="transform_block"></block>
-		<block type="target_teleport">
-			<value name="player">
-			  <block type="text">
-				<field name="TEXT">name</field>
-			  </block>
-			</value>
-			<value name="location">
-			  <block type="absolute_location">
-				<value name="x">
-				  <block type="math_number">
-					<field name="NUM">0</field>
-				  </block>
-				</value>
-				<value name="y">
-				  <block type="math_number">
-					<field name="NUM">0</field>
-				  </block>
-				</value>
-				<value name="z">
-				  <block type="math_number">
-					<field name="NUM">0</field>
-				  </block>
-				</value>
-			  </block>
-			</value>
-		</block>
-		<block type="onentitydamage">
-			<value name="player">
-			  <block type="text">
-				<field name="TEXT">name</field>
-			  </block>
-			</value>
-		</block>
 		<block type="random_teleport"></block>
 		<block type="materials_limited"></block>
 		<block type="place_block">
@@ -687,6 +646,21 @@
 	  <block type="block_number"></block>
     	</category>
     	<category id="catJukebox">
+            <block type="drone"></block>
+			<block type="jukebox_material"></block>
+			<block type="drone_move"></block>
+			<block type="drone_move_count">
+              <value name="COUNT">
+                <block type="math_number"></block>
+              </value>
+            </block>
+            <block type="controls_repeat_ext">
+                <value name="TIMES">
+                    <block type="math_number">
+                        <field name="NUM">10</field>
+                    </block>
+                </value>
+            </block>
     	</category>
     	<category id="catRace">
     	</category>
@@ -720,6 +694,62 @@
             </block>
 	</category>
 	<category id="catTag">
+            <block type="drone"></block>
+			<block type="castle_material"></block>
+			<block type="castle_rectangle">
+					<value name="width">
+					   <block type="math_number">
+					   <field name="NUM">0</field>
+					   </block>
+					</value>
+					<value name="length">
+					   <block type="math_number">
+				   <field name="NUM">0</field>
+					   </block>
+				</value>
+			</block>
+			<block type="drone_move"></block>
+		<block type="notice_standing_block">
+			<value name="player">
+			  <block type="text">
+				<field name="TEXT">name</field>
+			  </block>
+			</value>
+		</block>
+		<block type="transform_block"></block>
+		<block type="target_teleport">
+			<value name="player">
+			  <block type="text">
+				<field name="TEXT">name</field>
+			  </block>
+			</value>
+			<value name="location">
+			  <block type="absolute_location">
+				<value name="x">
+				  <block type="math_number">
+					<field name="NUM">0</field>
+				  </block>
+				</value>
+				<value name="y">
+				  <block type="math_number">
+					<field name="NUM">0</field>
+				  </block>
+				</value>
+				<value name="z">
+				  <block type="math_number">
+					<field name="NUM">0</field>
+				  </block>
+				</value>
+			  </block>
+			</value>
+		</block>
+		<block type="onentitydamage">
+			<value name="player">
+			  <block type="text">
+				<field name="TEXT">name</field>
+			  </block>
+			</value>
+		</block>
 	</category>
         <sep></sep>
 	<category id="catExample">
