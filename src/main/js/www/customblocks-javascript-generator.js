@@ -1308,7 +1308,33 @@ Blockly.JavaScript['module_import'] = function(block) {  /*모듈 불러오기 �
     case "RECIPES":
       var code = "var recipes = require('recipes');\n";
       break;
+    case "SCOREBOARD":
+      var code = "function execCommand( command ){\n  server.dispatchCommand(player, command);\n}\n";
+      break;
   }
+  return code;
+};
+
+Blockly.JavaScript['scoreboard_totalkillcount'] = function(block) {
+  var text_name = block.getFieldValue('NAME');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "execCommand('scoreboard objectives add " + text_name + " totalKillCount "+ text_name +"');\n\
+execCommand('scoreboard objectives setdisplay list " + text_name +"');\n\
+";
+  return code;
+};
+
+Blockly.JavaScript['scoreboard_reset'] = function(block) {
+  var text_name = block.getFieldValue('NAME');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "execCommand('scoreboard players reset '+ player +' "+ text_name +"');\n";
+  return code;
+};
+
+Blockly.JavaScript['scoreboard_remove'] = function(block) {
+  var text_name = block.getFieldValue('NAME');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "execCommand('scoreboard objectives remove " + text_name +"');\n";
   return code;
 };
 

@@ -2369,13 +2369,63 @@ Blockly.Blocks['module_import'] = { /* 모듈 불러오기 블록 */
   init: function() {
     this.appendDummyInput()
         .appendField("모듈")
-        .appendField(new Blockly.FieldDropdown([["아이템","ITEMS"], ["레시피","RECIPES"]]), "MODULE")
+        .appendField(new Blockly.FieldDropdown([["아이템","ITEMS"], ["레시피","RECIPES"],["스코어보드","SCOREBOARD"]]), "MODULE")
         .appendField("불러오기");
     this.setColour(270);
  this.setTooltip("");
  this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['scoreboard_totalkillcount'] = { /*스코어블록 플레이어가 죽인 Entity 개수 CountUP*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("스코어보드(totalKillCount)");
+    this.appendDummyInput()
+        .appendField("표시이름")
+        .appendField(new Blockly.FieldTextInput(""), "NAME");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(270);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['scoreboard_reset'] = {  /*스코어 블록 ObjectName 값 리셋 블록*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("스코어보드(reset)");
+    this.appendDummyInput()
+        .appendField("표시이름")
+        .appendField(new Blockly.FieldTextInput(""), "NAME");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(270);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['scoreboard_remove'] = { /*스코어보드 ObjectName 삭제 블록*/
+  init: function() {
+    this.appendDummyInput()
+        .appendField("스코어보드(remove)");
+    this.appendDummyInput()
+        .appendField("표시이름")
+        .appendField(new Blockly.FieldTextInput(""), "NAME");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(270);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+
 
 /*
  * 대규모 밀밭 만들기
