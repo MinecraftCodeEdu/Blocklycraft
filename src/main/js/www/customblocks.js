@@ -26,7 +26,11 @@ var fence = getObjNames(Blockly.Msg.OBJNAMES, [85, 107]);
 
 var castle = getObjNames(Blockly.Msg.OBJNAMES, [98, 79, 20, 45, 5]);
 
-var jukebox = getObjNames(Blockly.Msg.OBJNAMES, [1, 25, 55, 93]);
+var jukebox = getObjNames(Blockly.Msg.OBJNAMES, [93, 1, 55]);
+
+var note = [["낮은 파# (F#)","0"], ["낮은 솔 (G)","1"], ["낮은 솔# (G#)","2"], ["낮은 라 (A)","3"], ["낮은 라# (A#)","4"], ["낮은 시 (B)","5"], ["중간 도 (C)","6"], ["중간 도# (C#)","7"], ["중간 레 (D)","8"], ["중간 레# (D#)","9"], ["중간 미 (E)","10"], ["중간 파 (F)","11"], ["중간 파# (F#)","12"], ["중간 솔 (G)","13"], ["중간 솔# (G#)","14"], ["중간 라 (A)","15"], ["중간 라# (A#)","16"], ["중간 시 (B)","17"], ["높은 도 (C)","18"], ["높은 도# (C#)","19"], ["높은 레 (D)","20"], ["높은 레# (D#)","21"], ["높은 미 (E)","22"], ["높은 파 (F)","23"], ["높은 파# (F#)","24"], ["쉼","25"]];
+
+var tag = getObjNames(Blockly.Msg.OBJNAMES, [20, 79, 95, 101]);
 
 //http://minecraft.gamepedia.com/Tools
 var items_tools = getObjNames(Blockly.Msg.ITEMS_NAMES, ['diamondAxe', 'diamondHoe', 'diamondSpade', 'diamondPickaxe', 'shears', 'flintAndSteel', 'fishingRod', 'bed', 'torch', 'wood']);
@@ -590,7 +594,10 @@ Blockly.Blocks['weapons_armor'] = {
     }
 };
 
-Blockly.Blocks['onchat'] = {
+/*
+ * 사냥하고 돌아오기
+ */
+Blockly.Blocks['onchat'] = { /* 다음 채팅명령어를 입력하면 */
   init: function() {
     this.appendValueInput("command")
         .setCheck(null)
@@ -604,7 +611,7 @@ Blockly.Blocks['onchat'] = {
   }
 };
 
-Blockly.Blocks['spawn_animal'] = {
+Blockly.Blocks['spawn_animal'] = {  /* 동물 소환 */
   init: function() {
     this.appendValueInput("animal")
         .setCheck("AnimalMob")
@@ -624,7 +631,7 @@ Blockly.Blocks['spawn_animal'] = {
   }
 };
 
-Blockly.Blocks['animalmob'] = {
+Blockly.Blocks['animalmob'] = { /* 동물 */
   init: function() {
     this.appendDummyInput()
         .appendField("동물")
@@ -636,7 +643,7 @@ Blockly.Blocks['animalmob'] = {
   }
 };
 
-Blockly.Blocks['onmobkilled'] = {
+Blockly.Blocks['onmobkilled'] = { /* 동물이 죽었을 때 */
   init: function() {
     this.appendValueInput("Mob")
         .setCheck("AnimalMob")
@@ -652,7 +659,7 @@ Blockly.Blocks['onmobkilled'] = {
   }
 };
 
-Blockly.Blocks['teleport_location'] = {
+Blockly.Blocks['teleport_location'] = { /* 좌표로 텔레포트 */
   init: function() {
     this.appendValueInput("NAME")
         .setCheck("location")
@@ -666,28 +673,7 @@ Blockly.Blocks['teleport_location'] = {
   }
 };
 
-Blockly.Blocks['relative_location'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("상대 좌표");
-    this.appendValueInput("x")
-        .setCheck("Number")
-        .appendField("~");
-    this.appendValueInput("y")
-        .setCheck("Number")
-        .appendField("~");
-    this.appendValueInput("z")
-        .setCheck("Number")
-        .appendField("~");
-    this.setInputsInline(true);
-    this.setOutput(true, "location");
-    this.setColour(150);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
-};
-
-Blockly.Blocks['absolute_location'] = {
+Blockly.Blocks['absolute_location'] = { /* 월드 좌표 */
   init: function() {
     this.appendDummyInput()
         .appendField("월드 좌표");
@@ -708,21 +694,7 @@ Blockly.Blocks['absolute_location'] = {
   }
 };
 
-Blockly.Blocks['player_chat'] = {
-  init: function() {
-    this.appendValueInput("chat")
-        .setCheck(["Number", "String", "Boolean", "Array"])
-        .appendField("채팅창에 말하기 :");
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(210);
- this.setTooltip("게임 채팅에 메시지를 기록합니다.");
- this.setHelpUrl("");
-  }
-};
-
-Blockly.Blocks['player_chatcommand'] = {
+Blockly.Blocks['player_chatcommand'] = { /* 채팅명령어 실행 */
   init: function() {
     this.appendValueInput("chatcommand")
         .setCheck(null)
@@ -736,7 +708,10 @@ Blockly.Blocks['player_chatcommand'] = {
   }
 };
 
-Blockly.Blocks['moveforward'] = {
+/*
+ * 보물찾기
+ */
+Blockly.Blocks['moveforward'] = { /* 숫자만큼 앞으로 이동 */
   init: function() {
     this.appendValueInput("distance")
         .setCheck("Number")
@@ -750,7 +725,7 @@ Blockly.Blocks['moveforward'] = {
   }
 };
 
-Blockly.Blocks['directforward'] = {
+Blockly.Blocks['directforward'] = { /* 숫자만큼 앞으로 이동 명령어 */
   init: function() {
     this.appendValueInput("command")
         .setCheck(null)
@@ -764,57 +739,14 @@ Blockly.Blocks['directforward'] = {
   }
 };
 
-Blockly.Blocks['facing'] = {
-  init: function() {
-    this.appendValueInput("command")
-        .setCheck(null)
-        .appendField("방향 바라보기 명령 : ");
-    this.appendDummyInput()
-        .appendField("각도");
-    this.setColour(230);
- this.setTooltip("설정한 명령어와 바라 볼 각도를 입력하세요. 예) /jsp 명령어 각도");
- this.setHelpUrl("");
-  }
-};
-
-Blockly.Blocks['pause'] = {
+Blockly.Blocks['setyaw'] = { /* 각도 바라보기 */
   init: function() {
     this.appendDummyInput()
-        .appendField("일시 정지 ")
-        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["5","5"], ["6","6"], ["7","7"], ["8","8"], ["9","9"], ["10","10"]]), "second")
-        .appendField("초");
+        .appendField(new Blockly.FieldAngle(90), "yaw");
+    this.appendDummyInput()
+        .appendField("방향 보기");
+    this.setInputsInline(true);
     this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(120);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
-};
-
-Blockly.Blocks['name_location'] = {
-  init: function() {
-    this.appendValueInput("name")
-        .setCheck(null)
-        .appendField("위치 이름");
-    this.appendValueInput("location")
-        .setCheck(null)
-        .appendField("좌표");
-    this.setInputsInline(true);
-    this.setOutput(true, null);
-    this.setColour(210);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
-};
-
-Blockly.Blocks['save_teleport'] = {
-  init: function() {
-    this.appendValueInput("command")
-        .setCheck(null)
-        .appendField("저장한 위치로 이동 : ");
-    this.appendStatementInput("statement")
-        .setCheck(null);
-    this.setInputsInline(true);
     this.setNextStatement(true, null);
     this.setColour(210);
  this.setTooltip("");
@@ -822,69 +754,25 @@ Blockly.Blocks['save_teleport'] = {
   }
 };
 
-Blockly.Blocks['savelocation'] = {
+Blockly.Blocks['setdirection'] = { /* 방향 바라보기 */
   init: function() {
-    this.appendValueInput("location")
-        .setCheck(null)
-        .appendField("숫자가 ")
-        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["5","5"]]), "number")
-        .appendField("이면");
     this.appendDummyInput()
-        .appendField("으로 이동");
+        .appendField(new Blockly.FieldDropdown([["동쪽 (270º)","270"], ["서쪽 (90º)","90"], ["남쪽 (0º)","0"], ["북쪽 (180º)","180"]]), "direction");
+    this.appendDummyInput()
+        .appendField("방향 보기");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour(210);
  this.setTooltip("");
  this.setHelpUrl("");
   }
 };
 
-Blockly.Blocks['player_x'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("플레이어 X 좌표");
-    this.setOutput(true, "Number");
-    this.setColour(230);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
-};
-
-Blockly.Blocks['player_y'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("플레이어 Y 좌표");
-    this.setOutput(true, "Number");
-    this.setColour(230);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
-};
-
-Blockly.Blocks['player_z'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("플레이어 Z 좌표");
-    this.setOutput(true, "Number");
-    this.setColour(230);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
-};
-
-Blockly.Blocks['player_location'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("플레이어 절대좌표");
-    this.setOutput(true, "location");
-    this.setColour(150);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
-};
-
-Blockly.Blocks['notice_standing_block'] = {
+/*
+ * 술래잡기
+ */
+Blockly.Blocks['notice_standing_block'] = { /* 위치 찾기 함수 */
   init: function() {
     this.appendValueInput("player")
         .setCheck(null);
@@ -899,7 +787,7 @@ Blockly.Blocks['notice_standing_block'] = {
   }
 };
 
-Blockly.Blocks['transform_block'] = {
+Blockly.Blocks['transform_block'] = { /* 위치 속이기 함수 */
   init: function() {
     this.appendDummyInput()
         .appendField("내 발 밑을 5초 간")
@@ -913,7 +801,7 @@ Blockly.Blocks['transform_block'] = {
   }
 };
 
-Blockly.Blocks['target_teleport'] = {
+Blockly.Blocks['target_teleport'] = { /* 특정 플레이어 텔레포트 */
   init: function() {
     this.appendValueInput("player")
         .setCheck(null);
@@ -932,7 +820,7 @@ Blockly.Blocks['target_teleport'] = {
   }
 };
 
-Blockly.Blocks['onentitydamage'] = {
+Blockly.Blocks['onentitydamage'] = { /* 엔티티가 데미지 입을 때 이벤트 */
   init: function() {
     this.appendValueInput("player")
         .setCheck(null);
@@ -947,7 +835,7 @@ Blockly.Blocks['onentitydamage'] = {
   }
 };
 
-Blockly.Blocks['random_teleport'] = {
+Blockly.Blocks['random_teleport'] = { /* 랜덤 위치 텔레포트 */
   init: function() {
     this.appendDummyInput()
         .appendField("60초 뒤 랜덤한 위치로 텔레포트");
@@ -959,54 +847,29 @@ Blockly.Blocks['random_teleport'] = {
   }
 };
 
-Blockly.Blocks['materials_limited'] = {
+Blockly.Blocks['tag_rectangle'] = {  /* 술래잡기 직사각형 재료 */
     init: function () {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.MATERIALS)
-            .appendField(new Blockly.FieldDropdown([["돌","'1'"], ["흙","'3'"], ["참나무","'5'"], ["유리","'20'"], ["하얀색 양털","'35'"], ["금","'41'"], ["벽돌","'45'"], ["얼음","'79'"], ["하얀색 색유리","'95'"]]), "material");
+            .appendField(Blockly.Msg.RECTANGLE);
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.Msg.EMPTY, "0"],
+                [Blockly.Msg.FULL, " "]
+            ]), "fill");
+        this.appendValueInput("width").setCheck("Number")
+            .appendField(Blockly.Msg.WIDTH);
+        this.appendValueInput("length").setCheck("Number")
+            .appendField(Blockly.Msg.LENGTH);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MATERIAL)
+            .appendField(new Blockly.FieldDropdown(tag), "material");
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setColour(0);
-        this.setTooltip(Blockly.Msg.TOOLTIP_MATERIALS);
-        this.setHelpUrl("");
+        this.setTooltip(Blockly.Msg.TOOLTIP_RECTANGLE);
+        this.setHelpUrl('https://github.com/walterhiggins/ScriptCraft/blob/master/docs/API-Reference.md#dronebox-method');
     }
-};
-
-Blockly.Blocks['plant'] = {
-  init: function() {
-    this.appendValueInput("location")
-        .setCheck("location");
-    this.appendDummyInput()
-        .appendField("위에");
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["밀","CROPS"], ["당근","CARROT"], ["감자","POTATO"], ["수박","MELON_STEM"], ["호박","PUMPKIN_STEM"]]), "plant")
-        .appendField("심기");
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(15);
- this.setTooltip("농지 위에 식물을 심습니다.");
- this.setHelpUrl("");
-  }
-};
-
-Blockly.Blocks['place_block'] = {
-  init: function() {
-    this.appendValueInput("location")
-        .setCheck("location");
-    this.appendDummyInput()
-        .appendField("에");
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["잔디","2"], ["물","8"], ["농지","60"], ["참나무 울타리","188"], ["참나무 울타리 문","183"]]), "block")
-        .appendField("놓기");
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(15);
- this.setTooltip("블록을 원하는 좌표에 놓습니다.");
- this.setHelpUrl("");
-  }
 };
 
 /**
@@ -2112,10 +1975,10 @@ Blockly.Blocks['dicts_create_with'] = { /*딕셔너리 메인 블록*/
         this.itemCount_ = 0;
         // Rebuild the block's inputs.
         var itemBlock = containerBlock.getInputTargetBlock('STACK');
-/*문제시 수정필요*/
+/*
 	this.appendDummyInput('TITLE_TEXT')
             .appendField(Blockly.Msg.DICTS_CREATE_WITH_INPUT_WITH);
-
+*/
         while (itemBlock) {
           var key_input = this.appendValueInput('KEY' + this.itemCount_)
                               .appendField(Blockly.Msg.DICTS_CREATE_WITH_ITEM_KEY);
@@ -2532,19 +2395,22 @@ Blockly.Blocks['castle_rectangle'] = { /* 요새 직사각형 재료 */
  * 주크박스 만들기
  */
  
- //블록 새로고침 시 블록확장 초기화됨
+//블록 새로고침 시 블록확장 초기화됨
 Blockly.Blocks['jukebox_material'] = { /* 주크박스 재료 */
     init: function () {
-		
 		var thisBlock = this;
 		var dropdown = new Blockly.FieldDropdown(jukebox, function(newOp){
-			thisBlock.updateType_(newOp);
+			thisBlock.updateShape_(newOp);
 		});
 		
         this.appendDummyInput()
             .appendField(Blockly.Msg.MATERIALS)
             .appendField(dropdown, "material");
 			
+		this.appendDummyInput('dropDownField')
+			.appendField("지연 시간")
+			.appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"]]), "delay");
+
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -2552,25 +2418,42 @@ Blockly.Blocks['jukebox_material'] = { /* 주크박스 재료 */
         this.setTooltip(Blockly.Msg.TOOLTIP_MATERIALS);
         this.setHelpUrl('http://minecraft.gamepedia.com/Block');
     },
-	updateType_: function(newOp){
+	
+	updateShape_: function(newOp){
 		if(newOp == "'93'"){
 			this.removeInput('dropDownField');
 			this.appendDummyInput('dropDownField')
-				.appendField("지연시간")
+				.appendField("지연 시간")
 				.appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"]]), "delay");
 		} else {
 			this.removeInput('dropDownField');
 		}
-	},
-	// storing output type
-	mutationToDom: function() {
-		var container = document.createElement('mutation');
-		container.setAttribute('op', this.getFieldValue('OP'));
-		return container;
-	},
-	// retrieving output type
-	domToMutation: function(xmlElement) {
-		//var villageInput = (xmlElement.getAttribute('op') == 'true');
-		this.updateType_(xmlElement.getAttribute('op'));
 	}
+
+};
+
+Blockly.Blocks['note_material'] = { /* 노트 블록 */
+    init: function () {
+		this.appendValueInput("note")
+			.setCheck(null)
+			.appendField("소리 블록");
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setColour(0);
+        this.setTooltip(Blockly.Msg.TOOLTIP_MATERIALS);
+        this.setHelpUrl('http://minecraft.gamepedia.com/Block');
+    }
+};
+
+Blockly.Blocks['note'] = { /* 음 높이 */
+  init: function() {
+    this.appendDummyInput()
+        .appendField("음")
+        .appendField(new Blockly.FieldDropdown(note), "note");
+    this.setOutput(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
 };

@@ -18,7 +18,6 @@ var MSG = {
     catDrone: "드론",
     catInventory: "인벤토리",
 
-    catCoala: "코알라",
     catTeleport: "텔레포트 사용하기",
     catFence: "울타리 만들기",
     catFarmland: "대규모 밀밭 만들기",
@@ -31,10 +30,11 @@ var MSG = {
     catRanching: "목축",
     catTrap: "터널과 함정",
     catJukebox: "주크박스만들기",
-    catRace: "달리기 경주",
     catCastle: "요새 만들기",
     catTag: "술래잡기",
     catExample: "예제",
+	catHunt: "사냥하고 돌아오기",
+	catTresure: "보물찾기",
 
     listVariable: "리스트",
     textVariable: "텍스트",
@@ -253,7 +253,7 @@ Blockly.Msg.OBJNAMES[89] = "발광석";
 Blockly.Msg.OBJNAMES[90] = "netherportal";
 Blockly.Msg.OBJNAMES[91] = "잭오랜턴";
 Blockly.Msg.OBJNAMES[92] = "케이크";
-Blockly.Msg.OBJNAMES[93] = "redstone repeater";
+Blockly.Msg.OBJNAMES[93] = "레드스톤 중계기";
 Blockly.Msg.OBJNAMES[94] = "redstone repeater active";
 Blockly.Msg.OBJNAMES[95] = "하얀색 색유리";
 Blockly.Msg.OBJNAMES[96] = "나무다락문";

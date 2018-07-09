@@ -320,18 +320,32 @@ Blockly.JavaScript['transportation'] = function (block) {
     return code;
 };
 
-Blockly.JavaScript['onchat'] = function(block) {
+/*
+ * 사냥하고 돌아오기
+ */
+Blockly.JavaScript['onchat'] = function(block) { /* 다음 채팅명령어를 입력하면 */
 	var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
 	var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
 	var webip = window.myIP;
 	// TODO: Assemble JavaScript into code variable.
-	var code = "command( '"+webip+value_command.replace(/'/g,"")+"', function ( parameters, player ) {\n";
-	code = code + statements_statements;
-	code = code + "});";
-  return code;
+
+	var code = "\
+command( '" + webip + value_command.replace(/'/g,"") + "', function ( parameters, player ) {\n\
+  var playerLocation = player.getLocation();\n\
+  var delay_add=0;\n\
+  var theDrone = new Drone(player);\n\
+  global.theDrone = theDrone;\n\
+  global.theDrone.up();\n\
+  global.theDrone.chkpt('start');\n\
+" + statements_statements + "\
+});\
+";
+
+	
+    return code;
 };
 
-Blockly.JavaScript['spawn_animal'] = function(block) {
+Blockly.JavaScript['spawn_animal'] = function(block) { /* 동물 소환 */
         var value_animal = Blockly.JavaScript.valueToCode(block, 'animal', Blockly.JavaScript.ORDER_ATOMIC);
         // TODO: Assemble JavaScript into code variable.
         var dropdown_age = block.getFieldValue('AGE');
@@ -351,7 +365,7 @@ animal_type.getInventory().setSaddle(new bkItemStack(bkMaterial.SADDLE));\n\
   return code;
 };
 
-Blockly.JavaScript['animalmob'] = function(block) {
+Blockly.JavaScript['animalmob'] = function(block) { /* 동물 */
   //var dropdown_animal = block.getFieldValue('ANIMAL');
   // TODO: Assemble JavaScript into code variable.
   var code = block.getFieldValue('ANIMAL');
@@ -359,39 +373,34 @@ Blockly.JavaScript['animalmob'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['onmobkilled'] = function(block) {
+Blockly.JavaScript['onmobkilled'] = function(block) { /* 동물이 죽었을 때 */
   var value_mob = Blockly.JavaScript.valueToCode(block, 'Mob', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_command = Blockly.JavaScript.statementToCode(block, 'command');
   var webip = window.myIP;
   // TODO: Assemble JavaScript into code variable.
-    var code = "command( '" + webip + "', function ( parameters, player ) {});\n"
-                        + "  if( event.getEntity().getType() == '"+value_mob+"' ) {\n"
-                        + "  var player = event.getEntity().getKiller()\n" + " if ( "+webip+" == player.getAddress().getAddress().getHostAddress().replace(/[:.]/gi,'')) {;\n"
-	code = code + statements_command;
-	code = code + "}}});";
+  var code = "\
+events.entityDeath( function( event ) {\n\
+  var player = event.getEntity().getKiller();\n\
+  var playerIP = player.getAddress().getAddress().getHostAddress().replace(/[:.]/gi,'');\n\
+  if( "+webip+" == playerIP ) {\n\
+    if( event.getEntity().getType() == '"+value_mob+"' ) {\n"
+	+ statements_command +"\
+    } //entityType endif\n\
+  } //playerIP endif\n\
+}); //endEvent";
+
   return code;
 };
 
-Blockly.JavaScript['teleport_location'] = function(block) {
+Blockly.JavaScript['teleport_location'] = function(block) { /* 좌표로 텔레포트 */
   var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
   var code = "var bkLocation = Packages.org.bukkit.Location;\n"
 			+"player.teleport("+value_name+");\n";
   return code;
 };
-// x, y, z
 
-Blockly.JavaScript['relative_location'] = function(block) {
-  var value_x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_z = Blockly.JavaScript.valueToCode(block, 'z', Blockly.JavaScript.ORDER_ATOMIC);
-  // TODO: Assemble JavaScript into code variable.
-  var code = "new bkLocation(player.world, player.getLocation().x+Number("+value_x+"), player.getLocation().y+Number("+value_y+"), player.getLocation().z+Number("+value_z+") )";
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
-Blockly.JavaScript['absolute_location'] = function(block) {
+Blockly.JavaScript['absolute_location'] = function(block) { /* 월드 좌표 */
   var value_x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
   var value_y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_ATOMIC);
   var value_z = Blockly.JavaScript.valueToCode(block, 'z', Blockly.JavaScript.ORDER_ATOMIC);
@@ -401,36 +410,33 @@ Blockly.JavaScript['absolute_location'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['player_chat'] = function(block) {
-  var chat = Blockly.JavaScript.valueToCode(block, 'chat', Blockly.JavaScript.ORDER_ATOMIC);
-  // TODO: Assemble JavaScript into code variable.
-  var code = "player.chat("+chat+");\n";
-  return code;
-};
-
-Blockly.JavaScript['player_chatcommand'] = function(block) {
+Blockly.JavaScript['player_chatcommand'] = function(block) { /* 채팅명령어 실행 */
   var chatcommand = Blockly.JavaScript.valueToCode(block, 'chatcommand', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
   var code = "player.chat('/jsp '+"+chatcommand+");\n";
   return code;
 };
 
-Blockly.JavaScript['moveforward'] = function(block) {
+/*
+ * 보물찾기
+ */
+Blockly.JavaScript['moveforward'] = function(block) { /* 숫자만큼 앞으로 이동 */
   var value_distance = Blockly.JavaScript.valueToCode(block, 'distance', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = 
-  "var bkLocation = org.bukkit.Location;\n"+
-  "var world = player.getWorld();\n"+
-  "var loc = player.getLocation();\n"+
-  "var distance = "+value_distance+";\n"+
-  "var yaw  = ((loc.getYaw() + 90)  * Math.PI) / 180;\n"+
-  "var x = Math.cos(yaw);\n"+
-  "var z = Math.sin(yaw);\n"+
-  "player.teleport(new bkLocation(world, loc.getX()+x*distance,loc.getY(), loc.getZ()+z*distance, loc.getYaw(), loc.getPitch()));\n";
+
+  var code = "\
+var distance = "+value_distance+";\n\
+var yaw = ((playerLocation.getYaw()+90)*Math.PI)/180;\n\
+var x = Math.cos(yaw);\n\
+var z = Math.sin(yaw);\n\
+playerLocation.add(x*distance, 0, z*distance);\n\
+player.teleport(playerLocation);\n\
+";
+
   return code;
 };
 
-Blockly.JavaScript['directforward'] = function(block) {
+Blockly.JavaScript['directforward'] = function(block) { /* 숫자만큼 앞으로 이동 명령어 */
   var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
   var webip = window.myIP;
   // TODO: Assemble JavaScript into code variable.
@@ -451,131 +457,31 @@ Blockly.JavaScript['directforward'] = function(block) {
   return code;
 };
 
-Blockly.JavaScript['facing'] = function(block) {
-  var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
-  var webip = window.myIP;
-  // TODO: Assemble JavaScript into code variable.
-    var code = "command( '"+webip+value_command.replace(/'/g,"")+"', function ( parameters, player ) {\n\
-  var bkLocation = org.bukkit.Location;\n\
-  var world = player.getWorld();\n\
-  var loc = player.getLocation();\n\
-  if(isNaN(Number(parameters[0]))){\n\
-    player.sendMessage('please input number.');\n\
-    return false;\n\
-  }\n\
-  var angle = parameters[0];\n\
-  player.teleport(new bkLocation(world, loc.getX(), loc.getY(), loc.getZ(), angle, loc.getPitch()));\n\
-});\n";
-  return code;
-};
-
-Blockly.JavaScript['pause'] = function(block) {
-  var dropdown_second = block.getFieldValue('second');
-  var ms = dropdown_second * 1000;
-  // TODO: Assemble JavaScript into code variable.
-  var code = "var unixtime_ms = new Date().getTime();\n\
-while(new Date().getTime() < unixtime_ms + "+ms+") {}\n";
-  return code;
-};
-
-Blockly.JavaScript['name_location'] = function(block) {
-  var value_name = Blockly.JavaScript.valueToCode(block, 'name', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_location = Blockly.JavaScript.valueToCode(block, 'location', Blockly.JavaScript.ORDER_ATOMIC);
-  // TODO: Assemble JavaScript into code variable.
-  var code = "player.teleport("+value_location+");";
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
-Blockly.JavaScript['save_teleport'] = function(block) {
-  var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
-  var statements_statement = Blockly.JavaScript.statementToCode(block, 'statement');
-  var webip = window.myIP;
+Blockly.JavaScript['setyaw'] = function(block) { /* 각도 바라보기 */
+  var angle_yaw = block.getFieldValue('yaw');
   // TODO: Assemble JavaScript into code variable.
   var code = "\
-command('"+webip+value_command.replace(/'/g,"")+"', function ( parameters, player ) {\n\
-  var bkLocation = Packages.org.bukkit.Location;\n\
-  var bkPrompt = org.bukkit.conversations.Prompt,\n\
-  bkConversationFactory = org.bukkit.conversations.ConversationFactory;\n\
-\n\
-  var prompt = new bkPrompt( ) {\n\
-\n\
-    getPromptText: function( ctx ) {\n\
-      return 'Enter the number of the location to be moved. (1-5) : ';\n\
-    },\n\
-\n\
-    acceptInput: function( ctx, s ) {\n\
-      s = s.replace( /^[^0-9]+/, '' );\n\
-      s = parseInt( s );\n\
-      player.sendMessage('You chose number'+s);\n\
-      switch( s ) {\n"
-	  +statements_statement+"\
-        default:\n\
-        ctx.forWhom.sendRawMessage( 'No number.' );\n\
-        return null;\n\
-        break;\n\
-      }\n\
-\n\
-      return prompt;\n\
-    },\n\
-\n\
-    blocksForInput: function( ctx ) { \n\
-	  return true; \n\
-    }\n\
-  };\n\
-\n\
-  new bkConversationFactory( __plugin )\n\
-    .withModality( true )\n\
-    .withFirstPrompt( prompt )\n\
-    .buildConversation( player )\n\
-    .begin( );\n\
-});\n\
+playerLocation.setYaw("+angle_yaw+");\n\
+playerLocation.setPitch(0);\n\
+player.teleport(playerLocation);\n\
 ";
   return code;
 };
 
-Blockly.JavaScript['savelocation'] = function(block) {
-  var dropdown_number = block.getFieldValue('number');
-  var value_location = Blockly.JavaScript.valueToCode(block, 'location', Blockly.JavaScript.ORDER_ATOMIC);
+Blockly.JavaScript['setdirection'] = function(block) { /* 방향 바라보기 */
+  var dropdown_direction = block.getFieldValue('direction');
   // TODO: Assemble JavaScript into code variable.
-  var code ="\
-      case "+dropdown_number+":\n\
-      "+value_location+"\n\
-	return null;\n";
+  var code = "\
+playerLocation.setYaw("+dropdown_direction+");\n\
+playerLocation.setPitch(0);\n\
+player.teleport(playerLocation);\n\
+";
   return code;
 };
-
-Blockly.JavaScript['player_x'] = function(block) {
-  // TODO: Assemble JavaScript into code variable.
-  var code = "player.getLocation().getBlockX()";
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
-Blockly.JavaScript['player_y'] = function(block) {
-  // TODO: Assemble JavaScript into code variable.
-  var code = "player.getLocation().getBlockY()";
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
-Blockly.JavaScript['player_z'] = function(block) {
-  // TODO: Assemble JavaScript into code variable.
-  var code = "player.getLocation().getBlockZ()";
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
-Blockly.JavaScript['player_location'] = function(block) {
-  // TODO: Assemble JavaScript into code variable.
-  var code = "player.getLocation()";
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
 /*
- * 숨바꼭질
+ * 술래잡기
  */
-Blockly.JavaScript['notice_standing_block'] = function(block) {
+Blockly.JavaScript['notice_standing_block'] = function(block) { /* 위치 찾기 함수 */
   var value_player = Blockly.JavaScript.valueToCode(block, 'player', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
   var code = "\
@@ -594,7 +500,7 @@ if(targetPlayer == null){\n\
   return code;
 };
 
-Blockly.JavaScript['transform_block'] = function(block) {
+Blockly.JavaScript['transform_block'] = function(block) { /* 위치 속이기 함수 */
   var dropdown_material = block.getFieldValue('material');
   // TODO: Assemble JavaScript into code variable.
   var code = "\
@@ -608,7 +514,7 @@ setTimeout(function() { player.getWorld().getBlockAt(x, y-1, z).setTypeId(blockI
   return code;
 };
 
-Blockly.JavaScript['target_teleport'] = function(block) {
+Blockly.JavaScript['target_teleport'] = function(block) { /* 특정 플레이어 텔레포트 */
   var value_player = Blockly.JavaScript.valueToCode(block, 'player', Blockly.JavaScript.ORDER_ATOMIC);
   var value_location = Blockly.JavaScript.valueToCode(block, 'location', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
@@ -625,22 +531,27 @@ Blockly.JavaScript['target_teleport'] = function(block) {
   return code;
 };
 
-Blockly.JavaScript['onentitydamage'] = function(block) {
+Blockly.JavaScript['onentitydamage'] = function(block) { /* 엔티티가 데미지 입을 때 이벤트 */
   var value_player = Blockly.JavaScript.valueToCode(block, 'player', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_command = Blockly.JavaScript.statementToCode(block, 'command');
+  var webip = window.myIP;
   // TODO: Assemble JavaScript into code variable.
-    var code = "events.entityDamageByEntity( function( event ) {\n\
-  if( event.getEntity().getName().equalsIgnoreCase("+value_player+")){\n\
-    var player = event.getDamager();\n"
-+statements_command+
-  "  } else {\n\
-    event.setCancelled(true);\n\
-  }\n\
-});";
+    var code = "\
+events.entityDamageByEntity( function( event ) {\n\
+  var player = event.getDamager();\n\
+  var playerIP = player.getAddress().getAddress().getHostAddress().replace(/[:.]/gi,'');\n\
+  if( "+webip+" == playerIP ) {\n\
+    if( event.getEntity().getName().equalsIgnoreCase("+value_player+")){\n"
++statements_command+"\
+    } else {\n\
+      event.setCancelled(true);\n\
+    }\n\
+  } // playerIP endif\n\
+}); //endEvent";
   return code;
 };
 
-Blockly.JavaScript['random_teleport'] = function(block) {
+Blockly.JavaScript['random_teleport'] = function(block) { /* 랜덤 위치 텔레포트 */
   // TODO: Assemble JavaScript into code variable.
   var code = "\
 var bkLocation = Packages.org.bukkit.Location;\n\
@@ -652,38 +563,15 @@ player.sendMessage('The position is moved after 60 seconds.');\n\
   return code;
 };
 
-Blockly.JavaScript['materials_limited'] = function (block) {
+Blockly.JavaScript['tag_rectangle'] = function (block) {  /* 술래잡기 직사각형 재료 */
+    var value_width = Blockly.JavaScript.valueToCode(block, 'width', Blockly.JavaScript.ORDER_ATOMIC);
+    var value_length = Blockly.JavaScript.valueToCode(block, 'length', Blockly.JavaScript.ORDER_ATOMIC);
     var dropdown_material = block.getFieldValue('material');
-    var code = "global.theDrone." + 'box(' + dropdown_material + ');\n';
+    var dropdown_fill = block.getFieldValue('fill');
+    var code = "global.theDrone.box" + dropdown_fill + "(" + JSON.stringify(dropdown_material).replace(/"/g,"").replace(".",":") + "," + value_width + ",1," + value_length + ");\n";
+
     return code;
 };
-
-Blockly.JavaScript['place_block'] = function(block) {
-  var value_location = Blockly.JavaScript.valueToCode(block, 'location', Blockly.JavaScript.ORDER_ATOMIC);
-  var dropdown_block = block.getFieldValue('block');
-  // TODO: Assemble JavaScript into code variable.
-  var code = "\
-var bkLocation = Packages.org.bukkit.Location;\n\
-var blockLocation = "+value_location+";\n\
-var block = blockLocation.getBlock();\n\
-block.setTypeId("+dropdown_block+");\n\
-";
-  return code;
-};
-
-Blockly.JavaScript['plant'] = function(block) {
-  var value_location = Blockly.JavaScript.valueToCode(block, 'location', Blockly.JavaScript.ORDER_ATOMIC);
-  var dropdown_plant = block.getFieldValue('plant');
-  // TODO: Assemble JavaScript into code variable.
-  var code = "\
-var bkBlockFace = Packages.org.bukkit.block.BlockFace;\n\
-var bkMaterial = Packages.org.bukkit.Material;\n\
-var bkLocation = Packages.org.bukkit.Location;\n\
-var blockLocation = "+value_location+";\n\
-blockLocation.getBlock().getRelative(bkBlockFace.UP).setType(bkMaterial."+dropdown_plant+");\n\
-";
-  return code;
-}
 
 /*
  * 농사짓기
@@ -1406,4 +1294,41 @@ Blockly.JavaScript['jukebox_material'] = function (block) { /* 주크박스 재�
     return code;
 };
 
+Blockly.JavaScript['note_material'] = function(block) { /* 소리 블록 */
+  var value_note = Blockly.JavaScript.valueToCode(block, 'note', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  
+/*   if(Number(value_note) == 25) {
+	  var code = "global.theDrone.box('1');\n";  
+  } else {
+	  var code = "\
+var block = global.theDrone.getLocation().getBlock();\n\
+block.setTypeId(25);\n\
+var state = block.getState();\n\
+state.setRawNote(" + value_note + ");\n\
+state.update();\n\
+";
+  } */
+  
+  var code = "\
+if("+value_note+"==25){\n\
+  global.theDrone.box('1');\n\
+} else {\n\
+  var block = global.theDrone.getLocation().getBlock();\n\
+  block.setTypeId(25);\n\
+  var state = block.getState();\n\
+  state.setRawNote(" + value_note + ");\n\
+  state.update();\n\
+}\n\
+";
+  
+  return code;
+};
 
+Blockly.JavaScript['note'] = function(block) { /* 음 높이 */
+  var dropdown_note = block.getFieldValue('note');
+  // TODO: Assemble JavaScript into code variable.
+  var code = dropdown_note;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
