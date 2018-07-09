@@ -190,215 +190,7 @@
         </category>
 
 	    <sep></sep>
-	
-		<category id="catCoala">
-		<block type="onchat">
-			<value name="command">
-				<block type="text">
-					<field name="TEXT">run</field>
-				</block>
-			</value>
-		</block>
-		<block type="onmobkilled">
-		  <value name="Mob">
-			<block type="animalmob"></block>
-		  </value>
-		</block>
-		<block type="spawn_animal">
-		  <value name="animal">
-			<block type="animalmob"></block>
-		  </value>
-		</block>
-		<block type="teleport_location">
-		  <value name="NAME">
-			<block type="relative_location">
-			  <value name="x">
-				<block type="math_number"></block>
-			  </value>
-			  <value name="y">
-				<block type="math_number"></block>
-			  </value>
-			  <value name="z">
-				<block type="math_number"></block>
-			  </value>
-			</block>
-		  </value>
-		</block>
-		<block type="teleport_location">
-		  <value name="NAME">
-			<block type="absolute_location">
-			  <value name="x">
-				<block type="math_number"></block>
-			  </value>
-			  <value name="y">
-				<block type="math_number"></block>
-			  </value>
-			  <value name="z">
-				<block type="math_number"></block>
-			  </value>
-			</block>
-		  </value>
-		</block>
-		<block type="player_chat">
-			<value name="chat">
-			  <block type="text">
-				<field name="TEXT">Hi!</field>
-			  </block>
-			</value>
-		</block>
-		<block type="player_chatcommand">
-			<value name="chatcommand">
-			  <block type="text">
-				<field name="TEXT">jump</field>
-			  </block>
-			</value>
-		</block>
-		<block type="moveforward">
-			<value name="distance">
-				<block type="math_number">
-					<field name="NUM">5</field>
-				</block>
-			</value>
-		</block>
-		<block type="directforward">
-			<value name="command">
-				<block type="text">
-					<field name="TEXT">forward</field>
-				</block>
-			</value>
-		</block>
-		<block type="facing">
-			<value name="command">
-				<block type="text">
-					<field name="TEXT">direction</field>
-				</block>
-			</value>
-		</block>
-		<block type="pause">
-			<field name="second">1</field>
-		</block>
-		<block type="save_teleport">
-			<value name="command">
-			  <block type="text">
-				<field name="TEXT">move</field>
-			  </block>
-			</value>
-			<statement name="statement">
-			  <block type="savelocation">
-				<field name="number">1</field>
-				<value name="location">
-				  <block type="name_location">
-					<value name="name">
-					  <block type="text">
-						<field name="TEXT">myhome</field>
-					  </block>
-					</value>
-					<value name="location">
-					  <block type="absolute_location">
-						<value name="x">
-						  <block type="math_number">
-							<field name="NUM">0</field>
-						  </block>
-						</value>
-						<value name="y">
-						  <block type="math_number">
-							<field name="NUM">0</field>
-						  </block>
-						</value>
-						<value name="z">
-						  <block type="math_number">
-							<field name="NUM">0</field>
-						  </block>
-						</value>
-					  </block>
-					</value>
-				  </block>
-				</value>
-			  </block>
-			</statement>
-		</block>
-		<block type="savelocation">
-			<field name="number">1</field>
-			<value name="location">
-			  <block type="name_location">
-				<value name="name">
-				  <block type="text">
-					<field name="TEXT">myhome</field>
-				  </block>
-				</value>
-				<value name="location">
-				  <block type="absolute_location">
-					<value name="x">
-					  <block type="math_number">
-						<field name="NUM">0</field>
-					  </block>
-					</value>
-					<value name="y">
-					  <block type="math_number">
-						<field name="NUM">0</field>
-					  </block>
-					</value>
-					<value name="z">
-					  <block type="math_number">
-						<field name="NUM">0</field>
-					  </block>
-					</value>
-				  </block>
-				</value>
-			  </block>
-			</value>
-		</block>
-		<block type="player_x"></block>
-		<block type="player_y"></block>
-		<block type="player_z"></block>
-		<block type="player_location"></block>
-		<block type="random_teleport"></block>
-		<block type="materials_limited"></block>
-		<block type="place_block">
-			<field name="block">2</field>
-			<value name="location">
-			  <block type="absolute_location">
-				<value name="x">
-				  <block type="math_number">
-					<field name="NUM">0</field>
-				  </block>
-				</value>
-				<value name="y">
-				  <block type="math_number">
-					<field name="NUM">0</field>
-				  </block>
-				</value>
-				<value name="z">
-				  <block type="math_number">
-					<field name="NUM">0</field>
-				  </block>
-				</value>
-			  </block>
-			</value>
-			</block>
-			<block type="plant">
-			<field name="plant">CROPS</field>
-			<value name="location">
-			  <block type="absolute_location">
-				<value name="x">
-				  <block type="math_number">
-					<field name="NUM">0</field>
-				  </block>
-				</value>
-				<value name="y">
-				  <block type="math_number">
-					<field name="NUM">0</field>
-				  </block>
-				</value>
-				<value name="z">
-				  <block type="math_number">
-					<field name="NUM">0</field>
-				  </block>
-				</value>
-			  </block>
-			</value>
-		</block>
-	    </category>
+
 		<category id="catTeleport">
 			<block type="teleport_command">
 				<value name="command">
@@ -647,7 +439,17 @@
     	</category>
     	<category id="catJukebox">
             <block type="drone"></block>
-			<block type="jukebox_material"></block>
+			<block type="jukebox_material">
+
+			</block>
+			<block type="note_material">
+				<value name="note">
+				  <block type="note">
+					<field name="note">0</field>
+				  </block>
+				</value>
+			</block>
+			<block type="note"></block>
 			<block type="drone_move"></block>
 			<block type="drone_move_count">
               <value name="COUNT">
@@ -661,8 +463,6 @@
                     </block>
                 </value>
             </block>
-    	</category>
-    	<category id="catRace">
     	</category>
 	<category id="catCastle">
             <block type="drone"></block>
@@ -695,8 +495,7 @@
 	</category>
 	<category id="catTag">
             <block type="drone"></block>
-			<block type="castle_material"></block>
-			<block type="castle_rectangle">
+			<block type="tag_rectangle">
 					<value name="width">
 					   <block type="math_number">
 					   <field name="NUM">0</field>
@@ -750,6 +549,72 @@
 			  </block>
 			</value>
 		</block>
+	</category>
+	<category id="catHunt">
+		<block type="onchat">
+			<value name="command">
+				<block type="text">
+					<field name="TEXT">run</field>
+				</block>
+			</value>
+		</block>
+		<block type="onmobkilled">
+		  <value name="Mob">
+			<block type="animalmob"></block>
+		  </value>
+		</block>
+		<block type="spawn_animal">
+		  <value name="animal">
+			<block type="animalmob"></block>
+		  </value>
+		</block>
+		<block type="teleport_location">
+		  <value name="NAME">
+			<block type="absolute_location">
+			  <value name="x">
+				<block type="math_number"></block>
+			  </value>
+			  <value name="y">
+				<block type="math_number"></block>
+			  </value>
+			  <value name="z">
+				<block type="math_number"></block>
+			  </value>
+			</block>
+		  </value>
+		</block>
+		<block type="player_chatcommand">
+			<value name="chatcommand">
+			  <block type="text">
+				<field name="TEXT">jump</field>
+			  </block>
+			</value>
+		</block>
+	</category>
+	<category id="catTresure">
+		<block type="onchat">
+			<value name="command">
+				<block type="text">
+					<field name="TEXT">run</field>
+				</block>
+			</value>
+		</block>
+		<block type="directforward">
+			<value name="command">
+				<block type="text">
+					<field name="TEXT">forward</field>
+				</block>
+			</value>
+		</block>
+		<block type="moveforward">
+			<value name="distance">
+				<block type="math_number">
+					<field name="NUM">5</field>
+				</block>
+			</value>
+		</block>
+		<block type="setyaw"></block>	
+		<block type="setdirection"></block>		
 	</category>
         <sep></sep>
 	<category id="catExample">
