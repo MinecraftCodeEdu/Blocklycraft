@@ -26,7 +26,7 @@ var fence = getObjNames(Blockly.Msg.OBJNAMES, [85, 107]);
 
 var castle = getObjNames(Blockly.Msg.OBJNAMES, [98, 79, 20, 45, 5]);
 
-var jukebox = getObjNames(Blockly.Msg.OBJNAMES, [93, 1, 55]);
+var jukebox = getObjNames(Blockly.Msg.OBJNAMES, [55, 1]);
 
 var note = [["낮은 파# (F#)","0"], ["낮은 솔 (G)","1"], ["낮은 솔# (G#)","2"], ["낮은 라 (A)","3"], ["낮은 라# (A#)","4"], ["낮은 시 (B)","5"], ["중간 도 (C)","6"], ["중간 도# (C#)","7"], ["중간 레 (D)","8"], ["중간 레# (D#)","9"], ["중간 미 (E)","10"], ["중간 파 (F)","11"], ["중간 파# (F#)","12"], ["중간 솔 (G)","13"], ["중간 솔# (G#)","14"], ["중간 라 (A)","15"], ["중간 라# (A#)","16"], ["중간 시 (B)","17"], ["높은 도 (C)","18"], ["높은 도# (C#)","19"], ["높은 레 (D)","20"], ["높은 레# (D#)","21"], ["높은 미 (E)","22"], ["높은 파 (F)","23"], ["높은 파# (F#)","24"], ["쉼","25"]];
 
@@ -2394,42 +2394,33 @@ Blockly.Blocks['castle_rectangle'] = { /* 요새 직사각형 재료 */
 /*
  * 주크박스 만들기
  */
- 
-//블록 새로고침 시 블록확장 초기화됨
+
 Blockly.Blocks['jukebox_material'] = { /* 주크박스 재료 */
     init: function () {
-		var thisBlock = this;
-		var dropdown = new Blockly.FieldDropdown(jukebox, function(newOp){
-			thisBlock.updateShape_(newOp);
-		});
-		
         this.appendDummyInput()
             .appendField(Blockly.Msg.MATERIALS)
-            .appendField(dropdown, "material");
-			
-		this.appendDummyInput('dropDownField')
-			.appendField("지연 시간")
-			.appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"]]), "delay");
-
+            .appendField(new Blockly.FieldDropdown(jukebox), "material");
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setColour(0);
         this.setTooltip(Blockly.Msg.TOOLTIP_MATERIALS);
         this.setHelpUrl('http://minecraft.gamepedia.com/Block');
-    },
-	
-	updateShape_: function(newOp){
-		if(newOp == "'93'"){
-			this.removeInput('dropDownField');
-			this.appendDummyInput('dropDownField')
-				.appendField("지연 시간")
-				.appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"]]), "delay");
-		} else {
-			this.removeInput('dropDownField');
-		}
-	}
-
+    }
+};
+ 
+Blockly.Blocks['repeater'] = { /* 레드스톤 중계기 */
+  init: function() {
+    this.appendDummyInput()
+        .appendField("레드스톤 중계기")
+        .appendField(new Blockly.FieldDropdown([["지연시간 1","1"], ["지연시간 2","2"], ["지연시간 3","3"], ["지연시간 4","4"]]), "delay");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
 };
 
 Blockly.Blocks['note_material'] = { /* 노트 블록 */

@@ -1283,33 +1283,20 @@ Blockly.JavaScript['castle_rectangle'] = function (block) { /* 요새 직사각�
  */
 Blockly.JavaScript['jukebox_material'] = function (block) { /* 주크박스 재료 */
     var dropdown_material = block.getFieldValue('material');
-	var dropdown_delay = block.getFieldValue('delay');
-	dropdown_material = dropdown_material.replace(/'/g,"");
-	if(dropdown_material == 93){
-		var code = "global.theDrone.box('" + dropdown_material + ":'+((global.theDrone.dir+1)%4+"+Number(4*(dropdown_delay-1))+"));\n";
-	} else {
-		var code = "global.theDrone.box('" + dropdown_material + "');\n";
-	}
-
+    var code = "global.theDrone." + 'box(' + dropdown_material + ');\n';
     return code;
+};
+
+Blockly.JavaScript['repeater'] = function(block) { /* 레드스톤 중계기 */
+  var dropdown_delay = block.getFieldValue('delay');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.theDrone.box('93:'+((global.theDrone.dir+1)%4+"+Number(4*(dropdown_delay-1))+"));\n";
+  return code;
 };
 
 Blockly.JavaScript['note_material'] = function(block) { /* 소리 블록 */
   var value_note = Blockly.JavaScript.valueToCode(block, 'note', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  
-/*   if(Number(value_note) == 25) {
-	  var code = "global.theDrone.box('1');\n";  
-  } else {
-	  var code = "\
-var block = global.theDrone.getLocation().getBlock();\n\
-block.setTypeId(25);\n\
-var state = block.getState();\n\
-state.setRawNote(" + value_note + ");\n\
-state.update();\n\
-";
-  } */
-  
   var code = "\
 if("+value_note+"==25){\n\
   global.theDrone.box('1');\n\
