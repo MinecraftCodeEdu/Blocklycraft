@@ -18,7 +18,7 @@ var MSG = {
     catDrone: "드론",
     catInventory: "인벤토리",
 
-    catTeleport: "텔레포트 사용하기",
+    catTeleport: "텔레포트 이용하기",
     catFence: "울타리 만들기",
     catFarmland: "대규모 밀밭 만들기",
     catFarming: "자동화 농장",
@@ -29,7 +29,7 @@ var MSG = {
     catRecipe: "레시피조합과 몬스터전투",
     catRanching: "목축",
     catTrap: "터널과 함정",
-    catJukebox: "주크박스만들기",
+    catJukebox: "주크박스 만들기",
     catCastle: "요새 만들기",
     catTag: "술래잡기",
     catExample: "예제",
