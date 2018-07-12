@@ -26,7 +26,7 @@ var fence = getObjNames(Blockly.Msg.OBJNAMES, [85, 107]);
 
 var castle = getObjNames(Blockly.Msg.OBJNAMES, [98, 79, 20, 45, 5]);
 
-var jukebox = getObjNames(Blockly.Msg.OBJNAMES, [93, 1, 55]);
+var jukebox = getObjNames(Blockly.Msg.OBJNAMES, [55, 1]);
 
 var note = [["낮은 파# (F#)","0"], ["낮은 솔 (G)","1"], ["낮은 솔# (G#)","2"], ["낮은 라 (A)","3"], ["낮은 라# (A#)","4"], ["낮은 시 (B)","5"], ["중간 도 (C)","6"], ["중간 도# (C#)","7"], ["중간 레 (D)","8"], ["중간 레# (D#)","9"], ["중간 미 (E)","10"], ["중간 파 (F)","11"], ["중간 파# (F#)","12"], ["중간 솔 (G)","13"], ["중간 솔# (G#)","14"], ["중간 라 (A)","15"], ["중간 라# (A#)","16"], ["중간 시 (B)","17"], ["높은 도 (C)","18"], ["높은 도# (C#)","19"], ["높은 레 (D)","20"], ["높은 레# (D#)","21"], ["높은 미 (E)","22"], ["높은 파 (F)","23"], ["높은 파# (F#)","24"], ["쉼","25"]];
 
@@ -174,8 +174,10 @@ Blockly.Blocks['drone_move_count'] = {
                 [Blockly.Msg.MOUVEMENT_LEFT, "left"]
             ]), "direction");
         this.appendValueInput("COUNT")
-          .setCheck(null)
-          .appendField("칸수");
+			.setCheck(null)
+			.appendField(" ");
+		this.appendDummyInput()
+			.appendField("칸");
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -184,7 +186,6 @@ Blockly.Blocks['drone_move_count'] = {
         this.setHelpUrl('https://github.com/walterhiggins/ScriptCraft/blob/master/docs/API-Reference.md#drone-movement');
     }
 };
-
 
 Blockly.Blocks['rectangle'] = {
     init: function () {
@@ -597,11 +598,11 @@ Blockly.Blocks['weapons_armor'] = {
 /*
  * 사냥하고 돌아오기
  */
-Blockly.Blocks['onchat'] = { /* 다음 채팅명령어를 입력하면 */
+Blockly.Blocks['onchat'] = { /* 채팅명령어 */
   init: function() {
     this.appendValueInput("command")
         .setCheck(null)
-        .appendField("다음 채팅명령어를 입력하면:");
+        .appendField("명령어");
     this.appendStatementInput("statements")
         .setCheck(null);
     this.setInputsInline(true);
@@ -649,7 +650,7 @@ Blockly.Blocks['onmobkilled'] = { /* 동물이 죽었을 때 */
         .setCheck("AnimalMob")
         .appendField("몹");
     this.appendDummyInput()
-        .appendField("이 죽었다면 실행");
+        .appendField("이 죽으면 실행");
     this.appendStatementInput("command")
         .setCheck(null);
     this.setInputsInline(true);
@@ -663,7 +664,7 @@ Blockly.Blocks['teleport_location'] = { /* 좌표로 텔레포트 */
   init: function() {
     this.appendValueInput("NAME")
         .setCheck("location")
-        .appendField("해당 좌표로 텔레포트");
+        .appendField("좌표로 텔레포트");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -697,8 +698,9 @@ Blockly.Blocks['absolute_location'] = { /* 월드 좌표 */
 Blockly.Blocks['player_chatcommand'] = { /* 채팅명령어 실행 */
   init: function() {
     this.appendValueInput("chatcommand")
-        .setCheck(null)
-        .appendField("다음 채팅명령어를 실행 :");
+        .setCheck(null);
+    this.appendDummyInput()
+        .appendField("명령어 실행");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -714,8 +716,9 @@ Blockly.Blocks['player_chatcommand'] = { /* 채팅명령어 실행 */
 Blockly.Blocks['moveforward'] = { /* 숫자만큼 앞으로 이동 */
   init: function() {
     this.appendValueInput("distance")
-        .setCheck("Number")
-        .appendField("숫자만큼 앞으로 이동");
+        .setCheck("Number");
+    this.appendDummyInput()
+        .appendField("만큼 앞으로 이동");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -729,9 +732,9 @@ Blockly.Blocks['directforward'] = { /* 숫자만큼 앞으로 이동 명령어 *
   init: function() {
     this.appendValueInput("command")
         .setCheck(null)
-        .appendField("앞으로 이동 : ");
+        .appendField("앞으로 이동 명령어");
     this.appendDummyInput()
-        .appendField("d");
+        .appendField("거리");
     this.setInputsInline(true);
     this.setColour(210);
  this.setTooltip("");
@@ -1231,9 +1234,9 @@ Blockly.Blocks['teleport_command'] = { /* 텔레포트 함수 */
   init: function() {
     this.appendValueInput("command")
         .setCheck(null)
-        .appendField("입력한 좌표로 텔레포트 : ");
+        .appendField("좌표로 텔레포트 명령어");
     this.appendDummyInput()
-        .appendField("x y z");
+        .appendField("X Y Z");
     this.setInputsInline(true);
     this.setColour(210);
     this.setTooltip("");
@@ -2394,42 +2397,33 @@ Blockly.Blocks['castle_rectangle'] = { /* 요새 직사각형 재료 */
 /*
  * 주크박스 만들기
  */
- 
-//블록 새로고침 시 블록확장 초기화됨
+
 Blockly.Blocks['jukebox_material'] = { /* 주크박스 재료 */
     init: function () {
-		var thisBlock = this;
-		var dropdown = new Blockly.FieldDropdown(jukebox, function(newOp){
-			thisBlock.updateShape_(newOp);
-		});
-		
         this.appendDummyInput()
             .appendField(Blockly.Msg.MATERIALS)
-            .appendField(dropdown, "material");
-			
-		this.appendDummyInput('dropDownField')
-			.appendField("지연 시간")
-			.appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"]]), "delay");
-
+            .appendField(new Blockly.FieldDropdown(jukebox), "material");
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setColour(0);
         this.setTooltip(Blockly.Msg.TOOLTIP_MATERIALS);
         this.setHelpUrl('http://minecraft.gamepedia.com/Block');
-    },
-	
-	updateShape_: function(newOp){
-		if(newOp == "'93'"){
-			this.removeInput('dropDownField');
-			this.appendDummyInput('dropDownField')
-				.appendField("지연 시간")
-				.appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"]]), "delay");
-		} else {
-			this.removeInput('dropDownField');
-		}
-	}
-
+    }
+};
+ 
+Blockly.Blocks['repeater'] = { /* 레드스톤 중계기 */
+  init: function() {
+    this.appendDummyInput()
+        .appendField("레드스톤 중계기")
+        .appendField(new Blockly.FieldDropdown([["지연시간 1","1"], ["지연시간 2","2"], ["지연시간 3","3"], ["지연시간 4","4"]]), "delay");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
 };
 
 Blockly.Blocks['note_material'] = { /* 노트 블록 */
@@ -2453,6 +2447,86 @@ Blockly.Blocks['note'] = { /* 음 높이 */
         .appendField(new Blockly.FieldDropdown(note), "note");
     this.setOutput(true, null);
     this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+/*
+ * 리스트
+ */
+ Blockly.Blocks['list_getindex'] = { /* 리스트 위치 값 반환 */
+  init: function() {
+    this.appendValueInput("LIST")
+        .setCheck("Array");
+    this.appendValueInput("AT")
+        .setCheck("Number")
+        .appendField("리스트의");
+    this.appendDummyInput()
+        .appendField("번째 값");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(260);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['list_setindex'] = { /* 리스트 위치 값 저장 */
+  init: function() {
+    this.appendValueInput("LIST")
+        .setCheck("Array");
+    this.appendValueInput("AT")
+        .setCheck("Number")
+        .appendField("리스트의");
+    this.appendValueInput("VALUE")
+        .setCheck(null)
+        .appendField("번째 값에");
+    this.appendDummyInput()
+        .appendField("저장");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(260);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+/*
+ * 문자열
+ */
+ Blockly.Blocks['string_charAt'] = { /* 문자 얻기 */
+  init: function() {
+    this.appendValueInput("TEXT")
+        .setCheck(null)
+        .appendField("문자열");
+    this.appendValueInput("AT")
+        .setCheck(null)
+		.appendField("의");
+    this.appendDummyInput()
+        .appendField("번 째 문자");
+    this.setOutput(true, null);
+    this.setColour(160);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['string_substring'] = { /* 문자열 잘라내기 */
+  init: function() {
+    this.appendValueInput("TEXT")
+        .setCheck(null)
+        .appendField("문자열");
+    this.appendValueInput("AT1")
+        .setCheck(null)
+    this.appendValueInput("AT2")
+        .setCheck(null)
+        .appendField("번 째부터");
+    this.appendDummyInput()
+        .appendField("번 째까지 잘라내기");
+    this.setOutput(true, null);
+    this.setColour(160);
  this.setTooltip("");
  this.setHelpUrl("");
   }
