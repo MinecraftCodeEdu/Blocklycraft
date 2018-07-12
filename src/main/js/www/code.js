@@ -662,6 +662,21 @@ Code.init = function () {
             xhttp.send(jscode);
         }
     });
+
+        Code.bindClick('testButton', function () {
+        var commandcode = "gamemode 0 @a";
+        var xhttp;
+        if (window.XMLHttpRequest) {
+            xhttp = new XMLHttpRequest();
+        } else {
+             // code for IE6, IE5
+             xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhttp.open('POST', '/button', true);
+        xhttp.send(commandcode);
+    });
+
+
     // Disable the link button if page isn't backed by App Engine storage.
     var linkButton = document.getElementById('linkButton');
     if ('BlocklyStorage' in window) {

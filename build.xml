@@ -207,7 +207,7 @@ Walter Higgins
 
   <target name="get_underscore" depends="copy-js" unless="underscore.present">
     <!-- download underscore -->
-    <get src="http://underscorejs.org/underscore.js"
+    <get src="https://underscorejs.org/underscore.js"
    verbose="true"
    dest="${dist}/js/modules/underscore.js" 
      skipexisting="true"/>
