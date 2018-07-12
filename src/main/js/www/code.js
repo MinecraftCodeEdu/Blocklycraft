@@ -662,7 +662,7 @@ Code.init = function () {
             xhttp.send(jscode);
         }
     });
-
+/*
         Code.bindClick('testButton', function () {
         var commandcode = "gamemode 0 @a";
         var xhttp;
@@ -675,7 +675,7 @@ Code.init = function () {
         xhttp.open('POST', '/button', true);
         xhttp.send(commandcode);
     });
-
+*/
 
     // Disable the link button if page isn't backed by App Engine storage.
     var linkButton = document.getElementById('linkButton');
@@ -791,7 +791,7 @@ Code.discard = function () {
 };
 
 // Load the Code demo's language strings.
-document.write('<script src="msg/js/' + Code.LANG + '.js"></script>\n');
+//document.write('<script src="msg/js/' + Code.LANG + '.js"></script>\n');
 // Load Blockly's language strings.
-document.write('<script src="google-blockly/msg/js/' + Code.LANG + '.js"></script>\n');
+//document.write('<script src="google-blockly/msg/js/' + Code.LANG + '.js"></script>\n');
 window.addEventListener('load', Code.init);
