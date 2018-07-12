@@ -753,10 +753,15 @@ Code.initLanguage = function () {
     document.getElementById('deployButton').title = MSG.deployTooltip;
     document.getElementById('trashButton').title = MSG.trashTooltip;
 
-    var categories = ['catLogic', 'catLoops', 'catMath', 'catText', 'catLists', 'catFunctions',
+/*     var categories = ['catLogic', 'catLoops', 'catMath', 'catText', 'catLists', 'catFunctions',
         'catColour', 'catVariables', 'catDrone', 'catInventory', 'catTeleport', 'catFence', 'catFarmland' , 'catFarming', 'catRail', 'catRiding', 'catVillage', 'catTrampoline', 'catRecipe', 'catRanching', 'catTrap', 'catJukebox', 'catCastle', 'catTag', 'catExample',
 		'catHunt', 'catTresure'
-    ];
+    ]; // 모든 카테고리 */
+	
+	var categories = ['catLogic', 'catLoops', 'catMath', 'catText', 'catLists', 'catFunctions',
+        'catVariables', 'catTeleport', 'catFence', 'catFarmland' , 'catRail', 'catJukebox', 'catCastle',
+		'catHunt', 'catTresure'
+    ]; // 수정된 카테고리
 
     for (var i = 0, cat; cat = categories[i]; i++) {
         document.getElementById(cat).setAttribute('name', MSG[cat]);

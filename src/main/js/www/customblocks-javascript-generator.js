@@ -323,7 +323,7 @@ Blockly.JavaScript['transportation'] = function (block) {
 /*
  * 사냥하고 돌아오기
  */
-Blockly.JavaScript['onchat'] = function(block) { /* 다음 채팅명령어를 입력하면 */
+Blockly.JavaScript['onchat'] = function(block) { /* 채팅명령어 */
 	var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
 	var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
 	var webip = window.myIP;
@@ -1283,33 +1283,20 @@ Blockly.JavaScript['castle_rectangle'] = function (block) { /* 요새 직사각�
  */
 Blockly.JavaScript['jukebox_material'] = function (block) { /* 주크박스 재료 */
     var dropdown_material = block.getFieldValue('material');
-	var dropdown_delay = block.getFieldValue('delay');
-	dropdown_material = dropdown_material.replace(/'/g,"");
-	if(dropdown_material == 93){
-		var code = "global.theDrone.box('" + dropdown_material + ":'+((global.theDrone.dir+1)%4+"+Number(4*(dropdown_delay-1))+"));\n";
-	} else {
-		var code = "global.theDrone.box('" + dropdown_material + "');\n";
-	}
-
+    var code = "global.theDrone." + 'box(' + dropdown_material + ');\n';
     return code;
+};
+
+Blockly.JavaScript['repeater'] = function(block) { /* 레드스톤 중계기 */
+  var dropdown_delay = block.getFieldValue('delay');
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.theDrone.box('93:'+((global.theDrone.dir+1)%4+"+Number(4*(dropdown_delay-1))+"));\n";
+  return code;
 };
 
 Blockly.JavaScript['note_material'] = function(block) { /* 소리 블록 */
   var value_note = Blockly.JavaScript.valueToCode(block, 'note', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  
-/*   if(Number(value_note) == 25) {
-	  var code = "global.theDrone.box('1');\n";  
-  } else {
-	  var code = "\
-var block = global.theDrone.getLocation().getBlock();\n\
-block.setTypeId(25);\n\
-var state = block.getState();\n\
-state.setRawNote(" + value_note + ");\n\
-state.update();\n\
-";
-  } */
-  
   var code = "\
 if("+value_note+"==25){\n\
   global.theDrone.box('1');\n\
@@ -1329,6 +1316,46 @@ Blockly.JavaScript['note'] = function(block) { /* 음 높이 */
   var dropdown_note = block.getFieldValue('note');
   // TODO: Assemble JavaScript into code variable.
   var code = dropdown_note;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+/*
+ * 리스트
+ */
+Blockly.JavaScript['list_getindex'] = function(block) { /* 리스트 위치 값 반환 */
+  var list = Blockly.JavaScript.valueToCode(block, 'LIST', Blockly.JavaScript.ORDER_ATOMIC);
+  var at = Blockly.JavaScript.getAdjusted(block, 'AT');
+  // TODO: Assemble JavaScript into code variable.
+  var code = list + '[' + at + ']';
+  return [code, Blockly.JavaScript.ORDER_MEMBER];
+};
+
+Blockly.JavaScript['list_setindex'] = function(block) { /* 리스트 위치 값 저장 */
+  var list = Blockly.JavaScript.valueToCode(block, 'LIST', Blockly.JavaScript.ORDER_ATOMIC);
+  var at = Blockly.JavaScript.getAdjusted(block, 'AT');
+  var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  return list + '[' + at + '] = ' + value + ';\n';
+};
+
+/*
+ * 문자열
+ */
+Blockly.JavaScript['string_charAt'] = function(block) { /* 문자 얻기 */
+  var value_text = Blockly.JavaScript.valueToCode(block, 'TEXT', Blockly.JavaScript.ORDER_ATOMIC);
+  var at = Blockly.JavaScript.getAdjusted(block, 'AT');
+  // Adjust index if using one-based indices.
+  var code = value_text + '.charAt(' + at + ')';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['string_substring'] = function(block) { /* 문자열 잘라내기 */
+  var value_text = Blockly.JavaScript.valueToCode(block, 'TEXT', Blockly.JavaScript.ORDER_ATOMIC);
+  var at1 = Blockly.JavaScript.getAdjusted(block, 'AT1');
+  var at2 = Blockly.JavaScript.getAdjusted(block, 'AT2', 1);
+  // TODO: Assemble JavaScript into code variable.
+  code = value_text + '.slice(' + at1 + ', ' + at2 + ')';
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };

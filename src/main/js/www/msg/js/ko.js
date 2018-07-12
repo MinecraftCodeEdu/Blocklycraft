@@ -7,10 +7,10 @@ var MSG = {
     badCode: "프로그램에러:\n%1",
     timeout: "최대 실행 반복 횟수를 초과했습니다.",
     trashTooltip: "모든블록 삭제.",
-    catLogic: "로직",
-    catLoops: "루프",
-    catMath: "연산",
-    catText: "텍스트",
+    catLogic: "논리",
+    catLoops: "반복",
+    catMath: "계산",
+    catText: "문자열",
     catLists: "리스트",
     catColour: "색깔",
     catVariables: "변수",
@@ -18,7 +18,7 @@ var MSG = {
     catDrone: "드론",
     catInventory: "인벤토리",
 
-    catTeleport: "텔레포트 사용하기",
+    catTeleport: "텔레포트 이용하기",
     catFence: "울타리 만들기",
     catFarmland: "대규모 밀밭 만들기",
     catFarming: "자동화 농장",
@@ -29,7 +29,7 @@ var MSG = {
     catRecipe: "레시피조합과 몬스터전투",
     catRanching: "목축",
     catTrap: "터널과 함정",
-    catJukebox: "주크박스만들기",
+    catJukebox: "주크박스 만들기",
     catCastle: "요새 만들기",
     catTag: "술래잡기",
     catExample: "예제",
@@ -57,7 +57,7 @@ Blockly.Msg.HEIGHT = "높이";
 Blockly.Msg.LENGTH = "세로";
 Blockly.Msg.RADIUS = "반지름";
 Blockly.Msg.FULL = "가득 찬";
-Blockly.Msg.EMPTY = "텅 빈";
+Blockly.Msg.EMPTY = "테두리만";
 Blockly.Msg.INVENTORY = "인벤토리";
 Blockly.Msg.ITEMS_TOOLS = "도구";
 Blockly.Msg.ITEMS_FOOD = "식량";
