@@ -2448,3 +2448,83 @@ Blockly.Blocks['note'] = { /* 음 높이 */
  this.setHelpUrl("");
   }
 };
+
+/*
+ * 리스트
+ */
+ Blockly.Blocks['list_getindex'] = { /* 리스트 위치 값 반환 */
+  init: function() {
+    this.appendValueInput("LIST")
+        .setCheck("Array");
+    this.appendValueInput("AT")
+        .setCheck("Number")
+        .appendField("리스트의");
+    this.appendDummyInput()
+        .appendField("번째 값");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(260);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['list_setindex'] = { /* 리스트 위치 값 저장 */
+  init: function() {
+    this.appendValueInput("LIST")
+        .setCheck("Array");
+    this.appendValueInput("AT")
+        .setCheck("Number")
+        .appendField("리스트의");
+    this.appendValueInput("VALUE")
+        .setCheck(null)
+        .appendField("번째 값에");
+    this.appendDummyInput()
+        .appendField("저장");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(260);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+/*
+ * 문자열
+ */
+ Blockly.Blocks['string_charAt'] = { /* 문자 얻기 */
+  init: function() {
+    this.appendValueInput("TEXT")
+        .setCheck(null)
+        .appendField("문자열");
+    this.appendValueInput("AT")
+        .setCheck(null)
+		.appendField("의");
+    this.appendDummyInput()
+        .appendField("번 째 문자");
+    this.setOutput(true, null);
+    this.setColour(160);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['string_substring'] = { /* 문자열 잘라내기 */
+  init: function() {
+    this.appendValueInput("TEXT")
+        .setCheck(null)
+        .appendField("문자열");
+    this.appendValueInput("AT1")
+        .setCheck(null)
+    this.appendValueInput("AT2")
+        .setCheck(null)
+        .appendField("번 째부터");
+    this.appendDummyInput()
+        .appendField("번 째까지 잘라내기");
+    this.setOutput(true, null);
+    this.setColour(160);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};

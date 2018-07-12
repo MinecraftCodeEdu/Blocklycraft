@@ -1319,3 +1319,43 @@ Blockly.JavaScript['note'] = function(block) { /* 음 높이 */
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
+
+/*
+ * 리스트
+ */
+Blockly.JavaScript['list_getindex'] = function(block) { /* 리스트 위치 값 반환 */
+  var list = Blockly.JavaScript.valueToCode(block, 'LIST', Blockly.JavaScript.ORDER_ATOMIC);
+  var at = Blockly.JavaScript.getAdjusted(block, 'AT');
+  // TODO: Assemble JavaScript into code variable.
+  var code = list + '[' + at + ']';
+  return [code, Blockly.JavaScript.ORDER_MEMBER];
+};
+
+Blockly.JavaScript['list_setindex'] = function(block) { /* 리스트 위치 값 저장 */
+  var list = Blockly.JavaScript.valueToCode(block, 'LIST', Blockly.JavaScript.ORDER_ATOMIC);
+  var at = Blockly.JavaScript.getAdjusted(block, 'AT');
+  var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  return list + '[' + at + '] = ' + value + ';\n';
+};
+
+/*
+ * 문자열
+ */
+Blockly.JavaScript['string_charAt'] = function(block) { /* 문자 얻기 */
+  var value_text = Blockly.JavaScript.valueToCode(block, 'TEXT', Blockly.JavaScript.ORDER_ATOMIC);
+  var at = Blockly.JavaScript.getAdjusted(block, 'AT');
+  // Adjust index if using one-based indices.
+  var code = value_text + '.charAt(' + at + ')';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['string_substring'] = function(block) { /* 문자열 잘라내기 */
+  var value_text = Blockly.JavaScript.valueToCode(block, 'TEXT', Blockly.JavaScript.ORDER_ATOMIC);
+  var at1 = Blockly.JavaScript.getAdjusted(block, 'AT1');
+  var at2 = Blockly.JavaScript.getAdjusted(block, 'AT2', 1);
+  // TODO: Assemble JavaScript into code variable.
+  code = value_text + '.slice(' + at1 + ', ' + at2 + ')';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};

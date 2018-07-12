@@ -772,7 +772,13 @@
                     <block type="text"></block>
                 </value>
             </block>
-            <block type="text_length"></block>
+            <block type="text_length">
+				<value name="VALUE">
+				  <block type="text">
+					<field name="TEXT">Hello</field>
+				  </block>
+				</value>
+			</block>
             <block type="text_isEmpty"></block>
             <block type="text_indexOf">
                 <value name="VALUE">
@@ -803,6 +809,35 @@
                     <block type="text"></block>
                 </value>
             </block>
+			<block type="string_charAt">
+				<value name="TEXT">
+				  <block type="text">
+					<field name="TEXT">Hello</field>
+				  </block>
+				</value>		
+                <value name="AT">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>				
+			</block>
+			<block type="string_substring">
+				<value name="TEXT">
+				  <block type="text">
+					<field name="TEXT">Hello</field>
+				  </block>
+				</value>		
+                <value name="AT1">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+                <value name="AT2">
+                    <block type="math_number">
+                        <field name="NUM">3</field>
+                    </block>
+                </value>				
+			</block>
         </category>
         <category id="catLists" colour="260">
             <block type="lists_create_empty"></block>
@@ -854,6 +889,30 @@
 	    <block type="lists_reverse"></block>
 	    <block type="dict_get"></block>
           <block type="dicts_create_with"></block>
+			<block type="list_getindex">
+			    <value name="LIST">
+                    <block type="variables_get">
+                        <field name="VAR" class="listVar">...</field>
+                    </block>
+                </value>
+				<value name="AT">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+			</block>
+			<block type="list_setindex">
+			    <value name="LIST">
+                    <block type="variables_get">
+                        <field name="VAR" class="listVar">...</field>
+                    </block>
+                </value>
+				<value name="AT">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+			</block>
         </category>
 	<category id="catFunctions" custom="PROCEDURE" colour="290">
 	</category>
