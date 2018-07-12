@@ -174,8 +174,10 @@ Blockly.Blocks['drone_move_count'] = {
                 [Blockly.Msg.MOUVEMENT_LEFT, "left"]
             ]), "direction");
         this.appendValueInput("COUNT")
-          .setCheck(null)
-          .appendField("칸수");
+			.setCheck(null)
+			.appendField(" ");
+		this.appendDummyInput()
+			.appendField("칸");
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -184,7 +186,6 @@ Blockly.Blocks['drone_move_count'] = {
         this.setHelpUrl('https://github.com/walterhiggins/ScriptCraft/blob/master/docs/API-Reference.md#drone-movement');
     }
 };
-
 
 Blockly.Blocks['rectangle'] = {
     init: function () {
@@ -597,11 +598,11 @@ Blockly.Blocks['weapons_armor'] = {
 /*
  * 사냥하고 돌아오기
  */
-Blockly.Blocks['onchat'] = { /* 다음 채팅명령어를 입력하면 */
+Blockly.Blocks['onchat'] = { /* 채팅명령어 */
   init: function() {
     this.appendValueInput("command")
         .setCheck(null)
-        .appendField("다음 채팅명령어를 입력하면:");
+        .appendField("명령어");
     this.appendStatementInput("statements")
         .setCheck(null);
     this.setInputsInline(true);
@@ -649,7 +650,7 @@ Blockly.Blocks['onmobkilled'] = { /* 동물이 죽었을 때 */
         .setCheck("AnimalMob")
         .appendField("몹");
     this.appendDummyInput()
-        .appendField("이 죽었다면 실행");
+        .appendField("이 죽으면 실행");
     this.appendStatementInput("command")
         .setCheck(null);
     this.setInputsInline(true);
@@ -663,7 +664,7 @@ Blockly.Blocks['teleport_location'] = { /* 좌표로 텔레포트 */
   init: function() {
     this.appendValueInput("NAME")
         .setCheck("location")
-        .appendField("해당 좌표로 텔레포트");
+        .appendField("좌표로 텔레포트");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -697,8 +698,9 @@ Blockly.Blocks['absolute_location'] = { /* 월드 좌표 */
 Blockly.Blocks['player_chatcommand'] = { /* 채팅명령어 실행 */
   init: function() {
     this.appendValueInput("chatcommand")
-        .setCheck(null)
-        .appendField("다음 채팅명령어를 실행 :");
+        .setCheck(null);
+    this.appendDummyInput()
+        .appendField("명령어 실행");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -714,8 +716,9 @@ Blockly.Blocks['player_chatcommand'] = { /* 채팅명령어 실행 */
 Blockly.Blocks['moveforward'] = { /* 숫자만큼 앞으로 이동 */
   init: function() {
     this.appendValueInput("distance")
-        .setCheck("Number")
-        .appendField("숫자만큼 앞으로 이동");
+        .setCheck("Number");
+    this.appendDummyInput()
+        .appendField("만큼 앞으로 이동");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -729,9 +732,9 @@ Blockly.Blocks['directforward'] = { /* 숫자만큼 앞으로 이동 명령어 *
   init: function() {
     this.appendValueInput("command")
         .setCheck(null)
-        .appendField("앞으로 이동 : ");
+        .appendField("앞으로 이동 명령어");
     this.appendDummyInput()
-        .appendField("d");
+        .appendField("거리");
     this.setInputsInline(true);
     this.setColour(210);
  this.setTooltip("");
@@ -1231,9 +1234,9 @@ Blockly.Blocks['teleport_command'] = { /* 텔레포트 함수 */
   init: function() {
     this.appendValueInput("command")
         .setCheck(null)
-        .appendField("입력한 좌표로 텔레포트 : ");
+        .appendField("좌표로 텔레포트 명령어");
     this.appendDummyInput()
-        .appendField("x y z");
+        .appendField("X Y Z");
     this.setInputsInline(true);
     this.setColour(210);
     this.setTooltip("");

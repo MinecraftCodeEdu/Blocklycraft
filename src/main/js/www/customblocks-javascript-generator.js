@@ -323,7 +323,7 @@ Blockly.JavaScript['transportation'] = function (block) {
 /*
  * 사냥하고 돌아오기
  */
-Blockly.JavaScript['onchat'] = function(block) { /* 다음 채팅명령어를 입력하면 */
+Blockly.JavaScript['onchat'] = function(block) { /* 채팅명령어 */
 	var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
 	var statements_statements = Blockly.JavaScript.statementToCode(block, 'statements');
 	var webip = window.myIP;

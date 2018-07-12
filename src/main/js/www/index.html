@@ -93,104 +93,149 @@
     <pre id="content_dart" class="content"></pre>
     <textarea id="content_xml" class="content" wrap="off"></textarea>
     <xml id="toolbox" style="display: none">
-        <sep></sep>
-        <category id="catDrone">
-            <block type="drone"></block>
-            <block type="materials"></block>
-            <block type="animals"></block>
-	    <block type="trees"></block>
-
-	    <block type="rectangle">
-                <value name="width">
-                   <block type="math_number">
-	               <field name="NUM">0</field>
-                   </block>
-                </value>
-                <value name="length">
-                   <block type="math_number">
-		       <field name="NUM">0</field>
-    	           </block>
-	        </value>
-	    </block>
-
-	    <block type="circle">
-	      <value name="radius">
-                 <block type="math_number">
-                    <field name="NUM">0</field>
-                 </block>
-              </value>   
-              <value name="height">
-                 <block type="math_number">
-                   <field name="NUM">0</field>
-                 </block>
-              </value>
-	    </block>
-	    <block type="prism">
-              <value name="width">
-                 <block type="math_number">
-                     <field name="NUM">0</field>
-                 </block>
-              </value>
-              <value name="length">
-                 <block type="math_number">
-                     <field name="NUM">0</field>
-                 </block>
-               </value>
-            </block>
-            <block type="delete">
-	      <value name="width">
-                 <block type="math_number">
-                     <field name="NUM">0</field>
-                 </block>
-              </value>
-	      <value name="height">
-                 <block type="math_number">
-                     <field name="NUM">0</field>
-                 </block>
-              </value>
-	      <value name="length">
-                 <block type="math_number">
-                     <field name="NUM">0</field>
-                 </block>
-              </value> 
-	    </block>
-            <block type="drone_move"></block>
-	    <block type="drone_move_count">
-              <value name="COUNT">
-                <block type="math_number"></block>
-              </value>
-            </block>
-            <block type="drone_mutator"></block>
-            <block type="materials_var"></block>
-            <block type="drone_move_var"></block>
-	    <block type="door"></block>
-            <block type="ladder">
-              <value name="HEIGHT">
-                <block type="math_number"></block>
-              </value>
-            </block>
-            <block type="torch"></block>
-	    <block type="player_direction"></block>
-	    <block type="spiral_stair">
-              <value name="WIDTH">
-                <block type="math_number"></block>
-              </value>
-              <value name="FLIGHTS">
-                <block type="math_number"></block>
-              </value>
-            </block>
-	    <block type="firework"></block>
-	</category>
-        <category id="catInventory">
-            <block type="inventory"></block>
-            <block type="tools"></block>
-            <block type="food"></block>
-            <block type="transportation"></block>
-            <block type="weapons_armor"></block>
-        </category>
-
 	    <sep></sep>
-
+		<!-- 논리 -->
+		<category id="catLogic" colour="210">
+            <block type="controls_if"></block>
+            <block type="logic_compare"></block>
+            <block type="logic_operation"></block>
+            <block type="logic_negate"></block>
+            <block type="logic_boolean"></block>
+        </category>
+		<!-- 반복 -->
+        <category id="catLoops" colour="120">
+            <block type="controls_repeat_ext">
+                <value name="TIMES">
+                    <block type="math_number">
+                        <field name="NUM">10</field>
+                    </block>
+                </value>
+            </block>
+            <block type="controls_whileUntil"></block>
+            <block type="controls_for">
+                <value name="FROM">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+                <value name="TO">
+                    <block type="math_number">
+                        <field name="NUM">10</field>
+                    </block>
+                </value>
+                <value name="BY">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+            </block>
+            <block type="controls_flow_statements"></block>
+        </category>
+		<!-- 계산 -->
+        <category id="catMath" colour="230">
+            <block type="math_number"></block>
+            <block type="math_arithmetic"></block>
+            <block type="math_number_property"></block>
+            <block type="math_round"></block>
+            <block type="math_on_list"></block>
+            <block type="math_modulo"></block>
+            <block type="math_random_int">
+                <value name="FROM">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+                <value name="TO">
+                    <block type="math_number">
+                        <field name="NUM">100</field>
+                    </block>
+                </value>
+            </block>
+        </category>
+		<!-- 문자열 -->
+        <category id="catText" colour="160">
+            <block type="text"></block>
+            <block type="text_join"></block>
+            <block type="text_length">
+				<value name="VALUE">
+				  <block type="text">
+					<field name="TEXT">Hello</field>
+				  </block>
+				</value>
+			</block>
+			<block type="string_charAt">
+				<value name="TEXT">
+				  <block type="text">
+					<field name="TEXT">Hello</field>
+				  </block>
+				</value>		
+                <value name="AT">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>				
+			</block>
+			<block type="string_substring">
+				<value name="TEXT">
+				  <block type="text">
+					<field name="TEXT">Hello</field>
+				  </block>
+				</value>		
+                <value name="AT1">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+                <value name="AT2">
+                    <block type="math_number">
+                        <field name="NUM">3</field>
+                    </block>
+                </value>				
+			</block>
+        </category>
+		<!-- 리스트 -->
+        <category id="catLists" colour="260">
+            <block type="lists_create_with"></block>
+            <block type="lists_length">
+				<value name="VALUE">
+                    <block type="variables_get">
+                        <field name="VAR" class="listVar">...</field>
+                    </block>
+                </value>
+			</block>
+			<block type="list_getindex">
+			    <value name="LIST">
+                    <block type="variables_get">
+                        <field name="VAR" class="listVar">...</field>
+                    </block>
+                </value>
+				<value name="AT">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+			</block>
+			<block type="list_setindex">
+			    <value name="LIST">
+                    <block type="variables_get">
+                        <field name="VAR" class="listVar">...</field>
+                    </block>
+                </value>
+				<value name="AT">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+			</block>
+        </category>
+		<!-- 함수 -->
+		<category id="catFunctions" custom="PROCEDURE" colour="290"></category>
+		<!-- 변수 -->
+		<category id="catVariables" custom="VARIABLE" colour="330"></category>
+		
+		<sep></sep>
+		<sep></sep>
+		<!-- 텔레포트 사용하기 -->
 		<category id="catTeleport">
 			<block type="teleport_command">
 				<value name="command">
@@ -200,6 +245,33 @@
 				</value>
 			</block>
     	</category>
+		<!-- 보물찾기 -->
+		<category id="catTresure">
+			<block type="onchat">
+				<value name="command">
+					<block type="text">
+						<field name="TEXT">run</field>
+					</block>
+				</value>
+			</block>
+			<block type="directforward">
+				<value name="command">
+					<block type="text">
+						<field name="TEXT">forward</field>
+					</block>
+				</value>
+			</block>
+			<block type="moveforward">
+				<value name="distance">
+					<block type="math_number">
+						<field name="NUM">5</field>
+					</block>
+				</value>
+			</block>
+			<block type="setyaw"></block>	
+			<block type="setdirection"></block>		
+		</category>
+		<!-- 울타리 만들기 -->
 	    <category id="catFence">
             <block type="drone"></block>
             <block type="fence_material"></block>
@@ -212,7 +284,8 @@
                 </value>
             </block>
     	</category>
-	    <category id="catFarmland" >
+		<!-- 대규모 밀밭 만들기 -->
+	    <category id="catFarmland">
             <block type="drone"></block>
 			<block type="farmland_material"></block>
 			<block type="drone_move"></block>
@@ -224,91 +297,78 @@
                 </value>
             </block>
     	</category>
-	<category id="catFarming">
-	  <block type="drone"></block>
-          <block type="rectangle">
-            <value name="width">
-               <block type="math_number">
-                   <field name="NUM">0</field>
-               </block>
-            </value>
-            <value name="length">
-               <block type="math_number">
-                   <field name="NUM">0</field>
-               </block>
-            </value>
-          </block>
-          <block type="block_direction">
-            <value name="width">
-               <block type="math_number">
-                   <field name="NUM">0</field>
-               </block>
-            </value>
-            <value name="length">
-               <block type="math_number">
-                   <field name="NUM">0</field>
-               </block>
-            </value>
-          </block>
-          <block type="dispenser_direction">
-            <value name="ITEM_COUNT">
-              <block type="math_number">
-                <field name="NUM">0</field>
-              </block>
-            </value>
-            <value name="BLOCK_LOCATION">
-              <block type="relative_location">
-                <value name="x">
-                   <block type="math_number"></block>
+		<!-- 사냥하고 돌아오기 -->
+		<category id="catHunt">
+			<block type="onchat">
+				<value name="command">
+					<block type="text">
+						<field name="TEXT">run</field>
+					</block>
+				</value>
+			</block>
+			<block type="onmobkilled">
+			  <value name="Mob">
+				<block type="animalmob"></block>
+			  </value>
+			</block>
+			<block type="spawn_animal">
+			  <value name="animal">
+				<block type="animalmob"></block>
+			  </value>
+			</block>
+			<block type="teleport_location">
+			  <value name="NAME">
+				<block type="absolute_location">
+				  <value name="x">
+					<block type="math_number"></block>
+				  </value>
+				  <value name="y">
+					<block type="math_number"></block>
+				  </value>
+				  <value name="z">
+					<block type="math_number"></block>
+				  </value>
+				</block>
+			  </value>
+			</block>
+			<block type="player_chatcommand">
+				<value name="chatcommand">
+				  <block type="text">
+					<field name="TEXT">jump</field>
+				  </block>
+				</value>
+			</block>
+		</category>
+		<!-- 주크박스 만들기 -->
+    	<category id="catJukebox">
+            <block type="drone"></block>
+			<block type="jukebox_material">
+
+			</block>
+			<block type="repeater"></block>
+			<block type="note_material">
+				<value name="note">
+				  <block type="note">
+					<field name="note">0</field>
+				  </block>
+				</value>
+			</block>
+			<block type="note"></block>
+			<block type="drone_move"></block>
+			<block type="drone_move_count">
+              <value name="COUNT">
+                <block type="math_number"></block>
+              </value>
+            </block>
+            <block type="controls_repeat_ext">
+                <value name="TIMES">
+                    <block type="math_number">
+                        <field name="NUM">10</field>
+                    </block>
                 </value>
-                <value name="y">
-                   <block type="math_number"></block>
-                </value>
-                <value name="z">
-                  <block type="math_number"></block>
-                </value>
-              </block>
-            </value>
-          </block>
-          <block type="dispenser_drone">
-            <value name="number">
-                  <block type="math_number"></block>
-                </value>
-          </block>
-	  <block type="material_position">
-            <value name="POSITION">
-               <block type="relative_location"></block>
-            </value>
-          </block>
-          <block type="drone_move"></block>
-          <block type="drone_move_count">
-            <value name="COUNT">
-              <block type="math_number"></block>
-            </value>
-          </block>
-	  <block type="copy_place">
-            <value name="NAME">
-              <block type="text"></block>
-            </value>
-            <value name="LENGTH">
-              <block type="math_number"></block>
-            </value>
-            <value name="HEIGHT">
-              <block type="math_number"></block>
-            </value>
-            <value name="WIDTH">
-              <block type="math_number"></block>
-            </value>
-          </block>
-          <block type="paste_place">
-            <value name="NAME">
-              <block type="text"></block>
-            </value>
-          </block>
-	  <block type="block_around"></block>
-          <block type="block_around_information"></block>
-	  <block type="controls_try"></block>
-	</category>
+            </block>
+    	</category>
+		<!-- 롤러코스터 만들기 -->
     	<category id="catRail">
             <block type="drone"></block>
 			<block type="rail_material"></block>
@@ -342,119 +402,28 @@
             <block type="math_arithmetic"></block>
 			<block type="logic_compare"></block>
       	</category>
-    	<category id="catRiding">
-	  <block type="spawn_animal">
-            <value name="animal">
-               <block type="animalmob"></block>
-            </value>
-          </block>
-          <block type="two_dimension"></block>
-          <block type="drone_variable"></block>
-        </category>
-        <category id="catVillage">
-          <block type="redstone_comparator"></block>
-	  <block type="delay_time">
-           <value name="SECOND">
-             <block type="math_number">
-               <field name="NUM">0</field>
-             </block>
-           </value>
-          </block>
-          <block type="redstone_repeater"></block>
-	            <block type="four_direction">
-            <value name="width">
-               <block type="math_number">
-                   <field name="NUM">0</field>
-               </block>
-            </value>
-            <value name="length">
-               <block type="math_number">
-                   <field name="NUM">0</field>
-               </block>
-            </value>
-          </block>
-          <block type="button_attached"></block>
-	  <block type="trees"></block>
-	  <block type="door_drone">
-          </block>
-          <block type="flower_choice"></block>
-	</category>
-    	<category id="catTrampoline">
-	  <block type="event_playerinteract"></block>
-          <block type="timer_countup_start"></block>
-          <block type="timer_countup_stop"></block>
-          <block type="block_click_var"></block>
-          <block type="blockvar_ore"></block>
-          <block type="clickblock_type"></block>
-          <block type="block_change_click"></block>
-          <block type="measure_time"></block>
-    	</category>
-      	<category id="catRecipe">
-	      <block type="monster_spawn"></block>
-	      <block type="recipe_key"></block>
-          <block type="recipe_value">
-          </block>
-          <block type="recipe_add"></block>
-          <block type="dicts_create_with"></block>
-	  <block type="module_import"></block>
-	  <block type="scoreboard_totalkillcount"></block>
-          <block type="scoreboard_reset"></block>
-          <block type="scoreboard_remove"></block>
-    	</category>
-    	<category id="catRanching">
-	  <block type="event_playerentity"></block>
-          <block type="entity_rightclick"></block>
-          <block type="dye_color"></block>
-          <block type="colors_var"></block>
-          <block type="event_entitydeath"></block>
-          <block type="item_drop"></block>
-          <block type="death_entity"></block>
-          <block type="kill_entity"></block>
-	  <block type="animal_var"></block>
-          <block type="death_explosion">
-            <value name="POWER">
-               <block type="math_number">
-                   <field name="NUM">0</field>
-               </block>
-            </value>
-          </block>
-	  <block type="entity_getlocation"></block>
-          <block type="entity_onground"></block>
-       	</category>
-    	<category id="catTrap">
-	  <block type="block_info"></block>
-          <block type="block_entity"></block>
-	  <block type="stripes">
-            <value name="WIDTH">
-              <block type="math_number"></block>
-            </value>
-	    <value name="HEIGHT">
-              <block type="math_number"></block>
-            </value>
-            <value name="DEPTH">
-              <block type="math_number"></block>
-            </value>
-          </block>
-	  <block type="block_number"></block>
-    	</category>
-    	<category id="catJukebox">
+		<!-- 요새 만들기 -->
+		<category id="catCastle">
             <block type="drone"></block>
-			<block type="jukebox_material">
-
-			</block>
-			<block type="repeater"></block>
-			<block type="note_material">
-				<value name="note">
-				  <block type="note">
-					<field name="note">0</field>
-				  </block>
+			<block type="castle_material"></block>
+			<block type="castle_rectangle">
+					<value name="width">
+					   <block type="math_number">
+					   <field name="NUM">0</field>
+					   </block>
+					</value>
+					<value name="length">
+					   <block type="math_number">
+						<field name="NUM">0</field>
+					   </block>
 				</value>
 			</block>
-			<block type="note"></block>
 			<block type="drone_move"></block>
 			<block type="drone_move_count">
               <value name="COUNT">
-                <block type="math_number"></block>
+                <block type="math_number">
+					<field name="NUM">1</field>
+				</block>
               </value>
             </block>
             <block type="controls_repeat_ext">
@@ -464,11 +433,14 @@
                     </block>
                 </value>
             </block>
-    	</category>
-	<category id="catCastle">
+		</category>
+<!-- 		<sep></sep>
+        <category id="catDrone">
             <block type="drone"></block>
-			<block type="castle_material"></block>
-			<block type="castle_rectangle">
+            <block type="materials"></block>
+            <block type="animals"></block>
+			<block type="trees"></block>
+			<block type="rectangle">
 					<value name="width">
 					   <block type="math_number">
 					   <field name="NUM">0</field>
@@ -480,22 +452,262 @@
 					   </block>
 				</value>
 			</block>
-			<block type="drone_move"></block>
+			<block type="circle">
+			  <value name="radius">
+					 <block type="math_number">
+						<field name="NUM">0</field>
+					 </block>
+				  </value>   
+				  <value name="height">
+					 <block type="math_number">
+					   <field name="NUM">0</field>
+					 </block>
+				  </value>
+			</block>
+			<block type="prism">
+				  <value name="width">
+					 <block type="math_number">
+						 <field name="NUM">0</field>
+					 </block>
+				  </value>
+				  <value name="length">
+					 <block type="math_number">
+						 <field name="NUM">0</field>
+					 </block>
+				   </value>
+			</block>
+			<block type="delete">
+			  <value name="width">
+					 <block type="math_number">
+						 <field name="NUM">0</field>
+					 </block>
+				  </value>
+			  <value name="height">
+					 <block type="math_number">
+						 <field name="NUM">0</field>
+					 </block>
+				  </value>
+			  <value name="length">
+					 <block type="math_number">
+						 <field name="NUM">0</field>
+					 </block>
+				  </value> 
+			</block>
+            <block type="drone_move"></block>
 			<block type="drone_move_count">
               <value name="COUNT">
                 <block type="math_number"></block>
               </value>
             </block>
-            <block type="controls_repeat_ext">
-                <value name="TIMES">
-                    <block type="math_number">
-                        <field name="NUM">10</field>
-                    </block>
-                </value>
+            <block type="drone_mutator"></block>
+            <block type="materials_var"></block>
+            <block type="drone_move_var"></block>
+			<block type="door"></block>
+            <block type="ladder">
+              <value name="HEIGHT">
+                <block type="math_number"></block>
+              </value>
             </block>
-	</category>
-	<category id="catTag">
-            <block type="drone"></block>
+            <block type="torch"></block>
+			<block type="player_direction"></block>
+			<block type="spiral_stair">
+              <value name="WIDTH">
+                <block type="math_number"></block>
+              </value>
+              <value name="FLIGHTS">
+                <block type="math_number"></block>
+              </value>
+            </block>
+			<block type="firework"></block>
+		</category>
+        <category id="catInventory">
+            <block type="inventory"></block>
+            <block type="tools"></block>
+            <block type="food"></block>
+            <block type="transportation"></block>
+            <block type="weapons_armor"></block>
+        </category>
+	    <sep></sep>
+		<category id="catFarming">
+			<block type="drone"></block>
+			<block type="rectangle">
+				<value name="width">
+				   <block type="math_number">
+					   <field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="length">
+				   <block type="math_number">
+					   <field name="NUM">0</field>
+				   </block>
+				</value>
+			</block>
+			<block type="block_direction">
+				<value name="width">
+				   <block type="math_number">
+					   <field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="length">
+				   <block type="math_number">
+					   <field name="NUM">0</field>
+				   </block>
+				</value>
+			</block>
+			<block type="dispenser_direction">
+				<value name="ITEM_COUNT">
+				  <block type="math_number">
+					<field name="NUM">0</field>
+				  </block>
+				</value>
+				<value name="BLOCK_LOCATION">
+				  <block type="relative_location">
+					<value name="x">
+					   <block type="math_number"></block>
+					</value>
+					<value name="y">
+					   <block type="math_number"></block>
+					</value>
+					<value name="z">
+					  <block type="math_number"></block>
+					</value>
+				  </block>
+				</value>
+			</block>
+			<block type="dispenser_drone">
+				<value name="number">
+					  <block type="math_number"></block>
+					</value>
+			</block>
+			<block type="material_position">
+				<value name="POSITION">
+				   <block type="relative_location"></block>
+				</value>
+			</block>
+			<block type="drone_move"></block>
+			<block type="drone_move_count">
+				<value name="COUNT">
+				  <block type="math_number"></block>
+				</value>
+			</block>
+			<block type="copy_place">
+				<value name="NAME">
+				  <block type="text"></block>
+				</value>
+				<value name="LENGTH">
+				  <block type="math_number"></block>
+				</value>
+				<value name="HEIGHT">
+				  <block type="math_number"></block>
+				</value>
+				<value name="WIDTH">
+				  <block type="math_number"></block>
+				</value>
+			</block>
+			<block type="paste_place">
+				<value name="NAME">
+				  <block type="text"></block>
+				</value>
+			</block>
+		    <block type="block_around"></block>
+			<block type="block_around_information"></block>
+		    <block type="controls_try"></block>
+		</category>		
+    	<category id="catRiding">
+			<block type="spawn_animal">
+				<value name="animal">
+				   <block type="animalmob"></block>
+				</value>
+			</block>
+			<block type="two_dimension"></block>
+			<block type="drone_variable"></block>
+        </category>
+        <category id="catVillage">
+			<block type="redstone_comparator"></block>
+			<block type="delay_time">
+			    <value name="SECOND">
+				 <block type="math_number">
+				   <field name="NUM">0</field>
+				 </block>
+			    </value>
+			</block>
+            <block type="redstone_repeater"></block>
+	        <block type="four_direction">
+				<value name="width">
+				   <block type="math_number">
+					   <field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="length">
+				   <block type="math_number">
+					   <field name="NUM">0</field>
+				   </block>
+				</value>
+            </block>
+            <block type="button_attached"></block>
+			<block type="trees"></block>
+			<block type="door_drone"></block>
+			<block type="flower_choice"></block>
+		</category>
+    	<category id="catTrampoline">
+			<block type="event_playerinteract"></block>
+			<block type="timer_countup_start"></block>
+			<block type="timer_countup_stop"></block>
+			<block type="block_click_var"></block>
+			<block type="blockvar_ore"></block>
+			<block type="clickblock_type"></block>
+			<block type="block_change_click"></block>
+			<block type="measure_time"></block>
+    	</category>
+      	<category id="catRecipe">
+			<block type="monster_spawn"></block>
+			<block type="recipe_key"></block>
+			<block type="recipe_value"></block>
+			<block type="recipe_add"></block>
+			<block type="dicts_create_with"></block>
+			<block type="module_import"></block>
+			<block type="scoreboard_totalkillcount"></block>
+			<block type="scoreboard_reset"></block>
+			<block type="scoreboard_remove"></block>
+    	</category>
+    	<category id="catRanching">
+			<block type="event_playerentity"></block>
+			<block type="entity_rightclick"></block>
+			<block type="dye_color"></block>
+			<block type="colors_var"></block>
+			<block type="event_entitydeath"></block>
+			<block type="item_drop"></block>
+			<block type="death_entity"></block>
+			<block type="kill_entity"></block>
+			<block type="animal_var"></block>
+			<block type="death_explosion">
+				<value name="POWER">
+				   <block type="math_number">
+					   <field name="NUM">0</field>
+				   </block>
+				</value>
+			</block>
+			<block type="entity_getlocation"></block>
+            <block type="entity_onground"></block>
+		</category>
+    	<category id="catTrap">
+			<block type="block_info"></block>
+			<block type="block_entity"></block>
+			<block type="stripes">
+				<value name="WIDTH">
+				  <block type="math_number"></block>
+				</value>
+				<value name="HEIGHT">
+				  <block type="math_number"></block>
+				</value>
+				<value name="DEPTH">
+				  <block type="math_number"></block>
+				</value>
+			  </block>
+			<block type="block_number"></block>
+    	</category>
+		<category id="catTag">
+			<block type="drone"></block>
 			<block type="tag_rectangle">
 					<value name="width">
 					   <block type="math_number">
@@ -509,418 +721,115 @@
 				</value>
 			</block>
 			<block type="drone_move"></block>
-		<block type="notice_standing_block">
-			<value name="player">
-			  <block type="text">
-				<field name="TEXT">name</field>
-			  </block>
-			</value>
-		</block>
-		<block type="transform_block"></block>
-		<block type="target_teleport">
-			<value name="player">
-			  <block type="text">
-				<field name="TEXT">name</field>
-			  </block>
-			</value>
-			<value name="location">
-			  <block type="absolute_location">
-				<value name="x">
-				  <block type="math_number">
-					<field name="NUM">0</field>
+			<block type="notice_standing_block">
+				<value name="player">
+				  <block type="text">
+					<field name="TEXT">name</field>
 				  </block>
 				</value>
-				<value name="y">
-				  <block type="math_number">
-					<field name="NUM">0</field>
+			</block>
+			<block type="transform_block"></block>
+			<block type="target_teleport">
+				<value name="player">
+				  <block type="text">
+					<field name="TEXT">name</field>
 				  </block>
 				</value>
-				<value name="z">
-				  <block type="math_number">
-					<field name="NUM">0</field>
+				<value name="location">
+				  <block type="absolute_location">
+					<value name="x">
+					  <block type="math_number">
+						<field name="NUM">0</field>
+					  </block>
+					</value>
+					<value name="y">
+					  <block type="math_number">
+						<field name="NUM">0</field>
+					  </block>
+					</value>
+					<value name="z">
+					  <block type="math_number">
+						<field name="NUM">0</field>
+					  </block>
+					</value>
 				  </block>
 				</value>
-			  </block>
-			</value>
-		</block>
-		<block type="onentitydamage">
-			<value name="player">
-			  <block type="text">
-				<field name="TEXT">name</field>
-			  </block>
-			</value>
-		</block>
-	</category>
-	<category id="catHunt">
-		<block type="onchat">
-			<value name="command">
+			</block>
+			<block type="onentitydamage">
+				<value name="player">
+				  <block type="text">
+					<field name="TEXT">name</field>
+				  </block>
+				</value>
+			</block>
+		</category>
+		<sep></sep>
+		<category id="catExample">
+			<block type="block_type_example">
+			  <value name="MESSAGE">
 				<block type="text">
-					<field name="TEXT">run</field>
+				  <field name="TEXT"></field>
 				</block>
-			</value>
-		</block>
-		<block type="onmobkilled">
-		  <value name="Mob">
-			<block type="animalmob"></block>
-		  </value>
-		</block>
-		<block type="spawn_animal">
-		  <value name="animal">
-			<block type="animalmob"></block>
-		  </value>
-		</block>
-		<block type="teleport_location">
-		  <value name="NAME">
-			<block type="absolute_location">
-			  <value name="x">
-				<block type="math_number"></block>
-			  </value>
-			  <value name="y">
-				<block type="math_number"></block>
-			  </value>
-			  <value name="z">
-				<block type="math_number"></block>
 			  </value>
 			</block>
-		  </value>
-		</block>
-		<block type="player_chatcommand">
-			<value name="chatcommand">
-			  <block type="text">
-				<field name="TEXT">jump</field>
-			  </block>
-			</value>
-		</block>
-	</category>
-	<category id="catTresure">
-		<block type="onchat">
-			<value name="command">
-				<block type="text">
-					<field name="TEXT">run</field>
-				</block>
-			</value>
-		</block>
-		<block type="directforward">
-			<value name="command">
-				<block type="text">
-					<field name="TEXT">forward</field>
-				</block>
-			</value>
-		</block>
-		<block type="moveforward">
-			<value name="distance">
+			<block type="castle_example">
+			  <value name="LENGTH">
 				<block type="math_number">
-					<field name="NUM">5</field>
 				</block>
-			</value>
-		</block>
-		<block type="setyaw"></block>	
-		<block type="setdirection"></block>		
-	</category>
-        <sep></sep>
-	<category id="catExample">
-	<block type="block_type_example">
-          <value name="MESSAGE">
-            <block type="text">
-              <field name="TEXT"></field>
-            </block>
-          </value>
-        </block>
-        <block type="castle_example">
-          <value name="LENGTH">
-            <block type="math_number">
-            </block>
-          </value>
-          <value name="HEIGHT">
-            <block type="math_number">
-            </block>
-          </value>
-        </block>
-        <block type="house_example">
-        </block>
-        <block type="temple_example">
-          <value name="LENGTH">
-            <block type="math_number">
-            </block>
-          </value>
-        </block>
-        <block type="maze_example">
-          <value name="LENGTH">
-            <block type="math_number">
-            </block>
-          </value>
-          <value name="WIDTH">
-            <block type="math_number">
-            </block>
-          </value>
-        </block>
-	<block type="rainbow_example">
-          <value name="RADIUS">
-            <block type="math_number">
-            </block>
-          </value>
-        </block>
-        <block type="garden_example">
-          <value name="WIDTH">
-            <block type="math_number">
-            </block>
-          </value>
-          <value name="LENGTH">
-            <block type="math_number">
-            </block>
-          </value>
-        </block>
-	<block type="chessboard_example">
-          <value name="WIDTH">
-            <block type="math_number">
-            </block>
-          </value>
-          <value name="DEPTH">
-            <block type="math_number">
-            </block>
-          </value>
-        </block>
-	<block type="firework"></block>
-	</category>
-        <sep></sep>
-	<category id="catLogic" colour="210">
-            <block type="controls_if"></block>
-            <block type="logic_compare"></block>
-            <block type="logic_operation"></block>
-            <block type="logic_negate"></block>
-            <block type="logic_boolean"></block>
-            <block type="logic_null"></block>
-            <block type="logic_ternary"></block>
-        </category>
-        <category id="catLoops" colour="120">
-            <block type="controls_repeat_ext">
-                <value name="TIMES">
-                    <block type="math_number">
-                        <field name="NUM">10</field>
-                    </block>
-                </value>
-            </block>
-            <block type="controls_whileUntil"></block>
-            <block type="controls_for">
-                <value name="FROM">
-                    <block type="math_number">
-                        <field name="NUM">1</field>
-                    </block>
-                </value>
-                <value name="TO">
-                    <block type="math_number">
-                        <field name="NUM">10</field>
-                    </block>
-                </value>
-                <value name="BY">
-                    <block type="math_number">
-                        <field name="NUM">1</field>
-                    </block>
-                </value>
-            </block>
-            <block type="controls_flow_statements"></block>
-        </category>
-        <category id="catMath" colour="230">
-            <block type="math_number"></block>
-            <block type="math_arithmetic"></block>
-            <block type="math_single"></block>
-            <block type="math_trig"></block>
-            <block type="math_constant"></block>
-            <block type="math_number_property"></block>
-            <block type="math_change">
-                <value name="DELTA">
-                    <block type="math_number">
-                        <field name="NUM">1</field>
-                    </block>
-                </value>
-            </block>
-            <block type="math_round"></block>
-            <block type="math_on_list"></block>
-            <block type="math_modulo"></block>
-            <block type="math_constrain">
-                <value name="LOW">
-                    <block type="math_number">
-                        <field name="NUM">1</field>
-                    </block>
-                </value>
-                <value name="HIGH">
-                    <block type="math_number">
-                        <field name="NUM">100</field>
-                    </block>
-                </value>
-            </block>
-            <block type="math_random_int">
-                <value name="FROM">
-                    <block type="math_number">
-                        <field name="NUM">1</field>
-                    </block>
-                </value>
-                <value name="TO">
-                    <block type="math_number">
-                        <field name="NUM">100</field>
-                    </block>
-                </value>
-            </block>
-            <block type="math_random_float"></block>
-        </category>
-        <sep></sep>
-        <category id="catText" colour="160">
-            <block type="text"></block>
-            <block type="text_join"></block>
-            <block type="text_append">
-                <value name="TEXT">
-                    <block type="text"></block>
-                </value>
-            </block>
-            <block type="text_length">
-				<value name="VALUE">
-				  <block type="text">
-					<field name="TEXT">Hello</field>
-				  </block>
-				</value>
+			  </value>
+			  <value name="HEIGHT">
+				<block type="math_number">
+				</block>
+			  </value>
 			</block>
-            <block type="text_isEmpty"></block>
-            <block type="text_indexOf">
-                <value name="VALUE">
-                    <block type="variables_get">
-                        <field name="VAR" class="textVar">...</field>
-                    </block>
-                </value>
-            </block>
-            <block type="text_charAt">
-                <value name="VALUE">
-                    <block type="variables_get">
-                        <field name="VAR" class="textVar">...</field>
-                    </block>
-                </value>
-            </block>
-            <block type="text_getSubstring">
-                <value name="STRING">
-                    <block type="variables_get">
-                        <field name="VAR" class="textVar">...</field>
-                    </block>
-                </value>
-            </block>
-            <block type="text_changeCase"></block>
-            <block type="text_trim"></block>
-            <block type="text_print"></block>
-            <block type="text_prompt_ext">
-                <value name="TEXT">
-                    <block type="text"></block>
-                </value>
-            </block>
-			<block type="string_charAt">
-				<value name="TEXT">
-				  <block type="text">
-					<field name="TEXT">Hello</field>
-				  </block>
-				</value>		
-                <value name="AT">
-                    <block type="math_number">
-                        <field name="NUM">1</field>
-                    </block>
-                </value>				
+			<block type="house_example"></block>
+			<block type="temple_example">
+			  <value name="LENGTH">
+				<block type="math_number">
+				</block>
+			  </value>
 			</block>
-			<block type="string_substring">
-				<value name="TEXT">
-				  <block type="text">
-					<field name="TEXT">Hello</field>
-				  </block>
-				</value>		
-                <value name="AT1">
-                    <block type="math_number">
-                        <field name="NUM">1</field>
-                    </block>
-                </value>
-                <value name="AT2">
-                    <block type="math_number">
-                        <field name="NUM">3</field>
-                    </block>
-                </value>				
+			<block type="maze_example">
+			  <value name="LENGTH">
+				<block type="math_number">
+				</block>
+			  </value>
+			  <value name="WIDTH">
+				<block type="math_number">
+				</block>
+			  </value>
 			</block>
-        </category>
-        <category id="catLists" colour="260">
-            <block type="lists_create_empty"></block>
-            <block type="lists_create_with"></block>
-            <block type="lists_repeat">
-                <value name="NUM">
-                    <block type="math_number">
-                        <field name="NUM">5</field>
-                    </block>
-                </value>
-            </block>
-            <block type="lists_length"></block>
-            <block type="lists_isEmpty"></block>
-            <block type="lists_indexOf">
-                <value name="VALUE">
-                    <block type="variables_get">
-                        <field name="VAR" class="listVar">...</field>
-                    </block>
-                </value>
-            </block>
-            <block type="lists_getIndex">
-                <value name="VALUE">
-                    <block type="variables_get">
-                        <field name="VAR" class="listVar">...</field>
-                    </block>
-                </value>
-            </block>
-            <block type="lists_setIndex">
-                <value name="LIST">
-                    <block type="variables_get">
-                        <field name="VAR" class="listVar">...</field>
-                    </block>
-                </value>
-            </block>
-            <block type="lists_getSublist">
-                <value name="LIST">
-                    <block type="variables_get">
-                        <field name="VAR" class="listVar">...</field>
-                    </block>
-                </value>
-            </block>
-            <block type="lists_split">
-                <value name="DELIM">
-                    <block type="text">
-                        <field name="TEXT">,</field>
-                    </block>
-                </value>
-            </block>
-	    <block type="lists_reverse"></block>
-	    <block type="dict_get"></block>
-          <block type="dicts_create_with"></block>
-			<block type="list_getindex">
-			    <value name="LIST">
-                    <block type="variables_get">
-                        <field name="VAR" class="listVar">...</field>
-                    </block>
-                </value>
-				<value name="AT">
-                    <block type="math_number">
-                        <field name="NUM">1</field>
-                    </block>
-                </value>
+			<block type="rainbow_example">
+			  <value name="RADIUS">
+				<block type="math_number">
+				</block>
+			  </value>
 			</block>
-			<block type="list_setindex">
-			    <value name="LIST">
-                    <block type="variables_get">
-                        <field name="VAR" class="listVar">...</field>
-                    </block>
-                </value>
-				<value name="AT">
-                    <block type="math_number">
-                        <field name="NUM">1</field>
-                    </block>
-                </value>
+			<block type="garden_example">
+			  <value name="WIDTH">
+				<block type="math_number">
+				</block>
+			  </value>
+			  <value name="LENGTH">
+				<block type="math_number">
+				</block>
+			  </value>
 			</block>
-        </category>
-	<category id="catFunctions" custom="PROCEDURE" colour="290">
-	</category>
-
-	<category id="catVariables" custom="VARIABLE" colour="330">
-            <category id="catColour">
-        </category>
-
+			<block type="chessboard_example">
+				  <value name="WIDTH">
+					<block type="math_number">
+					</block>
+				  </value>
+				  <value name="DEPTH">
+					<block type="math_number">
+					</block>
+				  </value>
+				</block>
+			<block type="firework"></block>
+		</category>
+		<sep></sep>
+		<category id="catColour"></category>
+		<sep></sep> -->
     </xml>
 
 
