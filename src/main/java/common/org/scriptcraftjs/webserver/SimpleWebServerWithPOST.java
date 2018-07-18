@@ -10,6 +10,8 @@ import java.util.Map;
 import fi.iki.elonen.NanoHTTPD;
 import fi.iki.elonen.SimpleWebServer;
 
+import org.bukkit.Bukkit;
+
 /**
  * POST support for fi.iki.elonen's nanohttpd SimpleWebServer.
  * 
@@ -49,20 +51,49 @@ public class SimpleWebServerWithPOST extends SimpleWebServer {
         if (!headers.containsKey(CONTENT_LENGTH)) {
             return createResponse(Response.Status.BAD_REQUEST, NanoHTTPD.MIME_PLAINTEXT, "Missing header " + CONTENT_LENGTH);        	
         }
-        int size = Integer.parseInt(headers.get(CONTENT_LENGTH));
-
-        String IP = headers.get("http-client-ip").replaceAll("[:.]", "");
-        File file = new File(httpPostDirectory, /*uri*/ IP + "_" + FILE_SUFFIX);
-        InputStream is = session.getInputStream();
-        try {
-			copy(is, size, file);
-		} catch (IOException e) {
-			e.printStackTrace(); // TODO real logging.. but PITA in ScriptScraft, as it targets two Server APIs
-            return createResponse(Response.Status.INTERNAL_ERROR, NanoHTTPD.MIME_PLAINTEXT, e.getMessage());
-		}
         
-        return createResponse(Response.Status.OK, NanoHTTPD.MIME_PLAINTEXT, "OK");
-	}
+        String uri = session.getUri().substring(1);
+        if (uri.contains("survival")) {
+	  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gamemode survival @a");
+	} else if(uri.contains("creative")){
+	  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gamemode creative @a");
+	} else if(uri.contains("spectator")){
+          Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gamemode spectator @a");
+	} else if(uri.contains("peaceful")){
+	  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "difficulty peaceful");
+	} else if(uri.contains("easy")){
+	  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "difficulty easy");
+	} else if(uri.contains("normal")){ 
+	  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "difficulty normal");
+	} else if(uri.contains("hard")){
+	  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "difficulty hard");
+	} else if(uri.contains("day")){
+	  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "time set day");
+	} else if(uri.contains("night")){
+	  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "time set night");
+	} else if(uri.contains("clear")){
+	  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "weather clear");
+	} else if(uri.contains("rain")){ 
+	  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "weather rain");
+	} else if(uri.contains("thunder")){ 
+	  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "weather thunder");
+	} else {
+		int size = Integer.parseInt(headers.get(CONTENT_LENGTH));
+		InputStream is = session.getInputStream();
+		String IP = headers.get("http-client-ip").replaceAll("[:.]", "");
+                File file = new File(httpPostDirectory, /*uri*/ IP + "_" + FILE_SUFFIX);
+                try {
+                  copy(is, size, file);
+                } catch (IOException e) {
+                  e.printStackTrace(); // TODO real logging.. but PITA in ScriptScraft, as it targets two Server APIs
+                  return createResponse(Response.Status.INTERNAL_ERROR, NanoHTTPD.MIME_PLAINTEXT, e.getMessage());
+                }
+        }
+
+
+	return createResponse(Response.Status.OK, NanoHTTPD.MIME_PLAINTEXT, "OK");
+        }
+
 
 	protected void copy(InputStream is, int size, File targetFile) throws IOException {
         // when moving to Java 7, use java.nio.file.Files.copy(InputStream, Path, CopyOption...)
