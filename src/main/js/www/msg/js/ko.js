@@ -74,8 +74,8 @@ Blockly.Msg.MOUVEMENT_LEFT = "왼쪽";
 Blockly.Msg.MOUVEMENT_TURN_RIGHT = "오른쪽으로 돌기";
 Blockly.Msg.MOUVEMENT_TURN_LEFT = "왼쪽으로 돌기";
 Blockly.Msg.MOUVEMENT_TURN_BACK = "뒤로 돌기";
-Blockly.Msg.MOUVEMENT_BACKTOSTART = "다시 시작하기";
-Blockly.Msg.MOUVEMENT_SAVESTART = "시작 저장하기";
+Blockly.Msg.MOUVEMENT_BACKTOSTART = "위치 불러오기";
+Blockly.Msg.MOUVEMENT_SAVESTART = "현재 위치 저장";
 
 Blockly.Msg.DEPLOY_SUCCESS = "잘했습니다. 이제 마인크래프트게임에서 명령을 실행할수있습니다.";
 Blockly.Msg.MISSING_NAME = "명령에 이름이 없습니다.";
