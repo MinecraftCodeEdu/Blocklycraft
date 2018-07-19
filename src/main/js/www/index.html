@@ -81,7 +81,6 @@
                             <button id="trashButton" class="notext" title="">
                                 <img src='google-blockly/media/1x1.gif' class="trash icon21">
                             </button>
-
                         </td>
                     </tr>
                 </table>
@@ -100,149 +99,8 @@
     <textarea id="content_xml" class="content" wrap="off"></textarea>
     <xml id="toolbox" style="display: none">
 	    <sep></sep>
-		<!-- 논리 -->
-		<category id="catLogic" colour="210">
-            <block type="controls_if"></block>
-            <block type="logic_compare"></block>
-            <block type="logic_operation"></block>
-            <block type="logic_negate"></block>
-            <block type="logic_boolean"></block>
-        </category>
-		<!-- 반복 -->
-        <category id="catLoops" colour="120">
-            <block type="controls_repeat_ext">
-                <value name="TIMES">
-                    <block type="math_number">
-                        <field name="NUM">10</field>
-                    </block>
-                </value>
-            </block>
-            <block type="controls_whileUntil"></block>
-            <block type="controls_for">
-                <value name="FROM">
-                    <block type="math_number">
-                        <field name="NUM">1</field>
-                    </block>
-                </value>
-                <value name="TO">
-                    <block type="math_number">
-                        <field name="NUM">10</field>
-                    </block>
-                </value>
-                <value name="BY">
-                    <block type="math_number">
-                        <field name="NUM">1</field>
-                    </block>
-                </value>
-            </block>
-            <block type="controls_flow_statements"></block>
-        </category>
-		<!-- 계산 -->
-        <category id="catMath" colour="230">
-            <block type="math_number"></block>
-            <block type="math_arithmetic"></block>
-            <block type="math_number_property"></block>
-            <block type="math_round"></block>
-            <block type="math_on_list"></block>
-            <block type="math_modulo"></block>
-            <block type="math_random_int">
-                <value name="FROM">
-                    <block type="math_number">
-                        <field name="NUM">1</field>
-                    </block>
-                </value>
-                <value name="TO">
-                    <block type="math_number">
-                        <field name="NUM">100</field>
-                    </block>
-                </value>
-            </block>
-        </category>
-		<!-- 문자열 -->
-        <category id="catText" colour="160">
-            <block type="text"></block>
-            <block type="text_join"></block>
-            <block type="text_length">
-				<value name="VALUE">
-				  <block type="text">
-					<field name="TEXT">Hello</field>
-				  </block>
-				</value>
-			</block>
-			<block type="string_charAt">
-				<value name="TEXT">
-				  <block type="text">
-					<field name="TEXT">Hello</field>
-				  </block>
-				</value>		
-                <value name="AT">
-                    <block type="math_number">
-                        <field name="NUM">1</field>
-                    </block>
-                </value>				
-			</block>
-			<block type="string_substring">
-				<value name="TEXT">
-				  <block type="text">
-					<field name="TEXT">Hello</field>
-				  </block>
-				</value>		
-                <value name="AT1">
-                    <block type="math_number">
-                        <field name="NUM">1</field>
-                    </block>
-                </value>
-                <value name="AT2">
-                    <block type="math_number">
-                        <field name="NUM">3</field>
-                    </block>
-                </value>				
-			</block>
-        </category>
-		<!-- 리스트 -->
-        <category id="catLists" colour="260">
-            <block type="lists_create_with"></block>
-            <block type="lists_length">
-				<value name="VALUE">
-                    <block type="variables_get">
-                        <field name="VAR" class="listVar">...</field>
-                    </block>
-                </value>
-			</block>
-			<block type="list_getindex">
-			    <value name="LIST">
-                    <block type="variables_get">
-                        <field name="VAR" class="listVar">...</field>
-                    </block>
-                </value>
-				<value name="AT">
-                    <block type="math_number">
-                        <field name="NUM">1</field>
-                    </block>
-                </value>
-			</block>
-			<block type="list_setindex">
-			    <value name="LIST">
-                    <block type="variables_get">
-                        <field name="VAR" class="listVar">...</field>
-                    </block>
-                </value>
-				<value name="AT">
-                    <block type="math_number">
-                        <field name="NUM">1</field>
-                    </block>
-                </value>
-			</block>
-        </category>
-		<!-- 함수 -->
-		<category id="catFunctions" custom="PROCEDURE" colour="290"></category>
-		<!-- 변수 -->
-		<category id="catVariables" custom="VARIABLE" colour="330"></category>
-		
-		<sep></sep>
-		<sep></sep>
-		<!-- 텔레포트 사용하기 -->
-		<category id="catTeleport">
+		<!-- 텔레포트 이용하기 -->
+		<category id="catTeleport" colour="90">
 			<block type="teleport_command">
 				<value name="command">
 					<block type="text">
@@ -440,7 +298,150 @@
                 </value>
             </block>
 		</category>
-<!-- 		<sep></sep>
+	    <sep></sep>		
+
+		<!-- 논리 -->
+		<category id="catLogic" colour="210">
+            <block type="controls_if"></block>
+            <block type="logic_compare"></block>
+            <block type="logic_operation"></block>
+            <block type="logic_negate"></block>
+            <block type="logic_boolean"></block>
+        </category>
+		<!-- 반복 -->
+        <category id="catLoops" colour="120">
+            <block type="controls_repeat_ext">
+                <value name="TIMES">
+                    <block type="math_number">
+                        <field name="NUM">10</field>
+                    </block>
+                </value>
+            </block>
+            <block type="controls_whileUntil"></block>
+            <block type="controls_for">
+                <value name="FROM">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+                <value name="TO">
+                    <block type="math_number">
+                        <field name="NUM">10</field>
+                    </block>
+                </value>
+                <value name="BY">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+            </block>
+            <block type="controls_flow_statements"></block>
+        </category>
+		<!-- 계산 -->
+        <category id="catMath" colour="230">
+            <block type="math_number"></block>
+            <block type="math_arithmetic"></block>
+            <block type="math_number_property"></block>
+            <block type="math_round"></block>
+            <block type="math_on_list"></block>
+            <block type="math_modulo"></block>
+            <block type="math_random_int">
+                <value name="FROM">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+                <value name="TO">
+                    <block type="math_number">
+                        <field name="NUM">100</field>
+                    </block>
+                </value>
+            </block>
+        </category>
+		<!-- 문자열 -->
+        <category id="catText" colour="160">
+            <block type="text"></block>
+            <block type="text_join"></block>
+            <block type="text_length">
+				<value name="VALUE">
+				  <block type="text">
+					<field name="TEXT">Hello</field>
+				  </block>
+				</value>
+			</block>
+			<block type="string_charAt">
+				<value name="TEXT">
+				  <block type="text">
+					<field name="TEXT">Hello</field>
+				  </block>
+				</value>		
+                <value name="AT">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>				
+			</block>
+			<block type="string_substring">
+				<value name="TEXT">
+				  <block type="text">
+					<field name="TEXT">Hello</field>
+				  </block>
+				</value>		
+                <value name="AT1">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+                <value name="AT2">
+                    <block type="math_number">
+                        <field name="NUM">3</field>
+                    </block>
+                </value>				
+			</block>
+        </category>
+		<!-- 리스트 -->
+        <category id="catLists" colour="260">
+            <block type="lists_create_with"></block>
+            <block type="lists_length">
+				<value name="VALUE">
+                    <block type="variables_get">
+                        <field name="VAR" class="listVar">...</field>
+                    </block>
+                </value>
+			</block>
+			<block type="list_getindex">
+			    <value name="LIST">
+                    <block type="variables_get">
+                        <field name="VAR" class="listVar">...</field>
+                    </block>
+                </value>
+				<value name="AT">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+			</block>
+			<block type="list_setindex">
+			    <value name="LIST">
+                    <block type="variables_get">
+                        <field name="VAR" class="listVar">...</field>
+                    </block>
+                </value>
+				<value name="AT">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+			</block>
+        </category>
+		<!-- 함수 -->
+		<category id="catFunctions" custom="PROCEDURE" colour="290"></category>
+		<!-- 변수 -->
+		<category id="catVariables" custom="VARIABLE" colour="330"></category>
+		
+		<sep></sep>
+<!-- 		
+		<sep></sep>
         <category id="catDrone">
             <block type="drone"></block>
             <block type="materials"></block>
@@ -835,7 +836,8 @@
 		</category>
 		<sep></sep>
 		<category id="catColour"></category>
-		<sep></sep> -->
+		<sep></sep> 
+-->
     </xml>
 
 
