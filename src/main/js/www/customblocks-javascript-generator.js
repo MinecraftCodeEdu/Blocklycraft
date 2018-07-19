@@ -811,17 +811,19 @@ Blockly.JavaScript['teleport_command'] = function(block) { /* 텔레포트 함�
   var value_command = Blockly.JavaScript.valueToCode(block, 'command', Blockly.JavaScript.ORDER_ATOMIC);
   var webip = window.myIP;
   // TODO: Assemble JavaScript into code variable.
-  var code = "command('"+webip+value_command.replace(/'/g,"")+"', function(parameters, player) {\n\
-  var bkLocation = Packages.org.bukkit.Location;\n\
-  if(isNaN(Number(parameters[0])) || isNaN(Number(parameters[1])) || isNaN(Number(parameters[2]))){\n\
+  var code = "command( '"+webip+value_command.replace(/'/g,"")+"', function ( parameters, player ) {\n\
+  var bkLocation = org.bukkit.Location;\n\
+  var x = parameters[0];\n\
+  var y = parameters[1];\n\
+  var z = parameters[2];\n\
+  if(isNaN(Number(x)) || isNaN(Number(y)) || isNaN(Number(z))){\n\
     player.sendMessage('please input number.');\n\
-    return false;\n\
+  } else {\n\
+    player.teleport(new bkLocation(player.world, x, y, z));\n\
   }\n\
-  player.teleport(new bkLocation(player.world, parameters[0], parameters[1], parameters[2]));\n\
 });\n";
   return code;
 };
-
 
 Blockly.JavaScript['block_type_example'] = function(block) {
   var value_message = Blockly.JavaScript.valueToCode(block, 'MESSAGE', Blockly.JavaScript.ORDER_ATOMIC);
