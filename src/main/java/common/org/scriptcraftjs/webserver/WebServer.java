@@ -9,6 +9,7 @@ import java.net.InetAddress;
 import fi.iki.elonen.NanoHTTPD;
 import fi.iki.elonen.SimpleWebServer;
 
+
 /**
  * Simple HTTP Web Server.
  * 
@@ -37,6 +38,7 @@ public class WebServer {
 	public WebServer(File wwwroot, File httpPostDirectory) {
 		this.wwwroot = wwwroot;
 		this.httpPostDirectory = httpPostDirectory;
+
 	}
 
 	public WebServer(String wwwroot, String httpPostDirectory) {

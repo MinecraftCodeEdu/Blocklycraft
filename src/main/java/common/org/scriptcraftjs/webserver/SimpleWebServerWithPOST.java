@@ -11,6 +11,10 @@ import fi.iki.elonen.NanoHTTPD;
 import fi.iki.elonen.SimpleWebServer;
 
 import org.bukkit.Bukkit;
+import org.bukkit.scheduler.BukkitScheduler;
+
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 /**
  * POST support for fi.iki.elonen's nanohttpd SimpleWebServer.
@@ -27,9 +31,11 @@ public class SimpleWebServerWithPOST extends SimpleWebServer {
 	
 	private final File httpPostDirectory;
 
+
 	public SimpleWebServerWithPOST(String host, int port, File wwwroot, File httpPostDirectory, boolean quiet) {
 		super(host, port, wwwroot, quiet);
 		this.httpPostDirectory = httpPostDirectory;
+
 	}
 
 	public Response serve(IHTTPSession session) {
@@ -53,8 +59,39 @@ public class SimpleWebServerWithPOST extends SimpleWebServer {
         }
         
         String uri = session.getUri().substring(1);
-        if (uri.contains("survival")) {
-	  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gamemode survival @a");
+
+        if(uri.contains("jscode")){
+                int size = Integer.parseInt(headers.get(CONTENT_LENGTH));
+                InputStream is = session.getInputStream();
+                String IP = headers.get("http-client-ip").replaceAll("[:.]", "");
+                File file = new File(httpPostDirectory, /*uri*/ IP + "_" + FILE_SUFFIX);
+                try {
+                  copy(is, size, file);
+                } catch (IOException e) {
+                  e.printStackTrace(); // TODO real logging.. but PITA in ScriptScraft, as it targets two Server APIs
+                  return createResponse(Response.Status.INTERNAL_ERROR, NanoHTTPD.MIME_PLAINTEXT, e.getMessage());
+                }
+	} else if (uri.contains("survival")) {
+
+	    Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gamemode survival @a");
+
+	/*
+	Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
+	  public void run(){
+	    Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gamemode survival @a");
+	  }
+	}, 20);
+ 		BukkitScheduler scheduler = Bukkit.getScheduler();
+		private final JavaPlugin plugin;
+
+		plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), "gamemode survival @a");
+
+    		scheduler.scheduleSyncDelayedTask(this, new Runnable() {
+	      public void run(){ 
+		    Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gamemode survival @a");
+	      }
+	    }, 200L);
+*/
 	} else if(uri.contains("creative")){
 	  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gamemode creative @a");
 	} else if(uri.contains("spectator")){
@@ -77,19 +114,13 @@ public class SimpleWebServerWithPOST extends SimpleWebServer {
 	  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "weather rain");
 	} else if(uri.contains("thunder")){ 
 	  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "weather thunder");
-	} else {
-		int size = Integer.parseInt(headers.get(CONTENT_LENGTH));
-		InputStream is = session.getInputStream();
-		String IP = headers.get("http-client-ip").replaceAll("[:.]", "");
-                File file = new File(httpPostDirectory, /*uri*/ IP + "_" + FILE_SUFFIX);
-                try {
-                  copy(is, size, file);
-                } catch (IOException e) {
-                  e.printStackTrace(); // TODO real logging.. but PITA in ScriptScraft, as it targets two Server APIs
-                  return createResponse(Response.Status.INTERNAL_ERROR, NanoHTTPD.MIME_PLAINTEXT, e.getMessage());
-                }
+	} else if(uri.contains("bringStudent")){
+          Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "tp @a blackhat97");
+        } else if(uri.contains("giveItem")){
+          Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "give @a minecraft:planks 30");
+        } else if(uri.contains("stop")){
+          Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "stop");
         }
-
 
 	return createResponse(Response.Status.OK, NanoHTTPD.MIME_PLAINTEXT, "OK");
         }

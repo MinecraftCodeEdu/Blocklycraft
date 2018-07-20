@@ -658,7 +658,7 @@ Code.init = function () {
                     alert(Blockly.Msg.DEPLOY_SUCCESS);
                 }
             };
-            xhttp.open('POST', '/', true);
+            xhttp.open('POST', '/jscode/', true);
             xhttp.send(jscode);
         }
     });
