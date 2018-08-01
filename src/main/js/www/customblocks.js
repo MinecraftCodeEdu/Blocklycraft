@@ -601,7 +601,7 @@ Blockly.Blocks['weapons_armor'] = {
 Blockly.Blocks['onchat'] = { /* 채팅명령어 */
   init: function() {
     this.appendValueInput("command")
-        .setCheck(null)
+        .setCheck("String")
         .appendField("명령어");
     this.appendStatementInput("statements")
         .setCheck(null);
@@ -674,10 +674,10 @@ Blockly.Blocks['teleport_location'] = { /* 좌표로 텔레포트 */
   }
 };
 
-Blockly.Blocks['absolute_location'] = { /* 월드 좌표 */
+Blockly.Blocks['absolute_location'] = { /* 절대 좌표 */
   init: function() {
     this.appendDummyInput()
-        .appendField("월드 좌표");
+        .appendField("절대 좌표");
     this.appendValueInput("x")
         .setCheck("Number")
         .appendField("X");
@@ -687,6 +687,27 @@ Blockly.Blocks['absolute_location'] = { /* 월드 좌표 */
     this.appendValueInput("z")
         .setCheck("Number")
         .appendField("Z");
+    this.setInputsInline(true);
+    this.setOutput(true, "location");
+    this.setColour(150);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['relative_location'] = { /* 상대 좌표 */
+  init: function() {
+    this.appendDummyInput()
+        .appendField("상대 좌표");
+    this.appendValueInput("x")
+        .setCheck("Number")
+        .appendField("~");
+    this.appendValueInput("y")
+        .setCheck("Number")
+        .appendField("~");
+    this.appendValueInput("z")
+        .setCheck("Number")
+        .appendField("~");
     this.setInputsInline(true);
     this.setOutput(true, "location");
     this.setColour(150);
