@@ -22,14 +22,16 @@
     <script type="text/javascript" src="FileSaver.min.js"></script>
 
 
+
+
     <!--collapse library-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Materialize, Prettify, and Ardublockly CSS -->
-<!--    <link rel="stylesheet" href="ardublockly.css" media="screen,projection">
--->
+<!--    <link rel="stylesheet" href="ardublockly.css" media="screen,projection"> -->
+
 </head>
 
 <body>
@@ -103,6 +105,49 @@
 						<field name="TEXT">teleport</field>
 					</block>
 				</value>
+			</block>
+			<block type="onchat">
+				<value name="command">
+					<block type="text">
+						<field name="TEXT">run</field>
+					</block>
+				</value>
+			</block>
+			<block type="teleport_location">
+			  <value name="NAME">
+				<block type="absolute_location">
+				  <value name="x">
+					<block type="math_number">
+						<field name="NUM">0</field>
+					</block>
+				  </value>
+				  <value name="y">
+					<block type="math_number">
+						<field name="NUM">4</field>
+					</block>
+				  </value>
+				  <value name="z">
+					<block type="math_number">
+						<field name="NUM">0</field>
+					</block>
+				  </value>
+				</block>
+			  </value>
+			</block>
+			<block type="teleport_location">
+			  <value name="NAME">
+				<block type="relative_location">
+				  <value name="x">
+					<block type="math_number"></block>
+				  </value>
+				  <value name="y">
+					<block type="math_number"></block>
+				  </value>
+				  <value name="z">
+					<block type="math_number"></block>
+				  </value>
+				</block>
+			  </value>
 			</block>
     	</category>
 		<!-- 보물찾기 -->
@@ -180,13 +225,19 @@
 			  <value name="NAME">
 				<block type="absolute_location">
 				  <value name="x">
-					<block type="math_number"></block>
+					<block type="math_number">
+						<field name="NUM">0</field>
+					</block>
 				  </value>
 				  <value name="y">
-					<block type="math_number"></block>
+					<block type="math_number">
+						<field name="NUM">4</field>
+					</block>
 				  </value>
 				  <value name="z">
-					<block type="math_number"></block>
+					<block type="math_number">
+						<field name="NUM">0</field>
+					</block>
 				  </value>
 				</block>
 			  </value>
@@ -217,7 +268,9 @@
 			<block type="drone_move"></block>
 			<block type="drone_move_count">
               <value name="COUNT">
-                <block type="math_number"></block>
+                <block type="math_number">
+					<field name="NUM">1</field>
+				</block>
               </value>
             </block>
             <block type="controls_repeat_ext">

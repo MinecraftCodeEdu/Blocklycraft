@@ -26,7 +26,7 @@ var fence = getObjNames(Blockly.Msg.OBJNAMES, [85, 107]);
 
 var castle = getObjNames(Blockly.Msg.OBJNAMES, [98, 79, 20, 45, 5]);
 
-var jukebox = getObjNames(Blockly.Msg.OBJNAMES, [55, 1]);
+var jukebox = getObjNames(Blockly.Msg.OBJNAMES, [55, 1, 70]);
 
 var note = [["낮은 파# (F#)","0"], ["낮은 솔 (G)","1"], ["낮은 솔# (G#)","2"], ["낮은 라 (A)","3"], ["낮은 라# (A#)","4"], ["낮은 시 (B)","5"], ["중간 도 (C)","6"], ["중간 도# (C#)","7"], ["중간 레 (D)","8"], ["중간 레# (D#)","9"], ["중간 미 (E)","10"], ["중간 파 (F)","11"], ["중간 파# (F#)","12"], ["중간 솔 (G)","13"], ["중간 솔# (G#)","14"], ["중간 라 (A)","15"], ["중간 라# (A#)","16"], ["중간 시 (B)","17"], ["높은 도 (C)","18"], ["높은 도# (C#)","19"], ["높은 레 (D)","20"], ["높은 레# (D#)","21"], ["높은 미 (E)","22"], ["높은 파 (F)","23"], ["높은 파# (F#)","24"], ["쉼","25"]];
 
@@ -601,7 +601,7 @@ Blockly.Blocks['weapons_armor'] = {
 Blockly.Blocks['onchat'] = { /* 채팅명령어 */
   init: function() {
     this.appendValueInput("command")
-        .setCheck(null)
+        .setCheck("String")
         .appendField("명령어");
     this.appendStatementInput("statements")
         .setCheck(null);
@@ -674,10 +674,10 @@ Blockly.Blocks['teleport_location'] = { /* 좌표로 텔레포트 */
   }
 };
 
-Blockly.Blocks['absolute_location'] = { /* 월드 좌표 */
+Blockly.Blocks['absolute_location'] = { /* 절대 좌표 */
   init: function() {
     this.appendDummyInput()
-        .appendField("월드 좌표");
+        .appendField("절대 좌표");
     this.appendValueInput("x")
         .setCheck("Number")
         .appendField("X");
@@ -687,6 +687,27 @@ Blockly.Blocks['absolute_location'] = { /* 월드 좌표 */
     this.appendValueInput("z")
         .setCheck("Number")
         .appendField("Z");
+    this.setInputsInline(true);
+    this.setOutput(true, "location");
+    this.setColour(150);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['relative_location'] = { /* 상대 좌표 */
+  init: function() {
+    this.appendDummyInput()
+        .appendField("상대 좌표");
+    this.appendValueInput("x")
+        .setCheck("Number")
+        .appendField("~");
+    this.appendValueInput("y")
+        .setCheck("Number")
+        .appendField("~");
+    this.appendValueInput("z")
+        .setCheck("Number")
+        .appendField("~");
     this.setInputsInline(true);
     this.setOutput(true, "location");
     this.setColour(150);
