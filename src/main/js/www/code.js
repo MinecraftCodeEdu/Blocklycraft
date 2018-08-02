@@ -160,9 +160,10 @@ function filePrompt() {
 */
     var filename = getNameBlock();
     if (filename == "") {
-      var filename = "untitled";
+      var filename = "파일이름";
     }
-    var filename = prompt("Please enter file name:", filename);
+    //var filename = prompt("Please enter file name:", filename);
+    var filename = prompt("저장할 파일이름을 입력하세요:", filename);
     if (filename == null || filename == "") {
         return;
     } else {
@@ -245,9 +246,9 @@ Code.loadxml = function() {
       }
       var count = Code.workspace.getAllBlocks().length;
 //      if (count && alert('The XML file was not successfully parsed into blocks. \n Please review the XML code and try again.', 'Invalid XML')) {
-	if (count && alert('추가파일을 불러오겠습니까?', 'Load Extra Black')) {
-	Code.workspace.clear();
-      }
+	if (count && confirm('추가파일을 불러오겠습니까?', 'Load Extra Black')) {
+	  //Code.workspace.clear();
+      } else { Code.workspace.clear(); }
       //Blockly.Xml.domToWorkspace(Code.workspace, xml);
     }
     // Reset value of input after loading because Chrome will not fire
