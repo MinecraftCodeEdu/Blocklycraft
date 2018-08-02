@@ -244,10 +244,11 @@ Code.loadxml = function() {
         return;
       }
       var count = Code.workspace.getAllBlocks().length;
-      if (count && alert('The XML file was not successfully parsed into blocks. \n Please review the XML code and try again.', 'Invalid XML')) {
-        Code.workspace.clear();
+//      if (count && alert('The XML file was not successfully parsed into blocks. \n Please review the XML code and try again.', 'Invalid XML')) {
+	if (count && alert('추가파일을 불러오겠습니까?', 'Load Extra Black') {
+	Code.workspace.clear();
       }
-      Blockly.Xml.domToWorkspace(Code.workspace, xml);
+      //Blockly.Xml.domToWorkspace(Code.workspace, xml);
     }
     // Reset value of input after loading because Chrome will not fire
     // a 'change' event if the same file is loaded again.

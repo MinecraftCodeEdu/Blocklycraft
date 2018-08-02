@@ -7,6 +7,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.Bukkit;
 
+//import org.scriptcraftjs.bukkit.buttonCommand;
+
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -32,6 +34,7 @@ public class ScriptCraftPlugin extends JavaPlugin implements Listener
     {
 
 	//Bukkit.getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
+	//getCommand("buttonGive").setExecutor(new buttonCommand());
 
 	Thread currentThread = Thread.currentThread();
         ClassLoader previousClassLoader = currentThread.getContextClassLoader();
@@ -57,6 +60,8 @@ public class ScriptCraftPlugin extends JavaPlugin implements Listener
 		} finally {
 			currentThread.setContextClassLoader(previousClassLoader);
 		}
+	
+
     }
 
 

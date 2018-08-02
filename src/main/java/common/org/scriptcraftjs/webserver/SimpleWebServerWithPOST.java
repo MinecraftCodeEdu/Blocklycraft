@@ -6,15 +6,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Map;
+import java.util.HashMap; 
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 
 import fi.iki.elonen.NanoHTTPD;
 import fi.iki.elonen.SimpleWebServer;
 
 import org.bukkit.Bukkit;
-import org.bukkit.scheduler.BukkitScheduler;
 
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
 /**
  * POST support for fi.iki.elonen's nanohttpd SimpleWebServer.
@@ -30,6 +32,8 @@ public class SimpleWebServerWithPOST extends SimpleWebServer {
 	private static final String FILE_SUFFIX = "clientScript.js";
 	
 	private final File httpPostDirectory;
+
+	private static Thread serverStartThread;
 
 
 	public SimpleWebServerWithPOST(String host, int port, File wwwroot, File httpPostDirectory, boolean quiet) {
@@ -59,10 +63,10 @@ public class SimpleWebServerWithPOST extends SimpleWebServer {
         }
         
         String uri = session.getUri().substring(1);
+	int size = Integer.parseInt(headers.get(CONTENT_LENGTH));
 
         if(uri.contains("jscode")){
-                int size = Integer.parseInt(headers.get(CONTENT_LENGTH));
-                InputStream is = session.getInputStream();
+		InputStream is = session.getInputStream();
                 String IP = headers.get("http-client-ip").replaceAll("[:.]", "");
                 File file = new File(httpPostDirectory, /*uri*/ IP + "_" + FILE_SUFFIX);
                 try {
@@ -71,9 +75,16 @@ public class SimpleWebServerWithPOST extends SimpleWebServer {
                   e.printStackTrace(); // TODO real logging.. but PITA in ScriptScraft, as it targets two Server APIs
                   return createResponse(Response.Status.INTERNAL_ERROR, NanoHTTPD.MIME_PLAINTEXT, e.getMessage());
                 }
-	} else if (uri.contains("survival")) {
-
-	    Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gamemode survival @a");
+	} 
+	
+	/*
+	  else if (uri.contains("survival")) {
+	   try {
+	        Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gamemode survival @a");
+	   } catch(Exception e) {
+	       return createResponse(Response.Status.INTERNAL_ERROR, NanoHTTPD.MIME_PLAINTEXT, e.getMessage());
+	   }
+	*/
 
 	/*
 	Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
@@ -92,10 +103,21 @@ public class SimpleWebServerWithPOST extends SimpleWebServer {
 	      }
 	    }, 200L);
 */
+	/*
 	} else if(uri.contains("creative")){
-	  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gamemode creative @a");
+	  try {
+                Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gamemode creative @a");
+           } catch(Exception e) {
+               return createResponse(Response.Status.INTERNAL_ERROR, NanoHTTPD.MIME_PLAINTEXT, e.getMessage());
+           }
+
 	} else if(uri.contains("spectator")){
-          Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gamemode spectator @a");
+	  try {
+                Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gamemode spectator @a");
+           } catch(Exception e) {
+               return createResponse(Response.Status.INTERNAL_ERROR, NanoHTTPD.MIME_PLAINTEXT, e.getMessage());
+           }
+
 	} else if(uri.contains("peaceful")){
 	  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "difficulty peaceful");
 	} else if(uri.contains("easy")){
@@ -115,12 +137,118 @@ public class SimpleWebServerWithPOST extends SimpleWebServer {
 	} else if(uri.contains("thunder")){ 
 	  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "weather thunder");
 	} else if(uri.contains("bringStudent")){
-          Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "tp @a blackhat97");
-        } else if(uri.contains("giveItem")){
-          Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "give @a minecraft:planks 30");
+	*/
+	    /*
+      	    Map<String, String> files = new HashMap<String, String>();
+    	    Method method = session.getMethod();
+    	    if (Method.PUT.equals(method) || Method.POST.equals(method)) {
+              try {
+            	  session.parseBody(files);
+              } catch (IOException ioe) {
+                  return new Response(Response.Status.INTERNAL_ERROR, MIME_PLAINTEXT, "SERVER INTERNAL ERROR: IOException: " + ioe.getMessage());
+              } catch (ResponseException re) {
+                  return new Response(re.getStatus(), MIME_PLAINTEXT, re.getMessage());
+              }
+    	    }
+    	    String postBody = session.getQueryParameterString();
+    	    String postParameter = session.getParms().get("parameter");
+
+    	    return new Response(postBody); // Or postParameter.
+	    */
+	  /*
+	    try {
+	      Integer contentLength = Integer.parseInt(session.getHeaders().get("content-length"));
+	      byte[] buffer = new byte[contentLength];
+	      session.getInputStream().read(buffer, 0, contentLength);
+	      System.out.println(new String(buffer));
+	      Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "tp @a " + new String(buffer)); 
+	    } catch(IOException e) {
+	      e.printStackTrace();	
+	    }
+	    */
+	    /*
+	    Map<String, String> files = new HashMap<String, String>();
+	    
+	    try {
+                session.parseBody(files);
+            } catch (IOException ioe) {
+                return new Response(Response.Status.INTERNAL_ERROR, MIME_PLAINTEXT, "SERVER INTERNAL ERROR: IOException: " + ioe.getMessage());
+            } catch (ResponseException re) {
+                return new Response(re.getStatus(), MIME_PLAINTEXT, re.getMessage());
+            }
+	     
+	    String postBody = session.getQueryParameterString();
+	    System.out.println(postBody);
+	    */
+
+
+	    //Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), value);
+
+	    /*
+            int count = is.read(buffer, 0, (int)Math.min(size, buffer.length));
+            while (count >= 0 && size > 0) {
+                count = is.read(buffer, 0, (int)Math.min(size, buffer.length));
+                //count = is.read();
+                size -= count;
+                hello = hello + ((char)count);
+            }
+            String value = new String(hello.getBytes("UTF-8"), "UTF-8"); 
+            System.out.println(value);
+
+            while (count >= 0) {
+                count = is.read(buffer, 0, (int)Math.min(size, buffer.length));
+                //count = is.read();
+                hello = hello + ((char)count);
+            }
+            System.out.println(hello);
+
+	    InputStream in = session.getInputStream();
+	    int b;
+            StringBuffer str = new StringBuffer();
+            while ((b = in.read()) != -1) {
+              if (b != 0 && b > 16 && b != 255 && b != 23 && b != 24) {
+                str.append((char) b);
+              }
+            }
+            String data = str.toString();
+	    System.out.println(data);
+
+	    //Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), line);
+
+   	  } catch(Exception ex) {
+       	     if(ex instanceof IOException || ex instanceof InterruptedException)
+	  	ex.printStackTrace();
+	  }
+	  */
+  
+	/*
+	} else if(uri.contains("giveItem")){
+
+	  try {
+              Integer contentLength = Integer.parseInt(session.getHeaders().get("content-length"));
+              byte[] buffer = new byte[contentLength];
+              session.getInputStream().read(buffer, 0, contentLength);
+              System.out.println(new String(buffer));
+              Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "give @a " + new String(buffer));
+	*/
+/*	      
+	      Thread thread = new Thread(){
+    		public void run(){
+    		  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gamemode 1 @a");  
+		}
+  	      }
+
+  	      thread.start();
+*/
+	/*
+	  } catch(IOException e) {
+              e.printStackTrace();
+	      return createResponse(Response.Status.INTERNAL_ERROR, NanoHTTPD.MIME_PLAINTEXT, e.getMessage());
+          }
         } else if(uri.contains("stop")){
           Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "stop");
         }
+	*/
 
 	return createResponse(Response.Status.OK, NanoHTTPD.MIME_PLAINTEXT, "OK");
         }
