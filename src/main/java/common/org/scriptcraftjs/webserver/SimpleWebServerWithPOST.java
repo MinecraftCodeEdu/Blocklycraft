@@ -33,6 +33,8 @@ public class SimpleWebServerWithPOST extends SimpleWebServer {
 	
 	private final File httpPostDirectory;
 
+	private static Thread serverStartThread;
+
 
 	public SimpleWebServerWithPOST(String host, int port, File wwwroot, File httpPostDirectory, boolean quiet) {
 		super(host, port, wwwroot, quiet);
@@ -73,9 +75,16 @@ public class SimpleWebServerWithPOST extends SimpleWebServer {
                   e.printStackTrace(); // TODO real logging.. but PITA in ScriptScraft, as it targets two Server APIs
                   return createResponse(Response.Status.INTERNAL_ERROR, NanoHTTPD.MIME_PLAINTEXT, e.getMessage());
                 }
-	} else if (uri.contains("survival")) {
-
-	    Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gamemode survival @a");
+	} 
+	
+	/*
+	  else if (uri.contains("survival")) {
+	   try {
+	        Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gamemode survival @a");
+	   } catch(Exception e) {
+	       return createResponse(Response.Status.INTERNAL_ERROR, NanoHTTPD.MIME_PLAINTEXT, e.getMessage());
+	   }
+	*/
 
 	/*
 	Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
@@ -94,10 +103,21 @@ public class SimpleWebServerWithPOST extends SimpleWebServer {
 	      }
 	    }, 200L);
 */
+	/*
 	} else if(uri.contains("creative")){
-	  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gamemode creative @a");
+	  try {
+                Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gamemode creative @a");
+           } catch(Exception e) {
+               return createResponse(Response.Status.INTERNAL_ERROR, NanoHTTPD.MIME_PLAINTEXT, e.getMessage());
+           }
+
 	} else if(uri.contains("spectator")){
-          Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gamemode spectator @a");
+	  try {
+                Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gamemode spectator @a");
+           } catch(Exception e) {
+               return createResponse(Response.Status.INTERNAL_ERROR, NanoHTTPD.MIME_PLAINTEXT, e.getMessage());
+           }
+
 	} else if(uri.contains("peaceful")){
 	  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "difficulty peaceful");
 	} else if(uri.contains("easy")){
@@ -117,7 +137,7 @@ public class SimpleWebServerWithPOST extends SimpleWebServer {
 	} else if(uri.contains("thunder")){ 
 	  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "weather thunder");
 	} else if(uri.contains("bringStudent")){
-
+	*/
 	    /*
       	    Map<String, String> files = new HashMap<String, String>();
     	    Method method = session.getMethod();
@@ -135,7 +155,7 @@ public class SimpleWebServerWithPOST extends SimpleWebServer {
 
     	    return new Response(postBody); // Or postParameter.
 	    */
-
+	  /*
 	    try {
 	      Integer contentLength = Integer.parseInt(session.getHeaders().get("content-length"));
 	      byte[] buffer = new byte[contentLength];
@@ -145,6 +165,7 @@ public class SimpleWebServerWithPOST extends SimpleWebServer {
 	    } catch(IOException e) {
 	      e.printStackTrace();	
 	    }
+	    */
 	    /*
 	    Map<String, String> files = new HashMap<String, String>();
 	    
@@ -200,7 +221,7 @@ public class SimpleWebServerWithPOST extends SimpleWebServer {
 	  }
 	  */
   
-
+	/*
 	} else if(uri.contains("giveItem")){
 
 	  try {
@@ -209,14 +230,25 @@ public class SimpleWebServerWithPOST extends SimpleWebServer {
               session.getInputStream().read(buffer, 0, contentLength);
               System.out.println(new String(buffer));
               Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "give @a " + new String(buffer));
-            } catch(IOException e) {
-              e.printStackTrace();
-            }
+	*/
+/*	      
+	      Thread thread = new Thread(){
+    		public void run(){
+    		  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gamemode 1 @a");  
+		}
+  	      }
 
-          Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "give @a minecraft:planks 30");
+  	      thread.start();
+*/
+	/*
+	  } catch(IOException e) {
+              e.printStackTrace();
+	      return createResponse(Response.Status.INTERNAL_ERROR, NanoHTTPD.MIME_PLAINTEXT, e.getMessage());
+          }
         } else if(uri.contains("stop")){
           Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "stop");
         }
+	*/
 
 	return createResponse(Response.Status.OK, NanoHTTPD.MIME_PLAINTEXT, "OK");
         }
