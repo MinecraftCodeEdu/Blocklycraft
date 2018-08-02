@@ -3,10 +3,10 @@ var MSG = {
     blocks: "블\xa0록",
     javascript: "자\xa0바\xa0스\xa0크\xa0립\xa0트",
     linkTooltip: "블록 저장 및 링크.",
-    deployTooltip: "작업공간에 블록으로 정의된 프로그램 배포.",
+    deployTooltip: "서버에 코드 제출",
     badCode: "프로그램에러:\n%1",
     timeout: "최대 실행 반복 횟수를 초과했습니다.",
-    trashTooltip: "모든블록 삭제.",
+    trashTooltip: "모든 블록 삭제",
     catLogic: "논리",
     catLoops: "반복",
     catMath: "계산",
@@ -77,8 +77,8 @@ Blockly.Msg.MOUVEMENT_TURN_BACK = "뒤로 돌기";
 Blockly.Msg.MOUVEMENT_BACKTOSTART = "위치 불러오기";
 Blockly.Msg.MOUVEMENT_SAVESTART = "현재 위치 저장";
 
-Blockly.Msg.DEPLOY_SUCCESS = "잘했습니다. 이제 마인크래프트게임에서 명령을 실행할수있습니다.";
-Blockly.Msg.MISSING_NAME = "명령에 이름이 없습니다.";
+Blockly.Msg.DEPLOY_SUCCESS = "잘했습니다. 이제 마인크래프트에서 명령을 실행할 수 있습니다.";
+Blockly.Msg.MISSING_NAME = "명령을 실행하는 블록이 없습니다.";
 
 Blockly.Msg.TOOLTIP_DRONE = "드론 객체 생성";
 Blockly.Msg.TOOLTIP_MATERIALS = "자연적으로 생성되고 만들어진 블록재료.";

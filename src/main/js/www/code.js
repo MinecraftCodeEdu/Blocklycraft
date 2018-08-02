@@ -642,8 +642,10 @@ Code.init = function () {
     Code.bindClick('deployButton', function () {
         var jscode = "var global = this;\n" + Blockly.JavaScript.workspaceToCode(Code.workspace);
         var titleRegexp = /command. '(.+)',/;
+		var eventRegexp = /events/;
         var fname = titleRegexp.exec(jscode); //extract the name of the command
-        if (fname === null) {
+		var ename = eventRegexp.exec(jscode); //extract the name of the command
+        if (fname === null && ename === null) {
             alert(Blockly.Msg.MISSING_NAME);
         } else {
             //alert(jscode);
