@@ -245,7 +245,7 @@ Code.loadxml = function() {
       }
       var count = Code.workspace.getAllBlocks().length;
 //      if (count && alert('The XML file was not successfully parsed into blocks. \n Please review the XML code and try again.', 'Invalid XML')) {
-	if (count && alert('추가파일을 불러오겠습니까?', 'Load Extra Black') {
+	if (count && alert('추가파일을 불러오겠습니까?', 'Load Extra Black')) {
 	Code.workspace.clear();
       }
       //Blockly.Xml.domToWorkspace(Code.workspace, xml);
