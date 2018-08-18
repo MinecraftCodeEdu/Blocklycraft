@@ -1,35 +1,8 @@
-java plugin 수정
-- 파일생성시 username_clientscript.js 로 수정
+# CoalaSW Minecraft Block Coding for Local Server
 
-js 수정
-- 한글화 (완료) 2/27
-- 줌인해제 (완료) 2/27
-- 블록저장및 불러오기 (완료) 3/7
-- 세션 삭제
-
-js개발
-- gist.github.com scriptcraft 관련 자료
-- side bar 추가
-- javascript 열람가능
-
-학생용 stage 개발
-- catelog --> block 으로 customize
-- <block></block>개별화
-- php 대신 stage/agent?level=1 고안
+선생님들의 로컬PC를 이용한 마인크래프트 **게임서버** 및 **블록작업공간** 제공을 위한 프로젝트 입니다.
 
 
+-gameServer.zip - spigot서버 및 설정파일 저장
 
-미정
-
--사용자 접속시 폴더 자동추가 
-Player onlinePlayer : player.getServer().getOnlinePlayers()
-player.getAddress()
-getplayer().getName()
-
--덮여쓰기 방지를 위해 ip+clientscript.js 대신 ip+command_name.js 로 수정
-command( "name", function()) 확인
-
-
-
-
-
+-https://gitlab.com/coding_edu/Blocklycraft/tags - blocklycraft.jar 파일 >저장
