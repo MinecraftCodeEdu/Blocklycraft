@@ -427,6 +427,14 @@ Blockly.JavaScript['player_chatcommand'] = function(block) { /* 채팅명령어 
   return code;
 };
 
+Blockly.JavaScript['player_chat'] = function(block) { /* 채팅창에 말하기 */
+  var chat = Blockly.JavaScript.valueToCode(block, 'chat', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "player.chat("+chat+");\n";
+  return code;
+};
+
+
 /*
  * 보물찾기
  */

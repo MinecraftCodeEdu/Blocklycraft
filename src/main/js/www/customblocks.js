@@ -731,6 +731,20 @@ Blockly.Blocks['player_chatcommand'] = { /* 채팅명령어 실행 */
   }
 };
 
+Blockly.Blocks['player_chat'] = { /* 채팅창에 말하기 */
+  init: function() {
+    this.appendValueInput("chat")
+        .setCheck(["Number", "String", "Boolean", "Array"])
+        .appendField("채팅창에 말하기 :");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(210);
+ this.setTooltip("게임 채팅에 메시지를 기록합니다.");
+ this.setHelpUrl("");
+  }
+};
+
 /*
  * 보물찾기
  */
