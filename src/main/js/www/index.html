@@ -496,6 +496,55 @@
 		<category id="catVariables" custom="VARIABLE" colour="330"></category>
 		
 		<sep></sep>
+		
+		<!-- 마을 짓기 -->
+		<category id="catVillage">
+			<block type="drone"></block>
+			<block type="rectangle_edit">
+				<value name="width">
+				   <block type="math_number">
+				   <field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="length">
+				   <block type="math_number">
+					<field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="material">
+				   <block type="village_material"></block>
+				</value>
+			</block>
+			<block type="prism_edit">
+				<value name="width">
+				   <block type="math_number">
+				   <field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="length">
+				   <block type="math_number">
+					<field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="material">
+				   <block type="village_material"></block>
+				</value>
+			</block>
+			<block type="drone_variable">
+				<value name="material">
+				   <block type="village_material"></block>
+				</value>
+			</block>
+			<block type="village_material"></block>
+			<block type="drone_move"></block>
+			<block type="drone_move_count">
+              <value name="COUNT">
+                <block type="math_number">
+					<field name="NUM">1</field>
+				</block>
+              </value>
+            </block>
+		</category>
 <!-- 		
 		<sep></sep>
         <category id="catDrone">

@@ -170,6 +170,33 @@ Blockly.JavaScript['rectangle'] = function (block) {
     return code;
 };
 
+Blockly.JavaScript['rectangle_edit'] = function (block) {
+    var value_width = Blockly.JavaScript.valueToCode(block, 'width', Blockly.JavaScript.ORDER_ATOMIC);
+    var value_length = Blockly.JavaScript.valueToCode(block, 'length', Blockly.JavaScript.ORDER_ATOMIC);
+    var value_material = Blockly.JavaScript.valueToCode(block, 'material', Blockly.JavaScript.ORDER_ATOMIC);
+    var dropdown_fill = block.getFieldValue('fill');
+    var code = "global.theDrone.box" + dropdown_fill + "(" + JSON.stringify(value_material).replace(/"/g,"").replace(".",":") + "," + value_width + ",1," + value_length + ");\n";
+    return code;
+};
+
+Blockly.JavaScript['prism_edit'] = function(block) {
+  var dropdown_shape = block.getFieldValue('SHAPE');
+  var value_width = Blockly.JavaScript.valueToCode(block, 'width', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_length = Blockly.JavaScript.valueToCode(block, 'length', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_material = Blockly.JavaScript.valueToCode(block, 'material', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.theDrone.prism" + dropdown_shape + "(" + JSON.stringify(value_material).replace(/"/g,"").replace(".",":") + "," + value_width + "," + value_length + ");\n";
+  return code;
+};
+
+Blockly.JavaScript['village_material'] = function(block) {
+  var dropdown_material = block.getFieldValue('material');
+  // TODO: Assemble JavaScript into code variable.
+  var code = dropdown_material;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
 Blockly.JavaScript['circle'] = function (block) {
     var value_radius = Blockly.JavaScript.valueToCode(block, 'radius', Blockly.JavaScript.ORDER_ATOMIC);
     var value_height = Blockly.JavaScript.valueToCode(block, 'height', Blockly.JavaScript.ORDER_ATOMIC);
@@ -734,7 +761,7 @@ Blockly.JavaScript['two_dimension'] = function(block) {
 Blockly.JavaScript['drone_variable'] = function(block) {
   var value_material = Blockly.JavaScript.valueToCode(block, 'material', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = "global.theDrone.box("+value_material+");\n";
+  var code = "global.theDrone.box(" + JSON.stringify(value_material).replace(/"/g,"").replace(".",":")+ ");\n";
   return code;
 };
 
@@ -1353,7 +1380,7 @@ Blockly.JavaScript['list_getindex'] = function(block) { /* 리스트 위치 값 
   var at = Blockly.JavaScript.getAdjusted(block, 'AT');
   // TODO: Assemble JavaScript into code variable.
   var code = list + '[' + at + ']';
-  return [code, Blockly.JavaScript.ORDER_MEMBER];
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 Blockly.JavaScript['list_setindex'] = function(block) { /* 리스트 위치 값 저장 */
