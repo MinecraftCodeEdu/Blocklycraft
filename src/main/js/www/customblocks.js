@@ -20,7 +20,7 @@ var others = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 2, 3, 4, 7, 8, 10, 12, 13,
 
 var farmland = getObjNames(Blockly.Msg.OBJNAMES, [8, 60, 59, 207, 142, 141]);
 
-var train = getObjNames(Blockly.Msg.OBJNAMES, [66, 27, 28, 157, 152, 2]);
+var train = getObjNames(Blockly.Msg.OBJNAMES, [66, 27, 28, 157, 152, 1]);
 
 var fence = getObjNames(Blockly.Msg.OBJNAMES, [85, 107]);
 
@@ -32,7 +32,7 @@ var note = [["낮은 파# (F#)","0"], ["낮은 솔 (G)","1"], ["낮은 솔# (G#)
 
 var tag = getObjNames(Blockly.Msg.OBJNAMES, [20, 79, 95, 101]);
 
-var village = getObjNames(Blockly.Msg.OBJNAMES, [98, 3, 5, 45, 20, 79, 0, 8, 60, 59, 207, 142, 141, 37, 38, 38.1, 38.2, 38.3, 38.4, 38.5, 38.6, 38.7, 38.8, 208, 6.1, 6.2, 6.3, 6.4, 6.5]);
+var village = getObjNames(Blockly.Msg.OBJNAMES, [98, 3, 5, 45, 20, 79, 0, 8, 60, 59, 207, 142, 141, 37, 38, 38.1, 38.2, 38.3, 38.4, 38.5, 38.6, 38.7, 38.8, 208, 6, 6.1, 6.2, 6.3, 6.4]);
 
 //http://minecraft.gamepedia.com/Tools
 var items_tools = getObjNames(Blockly.Msg.ITEMS_NAMES, ['diamondAxe', 'diamondHoe', 'diamondSpade', 'diamondPickaxe', 'shears', 'flintAndSteel', 'fishingRod', 'bed', 'torch', 'wood']);

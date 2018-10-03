@@ -142,7 +142,7 @@ Blockly.JavaScript['materials'] = function (block) {
     var dropdown_material = block.getFieldValue('material');
 //    JSON.stringify(dropdown_material).replace('1','10');
 //    var code = "theDrone." + 'box(' + JSON.stringify(dropdown_material) + ');\n';
-var code = "global.theDrone.box(" + JSON.stringify(dropdown_material).replace(/"/g,"").replace(".",":")+ ");\n";
+var code = "global.theDrone.box(" + dropdown_material + ");\n";
 
     return code;
 };
@@ -165,7 +165,7 @@ Blockly.JavaScript['rectangle'] = function (block) {
     var value_length = Blockly.JavaScript.valueToCode(block, 'length', Blockly.JavaScript.ORDER_ATOMIC);
     var dropdown_material = block.getFieldValue('material');
     var dropdown_fill = block.getFieldValue('fill');
-    var code = "global.theDrone.box" + dropdown_fill + "(" + JSON.stringify(dropdown_material).replace(/"/g,"").replace(".",":") + "," + value_width + ",1," + value_length + ");\n";
+    var code = "global.theDrone.box" + dropdown_fill + "(" + dropdown_material + "," + value_width + ",1," + value_length + ");\n";
 
     return code;
 };
@@ -175,7 +175,7 @@ Blockly.JavaScript['rectangle_edit'] = function (block) {
     var value_length = Blockly.JavaScript.valueToCode(block, 'length', Blockly.JavaScript.ORDER_ATOMIC);
     var value_material = Blockly.JavaScript.valueToCode(block, 'material', Blockly.JavaScript.ORDER_ATOMIC);
     var dropdown_fill = block.getFieldValue('fill');
-    var code = "global.theDrone.box" + dropdown_fill + "(" + JSON.stringify(value_material).replace(/"/g,"").replace(".",":") + "," + value_width + ",1," + value_length + ");\n";
+    var code = "global.theDrone.box" + dropdown_fill + "(" + value_material + "," + value_width + ",1," + value_length + ");\n";
     return code;
 };
 
@@ -185,7 +185,7 @@ Blockly.JavaScript['prism_edit'] = function(block) {
   var value_length = Blockly.JavaScript.valueToCode(block, 'length', Blockly.JavaScript.ORDER_ATOMIC);
   var value_material = Blockly.JavaScript.valueToCode(block, 'material', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = "global.theDrone.prism" + dropdown_shape + "(" + JSON.stringify(value_material).replace(/"/g,"").replace(".",":") + "," + value_width + "," + value_length + ");\n";
+  var code = "global.theDrone.prism" + dropdown_shape + "(" + value_material + "," + value_width + "," + value_length + ");\n";
   return code;
 };
 
@@ -202,7 +202,7 @@ Blockly.JavaScript['circle'] = function (block) {
     var value_height = Blockly.JavaScript.valueToCode(block, 'height', Blockly.JavaScript.ORDER_ATOMIC);
     var dropdown_material = block.getFieldValue('material');
     var dropdown_fill = block.getFieldValue('fill');
-    var code = "global.theDrone.cylinder" + dropdown_fill + "(" + JSON.stringify(dropdown_material).replace(/"/g,"").replace(".",":") + "," + value_radius +","+value_height+");\n";	
+    var code = "global.theDrone.cylinder" + dropdown_fill + "(" + dropdown_material + "," + value_radius +","+value_height+");\n";	
     return code;
 };
 
@@ -618,7 +618,7 @@ Blockly.JavaScript['tag_rectangle'] = function (block) {  /* 술래잡기 직사
     var value_length = Blockly.JavaScript.valueToCode(block, 'length', Blockly.JavaScript.ORDER_ATOMIC);
     var dropdown_material = block.getFieldValue('material');
     var dropdown_fill = block.getFieldValue('fill');
-    var code = "global.theDrone.box" + dropdown_fill + "(" + JSON.stringify(dropdown_material).replace(/"/g,"").replace(".",":") + "," + value_width + ",1," + value_length + ");\n";
+    var code = "global.theDrone.box" + dropdown_fill + "(" + dropdown_material + "," + value_width + ",1," + value_length + ");\n";
 
     return code;
 };
@@ -761,7 +761,7 @@ Blockly.JavaScript['two_dimension'] = function(block) {
 Blockly.JavaScript['drone_variable'] = function(block) {
   var value_material = Blockly.JavaScript.valueToCode(block, 'material', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = "global.theDrone.box(" + JSON.stringify(value_material).replace(/"/g,"").replace(".",":")+ ");\n";
+  var code = "global.theDrone.box(" + value_material + ");\n";
   return code;
 };
 
@@ -1325,7 +1325,7 @@ Blockly.JavaScript['castle_rectangle'] = function (block) { /* 요새 직사각�
     var value_length = Blockly.JavaScript.valueToCode(block, 'length', Blockly.JavaScript.ORDER_ATOMIC);
     var dropdown_material = block.getFieldValue('material');
     var dropdown_fill = block.getFieldValue('fill');
-    var code = "global.theDrone.box" + dropdown_fill + "(" + JSON.stringify(dropdown_material).replace(/"/g,"").replace(".",":") + "," + value_width + ",1," + value_length + ");\n";
+    var code = "global.theDrone.box" + dropdown_fill + "(" + dropdown_material + "," + value_width + ",1," + value_length + ");\n";
 
     return code;
 };
