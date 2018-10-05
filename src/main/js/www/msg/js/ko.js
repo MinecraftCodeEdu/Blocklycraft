@@ -3,10 +3,10 @@ var MSG = {
     blocks: "블\xa0록",
     javascript: "자\xa0바\xa0스\xa0크\xa0립\xa0트",
     linkTooltip: "블록 저장 및 링크.",
-    deployTooltip: "작업공간에 블록으로 정의된 프로그램 배포.",
+    deployTooltip: "서버에 코드 제출",
     badCode: "프로그램에러:\n%1",
     timeout: "최대 실행 반복 횟수를 초과했습니다.",
-    trashTooltip: "모든블록 삭제.",
+    trashTooltip: "모든 블록 삭제",
     catLogic: "논리",
     catLoops: "반복",
     catMath: "계산",
@@ -24,7 +24,7 @@ var MSG = {
     catFarming: "자동화 농장",
     catRail: "롤러코스터 만들기",
     catRiding: "보트와 승마",
-    catVillage: "마을짓기, 폭격",
+    catVillage: "마을 짓기",
     catTrampoline: "트램폴린 동산",
     catRecipe: "레시피조합과 몬스터전투",
     catRanching: "목축",
@@ -77,8 +77,8 @@ Blockly.Msg.MOUVEMENT_TURN_BACK = "뒤로 돌기";
 Blockly.Msg.MOUVEMENT_BACKTOSTART = "위치 불러오기";
 Blockly.Msg.MOUVEMENT_SAVESTART = "현재 위치 저장";
 
-Blockly.Msg.DEPLOY_SUCCESS = "잘했습니다. 이제 마인크래프트게임에서 명령을 실행할수있습니다.";
-Blockly.Msg.MISSING_NAME = "명령에 이름이 없습니다.";
+Blockly.Msg.DEPLOY_SUCCESS = "잘했습니다. 이제 마인크래프트에서 명령을 실행할 수 있습니다.";
+Blockly.Msg.MISSING_NAME = "명령을 실행하는 블록이 없습니다.";
 
 Blockly.Msg.TOOLTIP_DRONE = "드론 객체 생성";
 Blockly.Msg.TOOLTIP_MATERIALS = "자연적으로 생성되고 만들어진 블록재료.";
@@ -162,7 +162,12 @@ Blockly.Msg.OBJNAMES[2] = "잔디";
 Blockly.Msg.OBJNAMES[3] = "흙";
 Blockly.Msg.OBJNAMES[4] = "조약돌";
 Blockly.Msg.OBJNAMES[5] = "나무 판자";
-Blockly.Msg.OBJNAMES[6] = "나무 묘목";
+Blockly.Msg.OBJNAMES[6] = "참나무 묘목";
+Blockly.Msg.OBJNAMES[6.1] = "가문비나무 묘목";
+Blockly.Msg.OBJNAMES[6.2] = "자작나무 묘목";
+Blockly.Msg.OBJNAMES[6.3] = "정글나무 묘목";
+Blockly.Msg.OBJNAMES[6.4] = "아카시아나무 묘목";
+Blockly.Msg.OBJNAMES[6.5] = "짙은 참나무 묘목";
 Blockly.Msg.OBJNAMES[7] = "기반암(베드록)";
 Blockly.Msg.OBJNAMES[8] = "물";
 Blockly.Msg.OBJNAMES[9] = "물 블록";
@@ -197,8 +202,16 @@ Blockly.Msg.OBJNAMES[35.2] = "자홍색 양털";
 Blockly.Msg.OBJNAMES[35.3] = "하늘색 양털";
 Blockly.Msg.OBJNAMES[35.4] = "노란색 양털";
 Blockly.Msg.OBJNAMES[35.5] = "연두색 양털";
-Blockly.Msg.OBJNAMES[37] = "노란 꽃";
-Blockly.Msg.OBJNAMES[38] = "빨간 꽃";
+Blockly.Msg.OBJNAMES[37] = "민들레";
+Blockly.Msg.OBJNAMES[38] = "양귀비";
+Blockly.Msg.OBJNAMES[38.1] = "파란색 난초";
+Blockly.Msg.OBJNAMES[38.2] = "파꽃";
+Blockly.Msg.OBJNAMES[38.3] = "선애기별꽃";
+Blockly.Msg.OBJNAMES[38.4] = "빨간색 튤립";
+Blockly.Msg.OBJNAMES[38.5] = "주황색 튤립";
+Blockly.Msg.OBJNAMES[38.6] = "하얀색 튤립";
+Blockly.Msg.OBJNAMES[38.7] = "분홍색 튤립";
+Blockly.Msg.OBJNAMES[38.8] = "데이지";
 Blockly.Msg.OBJNAMES[39] = "갈색 버섯";
 Blockly.Msg.OBJNAMES[40] = "빨간 버섯";
 Blockly.Msg.OBJNAMES[41] = "황금 블록";
@@ -322,6 +335,7 @@ Blockly.Msg.OBJNAMES[174] = "꽁꽁 언 얼음";
 Blockly.Msg.OBJNAMES[175] = "해바라기";
 Blockly.Msg.OBJNAMES[205] = "퍼퍼 반 블록";
 Blockly.Msg.OBJNAMES[207] = "사탕무 씨앗";
+Blockly.Msg.OBJNAMES[208] = "잔디 길";
 Blockly.Msg.OBJNAMES[213] = "마그마블록";
 Blockly.Msg.OBJNAMES[218] = "관측기";
 
@@ -331,6 +345,7 @@ Blockly.Msg.OBJNAMES[128] = "사암 계단";
 Blockly.Msg.OBJNAMES[134] = "가문비나무 계단";
 Blockly.Msg.OBJNAMES[135] = "자작나무 계단";
 Blockly.Msg.OBJNAMES[136] = "정글나무 계단";
+Blockly.Msg.OBJNAMES[351.15] = "뼛가루";
 
 
 /*딕셔너리*/

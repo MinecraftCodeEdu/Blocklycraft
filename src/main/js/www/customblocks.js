@@ -20,7 +20,7 @@ var others = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 2, 3, 4, 7, 8, 10, 12, 13,
 
 var farmland = getObjNames(Blockly.Msg.OBJNAMES, [8, 60, 59, 207, 142, 141]);
 
-var train = getObjNames(Blockly.Msg.OBJNAMES, [66, 27, 28, 157, 152, 2]);
+var train = getObjNames(Blockly.Msg.OBJNAMES, [66, 27, 28, 157, 152, 1]);
 
 var fence = getObjNames(Blockly.Msg.OBJNAMES, [85, 107]);
 
@@ -31,6 +31,8 @@ var jukebox = getObjNames(Blockly.Msg.OBJNAMES, [55, 1, 70]);
 var note = [["낮은 파# (F#)","0"], ["낮은 솔 (G)","1"], ["낮은 솔# (G#)","2"], ["낮은 라 (A)","3"], ["낮은 라# (A#)","4"], ["낮은 시 (B)","5"], ["중간 도 (C)","6"], ["중간 도# (C#)","7"], ["중간 레 (D)","8"], ["중간 레# (D#)","9"], ["중간 미 (E)","10"], ["중간 파 (F)","11"], ["중간 파# (F#)","12"], ["중간 솔 (G)","13"], ["중간 솔# (G#)","14"], ["중간 라 (A)","15"], ["중간 라# (A#)","16"], ["중간 시 (B)","17"], ["높은 도 (C)","18"], ["높은 도# (C#)","19"], ["높은 레 (D)","20"], ["높은 레# (D#)","21"], ["높은 미 (E)","22"], ["높은 파 (F)","23"], ["높은 파# (F#)","24"], ["쉼","25"]];
 
 var tag = getObjNames(Blockly.Msg.OBJNAMES, [20, 79, 95, 101]);
+
+var village = getObjNames(Blockly.Msg.OBJNAMES, [98, 3, 5, 45, 20, 79, 0, 8, 60, 59, 207, 142, 141, 37, 38, 38.1, 38.2, 38.3, 38.4, 38.5, 38.6, 38.7, 38.8, 208, 6, 6.1, 6.2, 6.3, 6.4]);
 
 //http://minecraft.gamepedia.com/Tools
 var items_tools = getObjNames(Blockly.Msg.ITEMS_NAMES, ['diamondAxe', 'diamondHoe', 'diamondSpade', 'diamondPickaxe', 'shears', 'flintAndSteel', 'fishingRod', 'bed', 'torch', 'wood']);
@@ -68,11 +70,11 @@ function getObjNames(list, ids) {
         }
     } else {
         for (i = 0; i < ids.length; i++) {
-            id = '';
-            if (typeof (ids[i]) == "number") {
-                id = "'" + ids[i] + "'";
+			id = '';
+			if (typeof (ids[i]) == "number") {
+                id = "'" + JSON.stringify(ids[i]).replace(/"/g,"").replace(".",":") + "'";
             } else {
-                id = ids[i];
+                id = JSON.stringify(ids[i]).replace(/"/g,"").replace(".",":");
             }
             shortList[i] = [list[ids[i]], id];
         }
@@ -210,6 +212,65 @@ Blockly.Blocks['rectangle'] = {
         this.setTooltip(Blockly.Msg.TOOLTIP_RECTANGLE);
         this.setHelpUrl('https://github.com/walterhiggins/ScriptCraft/blob/master/docs/API-Reference.md#dronebox-method');
     }
+};
+
+Blockly.Blocks['rectangle_edit'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.RECTANGLE);
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.Msg.EMPTY, "0"],
+                [Blockly.Msg.FULL, " "]
+            ]), "fill");
+        this.appendValueInput("width").setCheck("Number")
+            .appendField(Blockly.Msg.WIDTH);
+        this.appendValueInput("length").setCheck("Number")
+            .appendField(Blockly.Msg.LENGTH);
+		this.appendValueInput("material")
+			.appendField("재료")
+			.setCheck(null);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setColour(0);
+        this.setTooltip(Blockly.Msg.TOOLTIP_RECTANGLE);
+        this.setHelpUrl('https://github.com/walterhiggins/ScriptCraft/blob/master/docs/API-Reference.md#dronebox-method');
+    }
+};
+
+Blockly.Blocks['prism_edit'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("각기둥")
+        .appendField(new Blockly.FieldDropdown([["가득찬"," "], ["텅빈","0"]]), "SHAPE");
+    this.appendValueInput("width")
+        .setCheck(null)
+        .appendField(Blockly.Msg.WIDTH);
+    this.appendValueInput("length")
+        .setCheck(null)
+        .appendField(Blockly.Msg.LENGTH);
+		this.appendValueInput("material")
+			.appendField("재료")
+			.setCheck(null);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['village_material'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldDropdown(village), "material");
+    this.setOutput(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
 };
 
 Blockly.Blocks['circle'] = {
@@ -727,6 +788,20 @@ Blockly.Blocks['player_chatcommand'] = { /* 채팅명령어 실행 */
     this.setNextStatement(true, null);
     this.setColour(210);
  this.setTooltip("사용자의 코드로 채팅 명령을 실행합니다.");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['player_chat'] = { /* 채팅창에 말하기 */
+  init: function() {
+    this.appendValueInput("chat")
+        .setCheck(["Number", "String", "Boolean", "Array"])
+        .appendField("채팅창에 말하기 :");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(210);
+ this.setTooltip("게임 채팅에 메시지를 기록합니다.");
  this.setHelpUrl("");
   }
 };

@@ -643,8 +643,10 @@ Code.init = function () {
     Code.bindClick('deployButton', function () {
         var jscode = "var global = this;\n" + Blockly.JavaScript.workspaceToCode(Code.workspace);
         var titleRegexp = /command. '(.+)',/;
+		var eventRegexp = /events/;
         var fname = titleRegexp.exec(jscode); //extract the name of the command
-        if (fname === null) {
+		var ename = eventRegexp.exec(jscode); //extract the name of the command
+        if (fname === null && ename === null) {
             alert(Blockly.Msg.MISSING_NAME);
         } else {
             //alert(jscode);
@@ -762,7 +764,7 @@ Code.initLanguage = function () {
 	
 	var categories = ['catLogic', 'catLoops', 'catMath', 'catText', 'catLists', 'catFunctions',
         'catVariables', 'catTeleport', 'catFence', 'catFarmland' , 'catRail', 'catJukebox', 'catCastle',
-		'catHunt', 'catTresure'
+		'catHunt', 'catTresure', 'catVillage'
     ]; // 수정된 카테고리
 
     for (var i = 0, cat; cat = categories[i]; i++) {
