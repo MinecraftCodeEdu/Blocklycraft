@@ -16,6 +16,8 @@ var MSG = {
     catVariables: "변수",
     catFunctions: "함수",
     catDrone: "드론",
+	catPlayer: "플레이어",
+	catEntity: "엔티티",
     catInventory: "인벤토리",
 
     catTeleport: "텔레포트 이용하기",
@@ -28,13 +30,15 @@ var MSG = {
     catTrampoline: "트램폴린 동산",
     catRecipe: "레시피조합과 몬스터전투",
     catRanching: "목축",
-    catTrap: "터널과 함정",
+    catTrap: "함정 만들기",
     catJukebox: "주크박스 만들기",
     catCastle: "요새 만들기",
     catTag: "술래잡기",
     catExample: "예제",
 	catHunt: "사냥하고 돌아오기",
 	catTresure: "보물찾기",
+	catCannon: "대포 만들기",
+	catTunnel: "터널 만들기",
 
     listVariable: "리스트",
     textVariable: "텍스트",
@@ -165,7 +169,7 @@ Blockly.Msg.OBJNAMES[5] = "나무 판자";
 Blockly.Msg.OBJNAMES[6] = "참나무 묘목";
 Blockly.Msg.OBJNAMES[6.1] = "가문비나무 묘목";
 Blockly.Msg.OBJNAMES[6.2] = "자작나무 묘목";
-Blockly.Msg.OBJNAMES[6.3] = "정글나무 묘목";
+Blockly.Msg.OBJNAMES[6.3] = "정글 나무 묘목";
 Blockly.Msg.OBJNAMES[6.4] = "아카시아나무 묘목";
 Blockly.Msg.OBJNAMES[6.5] = "짙은 참나무 묘목";
 Blockly.Msg.OBJNAMES[7] = "기반암(베드록)";
@@ -258,7 +262,7 @@ Blockly.Msg.OBJNAMES[81] = "선인장";
 Blockly.Msg.OBJNAMES[82] = "점토";
 Blockly.Msg.OBJNAMES[83] = "사탕수수";
 Blockly.Msg.OBJNAMES[84] = "주크박스";
-Blockly.Msg.OBJNAMES[85] = "울타리";
+Blockly.Msg.OBJNAMES[85] = "참나무 울타리";
 Blockly.Msg.OBJNAMES[86] = "호박";
 Blockly.Msg.OBJNAMES[87] = "네더랙";
 Blockly.Msg.OBJNAMES[88] = "영혼모래";
@@ -280,7 +284,7 @@ Blockly.Msg.OBJNAMES[103] = "수박";
 Blockly.Msg.OBJNAMES[104] = "pumpkin stem";
 Blockly.Msg.OBJNAMES[105] = "melon stem";
 Blockly.Msg.OBJNAMES[106] = "덩굴";
-Blockly.Msg.OBJNAMES[107] = "울타리 문";
+Blockly.Msg.OBJNAMES[107] = "참나무 울타리 문";
 Blockly.Msg.OBJNAMES[110] = "균사체";
 Blockly.Msg.OBJNAMES[111] = "수련잎";
 Blockly.Msg.OBJNAMES[112] = "네더 벽돌";
@@ -333,6 +337,16 @@ Blockly.Msg.OBJNAMES[172] = "테라코타";
 Blockly.Msg.OBJNAMES[173] = "석탄 블록";
 Blockly.Msg.OBJNAMES[174] = "꽁꽁 언 얼음";
 Blockly.Msg.OBJNAMES[175] = "해바라기";
+Blockly.Msg.OBJNAMES[183] = "가문비나무 울타리 문";
+Blockly.Msg.OBJNAMES[184] = "자작나무 울타리 문";
+Blockly.Msg.OBJNAMES[185] = "정글 나무 울타리 문";
+Blockly.Msg.OBJNAMES[186] = "짙은 참나무 울타리 문";
+Blockly.Msg.OBJNAMES[187] = "아카시아나무 울타리 문";
+Blockly.Msg.OBJNAMES[188] = "가문비나무 울타리";
+Blockly.Msg.OBJNAMES[189] = "자작나무 울타리";
+Blockly.Msg.OBJNAMES[190] = "정글 나무 울타리";
+Blockly.Msg.OBJNAMES[191] = "짙은 참나무 울타리";
+Blockly.Msg.OBJNAMES[192] = "아카시아나무 울타리";
 Blockly.Msg.OBJNAMES[205] = "퍼퍼 반 블록";
 Blockly.Msg.OBJNAMES[207] = "사탕무 씨앗";
 Blockly.Msg.OBJNAMES[208] = "잔디 길";

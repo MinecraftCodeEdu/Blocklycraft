@@ -764,7 +764,7 @@ Code.initLanguage = function () {
 	
 	var categories = ['catLogic', 'catLoops', 'catMath', 'catText', 'catLists', 'catFunctions',
         'catVariables', 'catTeleport', 'catFence', 'catFarmland' , 'catRail', 'catJukebox', 'catCastle',
-		'catHunt', 'catTresure', 'catVillage'
+		'catHunt', 'catTresure', 'catVillage', 'catCannon', 'catTunnel', 'catDrone', 'catPlayer', 'catEntity'
     ]; // 수정된 카테고리
 
     for (var i = 0, cat; cat = categories[i]; i++) {
