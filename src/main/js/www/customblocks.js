@@ -22,7 +22,7 @@ var farmland = getObjNames(Blockly.Msg.OBJNAMES, [8, 60, 59, 207, 142, 141]);
 
 var train = getObjNames(Blockly.Msg.OBJNAMES, [66, 27, 28, 157, 152, 1]);
 
-var fence = getObjNames(Blockly.Msg.OBJNAMES, [85, 107]);
+var fence = getObjNames(Blockly.Msg.OBJNAMES, [85, 188, 189, 190, 191, 192, 107, 183, 184, 185, 186, 187]);
 
 var castle = getObjNames(Blockly.Msg.OBJNAMES, [98, 79, 20, 45, 5]);
 
@@ -189,6 +189,28 @@ Blockly.Blocks['drone_move_count'] = {
     }
 };
 
+Blockly.Blocks['drone_location'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("이동");
+    this.appendValueInput("x")
+        .setCheck("Number")
+        .appendField("x");
+    this.appendValueInput("y")
+        .setCheck("Number")
+        .appendField("y");
+    this.appendValueInput("z")
+        .setCheck("Number")
+        .appendField("z");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
 Blockly.Blocks['rectangle'] = {
     init: function () {
         this.appendDummyInput()
@@ -227,6 +249,33 @@ Blockly.Blocks['rectangle_edit'] = {
             .appendField(Blockly.Msg.WIDTH);
         this.appendValueInput("length").setCheck("Number")
             .appendField(Blockly.Msg.LENGTH);
+		this.appendValueInput("material")
+			.appendField("재료")
+			.setCheck(null);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setColour(0);
+        this.setTooltip(Blockly.Msg.TOOLTIP_RECTANGLE);
+        this.setHelpUrl('https://github.com/walterhiggins/ScriptCraft/blob/master/docs/API-Reference.md#dronebox-method');
+    }
+};
+
+Blockly.Blocks['cuboid_edit'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("직육면체");
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.Msg.EMPTY, "0"],
+                [Blockly.Msg.FULL, " "]
+            ]), "fill");
+        this.appendValueInput("width").setCheck("Number")
+            .appendField(Blockly.Msg.WIDTH);
+        this.appendValueInput("length").setCheck("Number")
+            .appendField(Blockly.Msg.LENGTH);
+		this.appendValueInput("height").setCheck("Number")
+            .appendField(Blockly.Msg.HEIGHT);
 		this.appendValueInput("material")
 			.appendField("재료")
 			.setCheck(null);
@@ -537,7 +586,6 @@ Blockly.Blocks['torch'] = { /*블록옆에 매달리는 아이템*/
     this.appendDummyInput()
         .appendField("매달기");
     this.appendDummyInput()
-        .appendField("종류")
         .appendField(new Blockly.FieldDropdown([["횃불","0"], ["레드스톤횃불","1"], ["트립와이어 후크","2"]]), "TYPE");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
@@ -2623,6 +2671,80 @@ Blockly.Blocks['string_substring'] = { /* 문자열 잘라내기 */
         .appendField("번 째까지 잘라내기");
     this.setOutput(true, null);
     this.setColour(160);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+/*
+ * TNT
+ */
+Blockly.Blocks['tnt_fire'] = { // TNT발사
+  init: function() {
+    this.appendValueInput("x")
+        .setCheck("Number")
+        .appendField("TNT ")
+        .appendField("x");
+    this.appendValueInput("y")
+        .setCheck("Number")
+        .appendField("y");
+    this.appendValueInput("z")
+        .setCheck("Number")
+        .appendField("z");
+    this.appendValueInput("dir")
+        .setCheck("Number")
+        .appendField("방향");
+    this.appendValueInput("angle")
+        .setCheck("Number")
+        .appendField("° 각도");
+    this.appendDummyInput()
+        .appendField("°");
+    this.appendValueInput("power")
+        .setCheck("Number");
+    this.appendDummyInput()
+        .appendField("의 힘으로 발사");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+/*
+ * 터널 만들기
+ */
+Blockly.Blocks['drone_arc'] = {
+  init: function() {
+    this.appendValueInput("material")
+        .setCheck(null)
+        .appendField("원 그리기 재료");
+    this.appendValueInput("radius")
+        .setCheck(null)
+        .appendField("지름");
+    this.appendValueInput("strokeWidth")
+        .setCheck(null)
+        .appendField("선폭");
+    this.appendValueInput("stack")
+        .setCheck(null)
+        .appendField("두께");
+    this.appendDummyInput()
+        .appendField("좌상")
+        .appendField(new Blockly.FieldCheckbox("TRUE"), "topleft")
+        .appendField("우상")
+        .appendField(new Blockly.FieldCheckbox("TRUE"), "topright")
+        .appendField("좌하")
+        .appendField(new Blockly.FieldCheckbox("TRUE"), "bottomleft")
+        .appendField("우하")
+        .appendField(new Blockly.FieldCheckbox("TRUE"), "bottomright")
+        .appendField(new Blockly.FieldDropdown([["수직","vertical"], ["수평","horizontal"]]), "orientation")
+        .appendField("채우기")
+        .appendField(new Blockly.FieldCheckbox("TRUE"), "fill");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
  this.setTooltip("");
  this.setHelpUrl("");
   }

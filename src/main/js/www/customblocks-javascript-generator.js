@@ -102,7 +102,7 @@ Blockly.JavaScript['drone'] = function (block) {
     var webip = window.myIP;
 
     var code = "command( '" + webip + fname + "', function ( parameters, player ) {\nvar delay_add=0;\nvar theDrone = new Drone(player);\nglobal.theDrone = theDrone;\nvar bkBlockFace = Packages.org.bukkit.block.BlockFace;\nvar bkItemStack = Packages.org.bukkit.inventory.ItemStack;\nvar bkMaterial = Packages.org.bukkit.Material;\nvar bkLocation = Packages.org.bukkit.Location;\nglobal.theDrone.up();\nglobal.theDrone.chkpt('start');\n";
-    code = code + "var timeoutStop = new Date().getTime()+500;\n"; // set maximum run time for a script
+    code = code + "var timeoutStop = new Date().getTime()+500;\nvar slash = require('slash');\n"; // set maximum run time for a script
     code = code + statements_statements;
     code = code + "});";
     return code;
@@ -136,6 +136,15 @@ Blockly.JavaScript['drone_move_count'] = function (block) {
     var value_count = Blockly.JavaScript.valueToCode(block, 'COUNT', Blockly.JavaScript.ORDER_ATOMIC);
     var code = "global.theDrone." + dropdown_direction + "(" + value_count + ");\n";
     return code;
+};
+
+Blockly.JavaScript['drone_location'] = function(block) {
+  var x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
+  var y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_ATOMIC);
+  var z = Blockly.JavaScript.valueToCode(block, 'z', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "global.theDrone.move("+x+","+y+","+z+");\n";
+  return code;
 };
 
 Blockly.JavaScript['materials'] = function (block) {
@@ -176,6 +185,16 @@ Blockly.JavaScript['rectangle_edit'] = function (block) {
     var value_material = Blockly.JavaScript.valueToCode(block, 'material', Blockly.JavaScript.ORDER_ATOMIC);
     var dropdown_fill = block.getFieldValue('fill');
     var code = "global.theDrone.box" + dropdown_fill + "(" + value_material + "," + value_width + ",1," + value_length + ");\n";
+    return code;
+};
+
+Blockly.JavaScript['cuboid_edit'] = function (block) {
+    var value_width = Blockly.JavaScript.valueToCode(block, 'width', Blockly.JavaScript.ORDER_ATOMIC);
+    var value_length = Blockly.JavaScript.valueToCode(block, 'length', Blockly.JavaScript.ORDER_ATOMIC);
+	var value_height = Blockly.JavaScript.valueToCode(block, 'height', Blockly.JavaScript.ORDER_ATOMIC);
+    var value_material = Blockly.JavaScript.valueToCode(block, 'material', Blockly.JavaScript.ORDER_ATOMIC);
+    var dropdown_fill = block.getFieldValue('fill');
+    var code = "global.theDrone.box" + dropdown_fill + "(" + value_material + "," + value_width + "," + value_height + "," + value_length + ");\n";
     return code;
 };
 
@@ -364,6 +383,7 @@ command( '" + webip + value_command.replace(/'/g,"") + "', function ( parameters
   global.theDrone = theDrone;\n\
   global.theDrone.up();\n\
   global.theDrone.chkpt('start');\n\
+  var slash = require('slash');\n\
 " + statements_statements + "\
 });\
 ";
@@ -1410,4 +1430,52 @@ Blockly.JavaScript['string_substring'] = function(block) { /* 문자열 잘라�
   code = value_text + '.slice(' + at1 + ', ' + at2 + ')';
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+/*
+ * TNT
+ */
+Blockly.JavaScript['tnt_fire'] = function(block) { // TNT발사
+  var value_x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_z = Blockly.JavaScript.valueToCode(block, 'z', Blockly.JavaScript.ORDER_ATOMIC);
+  var dir = Blockly.JavaScript.valueToCode(block, 'dir', Blockly.JavaScript.ORDER_ATOMIC);
+  var angle = Blockly.JavaScript.valueToCode(block, 'angle', Blockly.JavaScript.ORDER_ATOMIC);
+  var power = Blockly.JavaScript.valueToCode(block, 'power', Blockly.JavaScript.ORDER_ATOMIC);
+  //var x = -power*Math.cos(angle*Math.PI/180)*Math.sin(dir*Math.PI/180);
+  //var y = power*Math.sin(angle*Math.PI/180);
+  //var z = power*Math.cos(angle*Math.PI/180)*Math.cos(dir*Math.PI/180);
+  //var Fuse = 2*power*Math.sin(angle*Math.PI/180)*20;
+  // TODO: Assemble JavaScript into code variable.
+  //slash("summon tnt 0 4 4 {Motion:[Number(-power*Math.cos(angle*Math.PI/180)*Math.sin(dir*Math.PI/180)).Fixed(4),Number(power*Math.sin(angle*Math.PI/180)).Fixed(4),Number(power*Math.cos(angle*Math.PI/180)*Math.cos(dir*Math.PI/180)).Fixed(4)],Fuse:Number(2*power*Math.sin(angle*Math.PI/180)*20).Fixed(4)}");
+  var code = 'slash("summon tnt "+'+value_x+'+" "+'+value_y+'+" "+'+value_z+'+" {Motion:["+'+'Number('+-power+'*Math.cos('+angle+'*Math.PI/180)*Math.sin('+dir+'*Math.PI/180)).toFixed(4)'+'+","+'+'Number('+power+'*Math.sin('+angle+'*Math.PI/180)).toFixed(4)'+'+","+'+'Number('+power+'*Math.cos('+angle+'*Math.PI/180)*Math.cos('+dir+'*Math.PI/180)).toFixed(4)'+'+"],Fuse:"+'+'Number(2*'+power+'*Math.sin('+angle+'*Math.PI/180)*20).toFixed(4)'+'+"}");\n';
+  return code;
+};
+
+/*
+ * 터널 만들기
+ */
+Blockly.JavaScript['drone_arc'] = function(block) {
+  var value_type = Blockly.JavaScript.valueToCode(block, 'material', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_radius = Blockly.JavaScript.valueToCode(block, 'radius', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_strokewidth = Blockly.JavaScript.valueToCode(block, 'strokeWidth', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_stack = Blockly.JavaScript.valueToCode(block, 'stack', Blockly.JavaScript.ORDER_ATOMIC);
+  var checkbox_topleft = block.getFieldValue('topleft') == 'TRUE';
+  var checkbox_topright = block.getFieldValue('topright') == 'TRUE';
+  var checkbox_bottomleft = block.getFieldValue('bottomleft') == 'TRUE';
+  var checkbox_bottomright = block.getFieldValue('bottomright') == 'TRUE';
+  var dropdown_orientation = block.getFieldValue('orientation');
+  var checkbox_fill = block.getFieldValue('fill') == 'TRUE';
+  // TODO: Assemble JavaScript into code variable.
+  var code = '\
+global.theDrone.arc({blockType: '+value_type.replace(/'/g,"").split(":")[0]+', \n\
+	 meta: '+(value_type.replace(/'/g,"").split(":")[1] == undefined ? 0 : value_type.replace(/'/g,"").split(":")[1])+', \n\
+	 radius: '+value_radius+', \n\
+	 strokeWidth: '+value_strokewidth+', \n\
+	 quadrants: { topleft: '+checkbox_topleft+', topright: '+checkbox_topright+', bottomleft: '+checkbox_bottomleft+', bottomright: '+checkbox_bottomright+' }, \n\
+	 orientation: "'+dropdown_orientation+'", \n\
+	 stack: '+value_stack+', \n\
+	 fill: '+checkbox_fill+' \n\
+	 } ); \n';
+  return code;
 };

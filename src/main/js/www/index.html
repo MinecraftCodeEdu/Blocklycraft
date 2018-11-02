@@ -96,9 +96,11 @@
     <pre id="content_dart" class="content"></pre>
     <textarea id="content_xml" class="content" wrap="off"></textarea>
     <xml id="toolbox" style="display: none">
+	
 	    <sep></sep>
+		<!-- Level 1 -->
 		<!-- 텔레포트 이용하기 -->
-		<category id="catTeleport" colour="90">
+		<category id="catTeleport">
 			<block type="teleport_command">
 				<value name="command">
 					<block type="text">
@@ -260,9 +262,7 @@
 		<!-- 주크박스 만들기 -->
     	<category id="catJukebox">
             <block type="drone"></block>
-			<block type="jukebox_material">
-
-			</block>
+			<block type="jukebox_material"></block>
 			<block type="repeater"></block>
 			<block type="note_material">
 				<value name="note">
@@ -355,7 +355,453 @@
             </block>
 		</category>
 	    <sep></sep>		
-
+		
+		<!-- Level 2 -->
+		<!-- 마을 짓기 -->
+		<category id="catVillage">
+			<block type="drone"></block>
+			<block type="rectangle_edit">
+				<value name="width">
+				   <block type="math_number">
+				   <field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="length">
+				   <block type="math_number">
+					<field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="material">
+				   <block type="village_material"></block>
+				</value>
+			</block>
+			<block type="prism_edit">
+				<value name="width">
+				   <block type="math_number">
+				   <field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="length">
+				   <block type="math_number">
+					<field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="material">
+				   <block type="village_material"></block>
+				</value>
+			</block>
+			<block type="drone_variable">
+				<value name="material">
+				   <block type="village_material"></block>
+				</value>
+			</block>
+			<block type="village_material"></block>
+			<block type="drone_move"></block>
+			<block type="drone_move_count">
+              <value name="COUNT">
+                <block type="math_number">
+					<field name="NUM">1</field>
+				</block>
+              </value>
+            </block>
+			<block type="drone_location">
+              <value name="x">
+                <block type="math_number">
+					<field name="NUM">0</field>
+				</block>
+              </value>
+			  <value name="y">
+                <block type="math_number">
+					<field name="NUM">4</field>
+				</block>
+              </value>
+			  <value name="z">
+                <block type="math_number">
+					<field name="NUM">0</field>
+				</block>
+              </value>
+            </block>
+		</category>
+		<!-- 대포 만들기 -->
+		<category id="catCannon">
+			<block type="onchat">
+				<value name="command">
+					<block type="text">
+						<field name="TEXT">run</field>
+					</block>
+				</value>
+			</block>
+			<block type="tnt_fire">
+              <value name="x">
+                <block type="math_number">
+					<field name="NUM">0</field>
+				</block>
+              </value>
+			  <value name="y">
+                <block type="math_number">
+					<field name="NUM">4</field>
+				</block>
+              </value>
+			  <value name="z">
+                <block type="math_number">
+					<field name="NUM">0</field>
+				</block>
+              </value>
+			  <value name="dir">
+                <block type="math_number">
+					<field name="NUM">0</field>
+				</block>
+              </value>
+			  <value name="angle">
+                <block type="math_number">
+					<field name="NUM">30</field>
+				</block>
+              </value>
+              <value name="power">
+                <block type="math_number">
+					<field name="NUM">1</field>
+				</block>
+              </value>
+            </block>
+		</category>
+		<!-- 터널 만들기 -->
+		<category id="catTunnel">
+			<block type="drone"></block>
+			<block type="cuboid_edit">
+				<value name="width">
+				   <block type="math_number">
+				   <field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="length">
+				   <block type="math_number">
+					<field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="height">
+				   <block type="math_number">
+					<field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="material">
+				   <block type="village_material"></block>
+				</value>
+			</block>
+			<block type="rectangle_edit">
+				<value name="width">
+				   <block type="math_number">
+				   <field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="length">
+				   <block type="math_number">
+					<field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="material">
+				   <block type="village_material"></block>
+				</value>
+			</block>
+			<block type="drone_variable">
+				<value name="material">
+				   <block type="village_material"></block>
+				</value>
+			</block>
+			<block type="village_material"></block>
+			<block type="torch"></block>
+			<block type="drone_move_count">
+              <value name="COUNT">
+                <block type="math_number">
+					<field name="NUM">1</field>
+				</block>
+              </value>
+            </block>
+			<block type="drone_move"></block>
+			<block type="drone_arc">
+			  <value name="material">
+				<block type="village_material"></block>
+		      </value>
+              <value name="radius">
+                <block type="math_number">
+					<field name="NUM">10</field>
+				</block>
+              </value>
+              <value name="strokeWidth">
+                <block type="math_number">
+					<field name="NUM">1</field>
+				</block>
+              </value>
+              <value name="stack">
+                <block type="math_number">
+					<field name="NUM">1</field>
+				</block>
+              </value>
+			</block>
+		</category>
+		<sep></sep>
+		
+		<!-- 공통블록 -->
+		<!-- 플레이어 -->
+		<category id="catPlayer" colour="225">
+			<block type="onchat">
+				<value name="command">
+					<block type="text">
+						<field name="TEXT">run</field>
+					</block>
+				</value>
+			</block>
+			<block type="teleport_command">
+				<value name="command">
+					<block type="text">
+						<field name="TEXT">teleport</field>
+					</block>
+				</value>
+			</block>
+			<block type="directforward">
+				<value name="command">
+					<block type="text">
+						<field name="TEXT">forward</field>
+					</block>
+				</value>
+			</block>
+			<block type="teleport_location">
+			  <value name="NAME">
+				<block type="absolute_location">
+				  <value name="x">
+					<block type="math_number">
+						<field name="NUM">0</field>
+					</block>
+				  </value>
+				  <value name="y">
+					<block type="math_number">
+						<field name="NUM">4</field>
+					</block>
+				  </value>
+				  <value name="z">
+					<block type="math_number">
+						<field name="NUM">0</field>
+					</block>
+				  </value>
+				</block>
+			  </value>
+			</block>
+			<block type="teleport_location">
+			  <value name="NAME">
+				<block type="relative_location">
+				  <value name="x">
+					<block type="math_number"></block>
+				  </value>
+				  <value name="y">
+					<block type="math_number"></block>
+				  </value>
+				  <value name="z">
+					<block type="math_number"></block>
+				  </value>
+				</block>
+			  </value>
+			</block>
+			<block type="moveforward">
+				<value name="distance">
+					<block type="math_number">
+						<field name="NUM">5</field>
+					</block>
+				</value>
+			</block>
+			<block type="setyaw"></block>	
+			<block type="setdirection"></block>	
+			<block type="player_chatcommand">
+				<value name="chatcommand">
+				  <block type="text">
+					<field name="TEXT">jump</field>
+				  </block>
+				</value>
+			</block>
+			<block type="player_chat">
+				<value name="chat">
+				  <block type="text">
+					<field name="TEXT">Hi!</field>
+				  </block>
+				</value>
+			</block>
+        </category>
+		<!-- 드론 -->
+		<category id="catDrone" colour="0">
+            <block type="drone"></block>
+            <block type="fence_material"></block>
+			<block type="farmland_material"></block>
+			<block type="jukebox_material"></block>
+			<block type="rail_material"></block>
+			<block type="castle_material"></block>
+			<block type="castle_rectangle">
+					<value name="width">
+					   <block type="math_number">
+					   <field name="NUM">0</field>
+					   </block>
+					</value>
+					<value name="length">
+					   <block type="math_number">
+						<field name="NUM">0</field>
+					   </block>
+				</value>
+			</block>
+			<block type="note_material">
+				<value name="note">
+				  <block type="note">
+					<field name="note">0</field>
+				  </block>
+				</value>
+			</block>
+			<block type="note"></block>
+			<block type="repeater"></block>
+			<block type="torch"></block>
+			<block type="cuboid_edit">
+				<value name="width">
+				   <block type="math_number">
+				   <field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="length">
+				   <block type="math_number">
+					<field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="height">
+				   <block type="math_number">
+					<field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="material">
+				   <block type="village_material"></block>
+				</value>
+			</block>
+			<block type="rectangle_edit">
+				<value name="width">
+				   <block type="math_number">
+				   <field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="length">
+				   <block type="math_number">
+					<field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="material">
+				   <block type="village_material"></block>
+				</value>
+			</block>
+			<block type="prism_edit">
+				<value name="width">
+				   <block type="math_number">
+				   <field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="length">
+				   <block type="math_number">
+					<field name="NUM">0</field>
+				   </block>
+				</value>
+				<value name="material">
+				   <block type="village_material"></block>
+				</value>
+			</block>
+			<block type="drone_arc">
+			  <value name="material">
+				<block type="village_material"></block>
+		      </value>
+              <value name="radius">
+                <block type="math_number">
+					<field name="NUM">10</field>
+				</block>
+              </value>
+              <value name="strokeWidth">
+                <block type="math_number">
+					<field name="NUM">1</field>
+				</block>
+              </value>
+              <value name="stack">
+                <block type="math_number">
+					<field name="NUM">1</field>
+				</block>
+              </value>
+			</block>
+			<block type="drone_variable">
+				<value name="material">
+				   <block type="village_material"></block>
+				</value>
+			</block>
+			<block type="village_material"></block>
+			<block type="drone_move"></block>
+			<block type="drone_move_count">
+              <value name="COUNT">
+                <block type="math_number">
+					<field name="NUM">1</field>
+				</block>
+              </value>
+            </block>
+			<block type="drone_location">
+              <value name="x">
+                <block type="math_number">
+					<field name="NUM">0</field>
+				</block>
+              </value>
+			  <value name="y">
+                <block type="math_number">
+					<field name="NUM">4</field>
+				</block>
+              </value>
+			  <value name="z">
+                <block type="math_number">
+					<field name="NUM">0</field>
+				</block>
+              </value>
+            </block>
+        </category>
+		<!-- 엔티티 -->
+		<category id="catEntity" colour="230">
+			<block type="onmobkilled">
+			  <value name="Mob">
+				<block type="animalmob"></block>
+			  </value>
+			</block>
+			<block type="spawn_animal">
+			  <value name="animal">
+				<block type="animalmob"></block>
+			  </value>
+			</block>
+			<block type="tnt_fire">
+              <value name="x">
+                <block type="math_number">
+					<field name="NUM">0</field>
+				</block>
+              </value>
+			  <value name="y">
+                <block type="math_number">
+					<field name="NUM">4</field>
+				</block>
+              </value>
+			  <value name="z">
+                <block type="math_number">
+					<field name="NUM">0</field>
+				</block>
+              </value>
+			  <value name="dir">
+                <block type="math_number">
+					<field name="NUM">0</field>
+				</block>
+              </value>
+			  <value name="angle">
+                <block type="math_number">
+					<field name="NUM">30</field>
+				</block>
+              </value>
+              <value name="power">
+                <block type="math_number">
+					<field name="NUM">1</field>
+				</block>
+              </value>
+            </block>
+        </category>		
+		<sep></sep>
 		<!-- 논리 -->
 		<category id="catLogic" colour="210">
             <block type="controls_if"></block>
@@ -496,55 +942,7 @@
 		<category id="catVariables" custom="VARIABLE" colour="330"></category>
 		
 		<sep></sep>
-		
-		<!-- 마을 짓기 -->
-		<category id="catVillage">
-			<block type="drone"></block>
-			<block type="rectangle_edit">
-				<value name="width">
-				   <block type="math_number">
-				   <field name="NUM">0</field>
-				   </block>
-				</value>
-				<value name="length">
-				   <block type="math_number">
-					<field name="NUM">0</field>
-				   </block>
-				</value>
-				<value name="material">
-				   <block type="village_material"></block>
-				</value>
-			</block>
-			<block type="prism_edit">
-				<value name="width">
-				   <block type="math_number">
-				   <field name="NUM">0</field>
-				   </block>
-				</value>
-				<value name="length">
-				   <block type="math_number">
-					<field name="NUM">0</field>
-				   </block>
-				</value>
-				<value name="material">
-				   <block type="village_material"></block>
-				</value>
-			</block>
-			<block type="drone_variable">
-				<value name="material">
-				   <block type="village_material"></block>
-				</value>
-			</block>
-			<block type="village_material"></block>
-			<block type="drone_move"></block>
-			<block type="drone_move_count">
-              <value name="COUNT">
-                <block type="math_number">
-					<field name="NUM">1</field>
-				</block>
-              </value>
-            </block>
-		</category>
+
 <!-- 		
 		<sep></sep>
         <category id="catDrone">
