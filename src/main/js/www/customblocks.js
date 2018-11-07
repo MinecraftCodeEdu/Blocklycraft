@@ -18,19 +18,19 @@ var stairs = getObjNames(Blockly.Msg.OBJNAMES, [53, 108, 109, 128, 134, 135, 136
 var others = getObjNames(Blockly.Msg.OBJNAMES, [0, 1, 2, 3, 4, 7, 8, 10, 12, 13, 14, 15, 16, 17, 18, 20, 21, 24, 27, 31, 32, 37, 38, 39, 40, 41, 44, 46, 49, 51, 55, 56, 65, 66, 73, 78, 79, 80, 81, 82, 83, 85, 86, 93, 99, 100, 103, 106, 110, 111, 129, 152, 159, 161, 162, 172, 174, 175]);
 */
 
-var farmland = getObjNames(Blockly.Msg.OBJNAMES, [8, 60, 59, 207, 142, 141]);
+var farmland = getObjNames(Blockly.Msg.OBJNAMES, [8, 60, 59, 207, 142, 141, 0]);
 
-var train = getObjNames(Blockly.Msg.OBJNAMES, [66, 27, 28, 157, 152, 1]);
+var train = getObjNames(Blockly.Msg.OBJNAMES, [66, 27, 28, 157, 152, 1, 0]);
 
-var fence = getObjNames(Blockly.Msg.OBJNAMES, [85, 188, 189, 190, 191, 192, 107, 183, 184, 185, 186, 187]);
+var fence = getObjNames(Blockly.Msg.OBJNAMES, [85, 188, 189, 190, 191, 192, 107, 183, 184, 185, 186, 187, 0]);
 
-var castle = getObjNames(Blockly.Msg.OBJNAMES, [98, 79, 20, 45, 5]);
+var castle = getObjNames(Blockly.Msg.OBJNAMES, [98, 79, 20, 45, 5, 0]);
 
-var jukebox = getObjNames(Blockly.Msg.OBJNAMES, [55, 1, 70]);
+var jukebox = getObjNames(Blockly.Msg.OBJNAMES, [55, 1, 70, 0]);
 
 var note = [["낮은 파# (F#)","0"], ["낮은 솔 (G)","1"], ["낮은 솔# (G#)","2"], ["낮은 라 (A)","3"], ["낮은 라# (A#)","4"], ["낮은 시 (B)","5"], ["중간 도 (C)","6"], ["중간 도# (C#)","7"], ["중간 레 (D)","8"], ["중간 레# (D#)","9"], ["중간 미 (E)","10"], ["중간 파 (F)","11"], ["중간 파# (F#)","12"], ["중간 솔 (G)","13"], ["중간 솔# (G#)","14"], ["중간 라 (A)","15"], ["중간 라# (A#)","16"], ["중간 시 (B)","17"], ["높은 도 (C)","18"], ["높은 도# (C#)","19"], ["높은 레 (D)","20"], ["높은 레# (D#)","21"], ["높은 미 (E)","22"], ["높은 파 (F)","23"], ["높은 파# (F#)","24"], ["쉼","25"]];
 
-var tag = getObjNames(Blockly.Msg.OBJNAMES, [20, 79, 95, 101]);
+var tag = getObjNames(Blockly.Msg.OBJNAMES, [20, 79, 95, 101, 0]);
 
 var village = getObjNames(Blockly.Msg.OBJNAMES, [98, 3, 5, 45, 20, 79, 0, 8, 60, 59, 207, 142, 141, 37, 38, 38.1, 38.2, 38.3, 38.4, 38.5, 38.6, 38.7, 38.8, 208, 6, 6.1, 6.2, 6.3, 6.4]);
 
